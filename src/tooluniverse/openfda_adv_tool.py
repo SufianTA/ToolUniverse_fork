@@ -179,6 +179,16 @@ class FDADrugAdverseEventTool(BaseTool):
         # API request
         try:
             response = requests.get(url)
+            # Handle 404 as "no matches found" - return empty list instead of error
+            if response.status_code == 404:
+                try:
+                    error_data = response.json()
+                    if "error" in error_data and "No matches found" in str(
+                        error_data.get("error", {})
+                    ):
+                        return []  # Return empty list for no matches
+                except (ValueError, KeyError):
+                    pass
             response.raise_for_status()
             response = response.json()
             if "results" in response:
@@ -300,6 +310,16 @@ class FDACountAdditiveReactionsTool(FDADrugAdverseEventTool):
 
         try:
             resp = requests.get(url)
+            # Handle 404 as "no matches found" - return empty list instead of error
+            if resp.status_code == 404:
+                try:
+                    error_data = resp.json()
+                    if "error" in error_data and "No matches found" in str(
+                        error_data.get("error", {})
+                    ):
+                        return []  # Return empty list for no matches
+                except (ValueError, KeyError):
+                    pass
             resp.raise_for_status()
             results = resp.json().get("results", [])
             results = self._post_process(results)
