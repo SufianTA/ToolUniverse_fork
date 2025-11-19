@@ -52,7 +52,8 @@ class ToolUniverseTool:  # Lazy base; will subclass smolagents.Tool at runtime
                     "type": info.get("type", "string"),
                     "description": info.get("description", ""),
                 }
-                if param_name not in required and "default" in info:
+                # All optional parameters (not in required list) should be nullable
+                if param_name not in required:
                     entry["nullable"] = True
                 inputs[param_name] = entry
             return inputs
@@ -91,8 +92,16 @@ class ToolUniverseTool:  # Lazy base; will subclass smolagents.Tool at runtime
 
         param_names = list(inputs_schema.keys())
         if param_names:
-            # Dynamically create a function with signature: (self, p1, p2, ...)
-            params_sig = ", ".join(param_names)
+            # Dynamically create a function with signature: (self, p1, p2=None, ...)
+            # Required params have no default, nullable params get =None
+            # In Python, parameters with defaults must come after those without
+            parameter_schema = tu_config.get("parameter", {})
+            required = set(parameter_schema.get("required", []) or [])
+            required_params = [p for p in param_names if p in required]
+            optional_params = [p for p in param_names if p not in required]
+            # Build signature: required params first, then optional with =None
+            params_list = required_params + [f"{p}=None" for p in optional_params]
+            params_sig = ", ".join(params_list)
             body_lines = ["    _kwargs = {"]
             for p in param_names:
                 body_lines.append(f"        '{p}': {p},")
@@ -145,7 +154,7 @@ class SmolAgentTool(BaseTool):
     - Streaming integration with ToolUniverse stream callbacks
     """
 
-    def __init__(self, tool_config: Dict[str, Any]):
+    def __init__(self, tool_config: Dict[str, Any], tooluniverse=None):
         super().__init__(tool_config)
         settings = tool_config.get("settings", {})
 
@@ -155,8 +164,8 @@ class SmolAgentTool(BaseTool):
         self.agent_init_params: Dict[str, Any] = settings.get("agent_init_params", {})
         self.sub_agents_config: List[Dict[str, Any]] = settings.get("sub_agents", [])
 
-        # Will be set by ToolUniverse runtime
-        self.tooluniverse = None
+        # Set by ToolUniverse runtime or passed as parameter
+        self.tooluniverse = tooluniverse
         self.agent = None
 
     # -------------------------
@@ -282,8 +291,7 @@ class SmolAgentTool(BaseTool):
                 "description": cfg.get("description", ""),
                 "settings": cfg,
             }
-            sub_tool = SmolAgentTool(sub_tool_config)
-            sub_tool.tooluniverse = self.tooluniverse
+            sub_tool = SmolAgentTool(sub_tool_config, tooluniverse=self.tooluniverse)
             sub_tool._init_agent()
             if sub_tool.agent is not None:
                 sub_agents.append(sub_tool.agent)

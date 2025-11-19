@@ -28,21 +28,12 @@ def main():
             "name": "advanced_literature_search_agent",
             "arguments": {
                 "query": (
-                    "single-cell RNA sequencing analysis methods "
-                    "and computational tools"
+                    "Give me a report of single-cell RNA sequencing analysis methods"
                 ),
             },
         }
     )
     print(result)
-    # print(f"\nSuccess: {result.get('success', False)}")
-    # if result.get("execution_time"):
-    #     print(f"Execution Time: {result.get('execution_time'):.2f}s")
-    # if result.get("success") and result.get("output"):
-    #     output = result.get("output", "")
-    #     if isinstance(output, str) and len(output) > 500:
-    #         print("\nOutput preview (first 500 chars):")
-    #         print(output[:500] + "...")
 
 
 if __name__ == "__main__":

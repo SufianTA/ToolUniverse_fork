@@ -28,16 +28,13 @@ dependencies = [
     "lxml>=6.0.0",
     "huggingface_hub>=0.34.0",
     "rcsb-api>=1.4.0",
-    "sentence-transformers>=5.1.0",
     "fitz>=0.0.1.dev2",
     "pandas>=2.2.3",
-    "admet-ai>=1.2.0",
-    "setuptools>=70.0.0,<81.0.0", # Fix pkg_resources deprecation warnings
+    "setuptools>=70.0.0,<81.0.0",  # Fix pkg_resources deprecation warnings
     "pdfplumber>=0.11.0",
     "playwright>=1.55.0",
     "faiss-cpu>=1.12.0",
     "flask>=2.0.0",
-    "chemprop==1.6.1",
     "aiohttp",
     "beautifulsoup4>=4.12.0",
     "markitdown[all]>=0.1.0",
@@ -51,6 +48,7 @@ readme = "README.md"
 [project.optional-dependencies]
 smolagents = [
     "smolagents>=1.22.0",
+    "gradio>=4.0.0",  # Required for GradioUI web interface
 ]
 dev = [
     "pytest>=7.0",
@@ -85,6 +83,12 @@ embedding = [
     "faiss-cpu>=1.12.0",
     "huggingface_hub>=0.34.0",
 ]
+ml = [
+    "admet-ai>=1.2.0",
+    "sentence-transformers>=5.1.0",
+    "faiss-cpu>=1.12.0",
+    "huggingface_hub>=0.34.0",
+]
 graph = [
     "flask>=2.0.0",
     "matplotlib>=3.5.0",
@@ -110,7 +114,10 @@ space = [
     "requests>=2.32.0",
 ]
 all = [
-    "tooluniverse[dev,docs,graph,visualization,space]",
+    "tooluniverse[dev,docs,graph,visualization,space,embedding,ml]",
+]
+build = [
+    "pyinstaller>=6.0.0",
 ]
 
 [project.urls]

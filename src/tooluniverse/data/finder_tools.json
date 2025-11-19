@@ -3,6 +3,7 @@
     "type": "ToolFinderEmbedding",
     "name": "Tool_RAG",
     "description": "Retrieve related tools from the toolbox based on the provided description",
+    "required_packages": ["sentence_transformers", "torch"],
     "parameter": {
       "type": "object",
       "properties": {
@@ -40,6 +41,7 @@
     "type": "ToolFinderEmbedding",
     "name": "Tool_Finder",
     "description": "Retrieve related tools from the toolbox based on the provided description, advanced version with more functionality.",
+    "required_packages": ["sentence_transformers", "torch"],
     "parameter": {
       "type": "object",
       "properties": {

@@ -14,6 +14,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["molecular_weight", "logP", "hydrogen_bond_acceptors", "hydrogen_bond_donors", "Lipinski", "QED", "stereo_centers", "tpsa"]
     },
     {
@@ -31,6 +32,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["CYP1A2_Veith", "CYP2C19_Veith", "CYP2C9_Substrate_CarbonMangels", "CYP2C9_Veith", "CYP2D6_Substrate_CarbonMangels", "CYP2D6_Veith", "CYP3A4_Substrate_CarbonMangels", "CYP3A4_Veith"]
     },
     {
@@ -48,6 +50,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["BBB_Martins"]
     },
     {
@@ -65,6 +68,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["AMES", "Carcinogens_Lagunin", "ClinTox", "DILI", "LD50_Zhu", "Skin_Reaction", "hERG"]
     },
     {
@@ -82,6 +86,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["Bioavailability_Ma", "HIA_Hou", "PAMPA_NCATS", "Caco2_Wang", "Pgp_Broccatelli"]
     },
     {
@@ -99,6 +104,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["Clearance_Hepatocyte_AZ", "Clearance_Microsome_AZ", "Half_Life_Obach", "VDss_Lombardo", "PPBR_AZ"]
     },
     {
@@ -116,6 +122,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["NR-AR-LBD", "NR-AR", "NR-AhR", "NR-Aromatase", "NR-ER-LBD", "NR-ER", "NR-PPAR-gamma"]
     },
     {
@@ -133,6 +140,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["SR-ARE", "SR-ATAD5", "SR-HSE", "SR-MMP", "SR-p53"]
     },
     {
@@ -150,6 +158,7 @@
             "required": ["smiles"]
         },
         "type": "ADMETAITool",
+        "required_packages": ["admet_ai"],
         "columns": ["Solubility_AqSolDB", "Lipophilicity_AstraZeneca", "HydrationFreeEnergy_FreeSolv"]
     }
 ]

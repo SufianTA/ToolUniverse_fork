@@ -2397,15 +2397,17 @@ class ToolUniverse:
                             "FDADrugLabelGetDrugGenericNameTool"
                         ],
                     )
-                elif "ToolFinderEmbedding" == tool_type:
-                    new_tool = tool_class(tool_config=tool, tooluniverse=self)
-                elif "ComposeTool" == tool_type:
-                    new_tool = tool_class(tool_config=tool, tooluniverse=self)
-                elif "ToolFinderLLM" == tool_type:
-                    new_tool = tool_class(tool_config=tool, tooluniverse=self)
-                elif "ToolFinderKeyword" == tool_type:
-                    new_tool = tool_class(tool_config=tool, tooluniverse=self)
-                elif tool_type in ["ListTools", "GrepTools", "GetToolInfo", "ExecuteTool"]:
+                elif tool_type in [
+                    "ToolFinderEmbedding",
+                    "ComposeTool",
+                    "ToolFinderLLM",
+                    "ToolFinderKeyword",
+                    "SmolAgentTool",
+                    "ListTools",
+                    "GrepTools",
+                    "GetToolInfo",
+                    "ExecuteTool",
+                ]:
                     # Tool discovery tools need tooluniverse parameter
                     new_tool = tool_class(tool_config=tool, tooluniverse=self)
                 else:
@@ -2419,6 +2421,27 @@ class ToolUniverse:
             tool_type = tool_name if tool_name else tool.get("type")
             mark_tool_unavailable(tool_type, e)
             self.logger.warning(f"Failed to initialize '{tool_type}': {e}")
+            # Hide tools that cannot be initialized (e.g., missing optional deps)
+            try:
+                # Remove from dictionaries so it doesn't appear in listings
+                if tool_name and tool_name in self.all_tool_dict:
+                    self.all_tool_dict.pop(tool_name, None)
+                elif tool and tool.get("name") in self.all_tool_dict:
+                    self.all_tool_dict.pop(tool.get("name"), None)
+
+                # Also remove from category dicts if present
+                try:
+                    name_to_remove = tool_name or (tool.get("name") if tool else None)
+                    if name_to_remove and hasattr(self, "tool_category_dicts"):
+                        for _cat, _tools in list(self.tool_category_dicts.items()):
+                            self.tool_category_dicts[_cat] = [
+                                t for t in _tools if t.get("name") != name_to_remove
+                            ]
+                except Exception:
+                    pass
+            except Exception:
+                # Best-effort cleanup only
+                pass
             return None  # Return None instead of raising
 
     def _get_tool_instance(self, function_name: str, cache: bool = True):

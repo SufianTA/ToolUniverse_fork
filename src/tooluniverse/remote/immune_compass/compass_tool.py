@@ -12,7 +12,6 @@ populations and pathways that contribute to treatment response prediction.
 
 import os
 import sys
-import torch
 import pandas as pd
 import asyncio
 import uuid
@@ -82,6 +81,15 @@ class CompassTool:
 
         self.model_path = os.path.join(root_path, ckp_path)
         self.device = device
+
+        # Lazy import torch for device handling
+        try:
+            import torch
+        except ImportError:
+            raise ImportError(
+                "COMPASS tool requires 'torch' package. "
+                "Install it with: pip install torch"
+            ) from None
 
         # Load the pre-trained COMPASS model
         print(f"🛠️  Initializing COMPASS tool from checkpoint: {self.model_path}...")
