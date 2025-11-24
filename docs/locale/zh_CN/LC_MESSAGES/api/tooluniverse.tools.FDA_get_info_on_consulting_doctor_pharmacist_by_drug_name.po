@@ -85,4 +85,4 @@ msgstr "返回类型"
 #: ee8f3b69d9d94160af6734fe1e75ed0c of
 #: tooluniverse.tools.FDA_get_info_on_consulting_doctor_pharmacist_by_drug_name.FDA_get_info_on_consulting_doctor_pharmacist_by_drug_name:16
 msgid ":py:class:`Any`"
-msgstr ""
+msgstr ":py:class:`任意`"

@@ -70,4 +70,4 @@ msgstr "返回类型"
 #: 97cf95dc07b944068bcdf7220aa55b15 of
 #: tooluniverse.tools.get_openchem_info.get_openchem_info:12
 msgid ":py:class:`Any`"
-msgstr ""
+msgstr ":py:class:`任意`"

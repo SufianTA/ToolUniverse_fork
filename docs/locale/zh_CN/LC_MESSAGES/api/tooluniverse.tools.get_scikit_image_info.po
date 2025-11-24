@@ -71,4 +71,4 @@ msgstr "返回类型"
 #: 540e2bb8f8fd4492b815089a769053ac of
 #: tooluniverse.tools.get_scikit_image_info.get_scikit_image_info:12
 msgid ":py:class:`Any`"
-msgstr ""
+msgstr ":py:class:`任意`"

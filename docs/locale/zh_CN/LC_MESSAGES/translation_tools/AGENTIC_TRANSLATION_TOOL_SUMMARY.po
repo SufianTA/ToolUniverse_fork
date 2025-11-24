@@ -155,7 +155,7 @@ msgstr ""
 #: ../../translation_tools/AGENTIC_TRANSLATION_TOOL_SUMMARY.md:36
 #: ca40059087f6470b8a70bc55fd31d044
 msgid "可限制每个文件的翻译条目数量"
-msgstr ""
+msgstr "每个文件的翻译条目数量可进行限制"
 
 #: ../../translation_tools/AGENTIC_TRANSLATION_TOOL_SUMMARY.md:37
 #: ../../translation_tools/AGENTIC_TRANSLATION_TOOL_SUMMARY.md:142
@@ -296,7 +296,7 @@ msgstr "✅ 批量翻译功能运行正常"
 #: ../../translation_tools/AGENTIC_TRANSLATION_TOOL_SUMMARY.md:133
 #: bc1de24ae2c04956a8dbb15ab78d0691
 msgid "✅ 错误处理机制有效"
-msgstr ""
+msgstr "✅ 错误处理机制已生效"
 
 #: ../../translation_tools/AGENTIC_TRANSLATION_TOOL_SUMMARY.md:135
 #: 3a2c76b91d8e4bb59fb62e83b936a509

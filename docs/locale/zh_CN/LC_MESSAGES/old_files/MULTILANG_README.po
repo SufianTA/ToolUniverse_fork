@@ -315,7 +315,7 @@ msgstr "请提供需要翻译的英文文本，我将为您翻译成符合要求
 
 #: ../../old_files/MULTILANG_README.md:192 2a985675f9d64223ad2c7ce589c686ad
 msgid "构建中文版测试"
-msgstr ""
+msgstr "构建测试的中文版"
 
 #: ../../old_files/MULTILANG_README.md:203 67b8c54de02c43cc979c92d585cd2ef6
 msgid "批量翻译技巧"

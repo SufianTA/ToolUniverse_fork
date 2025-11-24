@@ -34,7 +34,7 @@ msgstr "现在 `quick_doc_build.sh` 和 `quick_doc_build_cn.sh` 脚本会**自�
 
 #: ../../QUICK_BUILD_GUIDE.md:7 1a45989432f144c7aeabecd9df3bca97
 msgid "📝 使用方法"
-msgstr ""
+msgstr "📝 使用说明"
 
 #: ../../QUICK_BUILD_GUIDE.md:9 cad8c8c7227c4a1888515a467f83f7be
 msgid "方法 1: 默认构建（中英文）"

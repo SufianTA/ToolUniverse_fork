@@ -460,7 +460,7 @@ msgstr ""
 
 #: ../../MULTILANG_README.md:291 3196a832c28a47c69aa044b9f2509006
 msgid "[ ] 翻译进度追踪"
-msgstr ""
+msgstr "[ ] 翻译进度跟踪"
 
 #: ../../MULTILANG_README.md:293 09ab07a7a9024ea5b39b94cb6cbfc287
 msgid "💡 贡献"

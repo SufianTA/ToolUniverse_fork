@@ -273,7 +273,7 @@ msgstr ""
 
 #: ../../old_files/SUMMARY.md:156 a4f7ba4c4fcc4cd8bc6c133820b7ec69
 msgid "✅ 构建中文版本"
-msgstr ""
+msgstr "✅ 构建中文版"
 
 #: ../../old_files/SUMMARY.md:158 99bf05498c89445a8c9006eb3c03235e
 msgid "✅ 显示访问链接"
@@ -469,7 +469,7 @@ msgstr ""
 
 #: ../../old_files/SUMMARY.md:327 d9dfd06f3e5f46c69807508a1b72adcf
 msgid "✅ `SUMMARY.md` - 本总结"
-msgstr ""
+msgstr "✅ `SUMMARY.md` - 本摘要"
 
 #: ../../old_files/SUMMARY.md:329 a588ea89eb0148f2ae79c825ba0c208d
 msgid "🎓 下一步"
