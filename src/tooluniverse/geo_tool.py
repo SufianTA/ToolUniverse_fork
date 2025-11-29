@@ -82,6 +82,28 @@ class GEORESTTool(NCBIEUtilsTool):
 
         return params
 
+    def _detect_database(self, dataset_id: str) -> str:
+        """
+        Return the appropriate NCBI GEO database name.
+
+        For NCBI E-utilities, GEO records (GDS, GSE, GSM, GPL) are all accessed
+        through the single `gds` database. The accession prefix (GDS/GSE/GSM)
+        is used in the search term, not as the database name.
+        """
+        return "gds"
+
+    def _accession_to_uid(self, dataset_id: str, db: str) -> Dict[str, Any]:
+        """Convert accession number (e.g. GSE/GDS/GSM) to numeric UID using esearch."""
+        search_params = {
+            "db": db,
+            # Use ACCN field which is the documented field for accessions in GDS
+            # See: https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch
+            "term": f"{dataset_id}[ACCN]",
+            "retmode": "json",
+            "retmax": 1
+        }
+        return self._make_request("/esearch.fcgi", search_params)
+
     def run(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
         """Execute the tool with given arguments."""
         # Validate required parameters
@@ -149,7 +171,62 @@ class GEOGetDatasetInfo(GEORESTTool):
         if not dataset_id:
             return {"error": "dataset_id is required"}
 
-        return {"db": "gds", "id": dataset_id, "retmode": "json"}
+        # Detect database type
+        db = self._detect_database(dataset_id)
+        
+        # Check if dataset_id is already a numeric UID
+        if dataset_id.isdigit():
+            return {"db": db, "id": dataset_id, "retmode": "json"}
+        
+        # For accession numbers, we need to convert to UID first
+        # This will be handled in the run method
+        return {"db": db, "id": dataset_id, "retmode": "json"}
+
+    def run(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute the tool with given arguments."""
+        # Validate required parameters
+        for param in self.required:
+            if param not in arguments:
+                return {"error": f"Missing required parameter: {param}"}
+
+        dataset_id = arguments.get("dataset_id", "")
+        if not dataset_id:
+            return {"error": "dataset_id is required"}
+
+        # Detect database type
+        db = self._detect_database(dataset_id)
+
+        # Check if dataset_id is already a numeric UID
+        if dataset_id.isdigit():
+            # Direct UID, use esummary directly
+            self.endpoint = self.endpoint_template
+            params = {"db": db, "id": dataset_id, "retmode": "json"}
+            return self._make_request(self.endpoint, params)
+
+        # For accession numbers, first convert to UID using esearch
+        search_result = self._accession_to_uid(dataset_id, db)
+        
+        if search_result.get("status") != "success":
+            return search_result
+
+        search_data = search_result.get("data", {})
+        esearch_result = search_data.get("esearchresult", {})
+        idlist = esearch_result.get("idlist", [])
+
+        if not idlist:
+            return {
+                "status": "error",
+                "error": f"No UID found for accession {dataset_id} in database {db}",
+                "data": search_data
+            }
+
+        # Use the first UID from the search results
+        uid = idlist[0]
+
+        # Now use esummary with the UID
+        self.endpoint = self.endpoint_template
+        params = {"db": db, "id": uid, "retmode": "json"}
+        return self._make_request(self.endpoint, params)
 
 
 @register_tool("GEOGetSampleInfo")
@@ -166,4 +243,59 @@ class GEOGetSampleInfo(GEORESTTool):
         if not dataset_id:
             return {"error": "dataset_id is required"}
 
-        return {"db": "gds", "id": dataset_id, "retmode": "json"}
+        # Detect database type
+        db = self._detect_database(dataset_id)
+        
+        # Check if dataset_id is already a numeric UID
+        if dataset_id.isdigit():
+            return {"db": db, "id": dataset_id, "retmode": "json"}
+        
+        # For accession numbers, we need to convert to UID first
+        # This will be handled in the run method
+        return {"db": db, "id": dataset_id, "retmode": "json"}
+
+    def run(self, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute the tool with given arguments."""
+        # Validate required parameters
+        for param in self.required:
+            if param not in arguments:
+                return {"error": f"Missing required parameter: {param}"}
+
+        dataset_id = arguments.get("dataset_id", "")
+        if not dataset_id:
+            return {"error": "dataset_id is required"}
+
+        # Detect database type
+        db = self._detect_database(dataset_id)
+
+        # Check if dataset_id is already a numeric UID
+        if dataset_id.isdigit():
+            # Direct UID, use esummary directly
+            self.endpoint = self.endpoint_template
+            params = {"db": db, "id": dataset_id, "retmode": "json"}
+            return self._make_request(self.endpoint, params)
+
+        # For accession numbers, first convert to UID using esearch
+        search_result = self._accession_to_uid(dataset_id, db)
+        
+        if search_result.get("status") != "success":
+            return search_result
+
+        search_data = search_result.get("data", {})
+        esearch_result = search_data.get("esearchresult", {})
+        idlist = esearch_result.get("idlist", [])
+
+        if not idlist:
+            return {
+                "status": "error",
+                "error": f"No UID found for accession {dataset_id} in database {db}",
+                "data": search_data
+            }
+
+        # Use the first UID from the search results
+        uid = idlist[0]
+
+        # Now use esummary with the UID
+        self.endpoint = self.endpoint_template
+        params = {"db": db, "id": uid, "retmode": "json"}
+        return self._make_request(self.endpoint, params)

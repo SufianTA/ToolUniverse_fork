@@ -8,9 +8,13 @@ dataset search, metadata retrieval, and sample information analysis.
 
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.tooluniverse import ToolUniverse
+# Ensure we import the local development version of the package
+ROOT_DIR = os.path.join(os.path.dirname(__file__), "..", "src")
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+from tooluniverse import ToolUniverse
 
 def example_search_datasets():
     """Search for cancer-related datasets in human"""
@@ -69,66 +73,176 @@ def example_search_by_study_type():
     return result
 
 def example_get_dataset_info():
-    """Get detailed information for a dataset"""
-    print("\n📊 Getting dataset information...")
+    """Get detailed information for a dataset using GSE accession"""
+    print("\n📊 Getting dataset information for GSE15852...")
     
     tu = ToolUniverse()
     tu.load_tools()
     
-    # Use a known GEO dataset ID (this is an example)
+    # Test with GSE accession number
+    # (this was previously failing with "Invalid uid" error)
     result = tu.run({
         "name": "geo_get_dataset_info",
         "arguments": {
-            "dataset_id": "GDS1234"  # Example dataset ID
+            "dataset_id": "GSE15852"  # GEO Series accession
         }
     })
     
     print(f"Status: {result.get('status')}")
     if result.get('status') == 'success':
         data = result.get('data', {})
+        # Check for error in the response data
+        if 'error' in data:
+            print(f"⚠️ API returned error: {data.get('error')}")
+            return result
+        
         result_data = data.get('result', {})
         if result_data:
-            print(f"Dataset UID: {result_data.get('uid')}")
-            print(f"Title: {result_data.get('title')}")
-            print(f"Organism: {result_data.get('organism')}")
-            print(f"Platform: {result_data.get('platform')}")
+            # Handle case where result is a dict with UIDs as keys
+            if isinstance(result_data, dict) and 'uids' in result_data:
+                uids = result_data.get('uids', [])
+                if uids:
+                    uid = uids[0]
+                    dataset_info = result_data.get(uid, {})
+                    print(f"Dataset UID: {uid}")
+                    print(f"Title: {dataset_info.get('title', 'N/A')}")
+                    summary = dataset_info.get('summary', 'N/A')
+                    print(f"Summary: {summary[:100]}...")
+                    print(f"Organism: {dataset_info.get('organism', 'N/A')}")
+                    print(f"Platform: {dataset_info.get('platform', 'N/A')}")
+                else:
+                    print("No UIDs found in result")
+            else:
+                # Direct result structure
+                print(f"Dataset UID: {result_data.get('uid', 'N/A')}")
+                print(f"Title: {result_data.get('title', 'N/A')}")
+                print(f"Organism: {result_data.get('organism', 'N/A')}")
+                print(f"Platform: {result_data.get('platform', 'N/A')}")
         else:
-            print("No dataset information found")
+            print("No dataset information found in result")
+            print(f"Full response data: {data}")
     else:
         print(f"Error: {result.get('error')}")
     
     return result
 
 def example_get_sample_info():
-    """Get sample information for a dataset"""
-    print("\n🧬 Getting sample information...")
+    """Get sample information for a dataset using GSE accession"""
+    print("\n🧬 Getting sample information for GSE15852...")
     
     tu = ToolUniverse()
     tu.load_tools()
     
+    # Test with GSE accession number
     result = tu.run({
         "name": "geo_get_sample_info",
         "arguments": {
-            "dataset_id": "GDS1234"  # Example dataset ID
+            "dataset_id": "GSE15852"  # GEO Series accession
         }
     })
     
     print(f"Status: {result.get('status')}")
     if result.get('status') == 'success':
         data = result.get('data', {})
+        # Check for error in the response data
+        if 'error' in data:
+            print(f"⚠️ API returned error: {data.get('error')}")
+            return result
+        
         result_data = data.get('result', {})
         if result_data:
-            print(f"Dataset UID: {result_data.get('uid')}")
-            samples = result_data.get('samples', [])
-            print(f"Number of samples: {len(samples)}")
-            for i, sample in enumerate(samples[:3]):  # Show first 3
-                print(f"  Sample {i+1}: {sample.get('sample_id')} - {sample.get('characteristics')}")
+            # Handle case where result is a dict with UIDs as keys
+            if isinstance(result_data, dict) and 'uids' in result_data:
+                uids = result_data.get('uids', [])
+                if uids:
+                    uid = uids[0]
+                    sample_info = result_data.get(uid, {})
+                    print(f"Dataset UID: {uid}")
+                    print(f"Title: {sample_info.get('title', 'N/A')}")
+                    summary = sample_info.get('summary', 'N/A')
+                    print(f"Summary: {summary[:100]}...")
+                else:
+                    print("No UIDs found in result")
+            else:
+                print(f"Dataset UID: {result_data.get('uid', 'N/A')}")
+                samples = result_data.get('samples', [])
+                if samples:
+                    print(f"Number of samples: {len(samples)}")
+                    for i, sample in enumerate(samples[:3]):  # Show first 3
+                        sample_id = sample.get('sample_id', 'N/A')
+                        chars = sample.get('characteristics', 'N/A')
+                        print(f"  Sample {i+1}: {sample_id} - {chars}")
+                else:
+                    print("No sample information found")
         else:
-            print("No sample information found")
+            print("No sample information found in result")
+            print(f"Full response data: {data}")
     else:
         print(f"Error: {result.get('error')}")
     
     return result
+
+def example_test_different_accession_types():
+    """Test different GEO accession types (GSE, GDS, GSM)"""
+    print("\n🧪 Testing different accession types...")
+    
+    tu = ToolUniverse()
+    tu.load_tools()
+    
+    # Test with GSE (GEO Series)
+    print("\n  Testing GSE accession (GEO Series):")
+    gse_result = tu.run({
+        "name": "geo_get_dataset_info",
+        "arguments": {
+            "dataset_id": "GSE15852"
+        }
+    })
+    print(f"    Status: {gse_result.get('status')}")
+    if gse_result.get('status') == 'success' and 'error' not in gse_result.get('data', {}):
+        print("    ✅ GSE accession works!")
+    else:
+        error_msg = gse_result.get(
+            'error',
+            gse_result.get('data', {}).get('error', 'Unknown error')
+        )
+        print(f"    ❌ GSE failed: {error_msg}")
+    
+    # Test with GDS (GEO Dataset) - if we can find one from search
+    print("\n  Testing GDS accession (GEO Dataset):")
+    # First search for a GDS
+    search_result = tu.run({
+        "name": "geo_search_datasets",
+        "arguments": {
+            "query": "cancer",
+            "limit": 1
+        }
+    })
+    
+    if search_result.get('status') == 'success':
+        data = search_result.get('data', {})
+        esearch = data.get('esearchresult', {})
+        idlist = esearch.get('idlist', [])
+        
+        if idlist:
+            # GDS IDs from search are UIDs, but let's try to get info
+            # Note: search returns UIDs, not accessions, so this tests UID handling
+            gds_result = tu.run({
+                "name": "geo_get_dataset_info",
+                "arguments": {
+                    "dataset_id": idlist[0]  # This is a UID, not an accession
+                }
+            })
+            print(f"    Status: {gds_result.get('status')}")
+            if gds_result.get('status') == 'success' and 'error' not in gds_result.get('data', {}):
+                print("    ✅ GDS UID works!")
+            else:
+                print(f"    ❌ GDS failed: {gds_result.get('error', 'Unknown error')}")
+        else:
+            print("    ⚠️ No GDS datasets found to test")
+    else:
+        print("    ⚠️ Search failed, cannot test GDS")
+    
+    return gse_result
 
 def example_combined_search():
     """Search for datasets and get info for the first result"""
@@ -153,23 +267,38 @@ def example_combined_search():
         idlist = esearch.get('idlist', [])
         
         if idlist:
-            print(f"Found {len(idlist)} datasets, getting info for first one...")
+            print(
+                f"Found {len(idlist)} datasets, "
+                f"getting info for first one (UID: {idlist[0]})..."
+            )
             
-            # Get info for first dataset
+            # Get info for first dataset (this is a UID from search)
             info_result = tu.run({
                 "name": "geo_get_dataset_info",
                 "arguments": {
-                    "dataset_id": idlist[0]
+                    "dataset_id": idlist[0]  # This is a UID, tests UID handling
                 }
             })
             
             print(f"Info status: {info_result.get('status')}")
             if info_result.get('status') == 'success':
                 info_data = info_result.get('data', {})
-                result_data = info_data.get('result', {})
-                if result_data:
-                    print(f"Dataset: {result_data.get('title')}")
-                    print(f"Organism: {result_data.get('organism')}")
+                if 'error' in info_data:
+                    print(f"⚠️ API error: {info_data.get('error')}")
+                else:
+                    result_data = info_data.get('result', {})
+                    if result_data:
+                        # Handle different result structures
+                        if isinstance(result_data, dict) and 'uids' in result_data:
+                            uids = result_data.get('uids', [])
+                            if uids:
+                                uid = uids[0]
+                                dataset_info = result_data.get(uid, {})
+                                print(f"Dataset: {dataset_info.get('title', 'N/A')}")
+                                print(f"Organism: {dataset_info.get('organism', 'N/A')}")
+                        else:
+                            print(f"Dataset: {result_data.get('title', 'N/A')}")
+                            print(f"Organism: {result_data.get('organism', 'N/A')}")
             else:
                 print(f"Error getting info: {info_result.get('error')}")
         else:
@@ -188,8 +317,15 @@ def main():
         # Run examples
         example_search_datasets()
         example_search_by_study_type()
+        
+        # Test the fix for accession number to UID conversion
+        print("\n" + "=" * 40)
+        print("🔧 Testing Accession Number to UID Conversion Fix")
+        print("=" * 40)
         example_get_dataset_info()
         example_get_sample_info()
+        example_test_different_accession_types()
+        
         example_combined_search()
         
         print("\n✅ All examples completed successfully!")
