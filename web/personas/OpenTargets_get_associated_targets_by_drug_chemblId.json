@@ -51,7 +51,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -76,12 +76,12 @@
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-        "score": 0.8882678151130676
-      },
-      {
         "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
         "score": 0.8727022409439087
+      },
+      {
+        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+        "score": 0.832750678062439
       },
       {
         "tool": "OpenTargets_get_drug_trade_names_by_chemblId",

@@ -2071,15 +2071,15 @@
     },
     {
       "source": "get_scholarly_info",
-      "target": "LiteratureSearchTool",
+      "target": "EuropePMC_search_articles",
       "type": "similar_purpose",
-      "score": 0.4673082232475281
+      "score": 0.47975999116897583
     },
     {
       "source": "get_scholarly_info",
-      "target": "get_associated_documents_metadata",
+      "target": "LiteratureSearchTool",
       "type": "similar_purpose",
-      "score": 0.4494582414627075
+      "score": 0.4673082232475281
     },
     {
       "source": "get_bioservices_info",
@@ -3217,9 +3217,9 @@
     },
     {
       "source": "AdverseEventPredictionQuestionGenerator",
-      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FAERS_count_reactions_by_drug_event",
       "type": "similar_purpose",
-      "score": 0.5681445598602295
+      "score": 0.5563645362854004
     },
     {
       "source": "AdverseEventPredictionQuestionGenerator",
@@ -3247,15 +3247,15 @@
     },
     {
       "source": "AdverseEventPredictionQuestionGeneratorWithContext",
-      "target": "FDA_get_adverse_reactions_by_drug_name",
-      "type": "similar_purpose",
-      "score": 0.583311140537262
-    },
-    {
-      "source": "AdverseEventPredictionQuestionGeneratorWithContext",
       "target": "FDA_get_drug_names_by_alarm",
       "type": "similar_purpose",
       "score": 0.5724740028381348
+    },
+    {
+      "source": "AdverseEventPredictionQuestionGeneratorWithContext",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.5696513652801514
     },
     {
       "source": "AdverseEventPredictionQuestionGeneratorWithContext",
@@ -3339,31 +3339,31 @@
       "source": "ChEMBL_search_similar_molecules",
       "target": "OpenTargets_get_drug_synonyms_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.7001595497131348
-    },
-    {
-      "source": "ChEMBL_search_similar_molecules",
-      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
-      "type": "similar_purpose",
-      "score": 0.6542724967002869
-    },
-    {
-      "source": "ChEMBL_search_similar_molecules",
-      "target": "OpenTargets_get_drug_chembId_by_generic_name",
-      "type": "similar_purpose",
-      "score": 0.6393778324127197
+      "score": 0.7129244804382324
     },
     {
       "source": "ChEMBL_search_similar_molecules",
       "target": "get_ligand_smiles_by_chem_comp_id",
       "type": "similar_purpose",
-      "score": 0.6370446681976318
+      "score": 0.6576565504074097
     },
     {
       "source": "ChEMBL_search_similar_molecules",
-      "target": "OpenTargets_get_drug_trade_names_by_chemblId",
+      "target": "PubChem_search_compounds_by_similarity",
       "type": "similar_purpose",
-      "score": 0.6329111456871033
+      "score": 0.6513309478759766
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
+      "type": "similar_purpose",
+      "score": 0.6459528207778931
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "OpenTargets_get_drug_chembId_by_generic_name",
+      "type": "similar_purpose",
+      "score": 0.6350229382514954
     },
     {
       "source": "CodeOptimizer",
@@ -3465,7 +3465,7 @@
       "source": "DailyMed_get_spl_by_setid",
       "target": "DailyMed_search_spls",
       "type": "similar_purpose",
-      "score": 0.5194769501686096
+      "score": 0.5294449329376221
     },
     {
       "source": "DailyMed_get_spl_by_setid",
@@ -3489,31 +3489,31 @@
       "source": "DailyMed_search_spls",
       "target": "FDA_get_spl_indexing_data_elements_by_drug_name",
       "type": "similar_purpose",
-      "score": 0.7387144565582275
+      "score": 0.8055654764175415
     },
     {
       "source": "DailyMed_search_spls",
       "target": "FDA_get_drug_names_by_spl_indexing_data_elements",
       "type": "similar_purpose",
-      "score": 0.7188960313796997
+      "score": 0.7808753252029419
     },
     {
       "source": "DailyMed_search_spls",
       "target": "FDA_get_drug_name_by_SPL_ID",
       "type": "similar_purpose",
-      "score": 0.6980170011520386
+      "score": 0.7369909286499023
+    },
+    {
+      "source": "DailyMed_search_spls",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "similar_purpose",
+      "score": 0.6467022895812988
     },
     {
       "source": "DailyMed_search_spls",
       "target": "FDA_get_spl_unclassified_section_by_drug_name",
       "type": "similar_purpose",
-      "score": 0.6709998250007629
-    },
-    {
-      "source": "DailyMed_search_spls",
-      "target": "FDA_get_drug_name_by_storage_and_handling_info",
-      "type": "similar_purpose",
-      "score": 0.6235966682434082
+      "score": 0.6070513725280762
     },
     {
       "source": "DataAnalysisValidityReviewer",
@@ -3637,6 +3637,12 @@
     },
     {
       "source": "DrugSafetyAnalyzer",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.6701898574829102
+    },
+    {
+      "source": "DrugSafetyAnalyzer",
       "target": "FDA_get_drug_name_by_adverse_reaction",
       "type": "similar_purpose",
       "score": 0.6443824768066406
@@ -3646,12 +3652,6 @@
       "target": "FAERS_count_additive_adverse_reactions",
       "type": "similar_purpose",
       "score": 0.6441845893859863
-    },
-    {
-      "source": "DrugSafetyAnalyzer",
-      "target": "FDA_get_adverse_reactions_by_drug_name",
-      "type": "similar_purpose",
-      "score": 0.6373353004455566
     },
     {
       "source": "DrugSafetyAnalyzer",
@@ -3693,31 +3693,31 @@
       "source": "EuropePMC_search_articles",
       "target": "SemanticScholar_search_papers",
       "type": "similar_purpose",
-      "score": 0.6021272540092468
-    },
-    {
-      "source": "EuropePMC_search_articles",
-      "target": "LiteratureSearchTool",
-      "type": "similar_purpose",
-      "score": 0.4832027852535248
-    },
-    {
-      "source": "EuropePMC_search_articles",
-      "target": "europepmc_disease_target_score",
-      "type": "similar_purpose",
-      "score": 0.4805326759815216
-    },
-    {
-      "source": "EuropePMC_search_articles",
-      "target": "OpenTargets_get_publications_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.4510200023651123
+      "score": 0.6048887372016907
     },
     {
       "source": "EuropePMC_search_articles",
       "target": "PubTator3_LiteratureSearch",
       "type": "similar_purpose",
-      "score": 0.4442732334136963
+      "score": 0.5641038417816162
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "LiteratureSearchTool",
+      "type": "similar_purpose",
+      "score": 0.5603672862052917
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "ScientificTextSummarizer",
+      "type": "similar_purpose",
+      "score": 0.553241491317749
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "europepmc_disease_target_score",
+      "type": "similar_purpose",
+      "score": 0.5436043739318848
     },
     {
       "source": "ExperimentalDesignScorer",
@@ -3787,12 +3787,6 @@
     },
     {
       "source": "FAERS_count_additive_adverse_reactions",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.8565350770950317
-    },
-    {
-      "source": "FAERS_count_additive_adverse_reactions",
       "target": "FAERS_count_additive_event_reports_by_country",
       "type": "similar_purpose",
       "score": 0.8561620712280273
@@ -3808,6 +3802,12 @@
       "target": "FAERS_count_additive_seriousness_classification",
       "type": "similar_purpose",
       "score": 0.8271563053131104
+    },
+    {
+      "source": "FAERS_count_additive_adverse_reactions",
+      "target": "FAERS_count_outcomes_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.8256723284721375
     },
     {
       "source": "FAERS_count_additive_event_reports_by_country",
@@ -3937,12 +3937,6 @@
     },
     {
       "source": "FAERS_count_country_by_drug_event",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.8967882394790649
-    },
-    {
-      "source": "FAERS_count_country_by_drug_event",
       "target": "FAERS_count_reportercountry_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8932926654815674
@@ -3952,6 +3946,12 @@
       "target": "FAERS_count_outcomes_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8692910671234131
+    },
+    {
+      "source": "FAERS_count_country_by_drug_event",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.843783974647522
     },
     {
       "source": "FAERS_count_country_by_drug_event",
@@ -3973,12 +3973,6 @@
     },
     {
       "source": "FAERS_count_death_related_by_drug",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.848953127861023
-    },
-    {
-      "source": "FAERS_count_death_related_by_drug",
       "target": "FAERS_count_drug_routes_by_event",
       "type": "similar_purpose",
       "score": 0.8426603078842163
@@ -3988,6 +3982,12 @@
       "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8383467197418213
+    },
+    {
+      "source": "FAERS_count_death_related_by_drug",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.8330016136169434
     },
     {
       "source": "FAERS_count_drug_routes_by_event",
@@ -4015,9 +4015,9 @@
     },
     {
       "source": "FAERS_count_drug_routes_by_event",
-      "target": "FAERS_count_reactions_by_drug_event",
+      "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
-      "score": 0.8086761236190796
+      "score": 0.802729070186615
     },
     {
       "source": "FAERS_count_drugs_by_drug_event",
@@ -4027,15 +4027,15 @@
     },
     {
       "source": "FAERS_count_drugs_by_drug_event",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.921195924282074
-    },
-    {
-      "source": "FAERS_count_drugs_by_drug_event",
       "target": "FAERS_count_outcomes_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8788331747055054
+    },
+    {
+      "source": "FAERS_count_drugs_by_drug_event",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.8704202175140381
     },
     {
       "source": "FAERS_count_drugs_by_drug_event",
@@ -4057,12 +4057,6 @@
     },
     {
       "source": "FAERS_count_outcomes_by_drug_event",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.8884760141372681
-    },
-    {
-      "source": "FAERS_count_outcomes_by_drug_event",
       "target": "FAERS_count_drugs_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8788331747055054
@@ -4072,6 +4066,12 @@
       "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
       "score": 0.8692910671234131
+    },
+    {
+      "source": "FAERS_count_outcomes_by_drug_event",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.8424184918403625
     },
     {
       "source": "FAERS_count_outcomes_by_drug_event",
@@ -4099,45 +4099,45 @@
     },
     {
       "source": "FAERS_count_patient_age_distribution",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.7356960773468018
+    },
+    {
+      "source": "FAERS_count_patient_age_distribution",
       "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
       "score": 0.7175471782684326
     },
     {
-      "source": "FAERS_count_patient_age_distribution",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.7113429307937622
-    },
-    {
       "source": "FAERS_count_reactions_by_drug_event",
       "target": "FAERS_count_drugs_by_drug_event",
       "type": "similar_purpose",
-      "score": 0.921195924282074
+      "score": 0.8704202175140381
     },
     {
       "source": "FAERS_count_reactions_by_drug_event",
       "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
-      "score": 0.8967882394790649
+      "score": 0.843783974647522
     },
     {
       "source": "FAERS_count_reactions_by_drug_event",
       "target": "FAERS_count_outcomes_by_drug_event",
       "type": "similar_purpose",
-      "score": 0.8884760141372681
-    },
-    {
-      "source": "FAERS_count_reactions_by_drug_event",
-      "target": "FAERS_count_additive_adverse_reactions",
-      "type": "similar_purpose",
-      "score": 0.8565350770950317
+      "score": 0.8424184918403625
     },
     {
       "source": "FAERS_count_reactions_by_drug_event",
       "target": "FAERS_count_death_related_by_drug",
       "type": "similar_purpose",
-      "score": 0.848953127861023
+      "score": 0.8330016136169434
+    },
+    {
+      "source": "FAERS_count_reactions_by_drug_event",
+      "target": "FAERS_count_additive_adverse_reactions",
+      "type": "similar_purpose",
+      "score": 0.8196942806243896
     },
     {
       "source": "FAERS_count_reportercountry_by_drug_event",
@@ -4153,12 +4153,6 @@
     },
     {
       "source": "FAERS_count_reportercountry_by_drug_event",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.8155977725982666
-    },
-    {
-      "source": "FAERS_count_reportercountry_by_drug_event",
       "target": "FAERS_count_additive_reports_by_reporter_country",
       "type": "similar_purpose",
       "score": 0.8028197288513184
@@ -4168,6 +4162,12 @@
       "target": "FAERS_count_outcomes_by_drug_event",
       "type": "similar_purpose",
       "score": 0.7748971581459045
+    },
+    {
+      "source": "FAERS_count_reportercountry_by_drug_event",
+      "target": "FAERS_count_drug_routes_by_event",
+      "type": "similar_purpose",
+      "score": 0.7653404474258423
     },
     {
       "source": "FAERS_count_seriousness_by_drug_event",
@@ -4183,12 +4183,6 @@
     },
     {
       "source": "FAERS_count_seriousness_by_drug_event",
-      "target": "FAERS_count_reactions_by_drug_event",
-      "type": "similar_purpose",
-      "score": 0.7690587043762207
-    },
-    {
-      "source": "FAERS_count_seriousness_by_drug_event",
       "target": "FAERS_count_country_by_drug_event",
       "type": "similar_purpose",
       "score": 0.7593966722488403
@@ -4198,6 +4192,12 @@
       "target": "FAERS_count_outcomes_by_drug_event",
       "type": "similar_purpose",
       "score": 0.7560361623764038
+    },
+    {
+      "source": "FAERS_count_seriousness_by_drug_event",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "similar_purpose",
+      "score": 0.7467851638793945
     },
     {
       "source": "FDA_get_abuse_dependence_info_by_drug_name",
@@ -4321,33 +4321,33 @@
     },
     {
       "source": "FDA_get_adverse_reactions_by_drug_name",
-      "target": "FDA_get_drug_names_by_boxed_warning",
+      "target": "FDA_get_drug_name_by_SPL_ID",
       "type": "similar_purpose",
-      "score": 0.7895816564559937
-    },
-    {
-      "source": "FDA_get_adverse_reactions_by_drug_name",
-      "target": "FDA_get_drug_name_by_adverse_reaction",
-      "type": "similar_purpose",
-      "score": 0.7775070667266846
-    },
-    {
-      "source": "FDA_get_adverse_reactions_by_drug_name",
-      "target": "FDA_get_drug_name_by_reference",
-      "type": "similar_purpose",
-      "score": 0.7707087993621826
-    },
-    {
-      "source": "FDA_get_adverse_reactions_by_drug_name",
-      "target": "FDA_get_drug_names_by_alarm",
-      "type": "similar_purpose",
-      "score": 0.769094705581665
+      "score": 0.7116541266441345
     },
     {
       "source": "FDA_get_adverse_reactions_by_drug_name",
       "target": "FDA_get_drug_names_by_overdosage_info",
       "type": "similar_purpose",
-      "score": 0.750883936882019
+      "score": 0.7023990154266357
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FDA_get_drug_name_by_adverse_reaction",
+      "type": "similar_purpose",
+      "score": 0.7018804550170898
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FDA_get_drug_names_by_boxed_warning",
+      "type": "similar_purpose",
+      "score": 0.6978689432144165
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FDA_get_drug_name_by_reference",
+      "type": "similar_purpose",
+      "score": 0.6869438290596008
     },
     {
       "source": "FDA_get_alarms_by_drug_name",
@@ -5023,21 +5023,21 @@
     },
     {
       "source": "FDA_get_drug_name_by_SPL_ID",
+      "target": "DailyMed_search_spls",
+      "type": "similar_purpose",
+      "score": 0.7369909286499023
+    },
+    {
+      "source": "FDA_get_drug_name_by_SPL_ID",
       "target": "FDA_get_drug_name_by_set_id",
       "type": "similar_purpose",
       "score": 0.7232868075370789
     },
     {
       "source": "FDA_get_drug_name_by_SPL_ID",
-      "target": "FDA_get_spl_unclassified_section_by_drug_name",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
       "type": "similar_purpose",
-      "score": 0.7103449106216431
-    },
-    {
-      "source": "FDA_get_drug_name_by_SPL_ID",
-      "target": "FDA_get_drug_names_by_accessories",
-      "type": "similar_purpose",
-      "score": 0.7072679996490479
+      "score": 0.7116541266441345
     },
     {
       "source": "FDA_get_drug_name_by_adverse_reaction",
@@ -5065,9 +5065,9 @@
     },
     {
       "source": "FDA_get_drug_name_by_adverse_reaction",
-      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FDA_get_drug_name_by_info_on_conditions_for_doctor_consultation",
       "type": "similar_purpose",
-      "score": 0.7775070667266846
+      "score": 0.7536005973815918
     },
     {
       "source": "FDA_get_drug_name_by_calibration_instructions",
@@ -5839,15 +5839,15 @@
     },
     {
       "source": "FDA_get_drug_names_by_alarm",
-      "target": "FDA_get_adverse_reactions_by_drug_name",
-      "type": "similar_purpose",
-      "score": 0.769094705581665
-    },
-    {
-      "source": "FDA_get_drug_names_by_alarm",
       "target": "FDA_get_drug_names_by_nonteratogenic_effects",
       "type": "similar_purpose",
       "score": 0.7656619548797607
+    },
+    {
+      "source": "FDA_get_drug_names_by_alarm",
+      "target": "FDA_get_teratogenic_effects_by_drug_name",
+      "type": "similar_purpose",
+      "score": 0.7566396594047546
     },
     {
       "source": "FDA_get_drug_names_by_animal_pharmacology_info",
@@ -7063,6 +7063,12 @@
     },
     {
       "source": "FDA_get_drug_names_by_spl_indexing_data_elements",
+      "target": "DailyMed_search_spls",
+      "type": "similar_purpose",
+      "score": 0.7808753252029419
+    },
+    {
+      "source": "FDA_get_drug_names_by_spl_indexing_data_elements",
       "target": "FDA_get_drug_names_by_accessories",
       "type": "similar_purpose",
       "score": 0.7312580943107605
@@ -7072,12 +7078,6 @@
       "target": "FDA_get_drug_name_by_set_id",
       "type": "similar_purpose",
       "score": 0.719054102897644
-    },
-    {
-      "source": "FDA_get_drug_names_by_spl_indexing_data_elements",
-      "target": "DailyMed_search_spls",
-      "type": "similar_purpose",
-      "score": 0.7188960313796997
     },
     {
       "source": "FDA_get_drug_names_by_teratogenic_effects",
@@ -7753,12 +7753,6 @@
     },
     {
       "source": "FDA_get_mechanism_of_action_by_drug_name",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.7814755439758301
-    },
-    {
-      "source": "FDA_get_mechanism_of_action_by_drug_name",
       "target": "FDA_get_pharmacodynamics_by_drug_name",
       "type": "similar_purpose",
       "score": 0.7670495510101318
@@ -7768,6 +7762,12 @@
       "target": "FDA_get_drug_interactions_by_drug_name",
       "type": "similar_purpose",
       "score": 0.7427138090133667
+    },
+    {
+      "source": "FDA_get_mechanism_of_action_by_drug_name",
+      "target": "FDA_get_instructions_for_use_by_drug_name",
+      "type": "similar_purpose",
+      "score": 0.736348569393158
     },
     {
       "source": "FDA_get_medication_guide_info_by_drug_name",
@@ -8497,15 +8497,15 @@
     },
     {
       "source": "FDA_get_spl_indexing_data_elements_by_drug_name",
-      "target": "FDA_get_drug_name_by_SPL_ID",
+      "target": "DailyMed_search_spls",
       "type": "similar_purpose",
-      "score": 0.7935973405838013
+      "score": 0.8055654764175415
     },
     {
       "source": "FDA_get_spl_indexing_data_elements_by_drug_name",
-      "target": "DailyMed_search_spls",
+      "target": "FDA_get_drug_name_by_SPL_ID",
       "type": "similar_purpose",
-      "score": 0.7387144565582275
+      "score": 0.7935973405838013
     },
     {
       "source": "FDA_get_spl_indexing_data_elements_by_drug_name",
@@ -8937,7 +8937,7 @@
       "source": "GO_get_genes_for_term",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.6531521081924438
+      "score": 0.6612948179244995
     },
     {
       "source": "GO_get_genes_for_term",
@@ -9061,9 +9061,9 @@
     },
     {
       "source": "HPA_get_biological_processes_by_gene",
-      "target": "GO_get_genes_for_term",
+      "target": "Reactome_get_pathway_reactions",
       "type": "similar_purpose",
-      "score": 0.5420489311218262
+      "score": 0.5475438833236694
     },
     {
       "source": "HPA_get_cancer_prognostics_by_gene",
@@ -9127,15 +9127,15 @@
     },
     {
       "source": "HPA_get_comprehensive_gene_details_by_ensembl_id",
-      "target": "HPA_get_gene_tsv_data_by_ensembl_id",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.8043332099914551
+      "score": 0.8346250653266907
     },
     {
       "source": "HPA_get_comprehensive_gene_details_by_ensembl_id",
-      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_gene_tsv_data_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.7909773588180542
+      "score": 0.8043332099914551
     },
     {
       "source": "HPA_get_comprehensive_gene_details_by_ensembl_id",
@@ -9147,7 +9147,7 @@
       "source": "HPA_get_comprehensive_gene_details_by_ensembl_id",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7295694947242737
+      "score": 0.7242164611816406
     },
     {
       "source": "HPA_get_comprehensive_gene_details_by_ensembl_id",
@@ -9160,12 +9160,6 @@
       "target": "HPA_get_biological_processes_by_gene",
       "type": "similar_purpose",
       "score": 0.6128543019294739
-    },
-    {
-      "source": "HPA_get_contextual_biological_process_analysis",
-      "target": "HPA_get_subcellular_location",
-      "type": "similar_purpose",
-      "score": 0.5887861251831055
     },
     {
       "source": "HPA_get_contextual_biological_process_analysis",
@@ -9184,6 +9178,12 @@
       "target": "HPA_get_cancer_prognostics_by_gene",
       "type": "similar_purpose",
       "score": 0.568108081817627
+    },
+    {
+      "source": "HPA_get_contextual_biological_process_analysis",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.5639725923538208
     },
     {
       "source": "HPA_get_disease_expression_by_gene_tissue_disease",
@@ -9219,31 +9219,31 @@
       "source": "HPA_get_gene_basic_info_by_ensembl_id",
       "target": "HPA_get_comprehensive_gene_details_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.7909773588180542
+      "score": 0.8346250653266907
     },
     {
       "source": "HPA_get_gene_basic_info_by_ensembl_id",
       "target": "HPA_get_gene_tsv_data_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.7607309818267822
+      "score": 0.7824455499649048
     },
     {
       "source": "HPA_get_gene_basic_info_by_ensembl_id",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7080225944519043
-    },
-    {
-      "source": "HPA_get_gene_basic_info_by_ensembl_id",
-      "target": "HPA_get_protein_interactions_by_gene",
-      "type": "similar_purpose",
-      "score": 0.6623005867004395
+      "score": 0.7085642218589783
     },
     {
       "source": "HPA_get_gene_basic_info_by_ensembl_id",
       "target": "OpenTargets_get_target_genomic_location_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.6548843383789062
+      "score": 0.6751827597618103
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "similar_purpose",
+      "score": 0.6692479848861694
     },
     {
       "source": "HPA_get_gene_tsv_data_by_ensembl_id",
@@ -9255,13 +9255,7 @@
       "source": "HPA_get_gene_tsv_data_by_ensembl_id",
       "target": "HPA_get_gene_basic_info_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.7607309818267822
-    },
-    {
-      "source": "HPA_get_gene_tsv_data_by_ensembl_id",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.683595597743988
+      "score": 0.7824455499649048
     },
     {
       "source": "HPA_get_gene_tsv_data_by_ensembl_id",
@@ -9276,34 +9270,40 @@
       "score": 0.6691551208496094
     },
     {
+      "source": "HPA_get_gene_tsv_data_by_ensembl_id",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.6590776443481445
+    },
+    {
       "source": "HPA_get_protein_interactions_by_gene",
       "target": "humanbase_ppi_analysis",
       "type": "similar_purpose",
-      "score": 0.7035528421401978
+      "score": 0.7076144218444824
     },
     {
       "source": "HPA_get_protein_interactions_by_gene",
       "target": "HPA_get_gene_basic_info_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.6623005867004395
+      "score": 0.6692479848861694
     },
     {
       "source": "HPA_get_protein_interactions_by_gene",
       "target": "expression_atlas_disease_target_score",
       "type": "similar_purpose",
-      "score": 0.6449885964393616
+      "score": 0.6584821939468384
+    },
+    {
+      "source": "HPA_get_protein_interactions_by_gene",
+      "target": "HPA_get_subcellular_location",
+      "type": "similar_purpose",
+      "score": 0.6429797410964966
     },
     {
       "source": "HPA_get_protein_interactions_by_gene",
       "target": "HPA_get_gene_tsv_data_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.6205713152885437
-    },
-    {
-      "source": "HPA_get_protein_interactions_by_gene",
-      "target": "GO_get_genes_for_term",
-      "type": "similar_purpose",
-      "score": 0.6031856536865234
+      "score": 0.6200106143951416
     },
     {
       "source": "HPA_get_rna_expression_by_source",
@@ -9367,39 +9367,33 @@
     },
     {
       "source": "HPA_get_subcellular_location",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "similar_purpose",
+      "score": 0.6429797410964966
+    },
+    {
+      "source": "HPA_get_subcellular_location",
       "target": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.683580756187439
+      "score": 0.5996147394180298
     },
     {
       "source": "HPA_get_subcellular_location",
-      "target": "HPA_get_contextual_biological_process_analysis",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.5887861251831055
+      "score": 0.5942007303237915
     },
     {
       "source": "HPA_get_subcellular_location",
-      "target": "get_anndata_info",
+      "target": "HPA_get_comprehensive_gene_details_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.5730643272399902
+      "score": 0.5869133472442627
     },
     {
       "source": "HPA_get_subcellular_location",
       "target": "UniProt_get_subcellular_location_by_accession",
       "type": "similar_purpose",
-      "score": 0.5723349452018738
-    },
-    {
-      "source": "HPA_get_subcellular_location",
-      "target": "humanbase_ppi_analysis",
-      "type": "similar_purpose",
-      "score": 0.5722674131393433
-    },
-    {
-      "source": "HPA_search_genes_by_query",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.665990948677063
+      "score": 0.5787889957427979
     },
     {
       "source": "HPA_search_genes_by_query",
@@ -9415,15 +9409,21 @@
     },
     {
       "source": "HPA_search_genes_by_query",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.6374669075012207
+    },
+    {
+      "source": "HPA_search_genes_by_query",
       "target": "OpenTargets_get_target_genomic_location_by_ensemblID",
       "type": "similar_purpose",
       "score": 0.6368271112442017
     },
     {
       "source": "HPA_search_genes_by_query",
-      "target": "HPA_get_comprehensive_gene_details_by_ensembl_id",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.6232184171676636
+      "score": 0.6290980577468872
     },
     {
       "source": "HypothesisGenerator",
@@ -9511,15 +9511,15 @@
     },
     {
       "source": "LiteratureSearchTool",
-      "target": "openalex_literature_search",
+      "target": "EuropePMC_search_articles",
       "type": "similar_purpose",
-      "score": 0.5552513599395752
+      "score": 0.5603672862052917
     },
     {
       "source": "LiteratureSearchTool",
-      "target": "EuropePMC_search_articles",
+      "target": "openalex_literature_search",
       "type": "similar_purpose",
-      "score": 0.4832027852535248
+      "score": 0.5552513599395752
     },
     {
       "source": "MedicalLiteratureReviewer",
@@ -9769,15 +9769,15 @@
     },
     {
       "source": "OSL_get_efo_id_by_disease_name",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.7023887634277344
-    },
-    {
-      "source": "OSL_get_efo_id_by_disease_name",
       "target": "OpenTargets_get_similar_entities_by_disease_efoId",
       "type": "similar_purpose",
       "score": 0.6896539926528931
+    },
+    {
+      "source": "OSL_get_efo_id_by_disease_name",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "similar_purpose",
+      "score": 0.6889899969100952
     },
     {
       "source": "OSL_get_efo_id_by_disease_name",
@@ -9835,12 +9835,6 @@
     },
     {
       "source": "OpenTargets_get_approved_indications_by_drug_chemblId",
-      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8355745077133179
-    },
-    {
-      "source": "OpenTargets_get_approved_indications_by_drug_chemblId",
       "target": "OpenTargets_get_drug_indications_by_chemblId",
       "type": "similar_purpose",
       "score": 0.8322563767433167
@@ -9852,34 +9846,40 @@
       "score": 0.8290679454803467
     },
     {
+      "source": "OpenTargets_get_approved_indications_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_approval_status_by_chemblId",
+      "type": "similar_purpose",
+      "score": 0.8087537288665771
+    },
+    {
       "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "target": "OpenTargets_get_approved_indications_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.8355745077133179
+      "score": 0.7910651564598083
+    },
+    {
+      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "chembl_disease_target_score",
+      "type": "similar_purpose",
+      "score": 0.7887343168258667
     },
     {
       "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "target": "OpenTargets_get_drug_description_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.8274228572845459
+      "score": 0.7783456444740295
     },
     {
       "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.8235927820205688
-    },
-    {
-      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
-      "target": "OpenTargets_get_drug_adverse_events_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.789397120475769
+      "score": 0.7625386118888855
     },
     {
       "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.7708948850631714
+      "score": 0.7494409084320068
     },
     {
       "source": "OpenTargets_get_associated_drugs_by_disease_efoId",
@@ -9901,15 +9901,15 @@
     },
     {
       "source": "OpenTargets_get_associated_drugs_by_disease_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.8113435506820679
-    },
-    {
-      "source": "OpenTargets_get_associated_drugs_by_disease_efoId",
       "target": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
       "type": "similar_purpose",
       "score": 0.7249885201454163
+    },
+    {
+      "source": "OpenTargets_get_associated_drugs_by_disease_efoId",
+      "target": "OpenTargets_get_disease_locations_by_efoId",
+      "type": "similar_purpose",
+      "score": 0.7197999358177185
     },
     {
       "source": "OpenTargets_get_associated_drugs_by_target_ensemblID",
@@ -9925,12 +9925,6 @@
     },
     {
       "source": "OpenTargets_get_associated_drugs_by_target_ensemblID",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.7456560134887695
-    },
-    {
-      "source": "OpenTargets_get_associated_drugs_by_target_ensemblID",
       "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.7357656955718994
@@ -9942,10 +9936,10 @@
       "score": 0.7307734489440918
     },
     {
-      "source": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "source": "OpenTargets_get_associated_drugs_by_target_ensemblID",
+      "target": "OpenTargets_get_drug_description_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.8093400001525879
+      "score": 0.7303054928779602
     },
     {
       "source": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
@@ -9972,46 +9966,52 @@
       "score": 0.7372838258743286
     },
     {
-      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "target": "OpenTargets_get_associated_drugs_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.8113435506820679
-    },
-    {
-      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "target": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.8093400001525879
-    },
-    {
-      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "source": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
       "target": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
       "type": "similar_purpose",
-      "score": 0.8029074668884277
+      "score": 0.7312730550765991
     },
     {
       "source": "OpenTargets_get_associated_targets_by_disease_efoId",
       "target": "OpenTargets_target_disease_evidence",
       "type": "similar_purpose",
-      "score": 0.7859188318252563
+      "score": 0.7668396830558777
     },
     {
       "source": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "target": "OpenTargets_get_disease_id_description_by_name",
+      "target": "OpenTargets_map_any_disease_id_to_all_other_ids",
       "type": "similar_purpose",
-      "score": 0.7706408500671387
+      "score": 0.7353396415710449
     },
     {
-      "source": "OpenTargets_get_associated_targets_by_drug_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
       "type": "similar_purpose",
-      "score": 0.8882678151130676
+      "score": 0.7205057740211487
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_disease_description_by_efoId",
+      "type": "similar_purpose",
+      "score": 0.7091719508171082
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_similar_entities_by_disease_efoId",
+      "type": "similar_purpose",
+      "score": 0.7037708759307861
     },
     {
       "source": "OpenTargets_get_associated_targets_by_drug_chemblId",
       "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.8727022409439087
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "type": "similar_purpose",
+      "score": 0.832750678062439
     },
     {
       "source": "OpenTargets_get_associated_targets_by_drug_chemblId",
@@ -10039,15 +10039,15 @@
     },
     {
       "source": "OpenTargets_get_biological_mouse_models_by_ensemblID",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.7252545356750488
-    },
-    {
-      "source": "OpenTargets_get_biological_mouse_models_by_ensemblID",
       "target": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
       "type": "similar_purpose",
       "score": 0.7223291993141174
+    },
+    {
+      "source": "OpenTargets_get_biological_mouse_models_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.7205275297164917
     },
     {
       "source": "OpenTargets_get_biological_mouse_models_by_ensemblID",
@@ -10075,15 +10075,15 @@
     },
     {
       "source": "OpenTargets_get_chemical_probes_by_target_ensemblID",
-      "target": "OpenTargets_get_target_interactions_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.7424254417419434
-    },
-    {
-      "source": "OpenTargets_get_chemical_probes_by_target_ensemblID",
       "target": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
       "type": "similar_purpose",
       "score": 0.7396821975708008
+    },
+    {
+      "source": "OpenTargets_get_chemical_probes_by_target_ensemblID",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.736557126045227
     },
     {
       "source": "OpenTargets_get_chemical_probes_by_target_ensemblID",
@@ -10171,15 +10171,15 @@
     },
     {
       "source": "OpenTargets_get_disease_description_by_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.7555758953094482
-    },
-    {
-      "source": "OpenTargets_get_disease_description_by_efoId",
       "target": "OpenTargets_get_publications_by_disease_efoId",
       "type": "similar_purpose",
       "score": 0.7416666746139526
+    },
+    {
+      "source": "OpenTargets_get_disease_description_by_efoId",
+      "target": "OpenTargets_get_disease_locations_by_efoId",
+      "type": "similar_purpose",
+      "score": 0.7271762490272522
     },
     {
       "source": "OpenTargets_get_disease_id_description_by_name",
@@ -10231,15 +10231,15 @@
     },
     {
       "source": "OpenTargets_get_disease_ids_by_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.7145483493804932
-    },
-    {
-      "source": "OpenTargets_get_disease_ids_by_efoId",
       "target": "OpenTargets_get_associated_drugs_by_disease_efoId",
       "type": "similar_purpose",
       "score": 0.7000253200531006
+    },
+    {
+      "source": "OpenTargets_get_disease_ids_by_efoId",
+      "target": "OpenTargets_get_disease_description_by_efoId",
+      "type": "similar_purpose",
+      "score": 0.6964860558509827
     },
     {
       "source": "OpenTargets_get_disease_ids_by_name",
@@ -10261,15 +10261,15 @@
     },
     {
       "source": "OpenTargets_get_disease_ids_by_name",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.6098947525024414
-    },
-    {
-      "source": "OpenTargets_get_disease_ids_by_name",
       "target": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
       "type": "similar_purpose",
       "score": 0.6081117987632751
+    },
+    {
+      "source": "OpenTargets_get_disease_ids_by_name",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "similar_purpose",
+      "score": 0.607132077217102
     },
     {
       "source": "OpenTargets_get_disease_locations_by_efoId",
@@ -10345,12 +10345,6 @@
     },
     {
       "source": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.8029074668884277
-    },
-    {
-      "source": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
       "target": "OpenTargets_get_disease_id_description_by_name",
       "type": "similar_purpose",
       "score": 0.7907390594482422
@@ -10360,6 +10354,12 @@
       "target": "OpenTargets_get_disease_locations_by_efoId",
       "type": "similar_purpose",
       "score": 0.733616828918457
+    },
+    {
+      "source": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
+      "target": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
+      "type": "similar_purpose",
+      "score": 0.7312730550765991
     },
     {
       "source": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
@@ -10389,7 +10389,7 @@
       "source": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.758376955986023
+      "score": 0.752484917640686
     },
     {
       "source": "OpenTargets_get_drug_adverse_events_by_chemblId",
@@ -10411,15 +10411,15 @@
     },
     {
       "source": "OpenTargets_get_drug_adverse_events_by_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_drug_approval_status_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.8247863054275513
+      "score": 0.7844115495681763
     },
     {
       "source": "OpenTargets_get_drug_adverse_events_by_chemblId",
-      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_indications_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.789397120475769
+      "score": 0.7767922878265381
     },
     {
       "source": "OpenTargets_get_drug_approval_status_by_chemblId",
@@ -10495,12 +10495,6 @@
     },
     {
       "source": "OpenTargets_get_drug_description_by_chemblId",
-      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8274228572845459
-    },
-    {
-      "source": "OpenTargets_get_drug_description_by_chemblId",
       "target": "OpenTargets_get_drug_adverse_events_by_chemblId",
       "type": "similar_purpose",
       "score": 0.8253639340400696
@@ -10510,6 +10504,12 @@
       "target": "OpenTargets_get_drug_approval_status_by_chemblId",
       "type": "similar_purpose",
       "score": 0.8223563432693481
+    },
+    {
+      "source": "OpenTargets_get_drug_description_by_chemblId",
+      "target": "OpenTargets_get_publications_by_drug_chemblId",
+      "type": "similar_purpose",
+      "score": 0.8105593919754028
     },
     {
       "source": "OpenTargets_get_drug_id_description_by_name",
@@ -10555,12 +10555,6 @@
     },
     {
       "source": "OpenTargets_get_drug_indications_by_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.7797670960426331
-    },
-    {
-      "source": "OpenTargets_get_drug_indications_by_chemblId",
       "target": "OpenTargets_get_drug_description_by_chemblId",
       "type": "similar_purpose",
       "score": 0.7796843647956848
@@ -10572,34 +10566,40 @@
       "score": 0.7767922878265381
     },
     {
+      "source": "OpenTargets_get_drug_indications_by_chemblId",
+      "target": "OpenTargets_get_drug_id_description_by_name",
+      "type": "similar_purpose",
+      "score": 0.7752335071563721
+    },
+    {
       "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
       "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.8882678151130676
-    },
-    {
-      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8688620328903198
-    },
-    {
-      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "target": "OpenTargets_get_drug_adverse_events_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8247863054275513
+      "score": 0.832750678062439
     },
     {
       "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
       "target": "OpenTargets_get_approved_indications_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.808208703994751
+      "score": 0.7602506875991821
     },
     {
       "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "target": "OpenTargets_get_drug_trade_names_by_chemblId",
+      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.8077534437179565
+      "score": 0.759763777256012
+    },
+    {
+      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_drug_indications_by_chemblId",
+      "type": "similar_purpose",
+      "score": 0.748345673084259
+    },
+    {
+      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "type": "similar_purpose",
+      "score": 0.7333236932754517
     },
     {
       "source": "OpenTargets_get_drug_synonyms_by_chemblId",
@@ -10615,12 +10615,6 @@
     },
     {
       "source": "OpenTargets_get_drug_synonyms_by_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.7581620812416077
-    },
-    {
-      "source": "OpenTargets_get_drug_synonyms_by_chemblId",
       "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.7449533939361572
@@ -10632,16 +10626,16 @@
       "score": 0.7420681715011597
     },
     {
+      "source": "OpenTargets_get_drug_synonyms_by_chemblId",
+      "target": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
+      "type": "similar_purpose",
+      "score": 0.7218716144561768
+    },
+    {
       "source": "OpenTargets_get_drug_trade_names_by_chemblId",
       "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.8674043416976929
-    },
-    {
-      "source": "OpenTargets_get_drug_trade_names_by_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8077534437179565
     },
     {
       "source": "OpenTargets_get_drug_trade_names_by_chemblId",
@@ -10660,6 +10654,12 @@
       "target": "OpenTargets_get_approved_indications_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.7843371033668518
+    },
+    {
+      "source": "OpenTargets_get_drug_trade_names_by_chemblId",
+      "target": "OpenTargets_get_drug_synonyms_by_chemblId",
+      "type": "similar_purpose",
+      "score": 0.782515823841095
     },
     {
       "source": "OpenTargets_get_drug_warnings_by_chemblId",
@@ -10765,12 +10765,6 @@
     },
     {
       "source": "OpenTargets_get_known_drugs_by_drug_chemblId",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.8688620328903198
-    },
-    {
-      "source": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "target": "OpenTargets_get_drug_trade_names_by_chemblId",
       "type": "similar_purpose",
       "score": 0.8674043416976929
@@ -10782,16 +10776,16 @@
       "score": 0.8661646842956543
     },
     {
-      "source": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
-      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
+      "source": "OpenTargets_get_known_drugs_by_drug_chemblId",
+      "target": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
       "type": "similar_purpose",
       "score": 0.8317769765853882
     },
     {
       "source": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.7836458683013916
+      "score": 0.8317769765853882
     },
     {
       "source": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
@@ -10810,6 +10804,12 @@
       "target": "OpenTargets_get_drug_description_by_chemblId",
       "type": "similar_purpose",
       "score": 0.7564487457275391
+    },
+    {
+      "source": "OpenTargets_get_parent_child_molecules_by_drug_chembl_ID",
+      "target": "OpenTargets_get_approved_indications_by_drug_chemblId",
+      "type": "similar_purpose",
+      "score": 0.7560752630233765
     },
     {
       "source": "OpenTargets_get_publications_by_disease_efoId",
@@ -10921,15 +10921,15 @@
     },
     {
       "source": "OpenTargets_get_similar_entities_by_disease_efoId",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
-      "type": "similar_purpose",
-      "score": 0.7458101511001587
-    },
-    {
-      "source": "OpenTargets_get_similar_entities_by_disease_efoId",
       "target": "OpenTargets_get_disease_descendants_children_by_efoId",
       "type": "similar_purpose",
       "score": 0.7444430589675903
+    },
+    {
+      "source": "OpenTargets_get_similar_entities_by_disease_efoId",
+      "target": "OpenTargets_get_disease_id_description_by_name",
+      "type": "similar_purpose",
+      "score": 0.7410333156585693
     },
     {
       "source": "OpenTargets_get_similar_entities_by_drug_chemblId",
@@ -10987,9 +10987,9 @@
     },
     {
       "source": "OpenTargets_get_similar_entities_by_target_ensemblID",
-      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.6909807920455933
+      "score": 0.6885982751846313
     },
     {
       "source": "OpenTargets_get_target_classes_by_ensemblID",
@@ -11029,12 +11029,6 @@
     },
     {
       "source": "OpenTargets_get_target_constraint_info_by_ensemblID",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.7208203077316284
-    },
-    {
-      "source": "OpenTargets_get_target_constraint_info_by_ensemblID",
       "target": "OpenTargets_get_chemical_probes_by_target_ensemblID",
       "type": "similar_purpose",
       "score": 0.7143192291259766
@@ -11044,6 +11038,12 @@
       "target": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
       "type": "similar_purpose",
       "score": 0.7050243020057678
+    },
+    {
+      "source": "OpenTargets_get_target_constraint_info_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.7047045230865479
     },
     {
       "source": "OpenTargets_get_target_constraint_info_by_ensemblID",
@@ -11085,31 +11085,31 @@
       "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "target": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
       "type": "similar_purpose",
-      "score": 0.758376955986023
+      "score": 0.752484917640686
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.7309290766716003
     },
     {
       "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "target": "HPA_get_comprehensive_gene_details_by_ensembl_id",
       "type": "similar_purpose",
-      "score": 0.7295694947242737
+      "score": 0.7242164611816406
     },
     {
       "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "target": "OpenTargets_get_biological_mouse_models_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7252545356750488
+      "score": 0.7205275297164917
     },
     {
       "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "target": "OpenTargets_get_target_constraint_info_by_ensemblID",
+      "target": "OpenTargets_get_chemical_probes_by_target_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7208203077316284
-    },
-    {
-      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "target": "HPA_get_gene_basic_info_by_ensembl_id",
-      "type": "similar_purpose",
-      "score": 0.7080225944519043
+      "score": 0.7113218307495117
     },
     {
       "source": "OpenTargets_get_target_genomic_location_by_ensemblID",
@@ -11121,7 +11121,7 @@
       "source": "OpenTargets_get_target_genomic_location_by_ensemblID",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.6977334022521973
+      "score": 0.6874104142189026
     },
     {
       "source": "OpenTargets_get_target_genomic_location_by_ensemblID",
@@ -11167,9 +11167,9 @@
     },
     {
       "source": "OpenTargets_get_target_homologues_by_ensemblID",
-      "target": "OpenTargets_get_target_genomic_location_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.643492579460144
+      "score": 0.6484706997871399
     },
     {
       "source": "OpenTargets_get_target_id_description_by_name",
@@ -11203,33 +11203,33 @@
     },
     {
       "source": "OpenTargets_get_target_interactions_by_ensemblID",
-      "target": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
+      "target": "OpenTargets_target_disease_evidence",
       "type": "similar_purpose",
-      "score": 0.7506296634674072
+      "score": 0.7512502074241638
     },
     {
       "source": "OpenTargets_get_target_interactions_by_ensemblID",
       "target": "OpenTargets_get_chemical_probes_by_target_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7424254417419434
+      "score": 0.736557126045227
+    },
+    {
+      "source": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
+      "type": "similar_purpose",
+      "score": 0.7318439483642578
+    },
+    {
+      "source": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "similar_purpose",
+      "score": 0.7309290766716003
     },
     {
       "source": "OpenTargets_get_target_interactions_by_ensemblID",
       "target": "OpenTargets_get_associated_drugs_by_target_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7276293039321899
-    },
-    {
-      "source": "OpenTargets_get_target_interactions_by_ensemblID",
-      "target": "OpenTargets_target_disease_evidence",
-      "type": "similar_purpose",
-      "score": 0.7165267467498779
-    },
-    {
-      "source": "OpenTargets_get_target_interactions_by_ensemblID",
-      "target": "OpenTargets_get_target_classes_by_ensemblID",
-      "type": "similar_purpose",
-      "score": 0.6960642337799072
+      "score": 0.7083471417427063
     },
     {
       "source": "OpenTargets_get_target_safety_profile_by_ensemblID",
@@ -11281,15 +11281,15 @@
     },
     {
       "source": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
-      "target": "OpenTargets_get_biological_mouse_models_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7053638100624084
+      "score": 0.705981969833374
     },
     {
       "source": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
-      "target": "OpenTargets_get_target_constraint_info_by_ensemblID",
+      "target": "OpenTargets_get_biological_mouse_models_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7050243020057678
+      "score": 0.7053638100624084
     },
     {
       "source": "OpenTargets_get_target_synonyms_by_ensemblID",
@@ -11307,7 +11307,7 @@
       "source": "OpenTargets_get_target_synonyms_by_ensemblID",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7049474716186523
+      "score": 0.7076070308685303
     },
     {
       "source": "OpenTargets_get_target_synonyms_by_ensemblID",
@@ -11361,7 +11361,7 @@
       "source": "OpenTargets_map_any_disease_id_to_all_other_ids",
       "target": "OpenTargets_get_associated_targets_by_disease_efoId",
       "type": "similar_purpose",
-      "score": 0.7649188041687012
+      "score": 0.7353396415710449
     },
     {
       "source": "OpenTargets_map_any_disease_id_to_all_other_ids",
@@ -11427,7 +11427,7 @@
       "source": "OpenTargets_search_category_counts_by_query_string",
       "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.5756872892379761
+      "score": 0.56522536277771
     },
     {
       "source": "OpenTargets_search_category_counts_by_query_string",
@@ -11451,13 +11451,13 @@
       "source": "OpenTargets_target_disease_evidence",
       "target": "OpenTargets_get_associated_targets_by_disease_efoId",
       "type": "similar_purpose",
-      "score": 0.7859188318252563
+      "score": 0.7668396830558777
     },
     {
       "source": "OpenTargets_target_disease_evidence",
       "target": "OpenTargets_get_target_interactions_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.7165267467498779
+      "score": 0.7512502074241638
     },
     {
       "source": "OpenTargets_target_disease_evidence",
@@ -11737,15 +11737,15 @@
     },
     {
       "source": "PubChem_search_compounds_by_similarity",
-      "target": "PubChem_get_compound_properties_by_CID",
+      "target": "ChEMBL_search_similar_molecules",
       "type": "similar_purpose",
-      "score": 0.626427412033081
+      "score": 0.6513309478759766
     },
     {
       "source": "PubChem_search_compounds_by_similarity",
-      "target": "ChEMBL_search_similar_molecules",
+      "target": "PubChem_get_compound_properties_by_CID",
       "type": "similar_purpose",
-      "score": 0.618451714515686
+      "score": 0.626427412033081
     },
     {
       "source": "PubChem_search_compounds_by_similarity",
@@ -11809,15 +11809,15 @@
     },
     {
       "source": "PubTator3_EntityAutocomplete",
-      "target": "OpenTargets_get_disease_ids_by_name",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
       "type": "similar_purpose",
-      "score": 0.4965740144252777
+      "score": 0.49792957305908203
     },
     {
       "source": "PubTator3_EntityAutocomplete",
-      "target": "FDA_get_drug_name_by_SPL_ID",
+      "target": "OpenTargets_get_disease_ids_by_name",
       "type": "similar_purpose",
-      "score": 0.49264073371887207
+      "score": 0.4965740144252777
     },
     {
       "source": "PubTator3_LiteratureSearch",
@@ -11869,33 +11869,33 @@
     },
     {
       "source": "Reactome_get_pathway_reactions",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "reactome_disease_target_score",
       "type": "similar_purpose",
-      "score": 0.6184042692184448
+      "score": 0.6303883790969849
     },
     {
       "source": "Reactome_get_pathway_reactions",
-      "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
       "type": "similar_purpose",
-      "score": 0.6063169240951538
+      "score": 0.6218142509460449
     },
     {
       "source": "Reactome_get_pathway_reactions",
       "target": "drugbank_get_drug_pathways_and_reactions_by_drug_name_or_drugbank_id",
       "type": "similar_purpose",
-      "score": 0.6013017892837524
+      "score": 0.6112363934516907
+    },
+    {
+      "source": "Reactome_get_pathway_reactions",
+      "target": "OpenTargets_get_associated_targets_by_drug_chemblId",
+      "type": "similar_purpose",
+      "score": 0.5859116911888123
     },
     {
       "source": "Reactome_get_pathway_reactions",
       "target": "OpenTargets_get_chemical_probes_by_target_ensemblID",
       "type": "similar_purpose",
-      "score": 0.5898367166519165
-    },
-    {
-      "source": "Reactome_get_pathway_reactions",
-      "target": "reactome_disease_target_score",
-      "type": "similar_purpose",
-      "score": 0.5874290466308594
+      "score": 0.5834331512451172
     },
     {
       "source": "ReproducibilityTransparencyReviewer",
@@ -11971,6 +11971,12 @@
     },
     {
       "source": "ScientificTextSummarizer",
+      "target": "EuropePMC_search_articles",
+      "type": "similar_purpose",
+      "score": 0.553241491317749
+    },
+    {
+      "source": "ScientificTextSummarizer",
       "target": "BiomarkerDiscoveryWorkflow",
       "type": "similar_purpose",
       "score": 0.5193882584571838
@@ -11980,12 +11986,6 @@
       "target": "HPA_get_contextual_biological_process_analysis",
       "type": "similar_purpose",
       "score": 0.5164974331855774
-    },
-    {
-      "source": "ScientificTextSummarizer",
-      "target": "ToolOutputSummarizer",
-      "type": "similar_purpose",
-      "score": 0.5159286260604858
     },
     {
       "source": "SemanticScholar_search_papers",
@@ -12003,7 +12003,7 @@
       "source": "SemanticScholar_search_papers",
       "target": "EuropePMC_search_articles",
       "type": "similar_purpose",
-      "score": 0.6021272540092468
+      "score": 0.6048887372016907
     },
     {
       "source": "SemanticScholar_search_papers",
@@ -12559,15 +12559,15 @@
     },
     {
       "source": "UniProt_get_alternative_names_by_accession",
-      "target": "UniProt_get_sequence_by_accession",
-      "type": "similar_purpose",
-      "score": 0.6761233806610107
-    },
-    {
-      "source": "UniProt_get_alternative_names_by_accession",
       "target": "UniProt_get_isoform_ids_by_accession",
       "type": "similar_purpose",
       "score": 0.6593796610832214
+    },
+    {
+      "source": "UniProt_get_alternative_names_by_accession",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "similar_purpose",
+      "score": 0.652800977230072
     },
     {
       "source": "UniProt_get_alternative_names_by_accession",
@@ -12577,21 +12577,21 @@
     },
     {
       "source": "UniProt_get_alternative_names_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "similar_purpose",
+      "score": 0.6364009380340576
+    },
+    {
+      "source": "UniProt_get_disease_variants_by_accession",
       "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.6267492175102234
+      "score": 0.6896270513534546
     },
     {
       "source": "UniProt_get_disease_variants_by_accession",
       "target": "UniProt_get_function_by_accession",
       "type": "similar_purpose",
-      "score": 0.697324275970459
-    },
-    {
-      "source": "UniProt_get_disease_variants_by_accession",
-      "target": "UniProt_get_entry_by_accession",
-      "type": "similar_purpose",
-      "score": 0.6297364234924316
+      "score": 0.6769157648086548
     },
     {
       "source": "UniProt_get_disease_variants_by_accession",
@@ -12601,75 +12601,75 @@
     },
     {
       "source": "UniProt_get_disease_variants_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "similar_purpose",
+      "score": 0.5716955065727234
+    },
+    {
+      "source": "UniProt_get_disease_variants_by_accession",
       "target": "UniProt_get_alternative_names_by_accession",
       "type": "similar_purpose",
       "score": 0.568320631980896
     },
     {
-      "source": "UniProt_get_disease_variants_by_accession",
+      "source": "UniProt_get_entry_by_accession",
       "target": "UniProt_get_sequence_by_accession",
       "type": "similar_purpose",
-      "score": 0.538173258304596
+      "score": 0.7472671866416931
     },
     {
       "source": "UniProt_get_entry_by_accession",
       "target": "UniProt_get_recommended_name_by_accession",
       "type": "similar_purpose",
-      "score": 0.6838584542274475
+      "score": 0.7016760110855103
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "UniProt_get_function_by_accession",
+      "type": "similar_purpose",
+      "score": 0.6972508430480957
     },
     {
       "source": "UniProt_get_entry_by_accession",
       "target": "UniProt_get_disease_variants_by_accession",
       "type": "similar_purpose",
-      "score": 0.6297364234924316
+      "score": 0.6896270513534546
     },
     {
       "source": "UniProt_get_entry_by_accession",
       "target": "UniProt_get_alternative_names_by_accession",
       "type": "similar_purpose",
-      "score": 0.6267492175102234
-    },
-    {
-      "source": "UniProt_get_entry_by_accession",
-      "target": "UniProt_get_sequence_by_accession",
-      "type": "similar_purpose",
-      "score": 0.618525505065918
-    },
-    {
-      "source": "UniProt_get_entry_by_accession",
-      "target": "get_uniprot_accession_by_entity_id",
-      "type": "similar_purpose",
-      "score": 0.6163280010223389
+      "score": 0.652800977230072
     },
     {
       "source": "UniProt_get_function_by_accession",
-      "target": "UniProt_get_disease_variants_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
       "type": "similar_purpose",
-      "score": 0.697324275970459
+      "score": 0.7691789865493774
     },
     {
       "source": "UniProt_get_function_by_accession",
       "target": "UniProt_get_subcellular_location_by_accession",
       "type": "similar_purpose",
-      "score": 0.5449531674385071
-    },
-    {
-      "source": "UniProt_get_function_by_accession",
-      "target": "UniProt_get_sequence_by_accession",
-      "type": "similar_purpose",
-      "score": 0.5155434012413025
+      "score": 0.7356768846511841
     },
     {
       "source": "UniProt_get_function_by_accession",
       "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.5095168352127075
+      "score": 0.6972508430480957
     },
     {
       "source": "UniProt_get_function_by_accession",
-      "target": "UniProt_get_alternative_names_by_accession",
+      "target": "UniProt_get_disease_variants_by_accession",
       "type": "similar_purpose",
-      "score": 0.5092345476150513
+      "score": 0.6769157648086548
+    },
+    {
+      "source": "UniProt_get_function_by_accession",
+      "target": "UniProt_get_ptm_processing_by_accession",
+      "type": "similar_purpose",
+      "score": 0.608575701713562
     },
     {
       "source": "UniProt_get_isoform_ids_by_accession",
@@ -12681,13 +12681,7 @@
       "source": "UniProt_get_isoform_ids_by_accession",
       "target": "UniProt_get_sequence_by_accession",
       "type": "similar_purpose",
-      "score": 0.6301181316375732
-    },
-    {
-      "source": "UniProt_get_isoform_ids_by_accession",
-      "target": "UniProt_get_entry_by_accession",
-      "type": "similar_purpose",
-      "score": 0.5335639715194702
+      "score": 0.544899582862854
     },
     {
       "source": "UniProt_get_isoform_ids_by_accession",
@@ -12700,6 +12694,12 @@
       "target": "UniProt_get_organism_by_accession",
       "type": "similar_purpose",
       "score": 0.5215491652488708
+    },
+    {
+      "source": "UniProt_get_isoform_ids_by_accession",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "similar_purpose",
+      "score": 0.5182640552520752
     },
     {
       "source": "UniProt_get_organism_by_accession",
@@ -12721,15 +12721,21 @@
     },
     {
       "source": "UniProt_get_organism_by_accession",
-      "target": "UniProt_get_recommended_name_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
       "type": "similar_purpose",
-      "score": 0.6235064268112183
+      "score": 0.6566861867904663
     },
     {
       "source": "UniProt_get_organism_by_accession",
-      "target": "UniProt_get_sequence_by_accession",
+      "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.6004228591918945
+      "score": 0.6449167728424072
+    },
+    {
+      "source": "UniProt_get_ptm_processing_by_accession",
+      "target": "UniProt_get_function_by_accession",
+      "type": "similar_purpose",
+      "score": 0.608575701713562
     },
     {
       "source": "UniProt_get_ptm_processing_by_accession",
@@ -12739,9 +12745,15 @@
     },
     {
       "source": "UniProt_get_ptm_processing_by_accession",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "similar_purpose",
+      "score": 0.5783479809761047
+    },
+    {
+      "source": "UniProt_get_ptm_processing_by_accession",
       "target": "UniProt_get_sequence_by_accession",
       "type": "similar_purpose",
-      "score": 0.5525504946708679
+      "score": 0.5745142698287964
     },
     {
       "source": "UniProt_get_ptm_processing_by_accession",
@@ -12750,22 +12762,10 @@
       "score": 0.5311441421508789
     },
     {
-      "source": "UniProt_get_ptm_processing_by_accession",
-      "target": "UniProt_get_function_by_accession",
-      "type": "similar_purpose",
-      "score": 0.5089027881622314
-    },
-    {
-      "source": "UniProt_get_ptm_processing_by_accession",
-      "target": "UniProt_get_alternative_names_by_accession",
-      "type": "similar_purpose",
-      "score": 0.5065343976020813
-    },
-    {
       "source": "UniProt_get_recommended_name_by_accession",
       "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.6838584542274475
+      "score": 0.7016760110855103
     },
     {
       "source": "UniProt_get_recommended_name_by_accession",
@@ -12775,51 +12775,63 @@
     },
     {
       "source": "UniProt_get_recommended_name_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "similar_purpose",
+      "score": 0.6454470157623291
+    },
+    {
+      "source": "UniProt_get_recommended_name_by_accession",
       "target": "UniProt_get_organism_by_accession",
       "type": "similar_purpose",
       "score": 0.6235064268112183
     },
     {
       "source": "UniProt_get_recommended_name_by_accession",
-      "target": "UniProt_get_disease_variants_by_accession",
+      "target": "UniProt_get_function_by_accession",
       "type": "similar_purpose",
-      "score": 0.5232388973236084
-    },
-    {
-      "source": "UniProt_get_recommended_name_by_accession",
-      "target": "UniProt_get_subcellular_location_by_accession",
-      "type": "similar_purpose",
-      "score": 0.519119143486023
+      "score": 0.5965608954429626
     },
     {
       "source": "UniProt_get_sequence_by_accession",
-      "target": "UniProt_get_alternative_names_by_accession",
+      "target": "UniProt_get_function_by_accession",
       "type": "similar_purpose",
-      "score": 0.6761233806610107
-    },
-    {
-      "source": "UniProt_get_sequence_by_accession",
-      "target": "UniProt_get_isoform_ids_by_accession",
-      "type": "similar_purpose",
-      "score": 0.6301181316375732
+      "score": 0.7691789865493774
     },
     {
       "source": "UniProt_get_sequence_by_accession",
       "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.618525505065918
+      "score": 0.7472671866416931
     },
     {
       "source": "UniProt_get_sequence_by_accession",
       "target": "UniProt_get_organism_by_accession",
       "type": "similar_purpose",
-      "score": 0.6004228591918945
+      "score": 0.6566861867904663
     },
     {
       "source": "UniProt_get_sequence_by_accession",
-      "target": "UniProt_get_ptm_processing_by_accession",
+      "target": "UniProt_get_subcellular_location_by_accession",
       "type": "similar_purpose",
-      "score": 0.5525504946708679
+      "score": 0.647871196269989
+    },
+    {
+      "source": "UniProt_get_sequence_by_accession",
+      "target": "UniProt_get_recommended_name_by_accession",
+      "type": "similar_purpose",
+      "score": 0.6454470157623291
+    },
+    {
+      "source": "UniProt_get_subcellular_location_by_accession",
+      "target": "UniProt_get_function_by_accession",
+      "type": "similar_purpose",
+      "score": 0.7356768846511841
+    },
+    {
+      "source": "UniProt_get_subcellular_location_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "similar_purpose",
+      "score": 0.647871196269989
     },
     {
       "source": "UniProt_get_subcellular_location_by_accession",
@@ -12831,25 +12843,13 @@
       "source": "UniProt_get_subcellular_location_by_accession",
       "target": "HPA_get_subcellular_location",
       "type": "similar_purpose",
-      "score": 0.5723349452018738
+      "score": 0.5787889957427979
     },
     {
       "source": "UniProt_get_subcellular_location_by_accession",
-      "target": "UniProt_get_function_by_accession",
+      "target": "UniProt_get_entry_by_accession",
       "type": "similar_purpose",
-      "score": 0.5449531674385071
-    },
-    {
-      "source": "UniProt_get_subcellular_location_by_accession",
-      "target": "UniProt_get_disease_variants_by_accession",
-      "type": "similar_purpose",
-      "score": 0.5211154818534851
-    },
-    {
-      "source": "UniProt_get_subcellular_location_by_accession",
-      "target": "UniProt_get_recommended_name_by_accession",
-      "type": "similar_purpose",
-      "score": 0.519119143486023
+      "score": 0.5613148808479309
     },
     {
       "source": "WritingPresentationReviewer",
@@ -12889,15 +12889,15 @@
     },
     {
       "source": "boltz2_docking",
-      "target": "get_plip_info",
+      "target": "HPA_get_protein_interactions_by_gene",
       "type": "similar_purpose",
-      "score": 0.49308717250823975
+      "score": 0.5010240077972412
     },
     {
       "source": "boltz2_docking",
-      "target": "HPA_get_protein_interactions_by_gene",
+      "target": "get_plip_info",
       "type": "similar_purpose",
-      "score": 0.48444604873657227
+      "score": 0.49308717250823975
     },
     {
       "source": "boltz2_docking",
@@ -13005,19 +13005,13 @@
       "source": "chembl_disease_target_score",
       "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.7587057948112488
+      "score": 0.7887343168258667
     },
     {
       "source": "chembl_disease_target_score",
       "target": "OpenTargets_get_approved_indications_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.7536923289299011
-    },
-    {
-      "source": "chembl_disease_target_score",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-      "type": "similar_purpose",
-      "score": 0.7528505921363831
     },
     {
       "source": "chembl_disease_target_score",
@@ -13030,6 +13024,12 @@
       "target": "OpenTargets_get_known_drugs_by_drug_chemblId",
       "type": "similar_purpose",
       "score": 0.7415397763252258
+    },
+    {
+      "source": "chembl_disease_target_score",
+      "target": "reactome_disease_target_score",
+      "type": "similar_purpose",
+      "score": 0.7381576299667358
     },
     {
       "source": "compute_depmap24q2_gene_correlations",
@@ -13057,9 +13057,9 @@
     },
     {
       "source": "compute_depmap24q2_gene_correlations",
-      "target": "run_transcriptformer_embedding_retrieval",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.40378355979919434
+      "score": 0.40531301498413086
     },
     {
       "source": "consult_human_expert",
@@ -13963,15 +13963,15 @@
     },
     {
       "source": "enrichr_gene_enrichment_analysis",
-      "target": "HPA_get_contextual_biological_process_analysis",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.5482046604156494
+      "score": 0.5556299686431885
     },
     {
       "source": "enrichr_gene_enrichment_analysis",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "HPA_get_contextual_biological_process_analysis",
       "type": "similar_purpose",
-      "score": 0.54725182056427
+      "score": 0.5482046604156494
     },
     {
       "source": "enrichr_gene_enrichment_analysis",
@@ -14059,6 +14059,12 @@
     },
     {
       "source": "eva_somatic_disease_target_score",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "similar_purpose",
+      "score": 0.6342371702194214
+    },
+    {
+      "source": "eva_somatic_disease_target_score",
       "target": "cancer_gene_census_disease_target_score",
       "type": "similar_purpose",
       "score": 0.6290053725242615
@@ -14068,12 +14074,6 @@
       "target": "expression_atlas_disease_target_score",
       "type": "similar_purpose",
       "score": 0.6265436410903931
-    },
-    {
-      "source": "eva_somatic_disease_target_score",
-      "target": "reactome_disease_target_score",
-      "type": "similar_purpose",
-      "score": 0.624157190322876
     },
     {
       "source": "expression_atlas_disease_target_score",
@@ -14221,9 +14221,9 @@
     },
     {
       "source": "get_HPO_ID_by_phenotype",
-      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_disease_description_by_efoId",
       "type": "similar_purpose",
-      "score": 0.6250405311584473
+      "score": 0.5997195839881897
     },
     {
       "source": "get_abstract_from_patent_app_number",
@@ -14299,21 +14299,21 @@
     },
     {
       "source": "get_anndata_info",
-      "target": "HPA_get_subcellular_location",
-      "type": "similar_purpose",
-      "score": 0.5730643272399902
-    },
-    {
-      "source": "get_anndata_info",
       "target": "get_neo_info",
       "type": "similar_purpose",
       "score": 0.5520182847976685
     },
     {
       "source": "get_anndata_info",
-      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "OpenTargets_drug_pharmacogenomics_data",
       "type": "similar_purpose",
-      "score": 0.5518916845321655
+      "score": 0.5512616038322449
+    },
+    {
+      "source": "get_anndata_info",
+      "target": "get_protein_metadata_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.5508090853691101
     },
     {
       "source": "get_arboreto_info",
@@ -14407,15 +14407,15 @@
     },
     {
       "source": "get_assembly_info_by_pdb_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.7541937828063965
-    },
-    {
-      "source": "get_assembly_info_by_pdb_id",
       "target": "get_protein_classification_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.7198996543884277
+    },
+    {
+      "source": "get_assembly_info_by_pdb_id",
+      "target": "get_sequence_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.707716703414917
     },
     {
       "source": "get_assembly_info_by_pdb_id",
@@ -14779,9 +14779,9 @@
     },
     {
       "source": "get_chem_comp_audit_info",
-      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "FDA_get_drug_names_by_abuse_dependence_info",
       "type": "similar_purpose",
-      "score": 0.45028945803642273
+      "score": 0.44402897357940674
     },
     {
       "source": "get_chem_comp_charge_and_ambiguity",
@@ -15675,7 +15675,7 @@
       "source": "get_dscribe_info",
       "target": "ChEMBL_search_similar_molecules",
       "type": "similar_purpose",
-      "score": 0.5099613070487976
+      "score": 0.5095034837722778
     },
     {
       "source": "get_ec_number_by_entity_id",
@@ -15901,6 +15901,12 @@
     },
     {
       "source": "get_faiss_info",
+      "target": "ChEMBL_search_similar_molecules",
+      "type": "similar_purpose",
+      "score": 0.44839343428611755
+    },
+    {
+      "source": "get_faiss_info",
       "target": "GO_search_terms",
       "type": "similar_purpose",
       "score": 0.43128639459609985
@@ -15910,12 +15916,6 @@
       "target": "Tool_Finder_Keyword",
       "type": "similar_purpose",
       "score": 0.4298248589038849
-    },
-    {
-      "source": "get_faiss_info",
-      "target": "ChEMBL_search_similar_molecules",
-      "type": "similar_purpose",
-      "score": 0.4188021123409271
     },
     {
       "source": "get_fanc_info",
@@ -16111,12 +16111,6 @@
     },
     {
       "source": "get_gene_name_by_entity_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.7303977608680725
-    },
-    {
-      "source": "get_gene_name_by_entity_id",
       "target": "get_polymer_molecular_weight_by_entity_id",
       "type": "similar_purpose",
       "score": 0.6818566918373108
@@ -16126,6 +16120,12 @@
       "target": "get_polymer_entity_ids_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.6727272868156433
+    },
+    {
+      "source": "get_gene_name_by_entity_id",
+      "target": "get_sequence_positional_features_by_instance_id",
+      "type": "similar_purpose",
+      "score": 0.6724903583526611
     },
     {
       "source": "get_gget_info",
@@ -16455,7 +16455,7 @@
       "source": "get_joint_associated_diseases_by_HPO_ID_list",
       "target": "OpenTargets_get_associated_targets_by_disease_efoId",
       "type": "similar_purpose",
-      "score": 0.6552944183349609
+      "score": 0.6519817113876343
     },
     {
       "source": "get_khmer_info",
@@ -16581,7 +16581,7 @@
       "source": "get_ligand_smiles_by_chem_comp_id",
       "target": "ChEMBL_search_similar_molecules",
       "type": "similar_purpose",
-      "score": 0.6370446681976318
+      "score": 0.6576565504074097
     },
     {
       "source": "get_ligand_smiles_by_chem_comp_id",
@@ -16891,9 +16891,9 @@
     },
     {
       "source": "get_mudata_info",
-      "target": "HPA_get_subcellular_location",
+      "target": "get_datamol_info",
       "type": "similar_purpose",
-      "score": 0.47902053594589233
+      "score": 0.47553586959838867
     },
     {
       "source": "get_mutation_annotations_by_pdb_id",
@@ -16915,15 +16915,15 @@
     },
     {
       "source": "get_mutation_annotations_by_pdb_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.6487456560134888
-    },
-    {
-      "source": "get_mutation_annotations_by_pdb_id",
       "target": "get_emdb_ids_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.6207939982414246
+    },
+    {
+      "source": "get_mutation_annotations_by_pdb_id",
+      "target": "get_source_organism_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.619673490524292
     },
     {
       "source": "get_neo_info",
@@ -17077,12 +17077,6 @@
     },
     {
       "source": "get_oligosaccharide_descriptors_by_entity_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.6420012712478638
-    },
-    {
-      "source": "get_oligosaccharide_descriptors_by_entity_id",
       "target": "get_polymer_entity_count_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.6141335964202881
@@ -17104,6 +17098,12 @@
       "target": "get_polymer_entity_ids_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.5997351408004761
+    },
+    {
+      "source": "get_oligosaccharide_descriptors_by_entity_id",
+      "target": "get_protein_classification_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.5902982950210571
     },
     {
       "source": "get_openbabel_info",
@@ -17161,9 +17161,9 @@
     },
     {
       "source": "get_openchem_info",
-      "target": "get_openbabel_info",
+      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
       "type": "similar_purpose",
-      "score": 0.49949902296066284
+      "score": 0.520812451839447
     },
     {
       "source": "get_opencv_info",
@@ -17497,6 +17497,12 @@
     },
     {
       "source": "get_pdbfixer_info",
+      "target": "get_sequence_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.5601319074630737
+    },
+    {
+      "source": "get_pdbfixer_info",
       "target": "get_protein_classification_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.5536907911300659
@@ -17512,12 +17518,6 @@
       "target": "get_structure_determination_software_by_pdb_id",
       "type": "similar_purpose",
       "score": 0.5259349346160889
-    },
-    {
-      "source": "get_pdbfixer_info",
-      "target": "get_prody_info",
-      "type": "similar_purpose",
-      "score": 0.5107744932174683
     },
     {
       "source": "get_phenotype_by_HPO_ID",
@@ -17709,7 +17709,7 @@
       "source": "get_polymer_entity_count_by_pdb_id",
       "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.7483716011047363
+      "score": 0.710014283657074
     },
     {
       "source": "get_polymer_entity_count_by_pdb_id",
@@ -17733,7 +17733,7 @@
       "source": "get_polymer_entity_ids_by_pdb_id",
       "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.7186076641082764
+      "score": 0.7302500009536743
     },
     {
       "source": "get_polymer_entity_ids_by_pdb_id",
@@ -17773,12 +17773,6 @@
     },
     {
       "source": "get_polymer_entity_type_by_entity_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.7068665623664856
-    },
-    {
-      "source": "get_polymer_entity_type_by_entity_id",
       "target": "get_polymer_molecular_weight_by_entity_id",
       "type": "similar_purpose",
       "score": 0.6860948204994202
@@ -17788,6 +17782,12 @@
       "target": "get_sequence_positional_features_by_instance_id",
       "type": "similar_purpose",
       "score": 0.6550573706626892
+    },
+    {
+      "source": "get_polymer_entity_type_by_entity_id",
+      "target": "get_polymer_entity_annotations",
+      "type": "similar_purpose",
+      "score": 0.6449595093727112
     },
     {
       "source": "get_polymer_molecular_weight_by_entity_id",
@@ -17905,9 +17905,9 @@
     },
     {
       "source": "get_protein_classification_by_pdb_id",
-      "target": "get_sequence_by_pdb_id",
+      "target": "get_structure_determination_software_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.6607697010040283
+      "score": 0.6407595872879028
     },
     {
       "source": "get_protein_metadata_by_pdb_id",
@@ -17929,15 +17929,15 @@
     },
     {
       "source": "get_protein_metadata_by_pdb_id",
-      "target": "get_structure_determination_software_by_pdb_id",
+      "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.6882164478302002
+      "score": 0.6897821426391602
     },
     {
       "source": "get_protein_metadata_by_pdb_id",
-      "target": "get_structure_validation_metrics_by_pdb_id",
+      "target": "get_structure_determination_software_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.6742153167724609
+      "score": 0.6882164478302002
     },
     {
       "source": "get_pubchempy_info",
@@ -18063,7 +18063,7 @@
       "source": "get_pyensembl_info",
       "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.6556916236877441
+      "score": 0.6452147960662842
     },
     {
       "source": "get_pyensembl_info",
@@ -18187,9 +18187,9 @@
     },
     {
       "source": "get_pyliftover_info",
-      "target": "get_assembly_info_by_pdb_id",
+      "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.5302162170410156
+      "score": 0.5346428155899048
     },
     {
       "source": "get_pymassspec_info",
@@ -19107,37 +19107,37 @@
       "source": "get_sequence_by_pdb_id",
       "target": "get_sequence_lengths_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.8499357104301453
-    },
-    {
-      "source": "get_sequence_by_pdb_id",
-      "target": "get_assembly_info_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.7541937828063965
-    },
-    {
-      "source": "get_sequence_by_pdb_id",
-      "target": "get_polymer_entity_count_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.7483716011047363
-    },
-    {
-      "source": "get_sequence_by_pdb_id",
-      "target": "get_gene_name_by_entity_id",
-      "type": "similar_purpose",
-      "score": 0.7303977608680725
+      "score": 0.7917671203613281
     },
     {
       "source": "get_sequence_by_pdb_id",
       "target": "get_polymer_entity_ids_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.7186076641082764
+      "score": 0.7302500009536743
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "get_polymer_entity_count_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.710014283657074
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "get_assembly_info_by_pdb_id",
+      "type": "similar_purpose",
+      "score": 0.707716703414917
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "get_sequence_positional_features_by_instance_id",
+      "type": "similar_purpose",
+      "score": 0.6979856491088867
     },
     {
       "source": "get_sequence_lengths_by_pdb_id",
       "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.8499357104301453
+      "score": 0.7917671203613281
     },
     {
       "source": "get_sequence_lengths_by_pdb_id",
@@ -19173,7 +19173,7 @@
       "source": "get_sequence_positional_features_by_instance_id",
       "target": "get_sequence_by_pdb_id",
       "type": "similar_purpose",
-      "score": 0.694185733795166
+      "score": 0.6979856491088867
     },
     {
       "source": "get_sequence_positional_features_by_instance_id",
@@ -19441,6 +19441,12 @@
     },
     {
       "source": "get_target_cofactor_info",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "similar_purpose",
+      "score": 0.4997731149196625
+    },
+    {
+      "source": "get_target_cofactor_info",
       "target": "GO_get_term_details",
       "type": "similar_purpose",
       "score": 0.48609834909439087
@@ -19456,12 +19462,6 @@
       "target": "Tool_Finder",
       "type": "similar_purpose",
       "score": 0.4679067134857178
-    },
-    {
-      "source": "get_target_cofactor_info",
-      "target": "get_taxonomy_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.4666428565979004
     },
     {
       "source": "get_taxonomy_by_pdb_id",
@@ -19645,15 +19645,15 @@
     },
     {
       "source": "get_uniprot_accession_by_entity_id",
-      "target": "get_sequence_by_pdb_id",
-      "type": "similar_purpose",
-      "score": 0.6504663825035095
-    },
-    {
-      "source": "get_uniprot_accession_by_entity_id",
       "target": "get_ec_number_by_entity_id",
       "type": "similar_purpose",
       "score": 0.6490130424499512
+    },
+    {
+      "source": "get_uniprot_accession_by_entity_id",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "similar_purpose",
+      "score": 0.6126220226287842
     },
     {
       "source": "get_velocyto_info",
@@ -19803,7 +19803,7 @@
       "source": "gwas_get_association_by_id",
       "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.662574052810669
+      "score": 0.6905102729797363
     },
     {
       "source": "gwas_get_association_by_id",
@@ -19819,15 +19819,15 @@
     },
     {
       "source": "gwas_get_associations_for_snp",
-      "target": "gwas_get_associations_for_trait",
+      "target": "gwas_get_snps_for_gene",
       "type": "similar_purpose",
-      "score": 0.6446712017059326
+      "score": 0.6331061720848083
     },
     {
       "source": "gwas_get_associations_for_snp",
-      "target": "gwas_get_snps_for_gene",
+      "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.6309305429458618
+      "score": 0.632301926612854
     },
     {
       "source": "gwas_get_associations_for_snp",
@@ -19851,7 +19851,7 @@
       "source": "gwas_get_associations_for_study",
       "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.6883354187011719
+      "score": 0.6541941165924072
     },
     {
       "source": "gwas_get_associations_for_study",
@@ -19881,31 +19881,31 @@
       "source": "gwas_get_associations_for_trait",
       "target": "gwas_search_associations",
       "type": "similar_purpose",
-      "score": 0.7702142000198364
-    },
-    {
-      "source": "gwas_get_associations_for_trait",
-      "target": "gwas_get_associations_for_study",
-      "type": "similar_purpose",
-      "score": 0.6883354187011719
-    },
-    {
-      "source": "gwas_get_associations_for_trait",
-      "target": "gwas_get_association_by_id",
-      "type": "similar_purpose",
-      "score": 0.662574052810669
-    },
-    {
-      "source": "gwas_get_associations_for_trait",
-      "target": "gwas_get_variants_for_trait",
-      "type": "similar_purpose",
-      "score": 0.6569231748580933
+      "score": 0.7970239520072937
     },
     {
       "source": "gwas_get_associations_for_trait",
       "target": "gwas_get_studies_for_trait",
       "type": "similar_purpose",
-      "score": 0.6446837782859802
+      "score": 0.7578400373458862
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "gwas_get_variants_for_trait",
+      "type": "similar_purpose",
+      "score": 0.7073101997375488
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "gwas_get_study_by_id",
+      "type": "similar_purpose",
+      "score": 0.7051067352294922
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "gwas_get_snps_for_gene",
+      "type": "similar_purpose",
+      "score": 0.7017718553543091
     },
     {
       "source": "gwas_get_snp_by_id",
@@ -19927,51 +19927,57 @@
     },
     {
       "source": "gwas_get_snp_by_id",
-      "target": "gwas_get_associations_for_trait",
+      "target": "gwas_get_snps_for_gene",
       "type": "similar_purpose",
-      "score": 0.5835131406784058
+      "score": 0.681833028793335
     },
     {
       "source": "gwas_get_snp_by_id",
-      "target": "gwas_search_associations",
+      "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.5698361992835999
+      "score": 0.6757831573486328
     },
     {
       "source": "gwas_get_snps_for_gene",
       "target": "gwas_get_variants_for_trait",
       "type": "similar_purpose",
-      "score": 0.6410783529281616
+      "score": 0.7747935056686401
     },
     {
       "source": "gwas_get_snps_for_gene",
-      "target": "gwas_get_associations_for_snp",
+      "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.6309305429458618
+      "score": 0.7017718553543091
     },
     {
       "source": "gwas_get_snps_for_gene",
       "target": "gwas_get_snp_by_id",
       "type": "similar_purpose",
-      "score": 0.5572270154953003
+      "score": 0.681833028793335
     },
     {
       "source": "gwas_get_snps_for_gene",
       "target": "gwas_search_snps",
       "type": "similar_purpose",
-      "score": 0.5470348596572876
+      "score": 0.6811485290527344
     },
     {
       "source": "gwas_get_snps_for_gene",
-      "target": "GO_get_annotations_for_gene",
+      "target": "gwas_search_associations",
       "type": "similar_purpose",
-      "score": 0.5357983112335205
+      "score": 0.6465853452682495
     },
     {
       "source": "gwas_get_studies_for_trait",
       "target": "gwas_search_studies",
       "type": "similar_purpose",
       "score": 0.7663606405258179
+    },
+    {
+      "source": "gwas_get_studies_for_trait",
+      "target": "gwas_get_associations_for_trait",
+      "type": "similar_purpose",
+      "score": 0.7578400373458862
     },
     {
       "source": "gwas_get_studies_for_trait",
@@ -19992,12 +19998,6 @@
       "score": 0.663303554058075
     },
     {
-      "source": "gwas_get_studies_for_trait",
-      "target": "gwas_get_associations_for_trait",
-      "type": "similar_purpose",
-      "score": 0.6446837782859802
-    },
-    {
       "source": "gwas_get_study_by_id",
       "target": "gwas_get_association_by_id",
       "type": "similar_purpose",
@@ -20011,15 +20011,15 @@
     },
     {
       "source": "gwas_get_study_by_id",
-      "target": "gwas_get_studies_for_trait",
+      "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.6800923347473145
+      "score": 0.7051067352294922
     },
     {
       "source": "gwas_get_study_by_id",
-      "target": "gwas_get_associations_for_trait",
+      "target": "gwas_get_studies_for_trait",
       "type": "similar_purpose",
-      "score": 0.6443929672241211
+      "score": 0.6800923347473145
     },
     {
       "source": "gwas_get_study_by_id",
@@ -20029,27 +20029,27 @@
     },
     {
       "source": "gwas_get_variants_for_trait",
+      "target": "gwas_get_snps_for_gene",
+      "type": "similar_purpose",
+      "score": 0.7747935056686401
+    },
+    {
+      "source": "gwas_get_variants_for_trait",
       "target": "gwas_search_associations",
       "type": "similar_purpose",
       "score": 0.714911937713623
     },
     {
       "source": "gwas_get_variants_for_trait",
+      "target": "gwas_get_associations_for_trait",
+      "type": "similar_purpose",
+      "score": 0.7073101997375488
+    },
+    {
+      "source": "gwas_get_variants_for_trait",
       "target": "gwas_get_studies_for_trait",
       "type": "similar_purpose",
       "score": 0.68552565574646
-    },
-    {
-      "source": "gwas_get_variants_for_trait",
-      "target": "gwas_get_associations_for_trait",
-      "type": "similar_purpose",
-      "score": 0.6569231748580933
-    },
-    {
-      "source": "gwas_get_variants_for_trait",
-      "target": "gwas_get_snps_for_gene",
-      "type": "similar_purpose",
-      "score": 0.6410783529281616
     },
     {
       "source": "gwas_get_variants_for_trait",
@@ -20061,7 +20061,7 @@
       "source": "gwas_search_associations",
       "target": "gwas_get_associations_for_trait",
       "type": "similar_purpose",
-      "score": 0.7702142000198364
+      "score": 0.7970239520072937
     },
     {
       "source": "gwas_search_associations",
@@ -20095,27 +20095,27 @@
     },
     {
       "source": "gwas_search_snps",
+      "target": "gwas_get_snps_for_gene",
+      "type": "similar_purpose",
+      "score": 0.6811485290527344
+    },
+    {
+      "source": "gwas_search_snps",
       "target": "gwas_search_associations",
       "type": "similar_purpose",
       "score": 0.6649297475814819
     },
     {
       "source": "gwas_search_snps",
+      "target": "gwas_get_associations_for_trait",
+      "type": "similar_purpose",
+      "score": 0.6505545377731323
+    },
+    {
+      "source": "gwas_search_snps",
       "target": "gwas_search_studies",
       "type": "similar_purpose",
       "score": 0.5707347393035889
-    },
-    {
-      "source": "gwas_search_snps",
-      "target": "gwas_get_association_by_id",
-      "type": "similar_purpose",
-      "score": 0.5529117584228516
-    },
-    {
-      "source": "gwas_search_snps",
-      "target": "gwas_get_snps_for_gene",
-      "type": "similar_purpose",
-      "score": 0.5470348596572876
     },
     {
       "source": "gwas_search_studies",
@@ -20131,6 +20131,12 @@
     },
     {
       "source": "gwas_search_studies",
+      "target": "gwas_get_associations_for_trait",
+      "type": "similar_purpose",
+      "score": 0.686527669429779
+    },
+    {
+      "source": "gwas_search_studies",
       "target": "gwas_get_study_by_id",
       "type": "similar_purpose",
       "score": 0.5804471969604492
@@ -20142,22 +20148,22 @@
       "score": 0.5707347393035889
     },
     {
-      "source": "gwas_search_studies",
-      "target": "gwas_get_associations_for_trait",
-      "type": "similar_purpose",
-      "score": 0.569283127784729
-    },
-    {
       "source": "humanbase_ppi_analysis",
       "target": "HPA_get_protein_interactions_by_gene",
       "type": "similar_purpose",
-      "score": 0.7035528421401978
+      "score": 0.7076144218444824
     },
     {
       "source": "humanbase_ppi_analysis",
       "target": "GO_get_genes_for_term",
       "type": "similar_purpose",
       "score": 0.6794564723968506
+    },
+    {
+      "source": "humanbase_ppi_analysis",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "similar_purpose",
+      "score": 0.5988643169403076
     },
     {
       "source": "humanbase_ppi_analysis",
@@ -20170,12 +20176,6 @@
       "target": "HPA_get_biological_processes_by_gene",
       "type": "similar_purpose",
       "score": 0.5801054835319519
-    },
-    {
-      "source": "humanbase_ppi_analysis",
-      "target": "HPA_get_subcellular_location",
-      "type": "similar_purpose",
-      "score": 0.5722674131393433
     },
     {
       "source": "list_pending_expert_requests",
@@ -20569,15 +20569,15 @@
     },
     {
       "source": "openalex_literature_search",
-      "target": "get_associated_documents_metadata",
+      "target": "EuropePMC_search_articles",
       "type": "similar_purpose",
-      "score": 0.49264055490493774
+      "score": 0.49962276220321655
     },
     {
       "source": "openalex_literature_search",
-      "target": "OpenTargets_get_publications_by_target_ensemblID",
+      "target": "get_associated_documents_metadata",
       "type": "similar_purpose",
-      "score": 0.4847669005393982
+      "score": 0.49264055490493774
     },
     {
       "source": "reactome_disease_target_score",
@@ -20647,27 +20647,27 @@
     },
     {
       "source": "run_pinnacle_ppi_retrieval",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "similar_purpose",
+      "score": 0.5541635751724243
+    },
+    {
+      "source": "run_pinnacle_ppi_retrieval",
       "target": "humanbase_ppi_analysis",
       "type": "similar_purpose",
       "score": 0.5372220277786255
     },
     {
       "source": "run_pinnacle_ppi_retrieval",
-      "target": "HPA_get_protein_interactions_by_gene",
-      "type": "similar_purpose",
-      "score": 0.5371852517127991
-    },
-    {
-      "source": "run_pinnacle_ppi_retrieval",
       "target": "HPA_get_subcellular_location",
       "type": "similar_purpose",
-      "score": 0.4654020071029663
+      "score": 0.45991939306259155
     },
     {
       "source": "run_pinnacle_ppi_retrieval",
-      "target": "boltz2_docking",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
       "type": "similar_purpose",
-      "score": 0.4201034903526306
+      "score": 0.4202640950679779
     },
     {
       "source": "run_transcriptformer_embedding_retrieval",
@@ -20758,6 +20758,396 @@
       "target": "mcp_auto_loader_expert_feedback",
       "type": "similar_purpose",
       "score": 0.5285704135894775
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "type": "used_with"
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "type": "used_with"
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "used_with"
+    },
+    {
+      "source": "DailyMed_search_spls",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "used_with"
+    },
+    {
+      "source": "DailyMed_search_spls",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "used_with"
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "DailyMed_search_spls",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "UniProt_get_function_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "used_with"
+    },
+    {
+      "source": "EuropePMC_search_articles",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "EuropePMC_search_articles",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "FAERS_count_reactions_by_drug_event",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "used_with"
+    },
+    {
+      "source": "FAERS_count_reactions_by_drug_event",
+      "target": "DailyMed_search_spls",
+      "type": "used_with"
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "FAERS_count_reactions_by_drug_event",
+      "type": "used_with"
+    },
+    {
+      "source": "FDA_get_adverse_reactions_by_drug_name",
+      "target": "DailyMed_search_spls",
+      "type": "used_with"
+    },
+    {
+      "source": "DailyMed_search_spls",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_subcellular_location",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "HPA_get_protein_interactions_by_gene",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_protein_interactions_by_gene",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_protein_interactions_by_gene",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "HPA_get_subcellular_location",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_subcellular_location",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_subcellular_location",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "used_with"
+    },
+    {
+      "source": "HPA_get_gene_basic_info_by_ensembl_id",
+      "target": "HPA_get_subcellular_location",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "FDA_get_adverse_reactions_by_drug_name",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "ChEMBL_search_similar_molecules",
+      "target": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "used_with"
+    },
+    {
+      "source": "OSL_get_efo_id_by_disease_name",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "target": "ChEMBL_search_similar_molecules",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "target": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "HPA_get_gene_basic_info_by_ensembl_id",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_interactions_by_ensemblID",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "target": "OpenTargets_get_target_interactions_by_ensemblID",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "Reactome_get_pathway_reactions",
+      "target": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "type": "used_with"
+    },
+    {
+      "source": "Reactome_get_pathway_reactions",
+      "target": "UniProt_get_function_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "Reactome_get_pathway_reactions",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "UniProt_get_function_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "HPA_get_subcellular_location",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "get_sequence_by_pdb_id",
+      "type": "used_with"
+    },
+    {
+      "source": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "UniProt_get_function_by_accession",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_function_by_accession",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_function_by_accession",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "UniProt_get_function_by_accession",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "UniProt_get_sequence_by_accession",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_sequence_by_accession",
+      "target": "get_sequence_by_pdb_id",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_sequence_by_accession",
+      "target": "HPA_get_protein_interactions_by_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "UniProt_get_sequence_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "UniProt_get_entry_by_accession",
+      "type": "used_with"
+    },
+    {
+      "source": "get_sequence_by_pdb_id",
+      "target": "Reactome_get_pathway_reactions",
+      "type": "used_with"
+    },
+    {
+      "source": "UniProt_get_entry_by_accession",
+      "target": "get_sequence_by_pdb_id",
+      "type": "commonly_follows"
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "gwas_get_snps_for_gene",
+      "type": "used_with"
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "used_with"
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "EuropePMC_search_articles",
+      "type": "used_with"
+    },
+    {
+      "source": "gwas_get_snps_for_gene",
+      "target": "gwas_get_associations_for_trait",
+      "type": "used_with"
+    },
+    {
+      "source": "gwas_get_snps_for_gene",
+      "target": "OpenTargets_get_associated_targets_by_disease_efoId",
+      "type": "used_with"
+    },
+    {
+      "source": "gwas_get_associations_for_trait",
+      "target": "gwas_get_snps_for_gene",
+      "type": "commonly_follows"
     }
   ]
 }

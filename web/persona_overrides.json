@@ -1,0 +1,1163 @@
+{
+  "UniProt_get_entry_by_accession": {
+    "tool": {
+      "detailed_description": "Fetch the full UniProtKB JSON record for a single accession, including sequence, functional annotation, domains, post-translational modifications, cross-references (PDB, GO, Reactome), taxonomy, and literature links.",
+      "capabilities": [
+        "retrieve full UniProtKB record by accession",
+        "return structured annotations including function, domains, and features",
+        "surface cross-references to external databases",
+        "support downstream protein characterization workflows"
+      ],
+      "limitations": [
+        "requires a valid UniProtKB accession",
+        "single-accession lookup only",
+        "content depends on UniProt curation status",
+        "not a clinical interpretation service"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "protein-annotation",
+          "uniprot",
+          "sequence",
+          "functional-annotation",
+          "cross-references",
+          "go-terms",
+          "reactome",
+          "bioinformatics"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "protein annotation",
+          "accession-based protein lookup",
+          "sequence retrieval",
+          "cross-reference discovery"
+        ],
+        "weak": [
+          "clinical diagnosis",
+          "novel variant pathogenicity"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Do not use UniProt annotations as a substitute for clinical interpretation or diagnosis."
+      },
+      "relationships": {
+        "used_with": [
+          "UniProt_get_sequence_by_accession",
+          "UniProt_get_function_by_accession",
+          "HPA_get_subcellular_location",
+          "Reactome_get_pathway_reactions",
+          "EuropePMC_search_articles",
+          "get_sequence_by_pdb_id"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Protein characterization",
+            "steps": [
+              "retrieve UniProtKB entry",
+              "extract sequence and functional annotation",
+              "link to pathways and literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "UniProt_get_sequence_by_accession": {
+    "tool": {
+      "detailed_description": "Return the canonical protein sequence for a UniProtKB accession in a concise response suitable for downstream structure, alignment, or motif analysis.",
+      "capabilities": [
+        "retrieve canonical protein sequence",
+        "support downstream alignment or structure workflows",
+        "work with accession-based identifiers"
+      ],
+      "limitations": [
+        "requires a valid UniProtKB accession",
+        "does not return isoform sequences",
+        "no batch support"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "protein-sequence",
+          "uniprot",
+          "sequence-retrieval",
+          "bioinformatics"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "protein sequence retrieval",
+          "accession lookup"
+        ],
+        "weak": [
+          "protein structure prediction"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Ensure accession corresponds to the intended species and isoform."
+      },
+      "relationships": {
+        "used_with": [
+          "UniProt_get_entry_by_accession",
+          "get_sequence_by_pdb_id",
+          "HPA_get_protein_interactions_by_gene"
+        ],
+        "commonly_follows": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Sequence-first analysis",
+            "steps": [
+              "retrieve UniProt sequence",
+              "align or map to structural resources"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "UniProt_get_function_by_accession": {
+    "tool": {
+      "detailed_description": "Extract UniProtKB functional annotation for a protein, including molecular function, catalytic activity, and subunit information when available.",
+      "capabilities": [
+        "retrieve curated functional summaries",
+        "surface catalytic activity and biological roles",
+        "support target understanding for downstream assays"
+      ],
+      "limitations": [
+        "requires a curated UniProtKB entry",
+        "annotations may be sparse for poorly characterized proteins"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "protein-function",
+          "uniprot",
+          "functional-annotation",
+          "bioinformatics"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "functional annotation",
+          "protein role summaries"
+        ],
+        "weak": [
+          "functional prediction for novel proteins"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Functional annotations should be cross-validated with literature for clinical claims."
+      },
+      "relationships": {
+        "used_with": [
+          "UniProt_get_entry_by_accession",
+          "Reactome_get_pathway_reactions",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Functional context",
+            "steps": [
+              "retrieve functional annotation",
+              "link to pathways and literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HPA_get_gene_basic_info_by_ensembl_id": {
+    "tool": {
+      "detailed_description": "Retrieve Human Protein Atlas basic gene information for an Ensembl gene ID, including gene name, description, and high-level tissue specificity signals.",
+      "capabilities": [
+        "map Ensembl IDs to HPA gene summaries",
+        "return basic gene metadata",
+        "support tissue-specific context"
+      ],
+      "limitations": [
+        "requires a valid Ensembl gene ID",
+        "summary-level data only"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "human-protein-atlas",
+          "gene-metadata",
+          "tissue-specificity",
+          "ensembl"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "gene summary retrieval",
+          "tissue specificity overview"
+        ],
+        "weak": [
+          "variant interpretation"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Do not use tissue specificity summaries as diagnostic evidence."
+      },
+      "relationships": {
+        "used_with": [
+          "HPA_get_subcellular_location",
+          "HPA_get_protein_interactions_by_gene",
+          "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Target background",
+            "steps": [
+              "retrieve gene basic info",
+              "extend with subcellular location and interactions"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HPA_get_subcellular_location": {
+    "tool": {
+      "detailed_description": "Return Human Protein Atlas subcellular localization evidence for a gene, covering compartments and supporting annotations.",
+      "capabilities": [
+        "retrieve subcellular localization data",
+        "support cellular context for target proteins",
+        "summarize evidence-backed compartments"
+      ],
+      "limitations": [
+        "requires gene identifier supported by HPA",
+        "not a quantitative localization assay"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "subcellular-localization",
+          "human-protein-atlas",
+          "cell-biology"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "subcellular localization",
+          "cellular compartment context"
+        ],
+        "weak": [
+          "dynamic localization under perturbation"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Localization annotations should be validated for specific cell types and conditions."
+      },
+      "relationships": {
+        "used_with": [
+          "HPA_get_gene_basic_info_by_ensembl_id",
+          "HPA_get_protein_interactions_by_gene",
+          "Reactome_get_pathway_reactions"
+        ],
+        "commonly_follows": [
+          "HPA_get_gene_basic_info_by_ensembl_id"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Cellular context",
+            "steps": [
+              "retrieve subcellular location",
+              "link to pathway and interaction context"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "HPA_get_protein_interactions_by_gene": {
+    "tool": {
+      "detailed_description": "Retrieve Human Protein Atlas interaction information for a gene, summarizing known or predicted protein partners.",
+      "capabilities": [
+        "return interaction partner lists",
+        "support network context for targets",
+        "enable downstream pathway or literature queries"
+      ],
+      "limitations": [
+        "interaction coverage varies by gene",
+        "does not quantify interaction strength"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "protein-interactions",
+          "network-biology",
+          "human-protein-atlas"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "interaction partner discovery",
+          "network context"
+        ],
+        "weak": [
+          "interaction kinetics"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Interaction lists should be validated with experimental evidence for critical conclusions."
+      },
+      "relationships": {
+        "used_with": [
+          "HPA_get_gene_basic_info_by_ensembl_id",
+          "OpenTargets_get_target_interactions_by_ensemblID",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [
+          "HPA_get_gene_basic_info_by_ensembl_id"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Interaction context",
+            "steps": [
+              "retrieve interaction partners",
+              "search literature for functional evidence"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OpenTargets_get_associated_targets_by_disease_efoId": {
+    "tool": {
+      "detailed_description": "Return target genes associated with a disease EFO identifier from Open Targets, including evidence scores and data types.",
+      "capabilities": [
+        "map disease EFO IDs to target genes",
+        "surface evidence-backed target associations",
+        "provide scores for prioritization"
+      ],
+      "limitations": [
+        "requires valid EFO ID",
+        "associations depend on Open Targets evidence availability"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "open-targets",
+          "disease-target-association",
+          "efo",
+          "target-prioritization"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "disease-target association",
+          "evidence-backed target prioritization"
+        ],
+        "weak": [
+          "causal inference"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Association scores are not definitive causal claims; validate with primary literature."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID",
+          "OpenTargets_get_target_interactions_by_ensemblID",
+          "EuropePMC_search_articles",
+          "HPA_get_gene_basic_info_by_ensembl_id"
+        ],
+        "commonly_follows": [
+          "OSL_get_efo_id_by_disease_name"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Disease to targets",
+            "steps": [
+              "resolve disease EFO ID",
+              "retrieve associated targets",
+              "expand with functional context"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OpenTargets_get_associated_diseases_by_drug_chemblId": {
+    "tool": {
+      "detailed_description": "Return diseases associated with a drug (by ChEMBL ID) according to Open Targets, including evidence sources and scores.",
+      "capabilities": [
+        "map drug chembl IDs to associated diseases",
+        "surface evidence-backed disease associations",
+        "support repurposing exploration"
+      ],
+      "limitations": [
+        "requires valid ChEMBL ID",
+        "associations depend on Open Targets coverage"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "open-targets",
+          "drug-disease-association",
+          "chembl",
+          "repurposing"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "drug-disease association",
+          "evidence-backed repurposing exploration"
+        ],
+        "weak": [
+          "clinical efficacy"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Associations are not clinical recommendations; verify with trials and labels."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+          "FDA_get_adverse_reactions_by_drug_name",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [
+          "ChEMBL_search_similar_molecules"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Drug to disease evidence",
+            "steps": [
+              "identify drug chembl ID",
+              "retrieve associated diseases",
+              "review supporting literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OpenTargets_get_drug_mechanisms_of_action_by_chemblId": {
+    "tool": {
+      "detailed_description": "Return mechanism of action entries for a drug (ChEMBL ID) from Open Targets, including targets, action types, and supporting evidence.",
+      "capabilities": [
+        "retrieve drug mechanism of action details",
+        "link drugs to target proteins",
+        "support pharmacology interpretation"
+      ],
+      "limitations": [
+        "requires valid ChEMBL ID",
+        "coverage depends on Open Targets evidence"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "open-targets",
+          "drug-mechanism",
+          "chembl",
+          "pharmacology"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "mechanism of action",
+          "drug target linkage"
+        ],
+        "weak": [
+          "off-target prediction"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "MOA summaries are not substitutes for full pharmacology reviews."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID",
+          "OpenTargets_get_target_interactions_by_ensemblID",
+          "ChEMBL_search_similar_molecules"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_associated_diseases_by_drug_chemblId"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Drug MOA expansion",
+            "steps": [
+              "retrieve drug MOA",
+              "expand with target biology"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OpenTargets_get_target_interactions_by_ensemblID": {
+    "tool": {
+      "detailed_description": "Return interaction partners and evidence for a target protein given an Ensembl ID from Open Targets.",
+      "capabilities": [
+        "retrieve target interaction partners",
+        "provide interaction evidence context",
+        "support network-based analyses"
+      ],
+      "limitations": [
+        "requires valid Ensembl ID",
+        "interaction coverage may be incomplete"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "open-targets",
+          "target-interactions",
+          "network-biology",
+          "ensembl"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "target interaction retrieval",
+          "network context"
+        ],
+        "weak": [
+          "interaction strength quantification"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Interaction evidence should be interpreted with data source provenance."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID",
+          "HPA_get_protein_interactions_by_gene",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Target network",
+            "steps": [
+              "retrieve interaction partners",
+              "review evidence and literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "OpenTargets_get_target_gene_ontology_by_ensemblID": {
+    "tool": {
+      "detailed_description": "Return Gene Ontology terms and annotations for a target protein given an Ensembl ID, sourced from Open Targets.",
+      "capabilities": [
+        "retrieve GO terms for target proteins",
+        "support functional enrichment reasoning",
+        "link targets to biological processes"
+      ],
+      "limitations": [
+        "requires valid Ensembl ID",
+        "GO annotations may be incomplete for understudied targets"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "gene-ontology",
+          "open-targets",
+          "functional-annotation",
+          "ensembl"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "GO term retrieval",
+          "functional annotation"
+        ],
+        "weak": [
+          "pathway-level mechanistic inference"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "GO annotations should be contextualized with experimental evidence."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_target_interactions_by_ensemblID",
+          "HPA_get_gene_basic_info_by_ensembl_id",
+          "Reactome_get_pathway_reactions"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Functional annotation",
+            "steps": [
+              "retrieve GO terms",
+              "map to pathways and literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ChEMBL_search_similar_molecules": {
+    "tool": {
+      "detailed_description": "Search for chemically similar molecules using a SMILES string, ChEMBL ID, or compound name, returning ranked analogs and identifiers.",
+      "capabilities": [
+        "perform similarity search by SMILES or ChEMBL ID",
+        "return analog molecules for lead expansion",
+        "support virtual screening workflows"
+      ],
+      "limitations": [
+        "similarity is based on chemical fingerprints",
+        "results depend on ChEMBL coverage",
+        "not a bioactivity prediction"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "chembl",
+          "cheminformatics",
+          "similarity-search",
+          "virtual-screening"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "chemical similarity search",
+          "lead expansion"
+        ],
+        "weak": [
+          "bioactivity prediction",
+          "clinical efficacy"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Chemical similarity does not imply safety or efficacy."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+          "OpenTargets_get_associated_diseases_by_drug_chemblId",
+          "FDA_get_adverse_reactions_by_drug_name"
+        ],
+        "commonly_follows": [],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Lead expansion",
+            "steps": [
+              "run similarity search",
+              "review analogous compounds",
+              "check safety and evidence"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EuropePMC_search_articles": {
+    "tool": {
+      "detailed_description": "Search Europe PMC for biomedical literature using keywords, returning article metadata, abstracts, and links.",
+      "capabilities": [
+        "search biomedical literature",
+        "retrieve article metadata and abstracts",
+        "support evidence gathering"
+      ],
+      "limitations": [
+        "keyword-based search",
+        "coverage depends on Europe PMC indexing"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "biomedical-literature",
+          "europe-pmc",
+          "evidence-gathering"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "literature retrieval",
+          "evidence gathering"
+        ],
+        "weak": [
+          "systematic review quality assessment"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Literature search results should be critically appraised for quality and relevance."
+      },
+      "relationships": {
+        "used_with": [
+          "UniProt_get_function_by_accession",
+          "OpenTargets_get_associated_targets_by_disease_efoId",
+          "HPA_get_protein_interactions_by_gene"
+        ],
+        "commonly_follows": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Evidence collection",
+            "steps": [
+              "search literature",
+              "triage relevant articles",
+              "link back to targets and pathways"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Reactome_get_pathway_reactions": {
+    "tool": {
+      "detailed_description": "Retrieve reactions for a Reactome pathway, supporting pathway-level context for genes and proteins.",
+      "capabilities": [
+        "return reactions for a pathway",
+        "support pathway interpretation",
+        "link targets to pathway context"
+      ],
+      "limitations": [
+        "requires a valid Reactome pathway identifier",
+        "does not infer new pathways"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "reactome",
+          "pathway-biology",
+          "reaction-annotation"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "pathway reaction retrieval",
+          "pathway context"
+        ],
+        "weak": [
+          "novel pathway discovery"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Pathway coverage varies by biological domain; verify with additional sources."
+      },
+      "relationships": {
+        "used_with": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID",
+          "UniProt_get_function_by_accession",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Pathway context",
+            "steps": [
+              "retrieve pathway reactions",
+              "link proteins to pathway evidence"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "gwas_get_associations_for_trait": {
+    "tool": {
+      "detailed_description": "Retrieve GWAS Catalog associations for a given trait, returning studies, SNPs, and reported associations.",
+      "capabilities": [
+        "search GWAS associations by trait",
+        "return associated SNPs and studies",
+        "support genetic evidence collection"
+      ],
+      "limitations": [
+        "trait naming must align with GWAS Catalog",
+        "associations are not causal proofs"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "gwas",
+          "genetic-association",
+          "trait-genetics"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "GWAS association retrieval",
+          "genetic evidence summary"
+        ],
+        "weak": [
+          "causal inference"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "GWAS associations should not be interpreted as deterministic risk predictions."
+      },
+      "relationships": {
+        "used_with": [
+          "gwas_get_snps_for_gene",
+          "OpenTargets_get_associated_targets_by_disease_efoId",
+          "EuropePMC_search_articles"
+        ],
+        "commonly_follows": [],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Genetic evidence",
+            "steps": [
+              "retrieve GWAS associations",
+              "map SNPs to targets",
+              "review literature"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "gwas_get_snps_for_gene": {
+    "tool": {
+      "detailed_description": "Retrieve GWAS Catalog SNPs associated with a gene of interest, supporting gene-centric association lookup.",
+      "capabilities": [
+        "retrieve SNPs associated with a gene",
+        "support gene-centric genetic evidence"
+      ],
+      "limitations": [
+        "depends on GWAS Catalog coverage",
+        "requires accurate gene identifier"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "gwas",
+          "snp-association",
+          "gene-genetics"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "gene-SNP association retrieval"
+        ],
+        "weak": [
+          "clinical risk prediction"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "SNP associations should be interpreted in population context."
+      },
+      "relationships": {
+        "used_with": [
+          "gwas_get_associations_for_trait",
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ],
+        "commonly_follows": [
+          "gwas_get_associations_for_trait"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Gene-centric GWAS",
+            "steps": [
+              "retrieve SNPs for gene",
+              "connect to disease or trait evidence"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "DailyMed_search_spls": {
+    "tool": {
+      "detailed_description": "Search DailyMed Structured Product Labels (SPLs) for a drug or product name, returning label identifiers and metadata.",
+      "capabilities": [
+        "search SPLs by drug or product name",
+        "retrieve label metadata for regulatory context",
+        "support downstream label detail retrieval"
+      ],
+      "limitations": [
+        "search is keyword-based",
+        "label content may vary by manufacturer"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "dailymed",
+          "drug-labels",
+          "regulatory-information"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "drug label discovery",
+          "regulatory label lookup"
+        ],
+        "weak": [
+          "clinical outcome inference"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Label content should be checked for version and manufacturer context."
+      },
+      "relationships": {
+        "used_with": [
+          "FDA_get_adverse_reactions_by_drug_name",
+          "FAERS_count_reactions_by_drug_event"
+        ],
+        "commonly_follows": [
+          "FDA_get_adverse_reactions_by_drug_name"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Regulatory context",
+            "steps": [
+              "search SPLs",
+              "review label sections",
+              "compare with adverse event data"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FDA_get_adverse_reactions_by_drug_name": {
+    "tool": {
+      "detailed_description": "Retrieve adverse reaction information from FDA drug labels for a named drug, summarizing reported adverse reactions in SPLs.",
+      "capabilities": [
+        "retrieve adverse reaction sections from labels",
+        "support safety context for a specific drug"
+      ],
+      "limitations": [
+        "label content varies by product",
+        "not a substitute for pharmacovigilance analysis"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "fda-drug-label",
+          "adverse-reactions",
+          "drug-safety"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "label-based adverse reactions",
+          "regulatory safety summaries"
+        ],
+        "weak": [
+          "causality assessment"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "Label adverse reaction lists are not incidence rates."
+      },
+      "relationships": {
+        "used_with": [
+          "FAERS_count_reactions_by_drug_event",
+          "DailyMed_search_spls"
+        ],
+        "commonly_follows": [
+          "DailyMed_search_spls"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Drug safety summary",
+            "steps": [
+              "retrieve label adverse reactions",
+              "compare with FAERS counts"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "FAERS_count_reactions_by_drug_event": {
+    "tool": {
+      "detailed_description": "Count reported adverse reactions for a specified drug-event query using FAERS data, supporting pharmacovigilance signal review.",
+      "capabilities": [
+        "count adverse reactions by drug-event",
+        "support pharmacovigilance trend review"
+      ],
+      "limitations": [
+        "FAERS reports are voluntary and biased",
+        "counts do not imply causality"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "faers",
+          "pharmacovigilance",
+          "adverse-events"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "adverse event count summaries",
+          "pharmacovigilance signal exploration"
+        ],
+        "weak": [
+          "incidence estimation"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "FAERS counts should not be interpreted as incidence or causality."
+      },
+      "relationships": {
+        "used_with": [
+          "FDA_get_adverse_reactions_by_drug_name",
+          "DailyMed_search_spls"
+        ],
+        "commonly_follows": [
+          "FDA_get_adverse_reactions_by_drug_name"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Safety signal check",
+            "steps": [
+              "review label adverse reactions",
+              "compare with FAERS counts"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "get_sequence_by_pdb_id": {
+    "tool": {
+      "detailed_description": "Retrieve macromolecular sequence information from the RCSB PDB for a given PDB ID, supporting structure-based analyses.",
+      "capabilities": [
+        "return sequence from PDB entry",
+        "support structure-to-sequence mapping",
+        "link to structural context"
+      ],
+      "limitations": [
+        "requires valid PDB ID",
+        "sequence reflects deposited structure, not necessarily canonical"
+      ]
+    },
+    "persona": {
+      "identity": {
+        "domain_tags": [
+          "rcsb-pdb",
+          "protein-structure",
+          "sequence-mapping"
+        ]
+      },
+      "domain_validity": {
+        "strong": [
+          "structure-derived sequence retrieval"
+        ],
+        "weak": [
+          "isoform inference"
+        ]
+      },
+      "safety": {
+        "misuse_cases": "PDB sequences may be truncated or engineered; validate against UniProt."
+      },
+      "relationships": {
+        "used_with": [
+          "UniProt_get_sequence_by_accession",
+          "UniProt_get_entry_by_accession",
+          "Reactome_get_pathway_reactions"
+        ],
+        "commonly_follows": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "validates_output_of": []
+      },
+      "workflows": {
+        "observed": [
+          {
+            "name": "Structure mapping",
+            "steps": [
+              "retrieve PDB sequence",
+              "compare with UniProt canonical sequence"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

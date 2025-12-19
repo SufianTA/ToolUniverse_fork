@@ -51,12 +51,12 @@ def clinvar_search_variants(
                 "gene": gene,
                 "condition": condition,
                 "variant_id": variant_id,
-                "max_results": max_results,
-            },
+                "max_results": max_results
+            }
         },
         stream_callback=stream_callback,
         use_cache=use_cache,
-        validate=validate,
+        validate=validate
     )
 
 

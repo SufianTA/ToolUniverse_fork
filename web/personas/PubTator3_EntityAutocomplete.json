@@ -29,7 +29,7 @@
     "parameter_schema": {
       "text": {
         "type": "string",
-        "description": "A few characters or the full name of the biomedical concept you are trying to look up (e.g. “BRAF V6”)."
+        "description": "A few characters or the full name of the biomedical concept you are trying to look up (e.g. \u201cBRAF V6\u201d)."
       },
       "entity_type": {
         "type": "string",
@@ -62,7 +62,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -99,12 +99,12 @@
         "score": 0.4980860948562622
       },
       {
-        "tool": "OpenTargets_get_disease_ids_by_name",
-        "score": 0.4965740144252777
+        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+        "score": 0.49792957305908203
       },
       {
-        "tool": "FDA_get_drug_name_by_SPL_ID",
-        "score": 0.49264073371887207
+        "tool": "OpenTargets_get_disease_ids_by_name",
+        "score": 0.4965740144252777
       }
     ]
   },
@@ -116,7 +116,7 @@
     "argument_schema": {
       "text": {
         "type": "string",
-        "description": "A few characters or the full name of the biomedical concept you are trying to look up (e.g. “BRAF V6”)."
+        "description": "A few characters or the full name of the biomedical concept you are trying to look up (e.g. \u201cBRAF V6\u201d)."
       },
       "entity_type": {
         "type": "string",

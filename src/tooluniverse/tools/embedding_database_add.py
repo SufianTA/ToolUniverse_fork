@@ -1,4 +1,4 @@
-"""
+﻿"""
 embedding_database_add
 
 Append documents to an existing per-collection datastore (<name>.db + <name>.faiss). Uses the sam...

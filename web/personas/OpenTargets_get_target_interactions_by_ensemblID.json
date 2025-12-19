@@ -4,26 +4,17 @@
     "canonical_name": "OpenTargets_get_target_interactions_by_ensemblID",
     "aliases": [],
     "domain_tags": [
-      "Bioinformatics Tools",
-      "Biological Entities & Annotations",
-      "Clinical & Translational Research",
-      "Data Processing",
-      "Omics & Molecular Analysis",
-      "Pharmacology & Drug Services",
-      "Statistical & Analytical Methods",
-      "ensmb",
-      "systems-biology",
-      "target-analysis",
-      "OpenTarget",
-      "Zitnik Lab"
+      "open-targets",
+      "target-interactions",
+      "network-biology",
+      "ensembl"
     ],
     "role": "API",
-    "description": "Get interaction partners and evidence for a given target by Ensembl ID.\n\nRetrieve interaction data for a specific target ensemblID, including interaction partners and evidence.",
+    "description": "Get interaction partners and evidence for a given target by Ensembl ID.\n\nReturn interaction partners and evidence for a target protein given an Ensembl ID from Open Targets.",
     "capabilities": [
-      "Retrieve interaction data for a given Ensembl ID",
-      "Support pagination of results via page index and size",
-      "Provide interaction evidence including scores and detection methods",
-      "Return interaction partner information with approved symbols"
+      "retrieve target interaction partners",
+      "provide interaction evidence context",
+      "support network-based analyses"
     ]
   },
   "contract": {
@@ -51,17 +42,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "target interaction retrieval",
+      "network context"
+    ],
+    "weak": [
+      "interaction strength quantification"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Interaction evidence should be interpreted with data source provenance."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -81,34 +77,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "HPA_get_protein_interactions_by_gene",
+      "EuropePMC_search_articles"
+    ],
+    "commonly_follows": [
+      "OpenTargets_get_associated_targets_by_disease_efoId"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
-        "score": 0.7506296634674072
+        "tool": "OpenTargets_target_disease_evidence",
+        "score": 0.7512502074241638
       },
       {
         "tool": "OpenTargets_get_chemical_probes_by_target_ensemblID",
-        "score": 0.7424254417419434
+        "score": 0.736557126045227
+      },
+      {
+        "tool": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
+        "score": 0.7318439483642578
+      },
+      {
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.7309290766716003
       },
       {
         "tool": "OpenTargets_get_associated_drugs_by_target_ensemblID",
-        "score": 0.7276293039321899
-      },
-      {
-        "tool": "OpenTargets_target_disease_evidence",
-        "score": 0.7165267467498779
-      },
-      {
-        "tool": "OpenTargets_get_target_classes_by_ensemblID",
-        "score": 0.6960642337799072
+        "score": 0.7083471417427063
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Target network",
+        "steps": [
+          "retrieve interaction partners",
+          "review evidence and literature"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "OpenTargets_get_target_interactions_by_ensemblID",

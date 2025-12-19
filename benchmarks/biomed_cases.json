@@ -1,0 +1,264 @@
+[
+  {
+    "id": "alzheimers_app",
+    "title": "APP protein characterization",
+    "context": "Characterize amyloid beta precursor protein with sequence, structure, and literature context.",
+    "steps": [
+      {
+        "query": "Retrieve UniProt entry for amyloid beta precursor protein (APP) by accession",
+        "expected_tools": [
+          "UniProt_get_entry_by_accession",
+          "UniProt_get_function_by_accession"
+        ]
+      },
+      {
+        "query": "Get protein sequence for APP to map to structure",
+        "expected_tools": [
+          "UniProt_get_sequence_by_accession"
+        ]
+      },
+      {
+        "query": "Find PDB sequence for APP-related structure",
+        "expected_tools": [
+          "get_sequence_by_pdb_id"
+        ]
+      },
+      {
+        "query": "Literature search for APP and Alzheimer disease",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ]
+      }
+    ],
+    "seed_tool": "UniProt_get_entry_by_accession",
+    "chain_expected": [
+      "get_sequence_by_pdb_id",
+      "Reactome_get_pathway_reactions",
+      "EuropePMC_search_articles"
+    ]
+  },
+  {
+    "id": "egfr_target_context",
+    "title": "EGFR target context",
+    "context": "Use HPA and Open Targets to build localization and interaction context for EGFR.",
+    "steps": [
+      {
+        "query": "Get Human Protein Atlas basic gene info for EGFR by Ensembl ID",
+        "expected_tools": [
+          "HPA_get_gene_basic_info_by_ensembl_id"
+        ]
+      },
+      {
+        "query": "Subcellular location for EGFR protein",
+        "expected_tools": [
+          "HPA_get_subcellular_location"
+        ]
+      },
+      {
+        "query": "Protein interactions for EGFR",
+        "expected_tools": [
+          "HPA_get_protein_interactions_by_gene",
+          "OpenTargets_get_target_interactions_by_ensemblID"
+        ]
+      },
+      {
+        "query": "Gene ontology terms for EGFR target",
+        "expected_tools": [
+          "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ]
+      }
+    ],
+    "seed_tool": "HPA_get_gene_basic_info_by_ensembl_id",
+    "chain_expected": [
+      "HPA_get_subcellular_location",
+      "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "Reactome_get_pathway_reactions"
+    ]
+  },
+  {
+    "id": "disease_to_targets_parkinsons",
+    "title": "Parkinson disease target discovery",
+    "context": "Use Open Targets to map a disease to candidate targets and evidence.",
+    "steps": [
+      {
+        "query": "Find targets associated with Parkinson disease EFO",
+        "expected_tools": [
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ]
+      },
+      {
+        "query": "Get interaction partners for a Parkinson disease target by Ensembl ID",
+        "expected_tools": [
+          "OpenTargets_get_target_interactions_by_ensemblID"
+        ]
+      },
+      {
+        "query": "Search literature for Parkinson disease target evidence",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ]
+      }
+    ],
+    "seed_tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+    "chain_expected": [
+      "OpenTargets_get_target_interactions_by_ensemblID",
+      "EuropePMC_search_articles"
+    ]
+  },
+  {
+    "id": "drug_moa_imatinib",
+    "title": "Imatinib mechanism and analogs",
+    "context": "Use Open Targets and ChEMBL to profile drug mechanism and related molecules.",
+    "steps": [
+      {
+        "query": "Get mechanisms of action for imatinib by ChEMBL ID",
+        "expected_tools": [
+          "OpenTargets_get_drug_mechanisms_of_action_by_chemblId"
+        ]
+      },
+      {
+        "query": "Diseases associated with imatinib from Open Targets",
+        "expected_tools": [
+          "OpenTargets_get_associated_diseases_by_drug_chemblId"
+        ]
+      },
+      {
+        "query": "Find similar molecules to imatinib",
+        "expected_tools": [
+          "ChEMBL_search_similar_molecules"
+        ]
+      },
+      {
+        "query": "Literature for imatinib mechanism of action",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ]
+      }
+    ],
+    "seed_tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+    "chain_expected": [
+      "ChEMBL_search_similar_molecules",
+      "OpenTargets_get_associated_diseases_by_drug_chemblId"
+    ]
+  },
+  {
+    "id": "cardio_safety_warfarin",
+    "title": "Warfarin safety context",
+    "context": "Compare label-reported adverse reactions with FAERS counts.",
+    "steps": [
+      {
+        "query": "Find adverse reactions for warfarin in FDA labels",
+        "expected_tools": [
+          "FDA_get_adverse_reactions_by_drug_name"
+        ]
+      },
+      {
+        "query": "Search DailyMed SPL for warfarin",
+        "expected_tools": [
+          "DailyMed_search_spls"
+        ]
+      },
+      {
+        "query": "Count FAERS reactions for warfarin event",
+        "expected_tools": [
+          "FAERS_count_reactions_by_drug_event"
+        ]
+      }
+    ],
+    "seed_tool": "FDA_get_adverse_reactions_by_drug_name",
+    "chain_expected": [
+      "FAERS_count_reactions_by_drug_event",
+      "DailyMed_search_spls"
+    ]
+  },
+  {
+    "id": "type2_diabetes_gwas",
+    "title": "Type 2 diabetes GWAS evidence",
+    "context": "Use GWAS catalog and Open Targets to connect trait associations to targets.",
+    "steps": [
+      {
+        "query": "GWAS associations for type 2 diabetes",
+        "expected_tools": [
+          "gwas_get_associations_for_trait"
+        ]
+      },
+      {
+        "query": "SNPs for a diabetes-associated gene",
+        "expected_tools": [
+          "gwas_get_snps_for_gene"
+        ]
+      },
+      {
+        "query": "Targets associated with type 2 diabetes EFO",
+        "expected_tools": [
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ]
+      }
+    ],
+    "seed_tool": "gwas_get_associations_for_trait",
+    "chain_expected": [
+      "gwas_get_snps_for_gene",
+      "OpenTargets_get_associated_targets_by_disease_efoId"
+    ]
+  },
+  {
+    "id": "apoptosis_pathway",
+    "title": "Caspase-3 pathway context",
+    "context": "Connect UniProt functional annotation to pathway context and literature.",
+    "steps": [
+      {
+        "query": "UniProt function for caspase-3 protein",
+        "expected_tools": [
+          "UniProt_get_function_by_accession"
+        ]
+      },
+      {
+        "query": "Reactome pathway reactions for apoptosis",
+        "expected_tools": [
+          "Reactome_get_pathway_reactions"
+        ]
+      },
+      {
+        "query": "Literature search for caspase-3 apoptosis",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ]
+      }
+    ],
+    "seed_tool": "UniProt_get_function_by_accession",
+    "chain_expected": [
+      "Reactome_get_pathway_reactions",
+      "EuropePMC_search_articles"
+    ]
+  },
+  {
+    "id": "pdb_sequence_mapping",
+    "title": "Structure to UniProt mapping",
+    "context": "Use PDB and UniProt sequence retrieval to map structure back to canonical sequence.",
+    "steps": [
+      {
+        "query": "Retrieve sequence from PDB ID 1AKE",
+        "expected_tools": [
+          "get_sequence_by_pdb_id"
+        ]
+      },
+      {
+        "query": "Retrieve UniProt sequence for the corresponding protein",
+        "expected_tools": [
+          "UniProt_get_sequence_by_accession"
+        ]
+      },
+      {
+        "query": "UniProt entry for the protein",
+        "expected_tools": [
+          "UniProt_get_entry_by_accession"
+        ]
+      }
+    ],
+    "seed_tool": "get_sequence_by_pdb_id",
+    "chain_expected": [
+      "UniProt_get_sequence_by_accession",
+      "UniProt_get_entry_by_accession"
+    ]
+  }
+]

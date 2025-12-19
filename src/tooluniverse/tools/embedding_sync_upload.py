@@ -1,4 +1,4 @@
-"""
+﻿"""
 embedding_sync_upload
 
 Upload a per-collection datastore to Hugging Face Hub: <name>.db and <name>.faiss, plus metadata ...

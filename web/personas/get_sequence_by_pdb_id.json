@@ -4,24 +4,16 @@
     "canonical_name": "get_sequence_by_pdb_id",
     "aliases": [],
     "domain_tags": [
-      "Data Access & Management",
-      "Statistical & Analytical Methods",
-      "Structural Biology & Simulation",
-      "computational-biology",
-      "macromolecular-analysis",
-      "polymer",
-      "sequence",
-      "sequence-analysis",
-      "structural-analysis",
-      "RCSBTool",
-      "Zitnik Lab"
+      "rcsb-pdb",
+      "protein-structure",
+      "sequence-mapping"
     ],
     "role": "API",
-    "description": "Retrieve polymer entity sequences by PDB ID\n\nRetrieve amino acid or nucleotide sequence of polymer entities for a given PDB structure.",
+    "description": "Retrieve polymer entity sequences by PDB ID\n\nRetrieve macromolecular sequence information from the RCSB PDB for a given PDB ID, supporting structure-based analyses.",
     "capabilities": [
-      "Retrieve polymer sequences by PDB ID",
-      "Supports amino acid and nucleotide sequences",
-      "Provides sequences in one-letter code"
+      "return sequence from PDB entry",
+      "support structure-to-sequence mapping",
+      "link to structural context"
     ]
   },
   "contract": {
@@ -43,17 +35,21 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "structure-derived sequence retrieval"
+    ],
+    "weak": [
+      "isoform inference"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "PDB sequences may be truncated or engineered; validate against UniProt."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,34 +69,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "UniProt_get_sequence_by_accession",
+      "UniProt_get_entry_by_accession",
+      "Reactome_get_pathway_reactions"
+    ],
+    "commonly_follows": [
+      "UniProt_get_entry_by_accession"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "get_sequence_lengths_by_pdb_id",
-        "score": 0.8499357104301453
-      },
-      {
-        "tool": "get_assembly_info_by_pdb_id",
-        "score": 0.7541937828063965
-      },
-      {
-        "tool": "get_polymer_entity_count_by_pdb_id",
-        "score": 0.7483716011047363
-      },
-      {
-        "tool": "get_gene_name_by_entity_id",
-        "score": 0.7303977608680725
+        "score": 0.7917671203613281
       },
       {
         "tool": "get_polymer_entity_ids_by_pdb_id",
-        "score": 0.7186076641082764
+        "score": 0.7302500009536743
+      },
+      {
+        "tool": "get_polymer_entity_count_by_pdb_id",
+        "score": 0.710014283657074
+      },
+      {
+        "tool": "get_assembly_info_by_pdb_id",
+        "score": 0.707716703414917
+      },
+      {
+        "tool": "get_sequence_positional_features_by_instance_id",
+        "score": 0.6979856491088867
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Structure mapping",
+        "steps": [
+          "retrieve PDB sequence",
+          "compare with UniProt canonical sequence"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "get_sequence_by_pdb_id",

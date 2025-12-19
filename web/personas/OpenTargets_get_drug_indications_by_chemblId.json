@@ -52,7 +52,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -85,16 +85,16 @@
         "score": 0.7810508012771606
       },
       {
-        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-        "score": 0.7797670960426331
-      },
-      {
         "tool": "OpenTargets_get_drug_description_by_chemblId",
         "score": 0.7796843647956848
       },
       {
         "tool": "OpenTargets_get_drug_adverse_events_by_chemblId",
         "score": 0.7767922878265381
+      },
+      {
+        "tool": "OpenTargets_get_drug_id_description_by_name",
+        "score": 0.7752335071563721
       }
     ]
   },

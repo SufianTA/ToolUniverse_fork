@@ -1420,7 +1420,10 @@ class SMCP(FastMCP):
 
         @self.tool()
         async def find_similar_tools(
-            tool_name: str, vector_type: str = "purpose", top_k: int = 5
+            tool_name: str,
+            vector_type: str = "purpose",
+            top_k: int = 5,
+            method: str = "auto",
         ) -> str:
             """
             Find nearest neighbors for a tool using persona embeddings.
@@ -1428,9 +1431,11 @@ class SMCP(FastMCP):
             import json
 
             results = self.persona_manager.find_similar(
-                tool_name, vector_type=vector_type, top_k=top_k
+                tool_name, vector_type=vector_type, top_k=top_k, method=method
             )
-            return json.dumps({"neighbors": results}, ensure_ascii=False)
+            return json.dumps(
+                {"neighbors": results, "method": method}, ensure_ascii=False
+            )
 
     def _expose_core_discovery_tools(self):
         """

@@ -63,7 +63,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -92,20 +92,20 @@
         "score": 0.7761621475219727
       },
       {
+        "tool": "gwas_get_snps_for_gene",
+        "score": 0.6811485290527344
+      },
+      {
         "tool": "gwas_search_associations",
         "score": 0.6649297475814819
       },
       {
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.6505545377731323
+      },
+      {
         "tool": "gwas_search_studies",
         "score": 0.5707347393035889
-      },
-      {
-        "tool": "gwas_get_association_by_id",
-        "score": 0.5529117584228516
-      },
-      {
-        "tool": "gwas_get_snps_for_gene",
-        "score": 0.5470348596572876
       }
     ]
   },

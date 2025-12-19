@@ -12,6 +12,8 @@ Tests actual MCP protocol functionality including:
 import pytest
 import asyncio
 import subprocess
+import os
+from pathlib import Path
 from unittest.mock import patch, AsyncMock
 
 from tooluniverse import ToolUniverse
@@ -31,6 +33,15 @@ class TestMCPProtocol:
         self.tu.load_tools()
         self.server = None
         self.client = None
+        self._subprocess_env = os.environ.copy()
+        repo_root = Path(__file__).resolve().parents[2]
+        src_path = str(repo_root / "src")
+        existing = self._subprocess_env.get("PYTHONPATH", "")
+        self._subprocess_env["PYTHONPATH"] = (
+            f"{src_path}{os.pathsep}{existing}" if existing else src_path
+        )
+        self._subprocess_env["PYTHONIOENCODING"] = "utf-8"
+        self._subprocess_env["PYTHONUTF8"] = "1"
 
     def test_smcp_server_initialization(self):
         """Test SMCP server can be initialized with tools"""
@@ -275,7 +286,9 @@ class TestMCPProtocol:
             ["tooluniverse-smcp", "--help"],
             capture_output=True,
             text=True,
-            timeout=60  # Increased timeout to 60 seconds
+            timeout=60,  # Increased timeout to 60 seconds
+            encoding="utf-8",
+            env=self._subprocess_env,
         )
         
         # Should succeed and show help
@@ -289,7 +302,9 @@ class TestMCPProtocol:
             ["tooluniverse-smcp", "--list-categories"],
             capture_output=True,
             text=True,
-            timeout=60  # Increased timeout to 60 seconds
+            timeout=60,  # Increased timeout to 60 seconds
+            encoding="utf-8",
+            env=self._subprocess_env,
         )
         
         # Should succeed and show categories summary (new format)
@@ -304,7 +319,9 @@ class TestMCPProtocol:
             ["tooluniverse-smcp", "--list-tools"],
             capture_output=True,
             text=True,
-            timeout=60  # Increased timeout to 60 seconds
+            timeout=60,  # Increased timeout to 60 seconds
+            encoding="utf-8",
+            env=self._subprocess_env,
         )
         
         # Should succeed and show tools (or at least not crash)

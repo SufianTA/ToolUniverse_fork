@@ -66,7 +66,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -99,16 +99,16 @@
         "score": 0.781570553779602
       },
       {
+        "tool": "DailyMed_search_spls",
+        "score": 0.7808753252029419
+      },
+      {
         "tool": "FDA_get_drug_names_by_accessories",
         "score": 0.7312580943107605
       },
       {
         "tool": "FDA_get_drug_name_by_set_id",
         "score": 0.719054102897644
-      },
-      {
-        "tool": "DailyMed_search_spls",
-        "score": 0.7188960313796997
       }
     ]
   },

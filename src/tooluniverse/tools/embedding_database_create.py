@@ -1,4 +1,4 @@
-"""
+﻿"""
 embedding_database_create
 
 Create a per-collection datastore: <name>.db (SQLite) + <name>.faiss (FAISS). Embeds documents us...

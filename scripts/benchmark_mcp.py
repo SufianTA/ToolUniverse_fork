@@ -55,6 +55,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--out", default="benchmarks/benchmark_results.json")
     parser.add_argument("--csv", default="benchmarks/benchmark_results.csv")
     parser.add_argument(
+        "--toolset",
+        default=None,
+        help="Optional JSON list of tool names to focus the benchmark.",
+    )
+    parser.add_argument(
+        "--cases",
+        default=None,
+        help="Optional JSON file with biomedical case studies.",
+    )
+    parser.add_argument(
+        "--report",
+        default=None,
+        help="Optional Markdown report path for case study results.",
+    )
+    parser.add_argument(
         "--trace",
         action="store_true",
         help="Write per-query traces to JSONL files for auditability.",
@@ -165,6 +180,22 @@ def load_catalog(path: Path) -> List[Dict[str, Any]]:
     return []
 
 
+def load_toolset(path: Optional[str]) -> Optional[List[str]]:
+    if not path:
+        return None
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if isinstance(data, list):
+        return [str(name) for name in data]
+    return None
+
+
+def load_cases(path: Optional[str]) -> List[Dict[str, Any]]:
+    if not path:
+        return []
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return data if isinstance(data, list) else []
+
+
 def build_query(tool: Dict[str, Any]) -> str:
     persona = tool.get("persona", {})
     identity = persona.get("identity", {})
@@ -258,7 +289,16 @@ def benchmark_endpoint(
     tool_count = len(tool_entries)
     tool_names = [t.get("name") for t in tool_entries]
     persona_tools_present = len(
-        [t for t in ["get_persona", "list_personas", "get_persona_graph", "find_similar_tools"] if t in tool_names]
+        [
+            t
+            for t in [
+                "get_persona",
+                "list_personas",
+                "get_persona_graph",
+                "find_similar_tools",
+            ]
+            if t in tool_names
+        ]
     )
 
     query_tools = random.sample(tools, min(sample, len(tools)))
@@ -342,7 +382,7 @@ def benchmark_endpoint(
             try:
                 resp = client.call_tool(
                     "find_similar_tools",
-                    {"tool_name": tool.get("name"), "top_k": 5},
+                    {"tool_name": tool.get("name"), "top_k": 5, "method": "embedding"},
                 )
                 sim_latencies.append((time.perf_counter() - start) * 1000)
                 neighbors = extract_similarity(resp)
@@ -408,6 +448,135 @@ def benchmark_endpoint(
     )
 
 
+def benchmark_cases(
+    label: str,
+    base_url: str,
+    cases: List[Dict[str, Any]],
+    k: int,
+    trace_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    if not cases:
+        return {}
+    client = McpClient(base_url)
+    tools_list = client.request("tools/list", {})
+    tool_entries = tools_list.get("result", {}).get("tools", [])
+    tool_names = {t.get("name") for t in tool_entries}
+    has_similarity = "find_similar_tools" in tool_names
+
+    step_latencies = []
+    step_hits = 0
+    step_mrr_total = 0.0
+    step_errors = 0
+    step_total = 0
+
+    chain_latencies = []
+    chain_hits = 0
+    chain_total = 0
+    chain_errors = 0
+
+    if trace_path:
+        trace_path.parent.mkdir(parents=True, exist_ok=True)
+        if not trace_path.exists():
+            trace_path.write_text("", encoding="utf-8")
+
+    for case in cases:
+        steps = case.get("steps", [])
+        for step in steps:
+            query = step.get("query", "")
+            expected = step.get("expected_tools", [])
+            if not query or not expected:
+                continue
+            step_total += 1
+            start = time.perf_counter()
+            try:
+                resp = client.call_tool("find_tools", {"query": query, "limit": k})
+                latency_ms = (time.perf_counter() - start) * 1000
+                step_latencies.append(latency_ms)
+                names = extract_find_tools(resp)
+                hit = False
+                best_rank = None
+                for tool_name in expected:
+                    if tool_name in names:
+                        hit = True
+                        rank = names.index(tool_name) + 1
+                        best_rank = rank if best_rank is None else min(best_rank, rank)
+                if hit:
+                    step_hits += 1
+                    step_mrr_total += 1.0 / best_rank
+                if trace_path:
+                    with trace_path.open("a", encoding="utf-8") as handle:
+                        handle.write(
+                            json.dumps(
+                                {
+                                    "endpoint": label,
+                                    "case_id": case.get("id"),
+                                    "step_query": query,
+                                    "expected": expected,
+                                    "returned": names,
+                                    "rank": best_rank,
+                                    "latency_ms": latency_ms,
+                                }
+                            )
+                            + "\n"
+                        )
+            except Exception:
+                step_errors += 1
+
+        seed_tool = case.get("seed_tool")
+        chain_expected = case.get("chain_expected", [])
+        if seed_tool and chain_expected and has_similarity:
+            chain_total += 1
+            start = time.perf_counter()
+            try:
+                resp = client.call_tool(
+                    "find_similar_tools",
+                    {"tool_name": seed_tool, "top_k": k, "method": "embedding"},
+                )
+                latency_ms = (time.perf_counter() - start) * 1000
+                chain_latencies.append(latency_ms)
+                neighbors = extract_similarity(resp)
+                neighbor_names = {entry.get("tool") for entry in neighbors}
+                if any(tool in neighbor_names for tool in chain_expected):
+                    chain_hits += 1
+                if trace_path:
+                    with trace_path.open("a", encoding="utf-8") as handle:
+                        handle.write(
+                            json.dumps(
+                                {
+                                    "endpoint": label,
+                                    "case_id": case.get("id"),
+                                    "seed_tool": seed_tool,
+                                    "chain_expected": chain_expected,
+                                    "neighbors": neighbors,
+                                    "latency_ms": latency_ms,
+                                }
+                            )
+                            + "\n"
+                        )
+            except Exception:
+                chain_errors += 1
+
+    step_p50, step_p95 = compute_latency_stats(step_latencies)
+    chain_p50, chain_p95 = compute_latency_stats(chain_latencies)
+    step_total_effective = max(step_total - step_errors, 1)
+    chain_total_effective = max(chain_total - chain_errors, 1)
+
+    return {
+        "step_hit_at_k": step_hits / step_total_effective,
+        "step_mrr": step_mrr_total / step_total_effective,
+        "step_p50_ms": step_p50,
+        "step_p95_ms": step_p95,
+        "step_total": step_total,
+        "step_errors": step_errors,
+        "chain_hit_at_k": None if not has_similarity else chain_hits / chain_total_effective,
+        "chain_p50_ms": None if not has_similarity else chain_p50,
+        "chain_p95_ms": None if not has_similarity else chain_p95,
+        "chain_total": chain_total,
+        "chain_errors": chain_errors,
+        "similarity_available": has_similarity,
+    }
+
+
 def main() -> None:
     args = parse_args()
     random.seed(args.seed)
@@ -415,6 +584,11 @@ def main() -> None:
     catalog = load_catalog(Path(args.catalog))
     if not catalog:
         raise SystemExit("Tool catalog is empty")
+
+    toolset = load_toolset(args.toolset)
+    if toolset:
+        toolset_names = set(toolset)
+        catalog = [tool for tool in catalog if tool.get("name") in toolset_names]
 
     persona_map = {}
     for tool in catalog:
@@ -450,9 +624,34 @@ def main() -> None:
             "sample": args.sample,
             "k": args.k,
             "seed": args.seed,
+            "toolset": args.toolset,
+            "cases": args.cases,
         },
         "results": [new_result.__dict__, old_result.__dict__],
     }
+
+    cases = load_cases(args.cases)
+    if cases:
+        output["case_results"] = {
+            "new": benchmark_cases(
+                "new",
+                args.new,
+                cases,
+                args.k,
+                trace_path=Path(f"{args.trace_prefix}_new_cases.jsonl")
+                if args.trace
+                else None,
+            ),
+            "old": benchmark_cases(
+                "old",
+                args.old,
+                cases,
+                args.k,
+                trace_path=Path(f"{args.trace_prefix}_old_cases.jsonl")
+                if args.trace
+                else None,
+            ),
+        }
 
     out_path = Path(args.out)
     _ensure_dir(out_path)
@@ -482,6 +681,49 @@ def main() -> None:
             )
         )
     csv_path.write_text("\n".join(csv_lines), encoding="utf-8")
+
+    if args.report and cases:
+        report_path = Path(args.report)
+        _ensure_dir(report_path)
+        report_lines = [
+            "# Biomedical MCP Benchmark Report",
+            "",
+            "## Overview",
+            f"- New server: {args.new}",
+            f"- Old server: {args.old}",
+            f"- Sample size: {args.sample}",
+            f"- Top-k: {args.k}",
+            "",
+            "## Case Study Metrics",
+        ]
+        case_results = output.get("case_results", {})
+        for label in ["new", "old"]:
+            metrics = case_results.get(label, {})
+            report_lines.extend(
+                [
+                    "",
+                    f"### {label.upper()}",
+                    f"- step_hit_at_k: {metrics.get('step_hit_at_k')}",
+                    f"- step_mrr: {metrics.get('step_mrr')}",
+                    f"- step_p50_ms: {metrics.get('step_p50_ms')}",
+                    f"- step_p95_ms: {metrics.get('step_p95_ms')}",
+                    f"- chain_hit_at_k: {metrics.get('chain_hit_at_k')}",
+                    f"- chain_p50_ms: {metrics.get('chain_p50_ms')}",
+                    f"- chain_p95_ms: {metrics.get('chain_p95_ms')}",
+                ]
+            )
+
+        report_lines.extend(["", "## Case Studies"])
+        for case in cases:
+            report_lines.append(f"- {case.get('id')}: {case.get('title')}")
+            context = case.get("context")
+            if context:
+                report_lines.append(f"  - context: {context}")
+            steps = case.get("steps", [])
+            for step in steps:
+                report_lines.append(f"  - query: {step.get('query')}")
+                report_lines.append(f"  - expected_tools: {step.get('expected_tools')}")
+        report_path.write_text("\n".join(report_lines), encoding="utf-8")
 
     print(json.dumps(output, indent=2))
 

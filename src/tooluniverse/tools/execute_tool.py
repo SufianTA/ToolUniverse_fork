@@ -41,11 +41,14 @@ def execute_tool(
     return get_shared_client().run_one_function(
         {
             "name": "execute_tool",
-            "arguments": {"tool_name": tool_name, "arguments": arguments},
+            "arguments": {
+                "tool_name": tool_name,
+                "arguments": arguments
+            }
         },
         stream_callback=stream_callback,
         use_cache=use_cache,
-        validate=validate,
+        validate=validate
     )
 
 

@@ -57,7 +57,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -94,12 +94,12 @@
         "score": 0.7356647253036499
       },
       {
-        "tool": "gwas_get_associations_for_trait",
-        "score": 0.5835131406784058
+        "tool": "gwas_get_snps_for_gene",
+        "score": 0.681833028793335
       },
       {
-        "tool": "gwas_search_associations",
-        "score": 0.5698361992835999
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.6757831573486328
       }
     ]
   },

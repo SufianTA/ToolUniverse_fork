@@ -1,0 +1,22 @@
+[
+  "UniProt_get_entry_by_accession",
+  "UniProt_get_sequence_by_accession",
+  "UniProt_get_function_by_accession",
+  "HPA_get_gene_basic_info_by_ensembl_id",
+  "HPA_get_subcellular_location",
+  "HPA_get_protein_interactions_by_gene",
+  "OpenTargets_get_associated_targets_by_disease_efoId",
+  "OpenTargets_get_associated_diseases_by_drug_chemblId",
+  "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+  "OpenTargets_get_target_interactions_by_ensemblID",
+  "OpenTargets_get_target_gene_ontology_by_ensemblID",
+  "ChEMBL_search_similar_molecules",
+  "EuropePMC_search_articles",
+  "Reactome_get_pathway_reactions",
+  "gwas_get_associations_for_trait",
+  "gwas_get_snps_for_gene",
+  "DailyMed_search_spls",
+  "FDA_get_adverse_reactions_by_drug_name",
+  "FAERS_count_reactions_by_drug_event",
+  "get_sequence_by_pdb_id"
+]

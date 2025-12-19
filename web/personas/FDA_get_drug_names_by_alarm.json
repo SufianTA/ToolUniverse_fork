@@ -63,7 +63,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -100,12 +100,12 @@
         "score": 0.8147733807563782
       },
       {
-        "tool": "FDA_get_adverse_reactions_by_drug_name",
-        "score": 0.769094705581665
-      },
-      {
         "tool": "FDA_get_drug_names_by_nonteratogenic_effects",
         "score": 0.7656619548797607
+      },
+      {
+        "tool": "FDA_get_teratogenic_effects_by_drug_name",
+        "score": 0.7566396594047546
       }
     ]
   },

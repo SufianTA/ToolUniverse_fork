@@ -74,27 +74,36 @@ class PersonaManager:
         return self.graph
 
     def find_similar(
-        self, tool_name: str, vector_type: str = "purpose", top_k: int = 5
+        self,
+        tool_name: str,
+        vector_type: str = "purpose",
+        top_k: int = 5,
+        method: str = "auto",
     ) -> List[Dict]:
-        # Prefer precomputed similar_tools if present
+        precomputed = []
         if tool_name in self.personas:
             precomputed = (
                 self.personas[tool_name]
                 .get("relationships", {})
                 .get("similar_tools", [])
             )
-            if precomputed:
-                return precomputed[:top_k]
+
+        method = (method or "auto").lower()
+        if method == "precomputed":
+            return precomputed[:top_k]
+
+        target = self.embeddings.get((tool_name, vector_type))
+        if method == "auto" and target is None and precomputed:
+            return precomputed[:top_k]
+
+        if target is None:
+            return []
 
         try:
             import torch
             import torch.nn.functional as F
         except ImportError:
-            return []
-
-        target = self.embeddings.get((tool_name, vector_type))
-        if target is None:
-            return []
+            return precomputed[:top_k] if method == "auto" else []
 
         scores = []
         for (name, vtype), tensor in self.embeddings.items():

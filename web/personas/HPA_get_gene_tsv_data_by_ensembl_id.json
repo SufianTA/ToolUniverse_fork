@@ -54,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -84,11 +84,7 @@
       },
       {
         "tool": "HPA_get_gene_basic_info_by_ensembl_id",
-        "score": 0.7607309818267822
-      },
-      {
-        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-        "score": 0.683595597743988
+        "score": 0.7824455499649048
       },
       {
         "tool": "OpenTargets_get_target_genomic_location_by_ensemblID",
@@ -97,6 +93,10 @@
       {
         "tool": "OpenTargets_get_biological_mouse_models_by_ensemblID",
         "score": 0.6691551208496094
+      },
+      {
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.6590776443481445
       }
     ]
   },

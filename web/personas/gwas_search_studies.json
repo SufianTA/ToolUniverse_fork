@@ -79,7 +79,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -112,16 +112,16 @@
         "score": 0.7385069131851196
       },
       {
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.686527669429779
+      },
+      {
         "tool": "gwas_get_study_by_id",
         "score": 0.5804471969604492
       },
       {
         "tool": "gwas_search_snps",
         "score": 0.5707347393035889
-      },
-      {
-        "tool": "gwas_get_associations_for_trait",
-        "score": 0.569283127784729
       }
     ]
   },

@@ -60,7 +60,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -101,8 +101,8 @@
         "score": 0.632365345954895
       },
       {
-        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.6250405311584473
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.5997195839881897
       }
     ]
   },

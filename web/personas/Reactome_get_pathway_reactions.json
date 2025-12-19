@@ -4,20 +4,16 @@
     "canonical_name": "Reactome_get_pathway_reactions",
     "aliases": [],
     "domain_tags": [
-      "Bioinformatics Tools",
-      "Data Processing",
-      "Domain-Specific Analysis",
-      "computational-biology",
-      "reaction",
-      "signal-processing",
-      "systems-biology",
-      "ReactomeRESTTool",
-      "Zitnik Lab"
+      "reactome",
+      "pathway-biology",
+      "reaction-annotation"
     ],
     "role": "API",
-    "description": "Retrieve reactions contained in a Reactome pathway by its stable ID.\n\nQuery all Reactions contained under a Pathway using Pathway Stable ID. This is currently the only working Reactome tool.",
+    "description": "Retrieve reactions contained in a Reactome pathway by its stable ID.\n\nRetrieve reactions for a Reactome pathway, supporting pathway-level context for genes and proteins.",
     "capabilities": [
-      "Retrieve reactions from a specified Reactome pathway"
+      "return reactions for a pathway",
+      "support pathway interpretation",
+      "link targets to pathway context"
     ]
   },
   "contract": {
@@ -39,17 +35,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "pathway reaction retrieval",
+      "pathway context"
+    ],
+    "weak": [
+      "novel pathway discovery"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Pathway coverage varies by biological domain; verify with additional sources."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -69,34 +70,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "UniProt_get_function_by_accession",
+      "EuropePMC_search_articles"
+    ],
+    "commonly_follows": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-        "score": 0.6184042692184448
+        "tool": "reactome_disease_target_score",
+        "score": 0.6303883790969849
       },
       {
-        "tool": "OpenTargets_get_associated_targets_by_drug_chemblId",
-        "score": 0.6063169240951538
+        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+        "score": 0.6218142509460449
       },
       {
         "tool": "drugbank_get_drug_pathways_and_reactions_by_drug_name_or_drugbank_id",
-        "score": 0.6013017892837524
+        "score": 0.6112363934516907
+      },
+      {
+        "tool": "OpenTargets_get_associated_targets_by_drug_chemblId",
+        "score": 0.5859116911888123
       },
       {
         "tool": "OpenTargets_get_chemical_probes_by_target_ensemblID",
-        "score": 0.5898367166519165
-      },
-      {
-        "tool": "reactome_disease_target_score",
-        "score": 0.5874290466308594
+        "score": 0.5834331512451172
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Pathway context",
+        "steps": [
+          "retrieve pathway reactions",
+          "link proteins to pathway evidence"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "Reactome_get_pathway_reactions",

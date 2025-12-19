@@ -55,7 +55,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -81,15 +81,11 @@
     "similar_tools": [
       {
         "tool": "OpenTargets_get_associated_diseases_by_drug_chemblId",
-        "score": 0.7587057948112488
+        "score": 0.7887343168258667
       },
       {
         "tool": "OpenTargets_get_approved_indications_by_drug_chemblId",
         "score": 0.7536923289299011
-      },
-      {
-        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-        "score": 0.7528505921363831
       },
       {
         "tool": "OpenTargets_get_associated_targets_by_drug_chemblId",
@@ -98,6 +94,10 @@
       {
         "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
         "score": 0.7415397763252258
+      },
+      {
+        "tool": "reactome_disease_target_score",
+        "score": 0.7381576299667358
       }
     ]
   },

@@ -52,7 +52,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -89,12 +89,12 @@
         "score": 0.7094944715499878
       },
       {
-        "tool": "get_structure_determination_software_by_pdb_id",
-        "score": 0.6882164478302002
+        "tool": "get_sequence_by_pdb_id",
+        "score": 0.6897821426391602
       },
       {
-        "tool": "get_structure_validation_metrics_by_pdb_id",
-        "score": 0.6742153167724609
+        "tool": "get_structure_determination_software_by_pdb_id",
+        "score": 0.6882164478302002
       }
     ]
   },

@@ -61,7 +61,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -86,12 +86,12 @@
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
-        "score": 0.8043332099914551
+        "tool": "HPA_get_gene_basic_info_by_ensembl_id",
+        "score": 0.8346250653266907
       },
       {
-        "tool": "HPA_get_gene_basic_info_by_ensembl_id",
-        "score": 0.7909773588180542
+        "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
+        "score": 0.8043332099914551
       },
       {
         "tool": "OpenTargets_get_biological_mouse_models_by_ensemblID",
@@ -99,7 +99,7 @@
       },
       {
         "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-        "score": 0.7295694947242737
+        "score": 0.7242164611816406
       },
       {
         "tool": "OpenTargets_get_target_subcellular_locations_by_ensemblID",

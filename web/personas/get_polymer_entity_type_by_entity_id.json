@@ -52,7 +52,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -85,16 +85,16 @@
         "score": 0.720950722694397
       },
       {
-        "tool": "get_sequence_by_pdb_id",
-        "score": 0.7068665623664856
-      },
-      {
         "tool": "get_polymer_molecular_weight_by_entity_id",
         "score": 0.6860948204994202
       },
       {
         "tool": "get_sequence_positional_features_by_instance_id",
         "score": 0.6550573706626892
+      },
+      {
+        "tool": "get_polymer_entity_annotations",
+        "score": 0.6449595093727112
       }
     ]
   },

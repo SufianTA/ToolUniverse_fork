@@ -47,7 +47,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -84,12 +84,12 @@
         "score": 0.5784314274787903
       },
       {
-        "tool": "LiteratureSearchTool",
-        "score": 0.4673082232475281
+        "tool": "EuropePMC_search_articles",
+        "score": 0.47975999116897583
       },
       {
-        "tool": "get_associated_documents_metadata",
-        "score": 0.4494582414627075
+        "tool": "LiteratureSearchTool",
+        "score": 0.4673082232475281
       }
     ]
   },

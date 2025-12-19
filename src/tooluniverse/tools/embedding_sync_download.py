@@ -1,4 +1,4 @@
-"""
+﻿"""
 embedding_sync_download
 
 Download a per-collection datastore from Hugging Face Hub into ./data/embeddings as <name>.db and...

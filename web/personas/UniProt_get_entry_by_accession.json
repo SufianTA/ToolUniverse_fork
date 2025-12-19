@@ -4,22 +4,22 @@
     "canonical_name": "UniProt_get_entry_by_accession",
     "aliases": [],
     "domain_tags": [
-      "API",
-      "Data Access & Management",
-      "Data Processing",
-      "Identifiers & Nomenclature",
-      "bioinformatics-research",
-      "computational-biology",
-      "molecular-biology",
-      "sequence-analysis",
-      "UniProtRESTTool",
-      "Zitnik Lab"
+      "protein-annotation",
+      "uniprot",
+      "sequence",
+      "functional-annotation",
+      "cross-references",
+      "go-terms",
+      "reactome",
+      "bioinformatics"
     ],
     "role": "API",
-    "description": "Retrieve complete UniProtKB entry JSON for a given accession.\n\nGet the complete JSON entry for a specified UniProtKB accession.",
+    "description": "Retrieve complete UniProtKB entry JSON for a given accession.\n\nFetch the full UniProtKB JSON record for a single accession, including sequence, functional annotation, domains, post-translational modifications, cross-references (PDB, GO, Reactome), taxonomy, and literature links.",
     "capabilities": [
-      "Retrieve complete JSON entry for a UniProtKB accession",
-      "Interact with UniProt REST API endpoint"
+      "retrieve full UniProtKB record by accession",
+      "return structured annotations including function, domains, and features",
+      "surface cross-references to external databases",
+      "support downstream protein characterization workflows"
     ]
   },
   "contract": {
@@ -41,17 +41,25 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "protein annotation",
+      "accession-based protein lookup",
+      "sequence retrieval",
+      "cross-reference discovery"
+    ],
+    "weak": [
+      "clinical diagnosis",
+      "novel variant pathogenicity"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Do not use UniProt annotations as a substitute for clinical interpretation or diagnosis."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -71,34 +79,52 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "UniProt_get_sequence_by_accession",
+      "UniProt_get_function_by_accession",
+      "HPA_get_subcellular_location",
+      "Reactome_get_pathway_reactions",
+      "EuropePMC_search_articles",
+      "get_sequence_by_pdb_id"
+    ],
+    "commonly_follows": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
+        "tool": "UniProt_get_sequence_by_accession",
+        "score": 0.7472671866416931
+      },
+      {
         "tool": "UniProt_get_recommended_name_by_accession",
-        "score": 0.6838584542274475
+        "score": 0.7016760110855103
+      },
+      {
+        "tool": "UniProt_get_function_by_accession",
+        "score": 0.6972508430480957
       },
       {
         "tool": "UniProt_get_disease_variants_by_accession",
-        "score": 0.6297364234924316
+        "score": 0.6896270513534546
       },
       {
         "tool": "UniProt_get_alternative_names_by_accession",
-        "score": 0.6267492175102234
-      },
-      {
-        "tool": "UniProt_get_sequence_by_accession",
-        "score": 0.618525505065918
-      },
-      {
-        "tool": "get_uniprot_accession_by_entity_id",
-        "score": 0.6163280010223389
+        "score": 0.652800977230072
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Protein characterization",
+        "steps": [
+          "retrieve UniProtKB entry",
+          "extract sequence and functional annotation",
+          "link to pathways and literature"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "UniProt_get_entry_by_accession",

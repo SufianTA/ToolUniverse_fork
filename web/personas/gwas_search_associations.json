@@ -79,7 +79,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -105,7 +105,7 @@
     "similar_tools": [
       {
         "tool": "gwas_get_associations_for_trait",
-        "score": 0.7702142000198364
+        "score": 0.7970239520072937
       },
       {
         "tool": "gwas_search_studies",

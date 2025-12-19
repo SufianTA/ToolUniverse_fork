@@ -4,24 +4,15 @@
     "canonical_name": "FAERS_count_reactions_by_drug_event",
     "aliases": [],
     "domain_tags": [
-      "Clinical & Translational Research",
-      "Data Processing",
-      "Pharmacology & Drug Services",
-      "Regulatory & Compliance",
-      "Safety & Toxicology",
-      "age-stratification",
-      "analysis",
-      "pharmacology",
-      "reaction",
-      "FDADrugAdverseEventTool",
-      "Zitnik Lab"
+      "faers",
+      "pharmacovigilance",
+      "adverse-events"
     ],
     "role": "API",
-    "description": "Counts adverse reactions reported for a specified drug with optional filters on patient details and event seriousness.\n\nCount the number of adverse reactions reported for a given drug, filtered by patient details, event seriousness, and reaction outcomes. Data source: FDA Adverse Event Reporting System (FAERS).",
+    "description": "Counts adverse reactions reported for a specified drug with optional filters on patient details and event seriousness.\n\nCount reported adverse reactions for a specified drug-event query using FAERS data, supporting pharmacovigilance signal review.",
     "capabilities": [
-      "Count number of adverse reactions for a given drug",
-      "Filter results by patient sex, age group, occurrence country, seriousness, and death outcome",
-      "Retrieve exact reaction MedDRA Preferred Terms"
+      "count adverse reactions by drug-event",
+      "support pharmacovigilance trend review"
     ]
   },
   "contract": {
@@ -63,17 +54,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "adverse event count summaries",
+      "pharmacovigilance signal exploration"
+    ],
+    "weak": [
+      "incidence estimation"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "FAERS counts should not be interpreted as incidence or causality."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -93,34 +89,47 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "FDA_get_adverse_reactions_by_drug_name",
+      "DailyMed_search_spls"
+    ],
+    "commonly_follows": [
+      "FDA_get_adverse_reactions_by_drug_name"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "FAERS_count_drugs_by_drug_event",
-        "score": 0.921195924282074
+        "score": 0.8704202175140381
       },
       {
         "tool": "FAERS_count_country_by_drug_event",
-        "score": 0.8967882394790649
+        "score": 0.843783974647522
       },
       {
         "tool": "FAERS_count_outcomes_by_drug_event",
-        "score": 0.8884760141372681
-      },
-      {
-        "tool": "FAERS_count_additive_adverse_reactions",
-        "score": 0.8565350770950317
+        "score": 0.8424184918403625
       },
       {
         "tool": "FAERS_count_death_related_by_drug",
-        "score": 0.848953127861023
+        "score": 0.8330016136169434
+      },
+      {
+        "tool": "FAERS_count_additive_adverse_reactions",
+        "score": 0.8196942806243896
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Safety signal check",
+        "steps": [
+          "review label adverse reactions",
+          "compare with FAERS counts"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "FAERS_count_reactions_by_drug_event",

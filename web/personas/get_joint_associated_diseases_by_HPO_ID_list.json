@@ -58,7 +58,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -100,7 +100,7 @@
       },
       {
         "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.6552944183349609
+        "score": 0.6519817113876343
       }
     ]
   },

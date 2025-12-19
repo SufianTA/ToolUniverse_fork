@@ -17,7 +17,7 @@
       "Zitnik Lab"
     ],
     "role": "Scientific Software Package",
-    "description": "Retrieves detailed information about the pyBigWig package for BigWig file access in Python\n\nGet comprehensive information about pyBigWig — BigWig file access in Python",
+    "description": "Retrieves detailed information about the pyBigWig package for BigWig file access in Python\n\nGet comprehensive information about pyBigWig \u2014 BigWig file access in Python",
     "capabilities": [
       "Provide overview of pyBigWig",
       "Provide installation instructions",
@@ -54,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {

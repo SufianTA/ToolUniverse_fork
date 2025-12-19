@@ -4,24 +4,17 @@
     "canonical_name": "OpenTargets_get_associated_targets_by_disease_efoId",
     "aliases": [],
     "domain_tags": [
-      "Biological Entities & Annotations",
-      "Clinical & Translational Research",
-      "Omics & Molecular Analysis",
-      "Pharmacology & Drug Services",
-      "biomedical-ontology",
-      "experimental-design",
-      "ontology",
-      "open-targets-api",
-      "target-analysis",
-      "OpenTarget",
-      "Zitnik Lab"
+      "open-targets",
+      "disease-target-association",
+      "efo",
+      "target-prioritization"
     ],
     "role": "API",
-    "description": "Retrieve targets linked to a disease or phenotype via its EFO ID.\n\nFind targets associated with a specific disease or phenotype based on efoId.",
+    "description": "Retrieve targets linked to a disease or phenotype via its EFO ID.\n\nReturn target genes associated with a disease EFO identifier from Open Targets, including evidence scores and data types.",
     "capabilities": [
-      "Query targets associated with a specific disease or phenotype using EFO ID",
-      "Retrieve disease ID and name",
-      "Obtain associated target count and scores"
+      "map disease EFO IDs to target genes",
+      "surface evidence-backed target associations",
+      "provide scores for prioritization"
     ]
   },
   "contract": {
@@ -43,17 +36,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "disease-target association",
+      "evidence-backed target prioritization"
+    ],
+    "weak": [
+      "causal inference"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Association scores are not definitive causal claims; validate with primary literature."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,34 +71,50 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "OpenTargets_get_target_interactions_by_ensemblID",
+      "EuropePMC_search_articles",
+      "HPA_get_gene_basic_info_by_ensembl_id"
+    ],
+    "commonly_follows": [
+      "OSL_get_efo_id_by_disease_name"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "OpenTargets_get_associated_drugs_by_disease_efoId",
-        "score": 0.8113435506820679
+        "tool": "OpenTargets_target_disease_evidence",
+        "score": 0.7668396830558777
       },
       {
-        "tool": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
-        "score": 0.8093400001525879
+        "tool": "OpenTargets_map_any_disease_id_to_all_other_ids",
+        "score": 0.7353396415710449
       },
       {
         "tool": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
-        "score": 0.8029074668884277
+        "score": 0.7205057740211487
       },
       {
-        "tool": "OpenTargets_target_disease_evidence",
-        "score": 0.7859188318252563
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.7091719508171082
       },
       {
-        "tool": "OpenTargets_get_disease_id_description_by_name",
-        "score": 0.7706408500671387
+        "tool": "OpenTargets_get_similar_entities_by_disease_efoId",
+        "score": 0.7037708759307861
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Disease to targets",
+        "steps": [
+          "resolve disease EFO ID",
+          "retrieve associated targets",
+          "expand with functional context"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "OpenTargets_get_associated_targets_by_disease_efoId",

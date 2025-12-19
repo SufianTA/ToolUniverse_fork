@@ -54,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -95,8 +95,8 @@
         "score": 0.6712731122970581
       },
       {
-        "tool": "OpenTargets_get_target_genomic_location_by_ensemblID",
-        "score": 0.643492579460144
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.6484706997871399
       }
     ]
   },

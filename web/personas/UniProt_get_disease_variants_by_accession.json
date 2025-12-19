@@ -53,7 +53,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -78,24 +78,24 @@
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "UniProt_get_function_by_accession",
-        "score": 0.697324275970459
+        "tool": "UniProt_get_entry_by_accession",
+        "score": 0.6896270513534546
       },
       {
-        "tool": "UniProt_get_entry_by_accession",
-        "score": 0.6297364234924316
+        "tool": "UniProt_get_function_by_accession",
+        "score": 0.6769157648086548
       },
       {
         "tool": "UniProt_get_ptm_processing_by_accession",
         "score": 0.6068089008331299
       },
       {
-        "tool": "UniProt_get_alternative_names_by_accession",
-        "score": 0.568320631980896
+        "tool": "UniProt_get_sequence_by_accession",
+        "score": 0.5716955065727234
       },
       {
-        "tool": "UniProt_get_sequence_by_accession",
-        "score": 0.538173258304596
+        "tool": "UniProt_get_alternative_names_by_accession",
+        "score": 0.568320631980896
       }
     ]
   },

@@ -4,25 +4,15 @@
     "canonical_name": "FDA_get_adverse_reactions_by_drug_name",
     "aliases": [],
     "domain_tags": [
-      "Data Processing",
-      "Pharmacology & Drug Services",
-      "Regulatory & Compliance",
-      "Safety & Toxicology",
-      "fda-api-integration",
-      "fda-drug-safety",
-      "label-management",
-      "medical-domain",
-      "pharmacology",
-      "real-world-evidence",
-      "FDADrugLabel",
-      "Zitnik Lab"
+      "fda-drug-label",
+      "adverse-reactions",
+      "drug-safety"
     ],
     "role": "API",
-    "description": "Retrieve adverse reactions for a specified drug name via FDA's database.\n\nRetrieve adverse reactions information based on the drug name.",
+    "description": "Retrieve adverse reactions for a specified drug name via FDA's database.\n\nRetrieve adverse reaction information from FDA drug labels for a named drug, summarizing reported adverse reactions in SPLs.",
     "capabilities": [
-      "Retrieve adverse reactions information by drug name",
-      "Support pagination via limit",
-      "Support pagination via skip"
+      "retrieve adverse reaction sections from labels",
+      "support safety context for a specific drug"
     ]
   },
   "contract": {
@@ -52,17 +42,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "label-based adverse reactions",
+      "regulatory safety summaries"
+    ],
+    "weak": [
+      "causality assessment"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Label adverse reaction lists are not incidence rates."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -82,34 +77,47 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "FAERS_count_reactions_by_drug_event",
+      "DailyMed_search_spls"
+    ],
+    "commonly_follows": [
+      "DailyMed_search_spls"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "FDA_get_drug_names_by_boxed_warning",
-        "score": 0.7895816564559937
-      },
-      {
-        "tool": "FDA_get_drug_name_by_adverse_reaction",
-        "score": 0.7775070667266846
-      },
-      {
-        "tool": "FDA_get_drug_name_by_reference",
-        "score": 0.7707087993621826
-      },
-      {
-        "tool": "FDA_get_drug_names_by_alarm",
-        "score": 0.769094705581665
+        "tool": "FDA_get_drug_name_by_SPL_ID",
+        "score": 0.7116541266441345
       },
       {
         "tool": "FDA_get_drug_names_by_overdosage_info",
-        "score": 0.750883936882019
+        "score": 0.7023990154266357
+      },
+      {
+        "tool": "FDA_get_drug_name_by_adverse_reaction",
+        "score": 0.7018804550170898
+      },
+      {
+        "tool": "FDA_get_drug_names_by_boxed_warning",
+        "score": 0.6978689432144165
+      },
+      {
+        "tool": "FDA_get_drug_name_by_reference",
+        "score": 0.6869438290596008
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Drug safety summary",
+        "steps": [
+          "retrieve label adverse reactions",
+          "compare with FAERS counts"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "FDA_get_adverse_reactions_by_drug_name",

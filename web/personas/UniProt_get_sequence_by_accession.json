@@ -4,24 +4,17 @@
     "canonical_name": "UniProt_get_sequence_by_accession",
     "aliases": [],
     "domain_tags": [
-      "Identifiers & Nomenclature",
-      "Omics & Molecular Analysis",
-      "bioinformatics-pipeline",
-      "computational-biology",
-      "molecular-biology",
-      "sequence",
-      "sequence-analysis",
-      "structural-analysis",
-      "uniprot-rest-api",
-      "uniprotkb-accession-query",
-      "UniProtRESTTool",
-      "Zitnik Lab"
+      "protein-sequence",
+      "uniprot",
+      "sequence-retrieval",
+      "bioinformatics"
     ],
     "role": "API",
-    "description": "Extract the canonical sequence from a UniProtKB entry.\n\nExtract the canonical sequence from UniProtKB entry.",
+    "description": "Extract the canonical sequence from a UniProtKB entry.\n\nReturn the canonical protein sequence for a UniProtKB accession in a concise response suitable for downstream structure, alignment, or motif analysis.",
     "capabilities": [
-      "Fetch UniProtKB entry by accession",
-      "Extract canonical sequence"
+      "retrieve canonical protein sequence",
+      "support downstream alignment or structure workflows",
+      "work with accession-based identifiers"
     ]
   },
   "contract": {
@@ -43,17 +36,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "protein sequence retrieval",
+      "accession lookup"
+    ],
+    "weak": [
+      "protein structure prediction"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Ensure accession corresponds to the intended species and isoform."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,34 +71,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "UniProt_get_entry_by_accession",
+      "get_sequence_by_pdb_id",
+      "HPA_get_protein_interactions_by_gene"
+    ],
+    "commonly_follows": [
+      "UniProt_get_entry_by_accession"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "UniProt_get_alternative_names_by_accession",
-        "score": 0.6761233806610107
-      },
-      {
-        "tool": "UniProt_get_isoform_ids_by_accession",
-        "score": 0.6301181316375732
+        "tool": "UniProt_get_function_by_accession",
+        "score": 0.7691789865493774
       },
       {
         "tool": "UniProt_get_entry_by_accession",
-        "score": 0.618525505065918
+        "score": 0.7472671866416931
       },
       {
         "tool": "UniProt_get_organism_by_accession",
-        "score": 0.6004228591918945
+        "score": 0.6566861867904663
       },
       {
-        "tool": "UniProt_get_ptm_processing_by_accession",
-        "score": 0.5525504946708679
+        "tool": "UniProt_get_subcellular_location_by_accession",
+        "score": 0.647871196269989
+      },
+      {
+        "tool": "UniProt_get_recommended_name_by_accession",
+        "score": 0.6454470157623291
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Sequence-first analysis",
+        "steps": [
+          "retrieve UniProt sequence",
+          "align or map to structural resources"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "UniProt_get_sequence_by_accession",

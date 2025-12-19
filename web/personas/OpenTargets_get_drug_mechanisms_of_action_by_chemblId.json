@@ -4,23 +4,17 @@
     "canonical_name": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
     "aliases": [],
     "domain_tags": [
-      "Bioinformatics Tools",
-      "Cheminformatics & Chemical Analysis",
-      "Pharmacology & Drug Services",
-      "chembl-id-query",
-      "mechanism-of-action",
-      "open-targets-api",
-      "pharmacology",
-      "target-analysis",
-      "OpenTarget",
-      "Zitnik Lab"
+      "open-targets",
+      "drug-mechanism",
+      "chembl",
+      "pharmacology"
     ],
     "role": "API",
-    "description": "Fetch mechanisms of action of a drug using its ChEMBL ID.\n\nRetrieve the mechanisms of action associated with a specific drug using chemblId.",
+    "description": "Fetch mechanisms of action of a drug using its ChEMBL ID.\n\nReturn mechanism of action entries for a drug (ChEMBL ID) from Open Targets, including targets, action types, and supporting evidence.",
     "capabilities": [
-      "Retrieve drug mechanisms of action",
-      "Query OpenTarget GraphQL API",
-      "Fetch drug details by ChEMBL ID"
+      "retrieve drug mechanism of action details",
+      "link drugs to target proteins",
+      "support pharmacology interpretation"
     ]
   },
   "contract": {
@@ -42,17 +36,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "mechanism of action",
+      "drug target linkage"
+    ],
+    "weak": [
+      "off-target prediction"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "MOA summaries are not substitutes for full pharmacology reviews."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -72,34 +71,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID",
+      "OpenTargets_get_target_interactions_by_ensemblID",
+      "ChEMBL_search_similar_molecules"
+    ],
+    "commonly_follows": [
+      "OpenTargets_get_associated_diseases_by_drug_chemblId"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "OpenTargets_get_associated_targets_by_drug_chemblId",
-        "score": 0.8882678151130676
-      },
-      {
-        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
-        "score": 0.8688620328903198
-      },
-      {
-        "tool": "OpenTargets_get_drug_adverse_events_by_chemblId",
-        "score": 0.8247863054275513
+        "score": 0.832750678062439
       },
       {
         "tool": "OpenTargets_get_approved_indications_by_drug_chemblId",
-        "score": 0.808208703994751
+        "score": 0.7602506875991821
       },
       {
-        "tool": "OpenTargets_get_drug_trade_names_by_chemblId",
-        "score": 0.8077534437179565
+        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
+        "score": 0.759763777256012
+      },
+      {
+        "tool": "OpenTargets_get_drug_indications_by_chemblId",
+        "score": 0.748345673084259
+      },
+      {
+        "tool": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+        "score": 0.7333236932754517
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Drug MOA expansion",
+        "steps": [
+          "retrieve drug MOA",
+          "expand with target biology"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",

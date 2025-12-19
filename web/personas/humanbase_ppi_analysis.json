@@ -68,7 +68,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -94,11 +94,15 @@
     "similar_tools": [
       {
         "tool": "HPA_get_protein_interactions_by_gene",
-        "score": 0.7035528421401978
+        "score": 0.7076144218444824
       },
       {
         "tool": "GO_get_genes_for_term",
         "score": 0.6794564723968506
+      },
+      {
+        "tool": "HPA_get_gene_basic_info_by_ensembl_id",
+        "score": 0.5988643169403076
       },
       {
         "tool": "HPA_get_contextual_biological_process_analysis",
@@ -107,10 +111,6 @@
       {
         "tool": "HPA_get_biological_processes_by_gene",
         "score": 0.5801054835319519
-      },
-      {
-        "tool": "HPA_get_subcellular_location",
-        "score": 0.5722674131393433
       }
     ]
   },

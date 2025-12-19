@@ -4,19 +4,16 @@
     "canonical_name": "HPA_get_subcellular_location",
     "aliases": [],
     "domain_tags": [
-      "Biological Entities & Annotations",
-      "Omics & Molecular Analysis",
-      "human-data",
-      "protein-localization",
-      "HPAGetSubcellularLocationTool",
-      "Zitnik Lab"
+      "subcellular-localization",
+      "human-protein-atlas",
+      "cell-biology"
     ],
     "role": "API",
-    "description": "Retrieves annotated main and additional subcellular locations for a protein using optimized parameters.\n\nGet annotated subcellular locations for a protein using optimized columns parameter. Retrieves both main and additional subcellular locations efficiently.",
+    "description": "Retrieves annotated main and additional subcellular locations for a protein using optimized parameters.\n\nReturn Human Protein Atlas subcellular localization evidence for a gene, covering compartments and supporting annotations.",
     "capabilities": [
-      "Fetches protein subcellular location annotations",
-      "Retrieves main and additional subcellular locations",
-      "Optimizes data retrieval with specific columns"
+      "retrieve subcellular localization data",
+      "support cellular context for target proteins",
+      "summarize evidence-backed compartments"
     ]
   },
   "contract": {
@@ -38,17 +35,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "subcellular localization",
+      "cellular compartment context"
+    ],
+    "weak": [
+      "dynamic localization under perturbation"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Localization annotations should be validated for specific cell types and conditions."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -68,34 +70,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "HPA_get_gene_basic_info_by_ensembl_id",
+      "HPA_get_protein_interactions_by_gene",
+      "Reactome_get_pathway_reactions"
+    ],
+    "commonly_follows": [
+      "HPA_get_gene_basic_info_by_ensembl_id"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
+        "tool": "HPA_get_protein_interactions_by_gene",
+        "score": 0.6429797410964966
+      },
+      {
         "tool": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
-        "score": 0.683580756187439
+        "score": 0.5996147394180298
       },
       {
-        "tool": "HPA_get_contextual_biological_process_analysis",
-        "score": 0.5887861251831055
+        "tool": "HPA_get_gene_basic_info_by_ensembl_id",
+        "score": 0.5942007303237915
       },
       {
-        "tool": "get_anndata_info",
-        "score": 0.5730643272399902
+        "tool": "HPA_get_comprehensive_gene_details_by_ensembl_id",
+        "score": 0.5869133472442627
       },
       {
         "tool": "UniProt_get_subcellular_location_by_accession",
-        "score": 0.5723349452018738
-      },
-      {
-        "tool": "humanbase_ppi_analysis",
-        "score": 0.5722674131393433
+        "score": 0.5787889957427979
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Cellular context",
+        "steps": [
+          "retrieve subcellular location",
+          "link to pathway and interaction context"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "HPA_get_subcellular_location",

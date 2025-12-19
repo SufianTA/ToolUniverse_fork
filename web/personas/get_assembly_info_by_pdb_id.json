@@ -47,7 +47,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -80,12 +80,12 @@
         "score": 0.7664623260498047
       },
       {
-        "tool": "get_sequence_by_pdb_id",
-        "score": 0.7541937828063965
-      },
-      {
         "tool": "get_protein_classification_by_pdb_id",
         "score": 0.7198996543884277
+      },
+      {
+        "tool": "get_sequence_by_pdb_id",
+        "score": 0.707716703414917
       },
       {
         "tool": "get_emdb_ids_by_pdb_id",

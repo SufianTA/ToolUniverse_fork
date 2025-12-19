@@ -53,7 +53,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -86,16 +86,16 @@
         "score": 0.463977187871933
       },
       {
+        "tool": "ChEMBL_search_similar_molecules",
+        "score": 0.44839343428611755
+      },
+      {
         "tool": "GO_search_terms",
         "score": 0.43128639459609985
       },
       {
         "tool": "Tool_Finder_Keyword",
         "score": 0.4298248589038849
-      },
-      {
-        "tool": "ChEMBL_search_similar_molecules",
-        "score": 0.4188021123409271
       }
     ]
   },

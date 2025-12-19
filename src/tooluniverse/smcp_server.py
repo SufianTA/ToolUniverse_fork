@@ -57,9 +57,9 @@ Examples:
         help="""Load space configuration (preset/workspace).
 
 Supports multiple formats:
-  • HuggingFace:      username/repo, hf:username/repo@v1.0.0
-  • Local files:      ./config.yaml, /absolute/path.yaml
-  • HTTP URLs:        https://example.com/config.yaml
+   HuggingFace:      username/repo, hf:username/repo@v1.0.0
+   Local files:      ./config.yaml, /absolute/path.yaml
+   HTTP URLs:        https://example.com/config.yaml
 
 Examples:
   --load "community/proteomics-toolkit"
@@ -130,10 +130,10 @@ Examples:
     args = parser.parse_args()
 
     try:
-        print("🚀 Starting ToolUniverse SMCP Server...")
-        print("📡 Transport: streamable-http")
-        print(f"🌐 Address: http://{args.host}:{args.port}")
-        print(f"🏷️  Name: {args.name}")
+        print(" Starting ToolUniverse SMCP Server...")
+        print(" Transport: streamable-http")
+        print(f" Address: http://{args.host}:{args.port}")
+        print(f"  Name: {args.name}")
 
         # Load hook configuration if specified
         hook_config = None
@@ -142,7 +142,7 @@ Examples:
 
             with open(args.hook_config_file, "r", encoding="utf-8") as f:
                 hook_config = json.load(f)
-            print(f"🔗 Hook config loaded from: {args.hook_config_file}")
+            print(f" Hook config loaded from: {args.hook_config_file}")
 
         # Determine hook settings
         hooks_enabled = (
@@ -150,17 +150,17 @@ Examples:
         )
         if hooks_enabled:
             if args.hook_type:
-                print(f"🔗 Hooks enabled: {args.hook_type}")
+                print(f" Hooks enabled: {args.hook_type}")
             elif hook_config:
                 hook_count = len(hook_config.get("hooks", []))
-                print(f"🔗 Hooks enabled: {hook_count} custom hooks")
+                print(f" Hooks enabled: {hook_count} custom hooks")
             else:
-                print("🔗 Hooks enabled: default configuration")
+                print(" Hooks enabled: default configuration")
         else:
-            print("🔗 Hooks disabled")
+            print(" Hooks disabled")
 
         if args.compact_mode:
-            print("📦 Compact mode enabled: only core tools will be exposed")
+            print(" Compact mode enabled: only core tools will be exposed")
 
         print()
 
@@ -185,10 +185,10 @@ Examples:
         server.run_simple(transport="http", host=args.host, port=args.port)
 
     except KeyboardInterrupt:
-        print("\n🛑 Server stopped by user")
+        print("\n Server stopped by user")
         sys.exit(0)
     except Exception as e:
-        print(f"❌ Error starting server: {e}")
+        print(f" Error starting server: {e}")
         sys.exit(1)
 
 
@@ -283,9 +283,9 @@ Examples:
         help="""Load space configuration (preset/workspace).
 
 Supports multiple formats:
-  • HuggingFace:      username/repo, hf:username/repo@v1.0.0
-  • Local files:      ./config.yaml, /absolute/path.yaml
-  • HTTP URLs:        https://example.com/config.yaml
+   HuggingFace:      username/repo, hf:username/repo@v1.0.0
+   Local files:      ./config.yaml, /absolute/path.yaml
+   HTTP URLs:        https://example.com/config.yaml
 
 Examples:
   --load "community/proteomics-toolkit"
@@ -386,6 +386,28 @@ Examples:
         help="Enable compact mode: only expose core tools (4 tools) to prevent context window overflow. All tools are still loaded in background for execute_tool to work.",
     )
 
+    # Rich persona exposure options
+    parser.add_argument(
+        "--rich-personas",
+        action="store_true",
+        help="Expose rich tool personas (metadata + embeddings) via MCP.",
+    )
+    parser.add_argument(
+        "--persona-dir",
+        default=os.path.join("web", "personas"),
+        help="Directory containing persona JSON files.",
+    )
+    parser.add_argument(
+        "--persona-embeddings-dir",
+        default=os.path.join("web", "embeddings"),
+        help="Directory containing persona embedding tensors.",
+    )
+    parser.add_argument(
+        "--persona-graph-path",
+        default=os.path.join("web", "persona_graph.json"),
+        help="Path to persona graph JSON.",
+    )
+
     # Hook configuration options (default disabled for stdio)
     hook_group = parser.add_argument_group("Hook Configuration")
     hook_group.add_argument(
@@ -443,7 +465,7 @@ Examples:
             )
 
         except Exception as e:
-            print(f"❌ Error listing categories: {e}", file=sys.stderr)
+            print(f" Error listing categories: {e}", file=sys.stderr)
             sys.exit(1)
         return
 
@@ -476,7 +498,7 @@ Examples:
             total_tools = 0
             for category in sorted(tools_by_category.keys()):
                 tools = sorted(tools_by_category[category])
-                print(f"\n📁 {category} ({len(tools)} tools):", file=sys.stderr)
+                print(f"\n {category} ({len(tools)} tools):", file=sys.stderr)
                 for tool in tools[:10]:  # Show first 10 tools per category
                     print(f"  {tool}", file=sys.stderr)
                 if len(tools) > 10:
@@ -495,26 +517,26 @@ Examples:
             )
 
         except Exception as e:
-            print(f"❌ Error listing tools: {e}", file=sys.stderr)
+            print(f" Error listing tools: {e}", file=sys.stderr)
             sys.exit(1)
         return
 
     try:
-        print(f"🚀 Starting {args.name}...", file=sys.stderr)
-        print("📡 Transport: stdio", file=sys.stderr)
-        print(f"🔍 Search enabled: {not args.no_search}", file=sys.stderr)
+        print(f" Starting {args.name}...", file=sys.stderr)
+        print(" Transport: stdio", file=sys.stderr)
+        print(f" Search enabled: {not args.no_search}", file=sys.stderr)
 
         if args.categories is not None:
             if len(args.categories) == 0:
-                print("📂 No categories specified, loading all tools", file=sys.stderr)
+                print(" No categories specified, loading all tools", file=sys.stderr)
                 tool_categories = None
             else:
                 print(
-                    f"📂 Tool categories: {', '.join(args.categories)}", file=sys.stderr
+                    f" Tool categories: {', '.join(args.categories)}", file=sys.stderr
                 )
                 tool_categories = args.categories
         else:
-            print("📂 Loading all tool categories", file=sys.stderr)
+            print(" Loading all tool categories", file=sys.stderr)
             tool_categories = None
 
         # Handle exclusions and inclusions
@@ -534,7 +556,7 @@ Examples:
                     tool_config_files[category] = path
                 else:
                     print(
-                        f"❌ Invalid tool config file format: {config_spec}",
+                        f" Invalid tool config file format: {config_spec}",
                         file=sys.stderr,
                     )
                     print(
@@ -544,37 +566,37 @@ Examples:
                     sys.exit(1)
 
         if exclude_tools:
-            print(f"🚫 Excluding tools: {', '.join(exclude_tools)}", file=sys.stderr)
+            print(f" Excluding tools: {', '.join(exclude_tools)}", file=sys.stderr)
         if exclude_categories:
             print(
-                f"🚫 Excluding categories: {', '.join(exclude_categories)}",
+                f" Excluding categories: {', '.join(exclude_categories)}",
                 file=sys.stderr,
             )
         if include_tools:
             print(
-                f"✅ Including only specific tools: {len(include_tools)} tools",
+                f" Including only specific tools: {len(include_tools)} tools",
                 file=sys.stderr,
             )
         if tools_file:
-            print(f"📄 Loading tools from file: {tools_file}", file=sys.stderr)
+            print(f" Loading tools from file: {tools_file}", file=sys.stderr)
         if tool_config_files:
             print(
-                f"📦 Additional config files: {', '.join(tool_config_files.keys())}",
+                f" Additional config files: {', '.join(tool_config_files.keys())}",
                 file=sys.stderr,
             )
         if include_tool_types:
             print(
-                f"🎯 Including tool types: {', '.join(include_tool_types)}",
+                f" Including tool types: {', '.join(include_tool_types)}",
                 file=sys.stderr,
             )
         if exclude_tool_types:
             print(
-                f"🚫 Excluding tool types: {', '.join(exclude_tool_types)}",
+                f" Excluding tool types: {', '.join(exclude_tool_types)}",
                 file=sys.stderr,
             )
         if args.compact_mode:
             print(
-                "📦 Compact mode enabled: only core tools will be exposed",
+                " Compact mode enabled: only core tools will be exposed",
                 file=sys.stderr,
             )
 
@@ -586,7 +608,7 @@ Examples:
             with open(args.hook_config_file, "r", encoding="utf-8") as f:
                 hook_config = json.load(f)
             print(
-                f"🔗 Hook config loaded from: {args.hook_config_file}", file=sys.stderr
+                f" Hook config loaded from: {args.hook_config_file}", file=sys.stderr
             )
 
         # Determine hook settings (default disabled for stdio)
@@ -600,16 +622,16 @@ Examples:
             hook_type = "SummarizationHook"
         if hooks_enabled:
             if hook_type:
-                print(f"🔗 Hooks enabled: {hook_type}", file=sys.stderr)
+                print(f" Hooks enabled: {hook_type}", file=sys.stderr)
             elif hook_config:
                 hook_count = len(hook_config.get("hooks", []))
-                print(f"🔗 Hooks enabled: {hook_count} custom hooks", file=sys.stderr)
+                print(f" Hooks enabled: {hook_count} custom hooks", file=sys.stderr)
             else:
-                print("🔗 Hooks enabled: default configuration", file=sys.stderr)
+                print(" Hooks enabled: default configuration", file=sys.stderr)
         else:
-            print("🔗 Hooks disabled", file=sys.stderr)
+            print(" Hooks disabled", file=sys.stderr)
 
-        print(f"⚡ Max workers: {args.max_workers}", file=sys.stderr)
+        print(f" Max workers: {args.max_workers}", file=sys.stderr)
         print(file=sys.stderr)
 
         # Create SMCP server with Space and tool configuration support
@@ -640,10 +662,10 @@ Examples:
         server.run_simple(transport="stdio")
 
     except KeyboardInterrupt:
-        print("\n🛑 Server stopped by user", file=sys.stderr)
+        print("\n Server stopped by user", file=sys.stderr)
         sys.exit(0)
     except Exception as e:
-        print(f"❌ Error starting server: {e}", file=sys.stderr)
+        print(f" Error starting server: {e}", file=sys.stderr)
         if args.verbose:
             import traceback
 
@@ -721,9 +743,9 @@ Examples:
         help="""Load space configuration (preset/workspace).
 
 Supports multiple formats:
-  • HuggingFace:      username/repo, hf:username/repo@v1.0.0
-  • Local files:      ./config.yaml, /absolute/path.yaml
-  • HTTP URLs:        https://example.com/config.yaml
+   HuggingFace:      username/repo, hf:username/repo@v1.0.0
+   Local files:      ./config.yaml, /absolute/path.yaml
+   HTTP URLs:        https://example.com/config.yaml
 
 Examples:
   --load "community/proteomics-toolkit"
@@ -890,7 +912,7 @@ Examples:
             )
 
         except Exception as e:
-            print(f"❌ Error listing categories: {e}")
+            print(f" Error listing categories: {e}")
             sys.exit(1)
         return
 
@@ -935,26 +957,26 @@ Examples:
             print("      Use --exclude-categories to exclude entire categories")
 
         except Exception as e:
-            print(f"❌ Error listing tools: {e}")
+            print(f" Error listing tools: {e}")
             sys.exit(1)
         return
 
     try:
-        print(f"🚀 Starting {args.name}...")
-        print(f"📡 Transport: {args.transport}")
+        print(f" Starting {args.name}...")
+        print(f" Transport: {args.transport}")
         if args.transport in ["http", "sse"]:
-            print(f"🌐 Address: http://{args.host}:{args.port}")
-        print(f"🔍 Search enabled: {not args.no_search}")
+            print(f" Address: http://{args.host}:{args.port}")
+        print(f" Search enabled: {not args.no_search}")
 
         if args.categories is not None:
             if len(args.categories) == 0:
-                print("📂 No categories specified, loading all tools")
+                print(" No categories specified, loading all tools")
                 tool_categories = None
             else:
-                print(f"📂 Tool categories: {', '.join(args.categories)}")
+                print(f" Tool categories: {', '.join(args.categories)}")
                 tool_categories = args.categories
         else:
-            print("📂 Loading all tool categories")
+            print(" Loading all tool categories")
             tool_categories = None
 
         # Handle exclusions and inclusions
@@ -973,26 +995,26 @@ Examples:
                     category, path = config_spec.split(":", 1)
                     tool_config_files[category] = path
                 else:
-                    print(f"❌ Invalid tool config file format: {config_spec}")
+                    print(f" Invalid tool config file format: {config_spec}")
                     print("   Expected format: 'category:/path/to/config.json'")
                     sys.exit(1)
 
         if exclude_tools:
-            print(f"🚫 Excluding tools: {', '.join(exclude_tools)}")
+            print(f" Excluding tools: {', '.join(exclude_tools)}")
         if exclude_categories:
-            print(f"🚫 Excluding categories: {', '.join(exclude_categories)}")
+            print(f" Excluding categories: {', '.join(exclude_categories)}")
         if include_tools:
-            print(f"✅ Including only specific tools: {len(include_tools)} tools")
+            print(f" Including only specific tools: {len(include_tools)} tools")
         if tools_file:
-            print(f"📄 Loading tools from file: {tools_file}")
+            print(f" Loading tools from file: {tools_file}")
         if tool_config_files:
-            print(f"📦 Additional config files: {', '.join(tool_config_files.keys())}")
+            print(f" Additional config files: {', '.join(tool_config_files.keys())}")
         if include_tool_types:
-            print(f"🎯 Including tool types: {', '.join(include_tool_types)}")
+            print(f" Including tool types: {', '.join(include_tool_types)}")
         if exclude_tool_types:
-            print(f"🚫 Excluding tool types: {', '.join(exclude_tool_types)}")
+            print(f" Excluding tool types: {', '.join(exclude_tool_types)}")
         if args.compact_mode:
-            print("📦 Compact mode enabled: only core tools will be exposed")
+            print(" Compact mode enabled: only core tools will be exposed")
 
         # Load hook configuration if specified
         hook_config = None
@@ -1001,7 +1023,7 @@ Examples:
 
             with open(args.hook_config_file, "r", encoding="utf-8") as f:
                 hook_config = json.load(f)
-            print(f"🔗 Hook config loaded from: {args.hook_config_file}")
+            print(f" Hook config loaded from: {args.hook_config_file}")
 
         # Determine hook settings
         hooks_enabled = (
@@ -1009,16 +1031,16 @@ Examples:
         )
         if hooks_enabled:
             if args.hook_type:
-                print(f"🔗 Hooks enabled: {args.hook_type}")
+                print(f" Hooks enabled: {args.hook_type}")
             elif hook_config:
                 hook_count = len(hook_config.get("hooks", []))
-                print(f"🔗 Hooks enabled: {hook_count} custom hooks")
+                print(f" Hooks enabled: {hook_count} custom hooks")
             else:
-                print("🔗 Hooks enabled: default configuration")
+                print(" Hooks enabled: default configuration")
         else:
-            print("🔗 Hooks disabled")
+            print(" Hooks disabled")
 
-        print(f"⚡ Max workers: {args.max_workers}")
+        print(f" Max workers: {args.max_workers}")
         print()
 
         # Create SMCP server with Space and hook support
@@ -1049,10 +1071,10 @@ Examples:
         server.run_simple(transport=args.transport, host=args.host, port=args.port)
 
     except KeyboardInterrupt:
-        print("\n🛑 Server stopped by user")
+        print("\n Server stopped by user")
         sys.exit(0)
     except Exception as e:
-        print(f"❌ Error starting server: {e}")
+        print(f" Error starting server: {e}")
         if args.verbose:
             import traceback
 

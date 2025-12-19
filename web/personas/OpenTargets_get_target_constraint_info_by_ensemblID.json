@@ -52,7 +52,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -81,16 +81,16 @@
         "score": 0.7723888158798218
       },
       {
-        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-        "score": 0.7208203077316284
-      },
-      {
         "tool": "OpenTargets_get_chemical_probes_by_target_ensemblID",
         "score": 0.7143192291259766
       },
       {
         "tool": "OpenTargets_get_target_subcellular_locations_by_ensemblID",
         "score": 0.7050243020057678
+      },
+      {
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.7047045230865479
       },
       {
         "tool": "OpenTargets_get_target_id_description_by_name",

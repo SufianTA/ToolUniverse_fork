@@ -54,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -83,20 +83,20 @@
         "score": 0.6030058264732361
       },
       {
+        "tool": "HPA_get_protein_interactions_by_gene",
+        "score": 0.5541635751724243
+      },
+      {
         "tool": "humanbase_ppi_analysis",
         "score": 0.5372220277786255
       },
       {
-        "tool": "HPA_get_protein_interactions_by_gene",
-        "score": 0.5371852517127991
-      },
-      {
         "tool": "HPA_get_subcellular_location",
-        "score": 0.4654020071029663
+        "score": 0.45991939306259155
       },
       {
-        "tool": "boltz2_docking",
-        "score": 0.4201034903526306
+        "tool": "OpenTargets_get_target_interactions_by_ensemblID",
+        "score": 0.4202640950679779
       }
     ]
   },

@@ -15,10 +15,30 @@ import json
 import time
 import os
 import sys
+import threading
 from pathlib import Path
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+
+SUBPROCESS_ENV = os.environ.copy()
+SUBPROCESS_ENV["PYTHONIOENCODING"] = "utf-8"
+SUBPROCESS_ENV["PYTHONUTF8"] = "1"
+
+
+def _start_stderr_reader(process):
+    lines = []
+
+    def _reader():
+        try:
+            for line in process.stderr:
+                lines.append(line)
+        except Exception:
+            return
+
+    thread = threading.Thread(target=_reader, daemon=True)
+    thread.start()
+    return lines
 
 
 @pytest.mark.integration
@@ -44,8 +64,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start (hooks take longer)
@@ -130,8 +153,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start
@@ -217,8 +243,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start
@@ -295,8 +324,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start
@@ -379,8 +411,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start
@@ -410,8 +445,8 @@ run_stdio_server()
             assert response_data["jsonrpc"] == "2.0"
             
             # Check that stderr contains logs (not stdout)
-            stderr_output = process.stderr.read(1000)  # Read some stderr
-            assert stderr_output  # Should contain logs
+            time.sleep(1)
+            assert stderr_lines  # Should contain logs
             
         finally:
             # Clean up
@@ -435,8 +470,11 @@ run_stdio_server()
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            env=SUBPROCESS_ENV,
             bufsize=1
         )
+        stderr_lines = _start_stderr_reader(process)
         
         try:
             # Wait for server to start

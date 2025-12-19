@@ -61,7 +61,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -98,12 +98,12 @@
         "score": 0.7495126128196716
       },
       {
-        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.7458101511001587
-      },
-      {
         "tool": "OpenTargets_get_disease_descendants_children_by_efoId",
         "score": 0.7444430589675903
+      },
+      {
+        "tool": "OpenTargets_get_disease_id_description_by_name",
+        "score": 0.7410333156585693
       }
     ]
   },

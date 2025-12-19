@@ -75,7 +75,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -104,10 +104,6 @@
         "score": 0.8642064332962036
       },
       {
-        "tool": "FAERS_count_reactions_by_drug_event",
-        "score": 0.8565350770950317
-      },
-      {
         "tool": "FAERS_count_additive_event_reports_by_country",
         "score": 0.8561620712280273
       },
@@ -118,6 +114,10 @@
       {
         "tool": "FAERS_count_additive_seriousness_classification",
         "score": 0.8271563053131104
+      },
+      {
+        "tool": "FAERS_count_outcomes_by_drug_event",
+        "score": 0.8256723284721375
       }
     ]
   },

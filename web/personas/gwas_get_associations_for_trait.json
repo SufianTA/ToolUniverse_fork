@@ -4,23 +4,16 @@
     "canonical_name": "gwas_get_associations_for_trait",
     "aliases": [],
     "domain_tags": [
-      "Biological Entities & Annotations",
-      "Data Access & Management",
-      "Data Processing",
-      "Omics & Molecular Analysis",
-      "Statistical & Analytical Methods",
-      "bioinformatics-tool",
-      "computational-genomics",
-      "ontology",
-      "GWASAssociationsForTrait",
-      "Zitnik Lab"
+      "gwas",
+      "genetic-association",
+      "trait-genetics"
     ],
     "role": "API",
-    "description": "Fetch GWAS associations for a specified trait, sorted by p-value.\n\nGet all associations for a specific trait, sorted by p-value (most significant first).",
+    "description": "Fetch GWAS associations for a specified trait, sorted by p-value.\n\nRetrieve GWAS Catalog associations for a given trait, returning studies, SNPs, and reported associations.",
     "capabilities": [
-      "Retrieve GWAS associations for a specified trait",
-      "Sort associations by statistical significance (p-value)",
-      "Support pagination with size and page parameters"
+      "search GWAS associations by trait",
+      "return associated SNPs and studies",
+      "support genetic evidence collection"
     ]
   },
   "contract": {
@@ -50,17 +43,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "GWAS association retrieval",
+      "genetic evidence summary"
+    ],
+    "weak": [
+      "causal inference"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "GWAS associations should not be interpreted as deterministic risk predictions."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -80,34 +78,47 @@
     }
   },
   "relationships": {
-    "used_with": [],
+    "used_with": [
+      "gwas_get_snps_for_gene",
+      "OpenTargets_get_associated_targets_by_disease_efoId",
+      "EuropePMC_search_articles"
+    ],
     "commonly_follows": [],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "gwas_search_associations",
-        "score": 0.7702142000198364
-      },
-      {
-        "tool": "gwas_get_associations_for_study",
-        "score": 0.6883354187011719
-      },
-      {
-        "tool": "gwas_get_association_by_id",
-        "score": 0.662574052810669
-      },
-      {
-        "tool": "gwas_get_variants_for_trait",
-        "score": 0.6569231748580933
+        "score": 0.7970239520072937
       },
       {
         "tool": "gwas_get_studies_for_trait",
-        "score": 0.6446837782859802
+        "score": 0.7578400373458862
+      },
+      {
+        "tool": "gwas_get_variants_for_trait",
+        "score": 0.7073101997375488
+      },
+      {
+        "tool": "gwas_get_study_by_id",
+        "score": 0.7051067352294922
+      },
+      {
+        "tool": "gwas_get_snps_for_gene",
+        "score": 0.7017718553543091
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Genetic evidence",
+        "steps": [
+          "retrieve GWAS associations",
+          "map SNPs to targets",
+          "review literature"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "gwas_get_associations_for_trait",

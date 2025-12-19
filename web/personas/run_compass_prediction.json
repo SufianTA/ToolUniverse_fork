@@ -26,7 +26,7 @@
       },
       "threshold": {
         "type": "number",
-        "description": "Probability threshold for responder classification (0.0-1.0). Values ≥ threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
+        "description": "Probability threshold for responder classification (0.0-1.0). Values \u2265 threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
       },
       "root_path": {
         "type": "string",
@@ -55,7 +55,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -113,7 +113,7 @@
       },
       "threshold": {
         "type": "number",
-        "description": "Probability threshold for responder classification (0.0-1.0). Values ≥ threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
+        "description": "Probability threshold for responder classification (0.0-1.0). Values \u2265 threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
       },
       "root_path": {
         "type": "string",

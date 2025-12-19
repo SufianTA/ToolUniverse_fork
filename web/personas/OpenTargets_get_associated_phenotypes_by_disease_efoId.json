@@ -48,7 +48,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,10 +73,6 @@
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.8093400001525879
-      },
-      {
         "tool": "get_HPO_ID_by_phenotype",
         "score": 0.801966667175293
       },
@@ -91,6 +87,10 @@
       {
         "tool": "OpenTargets_get_disease_id_description_by_name",
         "score": 0.7372838258743286
+      },
+      {
+        "tool": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
+        "score": 0.7312730550765991
       }
     ]
   },

@@ -4,24 +4,17 @@
     "canonical_name": "UniProt_get_function_by_accession",
     "aliases": [],
     "domain_tags": [
-      "API",
-      "Identifiers & Nomenclature",
-      "Omics & Molecular Analysis",
-      "computational-biology-tool",
-      "functionalities",
-      "research",
-      "sequence-analysis",
-      "uniprot-rest-api",
-      "uniprotkb-accession-query",
-      "UniProtRESTTool",
-      "Zitnik Lab"
+      "protein-function",
+      "uniprot",
+      "functional-annotation",
+      "bioinformatics"
     ],
     "role": "API",
-    "description": "Retrieve functional annotations from a UniProtKB entry.\n\nExtract functional annotations from UniProtKB entry (Comment type = FUNCTION).",
+    "description": "Retrieve functional annotations from a UniProtKB entry.\n\nExtract UniProtKB functional annotation for a protein, including molecular function, catalytic activity, and subunit information when available.",
     "capabilities": [
-      "Fetch entry from UniProt REST API",
-      "Extract functional annotation texts",
-      "Return list of functional paragraphs"
+      "retrieve curated functional summaries",
+      "surface catalytic activity and biological roles",
+      "support target understanding for downstream assays"
     ]
   },
   "contract": {
@@ -43,17 +36,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "functional annotation",
+      "protein role summaries"
+    ],
+    "weak": [
+      "functional prediction for novel proteins"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Functional annotations should be cross-validated with literature for clinical claims."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,34 +71,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "UniProt_get_entry_by_accession",
+      "Reactome_get_pathway_reactions",
+      "EuropePMC_search_articles"
+    ],
+    "commonly_follows": [
+      "UniProt_get_entry_by_accession"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
-        "tool": "UniProt_get_disease_variants_by_accession",
-        "score": 0.697324275970459
+        "tool": "UniProt_get_sequence_by_accession",
+        "score": 0.7691789865493774
       },
       {
         "tool": "UniProt_get_subcellular_location_by_accession",
-        "score": 0.5449531674385071
-      },
-      {
-        "tool": "UniProt_get_sequence_by_accession",
-        "score": 0.5155434012413025
+        "score": 0.7356768846511841
       },
       {
         "tool": "UniProt_get_entry_by_accession",
-        "score": 0.5095168352127075
+        "score": 0.6972508430480957
       },
       {
-        "tool": "UniProt_get_alternative_names_by_accession",
-        "score": 0.5092345476150513
+        "tool": "UniProt_get_disease_variants_by_accession",
+        "score": 0.6769157648086548
+      },
+      {
+        "tool": "UniProt_get_ptm_processing_by_accession",
+        "score": 0.608575701713562
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Functional context",
+        "steps": [
+          "retrieve functional annotation",
+          "link to pathways and literature"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "UniProt_get_function_by_accession",

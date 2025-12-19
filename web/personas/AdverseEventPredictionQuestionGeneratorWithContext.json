@@ -61,7 +61,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -94,12 +94,12 @@
         "score": 0.5923973321914673
       },
       {
-        "tool": "FDA_get_adverse_reactions_by_drug_name",
-        "score": 0.583311140537262
-      },
-      {
         "tool": "FDA_get_drug_names_by_alarm",
         "score": 0.5724740028381348
+      },
+      {
+        "tool": "FAERS_count_reactions_by_drug_event",
+        "score": 0.5696513652801514
       },
       {
         "tool": "AdverseEventICDMapper",

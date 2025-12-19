@@ -6,6 +6,15 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
+def _deep_merge(base: Dict, overrides: Dict) -> Dict:
+    for key, value in overrides.items():
+        if isinstance(value, dict) and isinstance(base.get(key), dict):
+            _deep_merge(base[key], value)
+        else:
+            base[key] = value
+    return base
+
+
 def _ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
@@ -184,6 +193,7 @@ def build_personas(
     graph_path: Path,
     tool_file: Path,
     rich_out: Path,
+    persona_overrides_path: Optional[Path] = None,
 ) -> None:
     model = None
     try:
@@ -192,6 +202,14 @@ def build_personas(
         # Fall back to no-embedding mode if model cannot load
         model = None
     tools = _load_tools(tool_file)
+    persona_overrides: Dict[str, Dict] = {}
+    if persona_overrides_path and persona_overrides_path.exists():
+        try:
+            persona_overrides = json.loads(
+                persona_overrides_path.read_text(encoding="utf-8")
+            )
+        except Exception:
+            persona_overrides = {}
 
     _ensure_dir(persona_dir)
     _ensure_dir(embedding_dir)
@@ -214,7 +232,17 @@ def build_personas(
         if tool_filter and name not in tool_filter:
             continue
 
+        tool = tool.copy()
+        overrides = persona_overrides.get(name, {})
+        tool_overrides = overrides.get("tool", {})
+        if isinstance(tool_overrides, dict) and tool_overrides:
+            tool = _deep_merge(tool, tool_overrides)
+
         persona = _default_persona(tool, timestamp)
+
+        persona_overrides_payload = overrides.get("persona", {})
+        if isinstance(persona_overrides_payload, dict) and persona_overrides_payload:
+            persona = _deep_merge(persona, persona_overrides_payload)
 
         # Preserve existing embeddings metadata if present
         existing_path = persona_dir.joinpath(f"{name}.json")
@@ -400,6 +428,11 @@ def parse_args() -> argparse.Namespace:
         default=os.path.join("web", "v5_all_tools_rich.json"),
         help="Path to write enriched tool catalog with persona metadata.",
     )
+    parser.add_argument(
+        "--persona-overrides",
+        default=os.path.join("web", "persona_overrides.json"),
+        help="Optional JSON file with persona/tool override payloads.",
+    )
     return parser.parse_args()
 
 
@@ -413,6 +446,7 @@ def main() -> None:
         graph_path=Path(args.graph_path),
         tool_file=Path(args.tool_file),
         rich_out=Path(args.rich_out),
+        persona_overrides_path=Path(args.persona_overrides) if args.persona_overrides else None,
     )
 
 

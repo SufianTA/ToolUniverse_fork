@@ -1,4 +1,4 @@
-"""
+﻿"""
 embedding_database_search
 
 Semantic search over a per-collection datastore using FAISS (cosine via L2-normalized vectors). S...

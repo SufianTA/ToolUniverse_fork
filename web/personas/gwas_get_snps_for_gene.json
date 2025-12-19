@@ -4,20 +4,15 @@
     "canonical_name": "gwas_get_snps_for_gene",
     "aliases": [],
     "domain_tags": [
-      "Bioinformatics Tools",
-      "Biological Entities & Annotations",
-      "Data Access & Management",
-      "Data Processing",
-      "Omics & Molecular Analysis",
-      "population",
-      "GWASSNPsForGene",
-      "Zitnik Lab"
+      "gwas",
+      "snp-association",
+      "gene-genetics"
     ],
     "role": "API",
-    "description": "Retrieve SNPs mapped to a specific gene with optional pagination\n\nGet all SNPs mapped to a specific gene.",
+    "description": "Retrieve SNPs mapped to a specific gene with optional pagination\n\nRetrieve GWAS Catalog SNPs associated with a gene of interest, supporting gene-centric association lookup.",
     "capabilities": [
-      "Get all SNPs mapped to a specific gene",
-      "Support pagination via size and page parameters"
+      "retrieve SNPs associated with a gene",
+      "support gene-centric genetic evidence"
     ]
   },
   "contract": {
@@ -47,17 +42,21 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "gene-SNP association retrieval"
+    ],
+    "weak": [
+      "clinical risk prediction"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "SNP associations should be interpreted in population context."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -77,34 +76,47 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "gwas_get_associations_for_trait",
+      "OpenTargets_get_associated_targets_by_disease_efoId"
+    ],
+    "commonly_follows": [
+      "gwas_get_associations_for_trait"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "gwas_get_variants_for_trait",
-        "score": 0.6410783529281616
+        "score": 0.7747935056686401
       },
       {
-        "tool": "gwas_get_associations_for_snp",
-        "score": 0.6309305429458618
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.7017718553543091
       },
       {
         "tool": "gwas_get_snp_by_id",
-        "score": 0.5572270154953003
+        "score": 0.681833028793335
       },
       {
         "tool": "gwas_search_snps",
-        "score": 0.5470348596572876
+        "score": 0.6811485290527344
       },
       {
-        "tool": "GO_get_annotations_for_gene",
-        "score": 0.5357983112335205
+        "tool": "gwas_search_associations",
+        "score": 0.6465853452682495
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Gene-centric GWAS",
+        "steps": [
+          "retrieve SNPs for gene",
+          "connect to disease or trait evidence"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "gwas_get_snps_for_gene",

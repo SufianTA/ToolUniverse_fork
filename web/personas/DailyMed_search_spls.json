@@ -4,22 +4,16 @@
     "canonical_name": "DailyMed_search_spls",
     "aliases": [],
     "domain_tags": [
-      "Data Access & Management",
-      "Data Processing",
-      "Pharmacology & Drug Services",
-      "Regulatory & Compliance",
-      "SPL",
-      "Search & Retrieval",
-      "pharmacology",
-      "structured-data",
-      "SearchSPLTool",
-      "Zitnik Lab"
+      "dailymed",
+      "drug-labels",
+      "regulatory-information"
     ],
     "role": "API",
-    "description": "Search SPL entries using various filters and retrieve metadata with results.\n\nSearch SPL list using multiple filter conditions (drug_name/ndc/rxcui/setid) and return metadata + data array.",
+    "description": "Search SPL entries using various filters and retrieve metadata with results.\n\nSearch DailyMed Structured Product Labels (SPLs) for a drug or product name, returning label identifiers and metadata.",
     "capabilities": [
-      "Search SPL list with multiple filter conditions",
-      "Return metadata and data array"
+      "search SPLs by drug or product name",
+      "retrieve label metadata for regulatory context",
+      "support downstream label detail retrieval"
     ]
   },
   "contract": {
@@ -69,17 +63,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "drug label discovery",
+      "regulatory label lookup"
+    ],
+    "weak": [
+      "clinical outcome inference"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Label content should be checked for version and manufacturer context."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -99,34 +98,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "FDA_get_adverse_reactions_by_drug_name",
+      "FAERS_count_reactions_by_drug_event"
+    ],
+    "commonly_follows": [
+      "FDA_get_adverse_reactions_by_drug_name"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "FDA_get_spl_indexing_data_elements_by_drug_name",
-        "score": 0.7387144565582275
+        "score": 0.8055654764175415
       },
       {
         "tool": "FDA_get_drug_names_by_spl_indexing_data_elements",
-        "score": 0.7188960313796997
+        "score": 0.7808753252029419
       },
       {
         "tool": "FDA_get_drug_name_by_SPL_ID",
-        "score": 0.6980170011520386
+        "score": 0.7369909286499023
+      },
+      {
+        "tool": "FDA_get_adverse_reactions_by_drug_name",
+        "score": 0.6467022895812988
       },
       {
         "tool": "FDA_get_spl_unclassified_section_by_drug_name",
-        "score": 0.6709998250007629
-      },
-      {
-        "tool": "FDA_get_drug_name_by_storage_and_handling_info",
-        "score": 0.6235966682434082
+        "score": 0.6070513725280762
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Regulatory context",
+        "steps": [
+          "search SPLs",
+          "review label sections",
+          "compare with adverse event data"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "DailyMed_search_spls",

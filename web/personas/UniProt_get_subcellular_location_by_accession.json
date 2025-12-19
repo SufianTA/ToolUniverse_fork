@@ -53,7 +53,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -78,24 +78,24 @@
     "validates_output_of": [],
     "similar_tools": [
       {
+        "tool": "UniProt_get_function_by_accession",
+        "score": 0.7356768846511841
+      },
+      {
+        "tool": "UniProt_get_sequence_by_accession",
+        "score": 0.647871196269989
+      },
+      {
         "tool": "UniProt_get_organism_by_accession",
         "score": 0.5824887752532959
       },
       {
         "tool": "HPA_get_subcellular_location",
-        "score": 0.5723349452018738
+        "score": 0.5787889957427979
       },
       {
-        "tool": "UniProt_get_function_by_accession",
-        "score": 0.5449531674385071
-      },
-      {
-        "tool": "UniProt_get_disease_variants_by_accession",
-        "score": 0.5211154818534851
-      },
-      {
-        "tool": "UniProt_get_recommended_name_by_accession",
-        "score": 0.519119143486023
+        "tool": "UniProt_get_entry_by_accession",
+        "score": 0.5613148808479309
       }
     ]
   },

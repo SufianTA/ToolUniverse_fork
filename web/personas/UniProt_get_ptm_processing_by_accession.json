@@ -48,7 +48,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -73,24 +73,24 @@
     "validates_output_of": [],
     "similar_tools": [
       {
+        "tool": "UniProt_get_function_by_accession",
+        "score": 0.608575701713562
+      },
+      {
         "tool": "UniProt_get_disease_variants_by_accession",
         "score": 0.6068089008331299
       },
       {
+        "tool": "UniProt_get_entry_by_accession",
+        "score": 0.5783479809761047
+      },
+      {
         "tool": "UniProt_get_sequence_by_accession",
-        "score": 0.5525504946708679
+        "score": 0.5745142698287964
       },
       {
         "tool": "UniProt_get_isoform_ids_by_accession",
         "score": 0.5311441421508789
-      },
-      {
-        "tool": "UniProt_get_function_by_accession",
-        "score": 0.5089027881622314
-      },
-      {
-        "tool": "UniProt_get_alternative_names_by_accession",
-        "score": 0.5065343976020813
       }
     ]
   },

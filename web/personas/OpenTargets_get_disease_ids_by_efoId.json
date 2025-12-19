@@ -50,7 +50,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -87,12 +87,12 @@
         "score": 0.7211475372314453
       },
       {
-        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.7145483493804932
-      },
-      {
         "tool": "OpenTargets_get_associated_drugs_by_disease_efoId",
         "score": 0.7000253200531006
+      },
+      {
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.6964860558509827
       }
     ]
   },

@@ -48,7 +48,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -81,16 +81,16 @@
         "score": 0.8395875692367554
       },
       {
-        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
-        "score": 0.8029074668884277
-      },
-      {
         "tool": "OpenTargets_get_disease_id_description_by_name",
         "score": 0.7907390594482422
       },
       {
         "tool": "OpenTargets_get_disease_locations_by_efoId",
         "score": 0.733616828918457
+      },
+      {
+        "tool": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
+        "score": 0.7312730550765991
       }
     ]
   },

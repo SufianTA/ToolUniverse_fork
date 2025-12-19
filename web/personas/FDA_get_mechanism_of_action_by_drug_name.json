@@ -59,7 +59,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -92,16 +92,16 @@
         "score": 0.8377177119255066
       },
       {
-        "tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-        "score": 0.7814755439758301
-      },
-      {
         "tool": "FDA_get_pharmacodynamics_by_drug_name",
         "score": 0.7670495510101318
       },
       {
         "tool": "FDA_get_drug_interactions_by_drug_name",
         "score": 0.7427138090133667
+      },
+      {
+        "tool": "FDA_get_instructions_for_use_by_drug_name",
+        "score": 0.736348569393158
       }
     ]
   },

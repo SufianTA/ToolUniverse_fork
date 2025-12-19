@@ -36,10 +36,15 @@ def dbsnp_get_variant_by_rsid(
     # Handle mutable defaults to avoid B006 linting error
 
     return get_shared_client().run_one_function(
-        {"name": "dbsnp_get_variant_by_rsid", "arguments": {"rsid": rsid}},
+        {
+            "name": "dbsnp_get_variant_by_rsid",
+            "arguments": {
+                "rsid": rsid
+            }
+        },
         stream_callback=stream_callback,
         use_cache=use_cache,
-        validate=validate,
+        validate=validate
     )
 
 

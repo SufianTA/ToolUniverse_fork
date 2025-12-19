@@ -58,7 +58,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -91,16 +91,16 @@
         "score": 0.6813154220581055
       },
       {
+        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+        "score": 0.6342371702194214
+      },
+      {
         "tool": "cancer_gene_census_disease_target_score",
         "score": 0.6290053725242615
       },
       {
         "tool": "expression_atlas_disease_target_score",
         "score": 0.6265436410903931
-      },
-      {
-        "tool": "reactome_disease_target_score",
-        "score": 0.624157190322876
       }
     ]
   },

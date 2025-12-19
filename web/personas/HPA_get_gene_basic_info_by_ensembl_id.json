@@ -4,23 +4,17 @@
     "canonical_name": "HPA_get_gene_basic_info_by_ensembl_id",
     "aliases": [],
     "domain_tags": [
-      "API",
-      "Biological Entities & Annotations",
-      "Omics & Molecular Analysis",
-      "bioinformatics-integration",
-      "ensmb",
-      "functional-genomics",
-      "human-data",
-      "HPAGetGeneJSONTool",
-      "Zitnik Lab"
+      "human-protein-atlas",
+      "gene-metadata",
+      "tissue-specificity",
+      "ensembl"
     ],
     "role": "API",
-    "description": "Retrieves gene information and expression data from Human Protein Atlas using Ensembl Gene ID via the efficient JSON API.\n\nGet gene basic information and expression data from Human Protein Atlas using Ensembl Gene ID. Enhanced version now uses efficient JSON API.",
+    "description": "Retrieves gene information and expression data from Human Protein Atlas using Ensembl Gene ID via the efficient JSON API.\n\nRetrieve Human Protein Atlas basic gene information for an Ensembl gene ID, including gene name, description, and high-level tissue specificity signals.",
     "capabilities": [
-      "Retrieve basic gene information",
-      "Fetch gene expression data",
-      "Utilize Human Protein Atlas JSON API",
-      "Query by Ensembl Gene ID"
+      "map Ensembl IDs to HPA gene summaries",
+      "return basic gene metadata",
+      "support tissue-specific context"
     ]
   },
   "contract": {
@@ -42,17 +36,22 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "gene summary retrieval",
+      "tissue specificity overview"
+    ],
+    "weak": [
+      "variant interpretation"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Do not use tissue specificity summaries as diagnostic evidence."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -72,34 +71,48 @@
     }
   },
   "relationships": {
-    "used_with": [],
-    "commonly_follows": [],
+    "used_with": [
+      "HPA_get_subcellular_location",
+      "HPA_get_protein_interactions_by_gene",
+      "OpenTargets_get_target_gene_ontology_by_ensemblID"
+    ],
+    "commonly_follows": [
+      "OpenTargets_get_target_gene_ontology_by_ensemblID"
+    ],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "HPA_get_comprehensive_gene_details_by_ensembl_id",
-        "score": 0.7909773588180542
+        "score": 0.8346250653266907
       },
       {
         "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
-        "score": 0.7607309818267822
+        "score": 0.7824455499649048
       },
       {
         "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-        "score": 0.7080225944519043
-      },
-      {
-        "tool": "HPA_get_protein_interactions_by_gene",
-        "score": 0.6623005867004395
+        "score": 0.7085642218589783
       },
       {
         "tool": "OpenTargets_get_target_genomic_location_by_ensemblID",
-        "score": 0.6548843383789062
+        "score": 0.6751827597618103
+      },
+      {
+        "tool": "HPA_get_protein_interactions_by_gene",
+        "score": 0.6692479848861694
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Target background",
+        "steps": [
+          "retrieve gene basic info",
+          "extend with subcellular location and interactions"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "HPA_get_gene_basic_info_by_ensembl_id",

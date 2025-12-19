@@ -4,20 +4,17 @@
     "canonical_name": "ChEMBL_search_similar_molecules",
     "aliases": [],
     "domain_tags": [
-      "Cheminformatics & Chemical Analysis",
-      "Pharmacology & Drug Services",
-      "chembl-id-query",
-      "compound-name-search",
-      "virtual-screening",
-      "ChEMBLTool",
-      "Zitnik Lab"
+      "chembl",
+      "cheminformatics",
+      "similarity-search",
+      "virtual-screening"
     ],
     "role": "API",
-    "description": "Search molecules similar to a given SMILES, ChEMBL ID, or compound/drug name via ChEMBL API.\n\nSearch for molecules similar to a given SMILES, chembl_id, or compound or drug name, using the ChEMBL Web Services.",
+    "description": "Search molecules similar to a given SMILES, ChEMBL ID, or compound/drug name via ChEMBL API.\n\nSearch for chemically similar molecules using a SMILES string, ChEMBL ID, or compound name, returning ranked analogs and identifiers.",
     "capabilities": [
-      "Search molecules similar to a given SMILES",
-      "Search molecules similar to a given ChEMBL ID",
-      "Search molecules similar to a given compound or drug name"
+      "perform similarity search by SMILES or ChEMBL ID",
+      "return analog molecules for lead expansion",
+      "support virtual screening workflows"
     ]
   },
   "contract": {
@@ -47,17 +44,23 @@
     "empty_rate": null
   },
   "domain_validity": {
-    "strong": [],
-    "weak": []
+    "strong": [
+      "chemical similarity search",
+      "lead expansion"
+    ],
+    "weak": [
+      "bioactivity prediction",
+      "clinical efficacy"
+    ]
   },
   "safety": {
     "hard_constraints": [],
-    "misuse_cases": "None for now"
+    "misuse_cases": "Chemical similarity does not imply safety or efficacy."
   },
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -77,34 +80,47 @@
     }
   },
   "relationships": {
-    "used_with": [],
+    "used_with": [
+      "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+      "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "FDA_get_adverse_reactions_by_drug_name"
+    ],
     "commonly_follows": [],
     "validates_output_of": [],
     "similar_tools": [
       {
         "tool": "OpenTargets_get_drug_synonyms_by_chemblId",
-        "score": 0.7001595497131348
-      },
-      {
-        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
-        "score": 0.6542724967002869
-      },
-      {
-        "tool": "OpenTargets_get_drug_chembId_by_generic_name",
-        "score": 0.6393778324127197
+        "score": 0.7129244804382324
       },
       {
         "tool": "get_ligand_smiles_by_chem_comp_id",
-        "score": 0.6370446681976318
+        "score": 0.6576565504074097
       },
       {
-        "tool": "OpenTargets_get_drug_trade_names_by_chemblId",
-        "score": 0.6329111456871033
+        "tool": "PubChem_search_compounds_by_similarity",
+        "score": 0.6513309478759766
+      },
+      {
+        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
+        "score": 0.6459528207778931
+      },
+      {
+        "tool": "OpenTargets_get_drug_chembId_by_generic_name",
+        "score": 0.6350229382514954
       }
     ]
   },
   "workflows": {
-    "observed": []
+    "observed": [
+      {
+        "name": "Lead expansion",
+        "steps": [
+          "run similarity search",
+          "review analogous compounds",
+          "check safety and evidence"
+        ]
+      }
+    ]
   },
   "mcp_call": {
     "name": "ChEMBL_search_similar_molecules",

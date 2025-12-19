@@ -83,7 +83,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -112,12 +112,12 @@
         "score": 0.6946061849594116
       },
       {
-        "tool": "get_plip_info",
-        "score": 0.49308717250823975
+        "tool": "HPA_get_protein_interactions_by_gene",
+        "score": 0.5010240077972412
       },
       {
-        "tool": "HPA_get_protein_interactions_by_gene",
-        "score": 0.48444604873657227
+        "tool": "get_plip_info",
+        "score": 0.49308717250823975
       },
       {
         "tool": "ADMETAI_predict_nuclear_receptor_activity",

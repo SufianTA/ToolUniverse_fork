@@ -48,7 +48,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-18T19:17:22Z"
+    "last_updated": "2025-12-19T18:31:58Z"
   },
   "embeddings": {
     "purpose": {
@@ -85,12 +85,12 @@
         "score": 0.6829522848129272
       },
       {
-        "tool": "UniProt_get_recommended_name_by_accession",
-        "score": 0.6235064268112183
+        "tool": "UniProt_get_sequence_by_accession",
+        "score": 0.6566861867904663
       },
       {
-        "tool": "UniProt_get_sequence_by_accession",
-        "score": 0.6004228591918945
+        "tool": "UniProt_get_entry_by_accession",
+        "score": 0.6449167728424072
       }
     ]
   },
