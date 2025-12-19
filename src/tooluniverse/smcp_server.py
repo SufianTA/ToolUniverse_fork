@@ -127,28 +127,6 @@ Examples:
         help="Path to persona graph JSON.",
     )
 
-    # Rich persona exposure options
-    parser.add_argument(
-        "--rich-personas",
-        action="store_true",
-        help="Expose rich tool personas (metadata + embeddings) via MCP.",
-    )
-    parser.add_argument(
-        "--persona-dir",
-        default=os.path.join("web", "personas"),
-        help="Directory containing persona JSON files.",
-    )
-    parser.add_argument(
-        "--persona-embeddings-dir",
-        default=os.path.join("web", "embeddings"),
-        help="Directory containing persona embedding tensors.",
-    )
-    parser.add_argument(
-        "--persona-graph-path",
-        default=os.path.join("web", "persona_graph.json"),
-        help="Path to persona graph JSON.",
-    )
-
     args = parser.parse_args()
 
     try:
