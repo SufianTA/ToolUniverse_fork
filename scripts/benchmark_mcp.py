@@ -54,6 +54,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=1337)
     parser.add_argument("--out", default="benchmarks/benchmark_results.json")
     parser.add_argument("--csv", default="benchmarks/benchmark_results.csv")
+    parser.add_argument(
+        "--trace",
+        action="store_true",
+        help="Write per-query traces to JSONL files for auditability.",
+    )
+    parser.add_argument(
+        "--trace-prefix",
+        default="benchmarks/traces",
+        help="Prefix for trace JSONL files (default: benchmarks/traces).",
+    )
     return parser.parse_args()
 
 
@@ -240,6 +250,7 @@ def benchmark_endpoint(
     persona_map: Dict[str, Dict[str, Any]],
     k: int,
     sample: int,
+    trace_path: Optional[Path] = None,
 ) -> BenchmarkResult:
     client = McpClient(base_url)
     tools_list = client.request("tools/list", {})
@@ -256,6 +267,11 @@ def benchmark_endpoint(
     latencies = []
     errors = 0
 
+    if trace_path:
+        trace_path.parent.mkdir(parents=True, exist_ok=True)
+        if not trace_path.exists():
+            trace_path.write_text("", encoding="utf-8")
+
     for tool in query_tools:
         query = build_query(tool)
         start = time.perf_counter()
@@ -269,8 +285,36 @@ def benchmark_endpoint(
                 hit += 1
                 rank = names.index(target) + 1
                 mrr_total += 1.0 / rank
+            if trace_path:
+                with trace_path.open("a", encoding="utf-8") as handle:
+                    handle.write(
+                        json.dumps(
+                            {
+                                "endpoint": label,
+                                "tool": target,
+                                "query": query,
+                                "returned": names,
+                                "rank": names.index(target) + 1 if target in names else None,
+                                "latency_ms": latency_ms,
+                            }
+                        )
+                        + "\n"
+                    )
         except Exception:
             errors += 1
+            if trace_path:
+                with trace_path.open("a", encoding="utf-8") as handle:
+                    handle.write(
+                        json.dumps(
+                            {
+                                "endpoint": label,
+                                "tool": tool.get("name"),
+                                "query": query,
+                                "error": True,
+                            }
+                        )
+                        + "\n"
+                    )
 
     total = max(len(query_tools) - errors, 1)
     hit_at_k = hit / total
@@ -287,6 +331,12 @@ def benchmark_endpoint(
         sim_latencies = []
         sim_scores = []
         sim_tools = random.sample(query_tools, min(20, len(query_tools)))
+        sim_trace_path = None
+        if trace_path:
+            sim_trace_path = Path(f"{trace_path.as_posix().rsplit('.jsonl', 1)[0]}_similarity.jsonl")
+            sim_trace_path.parent.mkdir(parents=True, exist_ok=True)
+            if not sim_trace_path.exists():
+                sim_trace_path.write_text("", encoding="utf-8")
         for tool in sim_tools:
             start = time.perf_counter()
             try:
@@ -312,6 +362,20 @@ def benchmark_endpoint(
                     if target_tags & neighbor_tags:
                         overlap += 1
                 sim_scores.append(overlap / max(len(neighbors), 1))
+                if sim_trace_path:
+                    sim_trace_path.parent.mkdir(parents=True, exist_ok=True)
+                    with sim_trace_path.open("a", encoding="utf-8") as handle:
+                        handle.write(
+                            json.dumps(
+                                {
+                                    "endpoint": label,
+                                    "tool": tool.get("name"),
+                                    "neighbors": neighbors,
+                                    "overlap": overlap / max(len(neighbors), 1),
+                                }
+                            )
+                            + "\n"
+                        )
             except Exception:
                 continue
         if sim_scores:
@@ -366,6 +430,7 @@ def main() -> None:
         persona_map,
         args.k,
         args.sample,
+        trace_path=Path(f"{args.trace_prefix}_new.jsonl") if args.trace else None,
     )
     old_result = benchmark_endpoint(
         "old",
@@ -374,6 +439,7 @@ def main() -> None:
         persona_map,
         args.k,
         args.sample,
+        trace_path=Path(f"{args.trace_prefix}_old.jsonl") if args.trace else None,
     )
 
     output = {
