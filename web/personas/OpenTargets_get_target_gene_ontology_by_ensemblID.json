@@ -2,7 +2,10 @@
   "name": "OpenTargets_get_target_gene_ontology_by_ensemblID",
   "identity": {
     "canonical_name": "OpenTargets_get_target_gene_ontology_by_ensemblID",
-    "aliases": [],
+    "aliases": [
+      "gene ontology",
+      "GO terms"
+    ],
     "domain_tags": [
       "gene-ontology",
       "open-targets",
@@ -51,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-19T18:31:58Z"
+    "last_updated": "2025-12-19T20:48:38Z"
   },
   "embeddings": {
     "purpose": {

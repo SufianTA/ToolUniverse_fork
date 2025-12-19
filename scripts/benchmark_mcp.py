@@ -250,6 +250,97 @@ def extract_similarity(result: Dict[str, Any]) -> List[Dict[str, Any]]:
     return parsed.get("neighbors", []) if isinstance(parsed, dict) else []
 
 
+def parse_json_text(text: str) -> Optional[Any]:
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return None
+
+
+def _resolve_path(value: Any, path: str) -> Any:
+    if path == "":
+        return value
+    current = value
+    for part in path.split("."):
+        if part == "":
+            continue
+        remainder = part
+        while remainder:
+            if remainder.startswith("["):
+                end = remainder.find("]")
+                if end == -1:
+                    return None
+                index = int(remainder[1:end])
+                if not isinstance(current, list) or index >= len(current):
+                    return None
+                current = current[index]
+                remainder = remainder[end + 1 :]
+                continue
+            bracket = remainder.find("[")
+            key = remainder if bracket == -1 else remainder[:bracket]
+            if not isinstance(current, dict) or key not in current:
+                return None
+            current = current[key]
+            remainder = "" if bracket == -1 else remainder[bracket:]
+    return current
+
+
+def _value_contains(value: Any, expected: str) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, list):
+        for item in value:
+            if _value_contains(item, expected):
+                return True
+        return False
+    if isinstance(value, dict):
+        return expected.lower() in json.dumps(value).lower()
+    return expected.lower() in str(value).lower()
+
+
+def validate_output(text: str, validations: List[Dict[str, Any]]) -> Tuple[bool, List[str]]:
+    if not validations:
+        return True, []
+    parsed = parse_json_text(text)
+    failures = []
+    for rule in validations:
+        rule_type = rule.get("type")
+        path = rule.get("path", "")
+        if rule_type == "json_path_equals":
+            value = _resolve_path(parsed, path) if parsed is not None else None
+            if value != rule.get("value"):
+                failures.append(f"{path} != {rule.get('value')}")
+        elif rule_type == "json_path_contains":
+            value = _resolve_path(parsed, path) if parsed is not None else None
+            if not _value_contains(value, str(rule.get("value", ""))):
+                failures.append(f"{path} does not contain {rule.get('value')}")
+        elif rule_type == "json_path_non_empty":
+            value = _resolve_path(parsed, path) if parsed is not None else None
+            if value is None:
+                failures.append(f"{path} missing")
+            elif isinstance(value, (list, str, dict)) and len(value) == 0:
+                failures.append(f"{path} empty")
+        elif rule_type == "json_path_list_any_equals":
+            value = _resolve_path(parsed, path) if parsed is not None else None
+            field = rule.get("field", "")
+            expected = rule.get("value")
+            if not isinstance(value, list):
+                failures.append(f"{path} not list")
+            else:
+                matched = False
+                for item in value:
+                    item_value = _resolve_path(item, field)
+                    if item_value == expected:
+                        matched = True
+                        break
+                if not matched:
+                    failures.append(f"{path}.{field} missing {expected}")
+        else:
+            if rule_type:
+                failures.append(f"unknown rule {rule_type}")
+    return len(failures) == 0, failures
+
+
 def evaluate_similarity(
     neighbors: List[Dict[str, Any]],
     persona_map: Dict[str, Dict[str, Any]],
@@ -382,7 +473,7 @@ def benchmark_endpoint(
             try:
                 resp = client.call_tool(
                     "find_similar_tools",
-                    {"tool_name": tool.get("name"), "top_k": 5, "method": "embedding"},
+                    {"tool_name": tool.get("name"), "top_k": 5, "method": "auto"},
                 )
                 sim_latencies.append((time.perf_counter() - start) * 1000)
                 neighbors = extract_similarity(resp)
@@ -448,7 +539,7 @@ def benchmark_endpoint(
     )
 
 
-def benchmark_cases(
+def benchmark_workflows(
     label: str,
     base_url: str,
     cases: List[Dict[str, Any]],
@@ -463,16 +554,24 @@ def benchmark_cases(
     tool_names = {t.get("name") for t in tool_entries}
     has_similarity = "find_similar_tools" in tool_names
 
-    step_latencies = []
-    step_hits = 0
-    step_mrr_total = 0.0
-    step_errors = 0
-    step_total = 0
+    selection_hits = 0
+    selection_top1 = 0
+    selection_errors = 0
+    selection_total = 0
 
-    chain_latencies = []
+    execution_hits = 0
+    execution_errors = 0
+    execution_total = 0
+
     chain_hits = 0
     chain_total = 0
     chain_errors = 0
+
+    case_all_top1 = 0
+    case_all_hit = 0
+    persona_chain_hits = 0
+    persona_chain_total = 0
+    case_summaries: List[Dict[str, Any]] = []
 
     if trace_path:
         trace_path.parent.mkdir(parents=True, exist_ok=True)
@@ -481,59 +580,147 @@ def benchmark_cases(
 
     for case in cases:
         steps = case.get("steps", [])
+        case_id = case.get("id")
+        case_step_total = 0
+        case_selection_hits = 0
+        case_selection_top1 = 0
+        case_execution_hits = 0
+        case_execution_total = 0
+        case_selection_all_top1 = True
+        case_selection_all_hit = True
         for step in steps:
             query = step.get("query", "")
             expected = step.get("expected_tools", [])
             if not query or not expected:
                 continue
-            step_total += 1
-            start = time.perf_counter()
+            selection_total += 1
+            case_step_total += 1
             try:
                 resp = client.call_tool("find_tools", {"query": query, "limit": k})
-                latency_ms = (time.perf_counter() - start) * 1000
-                step_latencies.append(latency_ms)
                 names = extract_find_tools(resp)
-                hit = False
-                best_rank = None
-                for tool_name in expected:
-                    if tool_name in names:
-                        hit = True
-                        rank = names.index(tool_name) + 1
-                        best_rank = rank if best_rank is None else min(best_rank, rank)
+                hit = any(tool_name in names for tool_name in expected)
+                top1 = bool(names) and names[0] in expected
                 if hit:
-                    step_hits += 1
-                    step_mrr_total += 1.0 / best_rank
+                    selection_hits += 1
+                    case_selection_hits += 1
+                else:
+                    case_selection_all_hit = False
+                if top1:
+                    selection_top1 += 1
+                    case_selection_top1 += 1
+                else:
+                    case_selection_all_top1 = False
                 if trace_path:
                     with trace_path.open("a", encoding="utf-8") as handle:
                         handle.write(
                             json.dumps(
                                 {
                                     "endpoint": label,
-                                    "case_id": case.get("id"),
+                                    "case_id": case_id,
                                     "step_query": query,
                                     "expected": expected,
                                     "returned": names,
-                                    "rank": best_rank,
-                                    "latency_ms": latency_ms,
+                                    "selection_hit": hit,
+                                    "selection_top1": top1,
                                 }
                             )
                             + "\n"
                         )
             except Exception:
-                step_errors += 1
+                selection_errors += 1
+                case_selection_all_hit = False
+                case_selection_all_top1 = False
+
+            tool_call = step.get("tool_call")
+            validations = step.get("validations", [])
+            if tool_call:
+                execution_total += 1
+                case_execution_total += 1
+                try:
+                    resp = client.call_tool(
+                        tool_call.get("name"), tool_call.get("arguments", {})
+                    )
+                    text = resp.get("result", {}).get("content", [{}])[0].get("text", "")
+                    ok, failures = validate_output(text, validations)
+                    if ok:
+                        execution_hits += 1
+                        case_execution_hits += 1
+                    if trace_path:
+                        with trace_path.open("a", encoding="utf-8") as handle:
+                            handle.write(
+                                json.dumps(
+                                    {
+                                        "endpoint": label,
+                                        "case_id": case_id,
+                                        "tool_call": tool_call.get("name"),
+                                        "arguments": tool_call.get("arguments"),
+                                        "validation_passed": ok,
+                                        "validation_failures": failures,
+                                        "output_head": text[:500],
+                                    }
+                                )
+                                + "\n"
+                            )
+                except Exception as exc:
+                    execution_errors += 1
+                    if trace_path:
+                        with trace_path.open("a", encoding="utf-8") as handle:
+                            handle.write(
+                                json.dumps(
+                                    {
+                                        "endpoint": label,
+                                        "case_id": case_id,
+                                        "tool_call": tool_call.get("name"),
+                                        "arguments": tool_call.get("arguments"),
+                                        "validation_passed": False,
+                                        "error": str(exc),
+                                    }
+                                )
+                                + "\n"
+                            )
 
         seed_tool = case.get("seed_tool")
         chain_expected = case.get("chain_expected", [])
+        persona_chain_hit = None
+        if seed_tool and chain_expected and "get_persona" in tool_names:
+            persona_chain_total += 1
+            try:
+                resp = client.call_tool("get_persona", {"tool_name": seed_tool})
+                text = resp.get("result", {}).get("content", [{}])[0].get("text", "")
+                persona = parse_json_text(text) or {}
+                relationships = persona.get("relationships", {})
+                related = set()
+                for key in ("used_with", "commonly_follows"):
+                    items = relationships.get(key, []) or []
+                    if isinstance(items, list):
+                        related.update(items)
+                persona_chain_hit = any(tool in related for tool in chain_expected)
+                if persona_chain_hit:
+                    persona_chain_hits += 1
+                if trace_path:
+                    with trace_path.open("a", encoding="utf-8") as handle:
+                        handle.write(
+                            json.dumps(
+                                {
+                                    "endpoint": label,
+                                    "case_id": case_id,
+                                    "seed_tool": seed_tool,
+                                    "persona_related": sorted(related),
+                                    "chain_expected": chain_expected,
+                                    "persona_chain_hit": persona_chain_hit,
+                                }
+                            )
+                            + "\n"
+                        )
+            except Exception:
+                persona_chain_hit = False
         if seed_tool and chain_expected and has_similarity:
             chain_total += 1
-            start = time.perf_counter()
             try:
                 resp = client.call_tool(
                     "find_similar_tools",
-                    {"tool_name": seed_tool, "top_k": k, "method": "embedding"},
+                    {"tool_name": seed_tool, "top_k": k, "method": "auto"},
                 )
-                latency_ms = (time.perf_counter() - start) * 1000
-                chain_latencies.append(latency_ms)
                 neighbors = extract_similarity(resp)
                 neighbor_names = {entry.get("tool") for entry in neighbors}
                 if any(tool in neighbor_names for tool in chain_expected):
@@ -544,36 +731,67 @@ def benchmark_cases(
                             json.dumps(
                                 {
                                     "endpoint": label,
-                                    "case_id": case.get("id"),
+                                    "case_id": case_id,
                                     "seed_tool": seed_tool,
                                     "chain_expected": chain_expected,
                                     "neighbors": neighbors,
-                                    "latency_ms": latency_ms,
                                 }
                             )
                             + "\n"
                         )
             except Exception:
                 chain_errors += 1
+        if case_step_total:
+            if case_selection_all_top1:
+                case_all_top1 += 1
+            if case_selection_all_hit:
+                case_all_hit += 1
+            selection_rate = case_selection_hits / case_step_total
+            top1_rate = case_selection_top1 / case_step_total
+            execution_rate = (
+                case_execution_hits / case_execution_total
+                if case_execution_total
+                else None
+            )
+            workflow_score = None
+            if execution_rate is not None:
+                workflow_score = (top1_rate + execution_rate) / 2
+            case_summaries.append(
+                {
+                    "case_id": case_id,
+                    "steps": case_step_total,
+                    "selection_hit_rate": selection_rate,
+                    "selection_top1_rate": top1_rate,
+                    "execution_valid_rate": execution_rate,
+                    "chain_all_steps_top1": case_selection_all_top1,
+                    "chain_all_steps_hit": case_selection_all_hit,
+                    "workflow_score": workflow_score,
+                    "persona_chain_hit": persona_chain_hit,
+                }
+            )
 
-    step_p50, step_p95 = compute_latency_stats(step_latencies)
-    chain_p50, chain_p95 = compute_latency_stats(chain_latencies)
-    step_total_effective = max(step_total - step_errors, 1)
-    chain_total_effective = max(chain_total - chain_errors, 1)
+    selection_total_effective = max(selection_total - selection_errors, 1)
+    execution_total_effective = max(execution_total - execution_errors, 1)
+    case_total_effective = max(len(case_summaries), 1)
 
     return {
-        "step_hit_at_k": step_hits / step_total_effective,
-        "step_mrr": step_mrr_total / step_total_effective,
-        "step_p50_ms": step_p50,
-        "step_p95_ms": step_p95,
-        "step_total": step_total,
-        "step_errors": step_errors,
-        "chain_hit_at_k": None if not has_similarity else chain_hits / chain_total_effective,
-        "chain_p50_ms": None if not has_similarity else chain_p50,
-        "chain_p95_ms": None if not has_similarity else chain_p95,
+        "selection_hit_at_k": selection_hits / selection_total_effective,
+        "selection_top1_rate": selection_top1 / selection_total_effective,
+        "selection_total": selection_total,
+        "selection_errors": selection_errors,
+        "execution_valid_rate": execution_hits / execution_total_effective,
+        "execution_total": execution_total,
+        "execution_errors": execution_errors,
+        "case_chain_all_steps_top1_rate": case_all_top1 / case_total_effective,
+        "case_chain_all_steps_hit_rate": case_all_hit / case_total_effective,
+        "chain_similarity_hit_at_k": None if not has_similarity else chain_hits / max(chain_total - chain_errors, 1),
+        "persona_chain_hit_at_k": None
+        if not persona_chain_total
+        else persona_chain_hits / max(persona_chain_total, 1),
         "chain_total": chain_total,
         "chain_errors": chain_errors,
         "similarity_available": has_similarity,
+        "case_summaries": case_summaries,
     }
 
 
@@ -633,7 +851,7 @@ def main() -> None:
     cases = load_cases(args.cases)
     if cases:
         output["case_results"] = {
-            "new": benchmark_cases(
+            "new": benchmark_workflows(
                 "new",
                 args.new,
                 cases,
@@ -642,7 +860,7 @@ def main() -> None:
                 if args.trace
                 else None,
             ),
-            "old": benchmark_cases(
+            "old": benchmark_workflows(
                 "old",
                 args.old,
                 cases,
@@ -694,7 +912,7 @@ def main() -> None:
             f"- Sample size: {args.sample}",
             f"- Top-k: {args.k}",
             "",
-            "## Case Study Metrics",
+            "## Workflow Quality Metrics",
         ]
         case_results = output.get("case_results", {})
         for label in ["new", "old"]:
@@ -703,13 +921,13 @@ def main() -> None:
                 [
                     "",
                     f"### {label.upper()}",
-                    f"- step_hit_at_k: {metrics.get('step_hit_at_k')}",
-                    f"- step_mrr: {metrics.get('step_mrr')}",
-                    f"- step_p50_ms: {metrics.get('step_p50_ms')}",
-                    f"- step_p95_ms: {metrics.get('step_p95_ms')}",
-                    f"- chain_hit_at_k: {metrics.get('chain_hit_at_k')}",
-                    f"- chain_p50_ms: {metrics.get('chain_p50_ms')}",
-                    f"- chain_p95_ms: {metrics.get('chain_p95_ms')}",
+                    f"- selection_hit_at_k: {metrics.get('selection_hit_at_k')}",
+                    f"- selection_top1_rate: {metrics.get('selection_top1_rate')}",
+                    f"- execution_valid_rate: {metrics.get('execution_valid_rate')}",
+                    f"- case_chain_all_steps_top1_rate: {metrics.get('case_chain_all_steps_top1_rate')}",
+                    f"- case_chain_all_steps_hit_rate: {metrics.get('case_chain_all_steps_hit_rate')}",
+                    f"- chain_similarity_hit_at_k: {metrics.get('chain_similarity_hit_at_k')}",
+                    f"- persona_chain_hit_at_k: {metrics.get('persona_chain_hit_at_k')}",
                 ]
             )
 

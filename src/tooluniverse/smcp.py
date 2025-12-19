@@ -840,14 +840,14 @@ class SMCP(FastMCP):
         elif search_method == "embedding" and "Tool_Finder" in available_tool_names:
             return "Tool_Finder"
         elif search_method == "auto":
-            # Auto-selection priority: Keyword > RAG > LLM
+            # Auto-selection priority: RAG > LLM > Keyword
             if use_advanced_search:
-                if "Tool_Finder_Keyword" in available_tool_names:
-                    return "Tool_Finder_Keyword"
                 if "Tool_Finder" in available_tool_names:
                     return "Tool_Finder"
-                elif "Tool_Finder_LLM" in available_tool_names:
+                if "Tool_Finder_LLM" in available_tool_names:
                     return "Tool_Finder_LLM"
+                if "Tool_Finder_Keyword" in available_tool_names:
+                    return "Tool_Finder_Keyword"
         else:
             # Invalid method or method not available, fallback to keyword
             return "Tool_Finder_Keyword"

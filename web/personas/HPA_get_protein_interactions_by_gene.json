@@ -2,7 +2,10 @@
   "name": "HPA_get_protein_interactions_by_gene",
   "identity": {
     "canonical_name": "HPA_get_protein_interactions_by_gene",
-    "aliases": [],
+    "aliases": [
+      "protein interactions",
+      "PPI"
+    ],
     "domain_tags": [
       "protein-interactions",
       "network-biology",
@@ -50,7 +53,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-19T18:31:58Z"
+    "last_updated": "2025-12-19T20:48:38Z"
   },
   "embeddings": {
     "purpose": {

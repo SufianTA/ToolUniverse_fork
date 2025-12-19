@@ -10,6 +10,8 @@ AI-powered search methods are unavailable.
 import json
 import re
 import math
+import os
+from pathlib import Path
 from collections import Counter, defaultdict
 from typing import Dict, List
 from .base_tool import BaseTool
@@ -222,6 +224,42 @@ class ToolFinderKeyword(BaseTool):
 
         return word
 
+    def _build_persona_context(self, persona: Dict) -> str:
+        if not persona:
+            return ""
+        identity = persona.get("identity", {})
+        aliases = identity.get("aliases") or []
+        tags = identity.get("domain_tags") or []
+        description = identity.get("description") or ""
+        parts = []
+        if description:
+            parts.append(description)
+        if aliases:
+            parts.append("aliases: " + " ".join(aliases))
+        if tags:
+            parts.append("tags: " + " ".join(tags))
+        return " ".join(parts)
+
+    def _load_persona_map(self) -> Dict[str, Dict]:
+        if hasattr(self, "_persona_map"):
+            return self._persona_map
+        persona_dir = os.getenv("TOOLUNIVERSE_PERSONA_DIR", "web/personas")
+        path = Path(persona_dir)
+        if not path.exists():
+            self._persona_map = {}
+            return self._persona_map
+        persona_map = {}
+        for persona_file in path.glob("*.json"):
+            try:
+                data = json.loads(persona_file.read_text(encoding="utf-8"))
+                name = data.get("name")
+                if name:
+                    persona_map[name] = data
+            except Exception:
+                continue
+        self._persona_map = persona_map
+        return self._persona_map
+
     def _extract_phrases(
         self, tokens: List[str], max_phrase_length: int = 3
     ) -> List[str]:
@@ -259,11 +297,13 @@ class ToolFinderKeyword(BaseTool):
         term_doc_count = defaultdict(int)
         self._total_documents = 0
 
+        persona_map = self._load_persona_map()
         for tool in tools:
             tool_name = tool.get("name", "")
             if tool_name in self.exclude_tools:
                 continue
 
+            persona_context = self._build_persona_context(persona_map.get(tool_name))
             # Combine tool metadata for indexing
             searchable_text = " ".join(
                 [
@@ -273,6 +313,7 @@ class ToolFinderKeyword(BaseTool):
                     tool.get("category", ""),
                     # Include parameter names and descriptions
                     " ".join(self._extract_parameter_text(tool.get("parameter", {}))),
+                    persona_context,
                 ]
             )
 

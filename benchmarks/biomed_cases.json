@@ -1,264 +1,635 @@
 [
   {
-    "id": "alzheimers_app",
-    "title": "APP protein characterization",
-    "context": "Characterize amyloid beta precursor protein with sequence, structure, and literature context.",
-    "steps": [
-      {
-        "query": "Retrieve UniProt entry for amyloid beta precursor protein (APP) by accession",
-        "expected_tools": [
-          "UniProt_get_entry_by_accession",
-          "UniProt_get_function_by_accession"
-        ]
-      },
-      {
-        "query": "Get protein sequence for APP to map to structure",
-        "expected_tools": [
-          "UniProt_get_sequence_by_accession"
-        ]
-      },
-      {
-        "query": "Find PDB sequence for APP-related structure",
-        "expected_tools": [
-          "get_sequence_by_pdb_id"
-        ]
-      },
-      {
-        "query": "Literature search for APP and Alzheimer disease",
-        "expected_tools": [
-          "EuropePMC_search_articles"
-        ]
-      }
-    ],
+    "id": "app_uniprot_literature",
+    "title": "APP protein function and literature",
+    "context": "Validate APP protein annotations and link to literature evidence.",
     "seed_tool": "UniProt_get_entry_by_accession",
     "chain_expected": [
-      "get_sequence_by_pdb_id",
-      "Reactome_get_pathway_reactions",
+      "UniProt_get_function_by_accession",
       "EuropePMC_search_articles"
+    ],
+    "steps": [
+      {
+        "query": "Swiss-Prot entry for amyloid beta precursor protein (APP) human accession",
+        "expected_tools": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "tool_call": {
+          "name": "UniProt_get_entry_by_accession",
+          "arguments": {
+            "accession": "P05067"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_equals",
+            "path": "primaryAccession",
+            "value": "P05067"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "entryType",
+            "value": "Swiss-Prot"
+          }
+        ]
+      },
+      {
+        "query": "Functional annotation of APP protein from UniProt (neuronal/synaptogenesis)",
+        "expected_tools": [
+          "UniProt_get_function_by_accession"
+        ],
+        "tool_call": {
+          "name": "UniProt_get_function_by_accession",
+          "arguments": {
+            "accession": "P05067"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "[0]",
+            "value": "synaptogenesis"
+          }
+        ]
+      },
+      {
+        "query": "Literature on amyloid beta precursor protein and Alzheimer disease",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ],
+        "tool_call": {
+          "name": "EuropePMC_search_articles",
+          "arguments": {
+            "query": "amyloid beta precursor protein Alzheimer disease",
+            "limit": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].title"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "[0].title",
+            "value": "amyloid"
+          }
+        ]
+      }
     ]
   },
   {
-    "id": "egfr_target_context",
-    "title": "EGFR target context",
-    "context": "Use HPA and Open Targets to build localization and interaction context for EGFR.",
+    "id": "egfr_cellular_context",
+    "title": "EGFR cellular context",
+    "context": "Combine HPA and Open Targets to validate EGFR localization, ontology, and interactions.",
+    "seed_tool": "HPA_get_gene_basic_info_by_ensembl_id",
+    "chain_expected": [
+      "HPA_get_subcellular_location",
+      "OpenTargets_get_target_gene_ontology_by_ensemblID"
+    ],
     "steps": [
       {
-        "query": "Get Human Protein Atlas basic gene info for EGFR by Ensembl ID",
+        "query": "Human Protein Atlas basic gene info for EGFR by Ensembl ID",
         "expected_tools": [
           "HPA_get_gene_basic_info_by_ensembl_id"
+        ],
+        "tool_call": {
+          "name": "HPA_get_gene_basic_info_by_ensembl_id",
+          "arguments": {
+            "ensembl_id": "ENSG00000146648"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_equals",
+            "path": "Gene",
+            "value": "EGFR"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "Uniprot",
+            "value": "P00533"
+          }
         ]
       },
       {
         "query": "Subcellular location for EGFR protein",
         "expected_tools": [
           "HPA_get_subcellular_location"
+        ],
+        "tool_call": {
+          "name": "HPA_get_subcellular_location",
+          "arguments": {
+            "gene_name": "EGFR"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "main_locations",
+            "value": "Plasma membrane"
+          }
         ]
       },
       {
-        "query": "Protein interactions for EGFR",
+        "query": "EGFR protein interaction partners",
         "expected_tools": [
           "HPA_get_protein_interactions_by_gene",
           "OpenTargets_get_target_interactions_by_ensemblID"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_target_interactions_by_ensemblID",
+          "arguments": {
+            "ensemblId": "ENSG00000146648"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data.target.interactions.rows"
+          }
         ]
       },
       {
         "query": "Gene ontology terms for EGFR target",
         "expected_tools": [
           "OpenTargets_get_target_gene_ontology_by_ensemblID"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+          "arguments": {
+            "ensemblId": "ENSG00000146648"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "data.target.geneOntology",
+            "value": "plasma membrane"
+          }
         ]
       }
-    ],
-    "seed_tool": "HPA_get_gene_basic_info_by_ensembl_id",
-    "chain_expected": [
-      "HPA_get_subcellular_location",
-      "OpenTargets_get_target_gene_ontology_by_ensemblID",
-      "Reactome_get_pathway_reactions"
     ]
   },
   {
-    "id": "disease_to_targets_parkinsons",
-    "title": "Parkinson disease target discovery",
-    "context": "Use Open Targets to map a disease to candidate targets and evidence.",
-    "steps": [
-      {
-        "query": "Find targets associated with Parkinson disease EFO",
-        "expected_tools": [
-          "OpenTargets_get_associated_targets_by_disease_efoId"
-        ]
-      },
-      {
-        "query": "Get interaction partners for a Parkinson disease target by Ensembl ID",
-        "expected_tools": [
-          "OpenTargets_get_target_interactions_by_ensemblID"
-        ]
-      },
-      {
-        "query": "Search literature for Parkinson disease target evidence",
-        "expected_tools": [
-          "EuropePMC_search_articles"
-        ]
-      }
-    ],
+    "id": "lung_carcinoma_targets",
+    "title": "Lung carcinoma target discovery",
+    "context": "Use Open Targets to prioritize lung carcinoma targets and verify evidence with literature.",
     "seed_tool": "OpenTargets_get_associated_targets_by_disease_efoId",
     "chain_expected": [
       "OpenTargets_get_target_interactions_by_ensemblID",
       "EuropePMC_search_articles"
-    ]
-  },
-  {
-    "id": "drug_moa_imatinib",
-    "title": "Imatinib mechanism and analogs",
-    "context": "Use Open Targets and ChEMBL to profile drug mechanism and related molecules.",
+    ],
     "steps": [
       {
-        "query": "Get mechanisms of action for imatinib by ChEMBL ID",
+        "query": "Targets associated with lung carcinoma (EFO_0001071)",
         "expected_tools": [
-          "OpenTargets_get_drug_mechanisms_of_action_by_chemblId"
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_associated_targets_by_disease_efoId",
+          "arguments": {
+            "efoId": "EFO_0001071"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_list_any_equals",
+            "path": "data.disease.associatedTargets.rows",
+            "field": "target.approvedSymbol",
+            "value": "EGFR"
+          }
         ]
       },
       {
-        "query": "Diseases associated with imatinib from Open Targets",
+        "query": "Interaction partners for EGFR target",
         "expected_tools": [
-          "OpenTargets_get_associated_diseases_by_drug_chemblId"
+          "OpenTargets_get_target_interactions_by_ensemblID"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_target_interactions_by_ensemblID",
+          "arguments": {
+            "ensemblId": "ENSG00000146648"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data.target.interactions.rows"
+          }
         ]
       },
       {
-        "query": "Find similar molecules to imatinib",
-        "expected_tools": [
-          "ChEMBL_search_similar_molecules"
-        ]
-      },
-      {
-        "query": "Literature for imatinib mechanism of action",
+        "query": "Literature evidence for EGFR lung carcinoma",
         "expected_tools": [
           "EuropePMC_search_articles"
+        ],
+        "tool_call": {
+          "name": "EuropePMC_search_articles",
+          "arguments": {
+            "query": "EGFR lung carcinoma",
+            "limit": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].title"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "[0].title",
+            "value": "EGFR"
+          }
         ]
       }
-    ],
-    "seed_tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
-    "chain_expected": [
-      "ChEMBL_search_similar_molecules",
-      "OpenTargets_get_associated_diseases_by_drug_chemblId"
     ]
   },
   {
-    "id": "cardio_safety_warfarin",
-    "title": "Warfarin safety context",
-    "context": "Compare label-reported adverse reactions with FAERS counts.",
+    "id": "imatinib_moa_analogs",
+    "title": "Imatinib mechanism and analogs",
+    "context": "Profile imatinib mechanism of action, linked diseases, and similar molecules.",
+    "seed_tool": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+    "chain_expected": [
+      "OpenTargets_get_associated_diseases_by_drug_chemblId",
+      "ChEMBL_search_similar_molecules"
+    ],
     "steps": [
       {
-        "query": "Find adverse reactions for warfarin in FDA labels",
+        "query": "Mechanism of action for imatinib by ChEMBL ID",
         "expected_tools": [
-          "FDA_get_adverse_reactions_by_drug_name"
+          "OpenTargets_get_drug_mechanisms_of_action_by_chemblId"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_drug_mechanisms_of_action_by_chemblId",
+          "arguments": {
+            "chemblId": "CHEMBL941"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_equals",
+            "path": "data.drug.name",
+            "value": "IMATINIB"
+          },
+          {
+            "type": "json_path_non_empty",
+            "path": "data.drug.mechanismsOfAction.rows"
+          }
         ]
       },
       {
-        "query": "Search DailyMed SPL for warfarin",
+        "query": "Diseases associated with imatinib",
         "expected_tools": [
-          "DailyMed_search_spls"
+          "OpenTargets_get_associated_diseases_by_drug_chemblId"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+          "arguments": {
+            "chemblId": "CHEMBL941"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data.drug.linkedDiseases.rows"
+          }
         ]
       },
       {
-        "query": "Count FAERS reactions for warfarin event",
+        "query": "Find molecules similar to imatinib in ChEMBL",
         "expected_tools": [
-          "FAERS_count_reactions_by_drug_event"
+          "ChEMBL_search_similar_molecules"
+        ],
+        "tool_call": {
+          "name": "ChEMBL_search_similar_molecules",
+          "arguments": {
+            "query": "imatinib",
+            "similarity_threshold": 80,
+            "max_results": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_equals",
+            "path": "[0].chembl_id",
+            "value": "CHEMBL941"
+          },
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].similar_molecules"
+          }
         ]
       }
-    ],
+    ]
+  },
+  {
+    "id": "warfarin_safety_triangulation",
+    "title": "Warfarin safety triangulation",
+    "context": "Compare label adverse reactions with FAERS counts and DailyMed SPL metadata.",
     "seed_tool": "FDA_get_adverse_reactions_by_drug_name",
     "chain_expected": [
       "FAERS_count_reactions_by_drug_event",
       "DailyMed_search_spls"
+    ],
+    "steps": [
+      {
+        "query": "FDA label adverse reactions for warfarin",
+        "expected_tools": [
+          "FDA_get_adverse_reactions_by_drug_name"
+        ],
+        "tool_call": {
+          "name": "FDA_get_adverse_reactions_by_drug_name",
+          "arguments": {
+            "drug_name": "warfarin",
+            "limit": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "results"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "results[0].adverse_reactions",
+            "value": "ADVERSE"
+          }
+        ]
+      },
+      {
+        "query": "FAERS reaction counts for warfarin",
+        "expected_tools": [
+          "FAERS_count_reactions_by_drug_event"
+        ],
+        "tool_call": {
+          "name": "FAERS_count_reactions_by_drug_event",
+          "arguments": {
+            "medicinalproduct": "WARFARIN"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].term"
+          },
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].count"
+          }
+        ]
+      },
+      {
+        "query": "DailyMed SPLs for warfarin",
+        "expected_tools": [
+          "DailyMed_search_spls"
+        ],
+        "tool_call": {
+          "name": "DailyMed_search_spls",
+          "arguments": {
+            "drug_name": "warfarin",
+            "ndc": "",
+            "rxcui": "",
+            "setid": "",
+            "published_date_gte": "",
+            "published_date_eq": "",
+            "pagesize": 5,
+            "page": 1
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data"
+          },
+          {
+            "type": "json_path_non_empty",
+            "path": "data[0].setid"
+          }
+        ]
+      }
     ]
   },
   {
-    "id": "type2_diabetes_gwas",
-    "title": "Type 2 diabetes GWAS evidence",
-    "context": "Use GWAS catalog and Open Targets to connect trait associations to targets.",
-    "steps": [
-      {
-        "query": "GWAS associations for type 2 diabetes",
-        "expected_tools": [
-          "gwas_get_associations_for_trait"
-        ]
-      },
-      {
-        "query": "SNPs for a diabetes-associated gene",
-        "expected_tools": [
-          "gwas_get_snps_for_gene"
-        ]
-      },
-      {
-        "query": "Targets associated with type 2 diabetes EFO",
-        "expected_tools": [
-          "OpenTargets_get_associated_targets_by_disease_efoId"
-        ]
-      }
-    ],
+    "id": "breast_cancer_gwas_targets",
+    "title": "Breast cancer GWAS evidence and targets",
+    "context": "Connect GWAS associations to gene-level SNPs and Open Targets evidence.",
     "seed_tool": "gwas_get_associations_for_trait",
     "chain_expected": [
       "gwas_get_snps_for_gene",
       "OpenTargets_get_associated_targets_by_disease_efoId"
+    ],
+    "steps": [
+      {
+        "query": "GWAS associations for breast cancer",
+        "expected_tools": [
+          "gwas_get_associations_for_trait"
+        ],
+        "tool_call": {
+          "name": "gwas_get_associations_for_trait",
+          "arguments": {
+            "efo_trait": "breast cancer",
+            "size": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data"
+          }
+        ]
+      },
+      {
+        "query": "SNPs mapped to BRCA1",
+        "expected_tools": [
+          "gwas_get_snps_for_gene"
+        ],
+        "tool_call": {
+          "name": "gwas_get_snps_for_gene",
+          "arguments": {
+            "mapped_gene": "BRCA1",
+            "size": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "data"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "data[0].mapped_genes",
+            "value": "BRCA1"
+          }
+        ]
+      },
+      {
+        "query": "Targets linked to breast carcinoma (EFO_0000305)",
+        "expected_tools": [
+          "OpenTargets_get_associated_targets_by_disease_efoId"
+        ],
+        "tool_call": {
+          "name": "OpenTargets_get_associated_targets_by_disease_efoId",
+          "arguments": {
+            "efoId": "EFO_0000305"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "data.disease.associatedTargets.rows",
+            "value": "BRCA"
+          }
+        ]
+      }
     ]
   },
   {
-    "id": "apoptosis_pathway",
-    "title": "Caspase-3 pathway context",
-    "context": "Connect UniProt functional annotation to pathway context and literature.",
-    "steps": [
-      {
-        "query": "UniProt function for caspase-3 protein",
-        "expected_tools": [
-          "UniProt_get_function_by_accession"
-        ]
-      },
-      {
-        "query": "Reactome pathway reactions for apoptosis",
-        "expected_tools": [
-          "Reactome_get_pathway_reactions"
-        ]
-      },
-      {
-        "query": "Literature search for caspase-3 apoptosis",
-        "expected_tools": [
-          "EuropePMC_search_articles"
-        ]
-      }
-    ],
+    "id": "apoptosis_pathway_literature",
+    "title": "Caspase-3 apoptosis pathway",
+    "context": "Validate apoptosis function, pathway reactions, and supporting literature.",
     "seed_tool": "UniProt_get_function_by_accession",
     "chain_expected": [
       "Reactome_get_pathway_reactions",
       "EuropePMC_search_articles"
+    ],
+    "steps": [
+      {
+        "query": "UniProt function for caspase-3 (CASP3) apoptosis",
+        "expected_tools": [
+          "UniProt_get_function_by_accession"
+        ],
+        "tool_call": {
+          "name": "UniProt_get_function_by_accession",
+          "arguments": {
+            "accession": "P42574"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "[0]",
+            "value": "apoptosis"
+          }
+        ]
+      },
+      {
+        "query": "Reactome pathway reactions for apoptosis (R-HSA-109581)",
+        "expected_tools": [
+          "Reactome_get_pathway_reactions"
+        ],
+        "tool_call": {
+          "name": "Reactome_get_pathway_reactions",
+          "arguments": {
+            "stId": "R-HSA-109581"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "[0].eventOf[0].displayName",
+            "value": "Apoptosis"
+          }
+        ]
+      },
+      {
+        "query": "Literature for caspase-3 apoptosis",
+        "expected_tools": [
+          "EuropePMC_search_articles"
+        ],
+        "tool_call": {
+          "name": "EuropePMC_search_articles",
+          "arguments": {
+            "query": "caspase-3 apoptosis",
+            "limit": 5
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_non_empty",
+            "path": "[0].title"
+          },
+          {
+            "type": "json_path_contains",
+            "path": "[0].title",
+            "value": "caspase"
+          }
+        ]
+      }
     ]
   },
   {
-    "id": "pdb_sequence_mapping",
-    "title": "Structure to UniProt mapping",
-    "context": "Use PDB and UniProt sequence retrieval to map structure back to canonical sequence.",
-    "steps": [
-      {
-        "query": "Retrieve sequence from PDB ID 1AKE",
-        "expected_tools": [
-          "get_sequence_by_pdb_id"
-        ]
-      },
-      {
-        "query": "Retrieve UniProt sequence for the corresponding protein",
-        "expected_tools": [
-          "UniProt_get_sequence_by_accession"
-        ]
-      },
-      {
-        "query": "UniProt entry for the protein",
-        "expected_tools": [
-          "UniProt_get_entry_by_accession"
-        ]
-      }
-    ],
+    "id": "pdb_to_uniprot_mapping",
+    "title": "PDB to UniProt mapping (adenylate kinase)",
+    "context": "Validate PDB sequence extraction and map to UniProt entry for E. coli adenylate kinase.",
     "seed_tool": "get_sequence_by_pdb_id",
     "chain_expected": [
       "UniProt_get_sequence_by_accession",
       "UniProt_get_entry_by_accession"
+    ],
+    "steps": [
+      {
+        "query": "Retrieve protein sequence from PDB ID 1AKE",
+        "expected_tools": [
+          "get_sequence_by_pdb_id"
+        ],
+        "tool_call": {
+          "name": "get_sequence_by_pdb_id",
+          "arguments": {
+            "pdb_id": "1AKE"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "data.entries[0].polymer_entities[0].entity_poly.pdbx_seq_one_letter_code_can",
+            "value": "MRIILLGAPGAGK"
+          }
+        ]
+      },
+      {
+        "query": "Retrieve UniProt sequence for adenylate kinase (P69441)",
+        "expected_tools": [
+          "UniProt_get_sequence_by_accession"
+        ],
+        "tool_call": {
+          "name": "UniProt_get_sequence_by_accession",
+          "arguments": {
+            "accession": "P69441"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_contains",
+            "path": "result",
+            "value": "MRIILLGAPGAGK"
+          }
+        ]
+      },
+      {
+        "query": "Retrieve UniProt entry for adenylate kinase (P69441)",
+        "expected_tools": [
+          "UniProt_get_entry_by_accession"
+        ],
+        "tool_call": {
+          "name": "UniProt_get_entry_by_accession",
+          "arguments": {
+            "accession": "P69441"
+          }
+        },
+        "validations": [
+          {
+            "type": "json_path_equals",
+            "path": "primaryAccession",
+            "value": "P69441"
+          },
+          {
+            "type": "json_path_equals",
+            "path": "uniProtkbId",
+            "value": "KAD_ECOLI"
+          }
+        ]
+      }
     ]
   }
 ]

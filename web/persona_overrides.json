@@ -26,6 +26,14 @@
           "go-terms",
           "reactome",
           "bioinformatics"
+        ],
+        "aliases": [
+          "APP",
+          "amyloid beta precursor protein",
+          "beta-amyloid precursor protein",
+          "APP_HUMAN",
+          "P05067",
+          "Swiss-Prot"
         ]
       },
       "domain_validity": {
@@ -92,6 +100,11 @@
           "uniprot",
           "sequence-retrieval",
           "bioinformatics"
+        ],
+        "aliases": [
+          "protein sequence",
+          "FASTA",
+          "UniProt sequence"
         ]
       },
       "domain_validity": {
@@ -150,6 +163,10 @@
           "uniprot",
           "functional-annotation",
           "bioinformatics"
+        ],
+        "aliases": [
+          "protein function",
+          "functional annotation"
         ]
       },
       "domain_validity": {
@@ -208,6 +225,13 @@
           "gene-metadata",
           "tissue-specificity",
           "ensembl"
+        ],
+        "aliases": [
+          "EGFR",
+          "ERBB1",
+          "HER1",
+          "Ensembl gene ID",
+          "gene info"
         ]
       },
       "domain_validity": {
@@ -265,6 +289,11 @@
           "subcellular-localization",
           "human-protein-atlas",
           "cell-biology"
+        ],
+        "aliases": [
+          "localization",
+          "cellular compartment",
+          "plasma membrane"
         ]
       },
       "domain_validity": {
@@ -322,6 +351,10 @@
           "protein-interactions",
           "network-biology",
           "human-protein-atlas"
+        ],
+        "aliases": [
+          "protein interactions",
+          "PPI"
         ]
       },
       "domain_validity": {
@@ -380,6 +413,11 @@
           "disease-target-association",
           "efo",
           "target-prioritization"
+        ],
+        "aliases": [
+          "disease targets",
+          "EFO",
+          "associated targets"
         ]
       },
       "domain_validity": {
@@ -440,6 +478,11 @@
           "drug-disease-association",
           "chembl",
           "repurposing"
+        ],
+        "aliases": [
+          "drug disease",
+          "linked diseases",
+          "ChEMBL"
         ]
       },
       "domain_validity": {
@@ -499,6 +542,11 @@
           "drug-mechanism",
           "chembl",
           "pharmacology"
+        ],
+        "aliases": [
+          "MOA",
+          "mechanism of action",
+          "ChEMBL"
         ]
       },
       "domain_validity": {
@@ -557,6 +605,10 @@
           "target-interactions",
           "network-biology",
           "ensembl"
+        ],
+        "aliases": [
+          "target interactions",
+          "protein interactions"
         ]
       },
       "domain_validity": {
@@ -615,6 +667,10 @@
           "open-targets",
           "functional-annotation",
           "ensembl"
+        ],
+        "aliases": [
+          "gene ontology",
+          "GO terms"
         ]
       },
       "domain_validity": {
@@ -674,6 +730,12 @@
           "cheminformatics",
           "similarity-search",
           "virtual-screening"
+        ],
+        "aliases": [
+          "similar molecules",
+          "analog search",
+          "imatinib",
+          "Gleevec"
         ]
       },
       "domain_validity": {
@@ -731,6 +793,11 @@
           "biomedical-literature",
           "europe-pmc",
           "evidence-gathering"
+        ],
+        "aliases": [
+          "literature search",
+          "PubMed",
+          "papers"
         ]
       },
       "domain_validity": {
@@ -789,6 +856,11 @@
           "reactome",
           "pathway-biology",
           "reaction-annotation"
+        ],
+        "aliases": [
+          "pathway reactions",
+          "Reactome pathway",
+          "apoptosis"
         ]
       },
       "domain_validity": {
@@ -846,6 +918,11 @@
           "gwas",
           "genetic-association",
           "trait-genetics"
+        ],
+        "aliases": [
+          "GWAS trait",
+          "association",
+          "breast cancer"
         ]
       },
       "domain_validity": {
@@ -901,6 +978,10 @@
           "gwas",
           "snp-association",
           "gene-genetics"
+        ],
+        "aliases": [
+          "SNPs for gene",
+          "BRCA1"
         ]
       },
       "domain_validity": {
@@ -956,6 +1037,11 @@
           "dailymed",
           "drug-labels",
           "regulatory-information"
+        ],
+        "aliases": [
+          "SPL",
+          "drug label",
+          "DailyMed"
         ]
       },
       "domain_validity": {
@@ -1012,6 +1098,13 @@
           "fda-drug-label",
           "adverse-reactions",
           "drug-safety"
+        ],
+        "aliases": [
+          "adverse reactions",
+          "FDA label",
+          "warfarin",
+          "Coumadin",
+          "Jantoven"
         ]
       },
       "domain_validity": {
@@ -1067,6 +1160,11 @@
           "faers",
           "pharmacovigilance",
           "adverse-events"
+        ],
+        "aliases": [
+          "FAERS",
+          "adverse event counts",
+          "pharmacovigilance"
         ]
       },
       "domain_validity": {
@@ -1123,6 +1221,11 @@
           "rcsb-pdb",
           "protein-structure",
           "sequence-mapping"
+        ],
+        "aliases": [
+          "PDB sequence",
+          "RCSB",
+          "1AKE"
         ]
       },
       "domain_validity": {

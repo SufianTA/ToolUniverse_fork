@@ -2,7 +2,11 @@
   "name": "Reactome_get_pathway_reactions",
   "identity": {
     "canonical_name": "Reactome_get_pathway_reactions",
-    "aliases": [],
+    "aliases": [
+      "pathway reactions",
+      "Reactome pathway",
+      "apoptosis"
+    ],
     "domain_tags": [
       "reactome",
       "pathway-biology",
@@ -50,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-19T18:31:58Z"
+    "last_updated": "2025-12-19T20:48:38Z"
   },
   "embeddings": {
     "purpose": {

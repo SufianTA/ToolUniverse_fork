@@ -1,5 +1,8 @@
+import copy
 import json
 import gc
+import os
+from pathlib import Path
 from .utils import get_md5
 from .base_tool import BaseTool
 from .tool_registry import register_tool
@@ -131,9 +134,9 @@ class ToolFinderEmbedding(BaseTool):
             if tool["name"] in tool_name_set:
                 filtered_tools.append(tool)
 
+        augmented_tools = self._augment_with_persona(filtered_tools)
         all_tools_str = [
-            json.dumps(each)
-            for each in tooluniverse.prepare_tool_prompts(filtered_tools)
+            json.dumps(each) for each in tooluniverse.prepare_tool_prompts(augmented_tools)
         ]
         md5_value = get_md5(str(all_tools_str))
         print("get the md value of tools:", md5_value)
@@ -187,6 +190,52 @@ class ToolFinderEmbedding(BaseTool):
             print(
                 "\033[92mMemory cleanup completed. Embeddings are ready for use.\033[0m"
             )
+
+    def _augment_with_persona(self, tools):
+        persona_map = self._load_persona_map()
+        if not persona_map:
+            return tools
+        augmented = copy.deepcopy(tools)
+        for tool in augmented:
+            name = tool.get("name")
+            persona = persona_map.get(name, {})
+            if not persona:
+                continue
+            identity = persona.get("identity", {})
+            aliases = identity.get("aliases") or []
+            tags = identity.get("domain_tags") or []
+            description = identity.get("description") or ""
+            extra = []
+            if description:
+                extra.append(description)
+            if aliases:
+                extra.append("aliases: " + ", ".join(aliases))
+            if tags:
+                extra.append("tags: " + ", ".join(tags))
+            if extra:
+                base = tool.get("description", "") or ""
+                tool["description"] = base + "\n\npersona_context: " + " | ".join(extra)
+        return augmented
+
+    def _load_persona_map(self):
+        if hasattr(self, "_persona_map"):
+            return self._persona_map
+        persona_dir = os.getenv("TOOLUNIVERSE_PERSONA_DIR", "web/personas")
+        path = Path(persona_dir)
+        if not path.exists():
+            self._persona_map = {}
+            return self._persona_map
+        persona_map = {}
+        for persona_file in path.glob("*.json"):
+            try:
+                data = json.loads(persona_file.read_text(encoding="utf-8"))
+                name = data.get("name")
+                if name:
+                    persona_map[name] = data
+            except Exception:
+                continue
+        self._persona_map = persona_map
+        return self._persona_map
 
     def rag_infer(self, query, top_k=5):
         """

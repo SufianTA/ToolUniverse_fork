@@ -1,0 +1,258 @@
+{
+  "config": {
+    "new": "https://tooluniverse-smcp.onrender.com",
+    "old": "https://tooluniversemcpserver.onrender.com",
+    "catalog": "web/v5_all_tools_rich.json",
+    "sample": 50,
+    "k": 5,
+    "seed": 1337,
+    "toolset": "benchmarks/biomed_toolset.json",
+    "cases": "benchmarks/biomed_cases.json"
+  },
+  "results": [
+    {
+      "name": "new",
+      "tool_count": 780,
+      "persona_tools_present": 4,
+      "find_tools_hit_at_k": 0.85,
+      "find_tools_mrr": 0.7375,
+      "find_tools_p50_ms": 301.7919000412803,
+      "find_tools_p95_ms": 588.0235999939032,
+      "find_tools_errors": 0,
+      "similarity_overlap": 0.16999999999999998,
+      "similarity_p50_ms": 121.28449996816926,
+      "similarity_p95_ms": 151.2288000085391,
+      "persona_graph_nodes": 643,
+      "persona_graph_links": 3216
+    },
+    {
+      "name": "old",
+      "tool_count": 769,
+      "persona_tools_present": 0,
+      "find_tools_hit_at_k": 0.85,
+      "find_tools_mrr": 0.7375,
+      "find_tools_p50_ms": 216.5050499897916,
+      "find_tools_p95_ms": 258.45029996708035,
+      "find_tools_errors": 0,
+      "similarity_overlap": null,
+      "similarity_p50_ms": null,
+      "similarity_p95_ms": null,
+      "persona_graph_nodes": null,
+      "persona_graph_links": null
+    }
+  ],
+  "case_results": {
+    "new": {
+      "selection_hit_at_k": 0.48,
+      "selection_top1_rate": 0.24,
+      "selection_total": 25,
+      "selection_errors": 0,
+      "execution_valid_rate": 1.0,
+      "execution_total": 25,
+      "execution_errors": 1,
+      "case_chain_all_steps_top1_rate": 0.0,
+      "case_chain_all_steps_hit_rate": 0.125,
+      "chain_similarity_hit_at_k": 0.5,
+      "persona_chain_hit_at_k": 1.0,
+      "chain_total": 8,
+      "chain_errors": 0,
+      "similarity_available": true,
+      "case_summaries": [
+        {
+          "case_id": "app_uniprot_literature",
+          "steps": 3,
+          "selection_hit_rate": 0.0,
+          "selection_top1_rate": 0.0,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "egfr_cellular_context",
+          "steps": 4,
+          "selection_hit_rate": 1.0,
+          "selection_top1_rate": 0.25,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": true,
+          "workflow_score": 0.625,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "lung_carcinoma_targets",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "imatinib_moa_analogs",
+          "steps": 3,
+          "selection_hit_rate": 0.3333333333333333,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "warfarin_safety_triangulation",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "breast_cancer_gwas_targets",
+          "steps": 3,
+          "selection_hit_rate": 0.3333333333333333,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "apoptosis_pathway_literature",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 0.6666666666666666,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": true
+        },
+        {
+          "case_id": "pdb_to_uniprot_mapping",
+          "steps": 3,
+          "selection_hit_rate": 0.0,
+          "selection_top1_rate": 0.0,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": true
+        }
+      ]
+    },
+    "old": {
+      "selection_hit_at_k": 0.48,
+      "selection_top1_rate": 0.24,
+      "selection_total": 25,
+      "selection_errors": 0,
+      "execution_valid_rate": 1.0,
+      "execution_total": 25,
+      "execution_errors": 1,
+      "case_chain_all_steps_top1_rate": 0.0,
+      "case_chain_all_steps_hit_rate": 0.125,
+      "chain_similarity_hit_at_k": null,
+      "persona_chain_hit_at_k": null,
+      "chain_total": 0,
+      "chain_errors": 0,
+      "similarity_available": false,
+      "case_summaries": [
+        {
+          "case_id": "app_uniprot_literature",
+          "steps": 3,
+          "selection_hit_rate": 0.0,
+          "selection_top1_rate": 0.0,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "egfr_cellular_context",
+          "steps": 4,
+          "selection_hit_rate": 1.0,
+          "selection_top1_rate": 0.25,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": true,
+          "workflow_score": 0.625,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "lung_carcinoma_targets",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "imatinib_moa_analogs",
+          "steps": 3,
+          "selection_hit_rate": 0.3333333333333333,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "warfarin_safety_triangulation",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "breast_cancer_gwas_targets",
+          "steps": 3,
+          "selection_hit_rate": 0.3333333333333333,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.6666666666666666,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "apoptosis_pathway_literature",
+          "steps": 3,
+          "selection_hit_rate": 0.6666666666666666,
+          "selection_top1_rate": 0.3333333333333333,
+          "execution_valid_rate": 0.6666666666666666,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": null
+        },
+        {
+          "case_id": "pdb_to_uniprot_mapping",
+          "steps": 3,
+          "selection_hit_rate": 0.0,
+          "selection_top1_rate": 0.0,
+          "execution_valid_rate": 1.0,
+          "chain_all_steps_top1": false,
+          "chain_all_steps_hit": false,
+          "workflow_score": 0.5,
+          "persona_chain_hit": null
+        }
+      ]
+    }
+  }
+}

@@ -2,7 +2,13 @@
   "name": "HPA_get_gene_basic_info_by_ensembl_id",
   "identity": {
     "canonical_name": "HPA_get_gene_basic_info_by_ensembl_id",
-    "aliases": [],
+    "aliases": [
+      "EGFR",
+      "ERBB1",
+      "HER1",
+      "Ensembl gene ID",
+      "gene info"
+    ],
     "domain_tags": [
       "human-protein-atlas",
       "gene-metadata",
@@ -51,7 +57,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-19T18:31:58Z"
+    "last_updated": "2025-12-19T20:48:38Z"
   },
   "embeddings": {
     "purpose": {

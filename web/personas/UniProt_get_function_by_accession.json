@@ -2,7 +2,10 @@
   "name": "UniProt_get_function_by_accession",
   "identity": {
     "canonical_name": "UniProt_get_function_by_accession",
-    "aliases": [],
+    "aliases": [
+      "protein function",
+      "functional annotation"
+    ],
     "domain_tags": [
       "protein-function",
       "uniprot",
@@ -51,7 +54,7 @@
   "provenance": {
     "tool_version": "v1.0.0",
     "data_source_version": "unknown",
-    "last_updated": "2025-12-19T18:31:58Z"
+    "last_updated": "2025-12-19T20:48:38Z"
   },
   "embeddings": {
     "purpose": {
