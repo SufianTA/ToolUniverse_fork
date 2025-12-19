@@ -1,0 +1,112 @@
+{
+  "name": "OpenTargets_get_drug_warnings_by_chemblId",
+  "identity": {
+    "canonical_name": "OpenTargets_get_drug_warnings_by_chemblId",
+    "aliases": [],
+    "domain_tags": [
+      "Cheminformatics & Chemical Analysis",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "chembl-id-query",
+      "open-targets-integration",
+      "pharmacology",
+      "safety",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetch safety warnings for a drug using its ChEMBL ID.\n\nRetrieve warnings for a specific drug using ChEMBL ID.",
+    "capabilities": [
+      "Fetch drug warnings by ChEMBL ID",
+      "Retrieve warning details including type, description, country, year, toxicity class, EFO ID, and related references"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_drug_warnings_by_chemblId_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_drug_warnings_by_chemblId_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_drug_warnings_by_chemblId_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_drug_withdrawn_blackbox_status_by_chemblId",
+        "score": 0.7963529825210571
+      },
+      {
+        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
+        "score": 0.7755477428436279
+      },
+      {
+        "tool": "OpenTargets_get_approved_indications_by_drug_chemblId",
+        "score": 0.7746992111206055
+      },
+      {
+        "tool": "FDA_get_drug_names_by_user_safety_warning",
+        "score": 0.7664246559143066
+      },
+      {
+        "tool": "OpenTargets_get_drug_adverse_events_by_chemblId",
+        "score": 0.7658628225326538
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_get_drug_warnings_by_chemblId",
+    "argument_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      }
+    }
+  }
+}

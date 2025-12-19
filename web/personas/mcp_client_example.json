@@ -1,0 +1,156 @@
+{
+  "name": "mcp_client_example",
+  "identity": {
+    "canonical_name": "mcp_client_example",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Processing",
+      "Miscellaneous",
+      "integration",
+      "mcp-protocol",
+      "resource",
+      "tool-management",
+      "MCPClientTool",
+      "Zitnik Lab"
+    ],
+    "role": "MCP",
+    "description": "Client for interacting with an MCP server, supporting all MCP operations (tools, resources, prompts).\n\nExample MCP client to connect to an existing MCP server. Supports all MCP operations including tools, resources, and prompts.",
+    "capabilities": [
+      "Connect to an MCP server via HTTP",
+      "List available tools",
+      "Call a specified tool",
+      "List resources on the MCP server",
+      "Read a specified resource",
+      "List prompts",
+      "Get a specific prompt"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "operation": {
+        "type": "string",
+        "description": "The MCP operation to perform"
+      },
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool to call (required for call_tool operation)"
+      },
+      "tool_arguments": {
+        "type": "object",
+        "description": "Arguments to pass to the tool (for call_tool operation)"
+      },
+      "uri": {
+        "type": "string",
+        "description": "Resource URI (required for read_resource operation)"
+      },
+      "prompt_name": {
+        "type": "string",
+        "description": "Name of the prompt to get (required for get_prompt operation)"
+      },
+      "prompt_arguments": {
+        "type": "object",
+        "description": "Arguments to pass to the prompt (for get_prompt operation)"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_client_example_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_client_example_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_client_example_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "mcp_auto_loader_txagent",
+        "score": 0.566907525062561
+      },
+      {
+        "tool": "mcp_auto_loader_expert_feedback",
+        "score": 0.5538709163665771
+      },
+      {
+        "tool": "mcp_auto_loader_server1",
+        "score": 0.5277307629585266
+      },
+      {
+        "tool": "mcp_auto_loader_human_expert",
+        "score": 0.5093752145767212
+      },
+      {
+        "tool": "mcp_auto_loader_uspto_downloader",
+        "score": 0.43993860483169556
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mcp_client_example",
+    "argument_schema": {
+      "operation": {
+        "type": "string",
+        "description": "The MCP operation to perform"
+      },
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool to call (required for call_tool operation)"
+      },
+      "tool_arguments": {
+        "type": "object",
+        "description": "Arguments to pass to the tool (for call_tool operation)"
+      },
+      "uri": {
+        "type": "string",
+        "description": "Resource URI (required for read_resource operation)"
+      },
+      "prompt_name": {
+        "type": "string",
+        "description": "Name of the prompt to get (required for get_prompt operation)"
+      },
+      "prompt_arguments": {
+        "type": "object",
+        "description": "Arguments to pass to the prompt (for get_prompt operation)"
+      }
+    }
+  }
+}

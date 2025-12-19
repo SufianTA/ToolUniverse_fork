@@ -1,0 +1,111 @@
+{
+  "name": "get_schnetpack_info",
+  "identity": {
+    "canonical_name": "get_schnetpack_info",
+    "aliases": [],
+    "domain_tags": [
+      "Machine Learning",
+      "Structural Biology & Simulation",
+      "materials-science",
+      "modeling",
+      "molecular-modeling",
+      "quick-start-guide",
+      "usage-examples",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Retrieve comprehensive details about SchNetPack, including its features, documentation, and usage examples.\n\nGet comprehensive information about SchNetPack - a deep-learning toolbox for molecules and materials built on PyTorch.",
+    "capabilities": [
+      "Retrieve comprehensive information about SchNetPack",
+      "Optionally include usage examples and a quick-start guide"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and a quick-start guide"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_schnetpack_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_schnetpack_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_schnetpack_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_deepchem_info",
+        "score": 0.5590914487838745
+      },
+      {
+        "tool": "get_pytorch_info",
+        "score": 0.5544780492782593
+      },
+      {
+        "tool": "get_pytdc_info",
+        "score": 0.5449202656745911
+      },
+      {
+        "tool": "get_torch_geometric_info",
+        "score": 0.520560622215271
+      },
+      {
+        "tool": "get_nglview_info",
+        "score": 0.507919192314148
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_schnetpack_info",
+    "argument_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and a quick-start guide"
+      }
+    }
+  }
+}

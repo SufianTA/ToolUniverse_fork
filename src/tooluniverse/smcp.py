@@ -96,6 +96,7 @@ import functools
 import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Union, Callable, Literal
 
 from fastmcp import FastMCP
@@ -103,6 +104,7 @@ from fastmcp import FastMCP
 FASTMCP_AVAILABLE = True
 
 from .execute_function import ToolUniverse
+from .persona_manager import PersonaManager
 from .logging_config import (
     get_logger,
 )
@@ -311,6 +313,10 @@ class SMCP(FastMCP):
         hook_config: Optional[Dict[str, Any]] = None,
         hook_type: Optional[str] = None,
         compact_mode: bool = False,
+        rich_personas: bool = False,
+        persona_dir: Optional[str] = None,
+        persona_embedding_dir: Optional[str] = None,
+        persona_graph_path: Optional[str] = None,
         **kwargs,
     ):
         if not FASTMCP_AVAILABLE:
@@ -358,6 +364,19 @@ class SMCP(FastMCP):
         self.hooks_enabled = hooks_enabled
         self.hook_config = hook_config
         self.hook_type = hook_type
+        self.rich_personas = rich_personas
+        self.persona_dir = Path(persona_dir) if persona_dir else Path("web") / "personas"
+        self.persona_embedding_dir = (
+            Path(persona_embedding_dir)
+            if persona_embedding_dir
+            else Path("web") / "embeddings"
+        )
+        self.persona_graph_path = (
+            Path(persona_graph_path)
+            if persona_graph_path
+            else Path("web") / "persona_graph.json"
+        )
+        self.persona_manager: Optional[PersonaManager] = None
 
         # Space configuration storage
         self.space_llm_config = None
@@ -376,8 +395,16 @@ class SMCP(FastMCP):
         # Initialize SMCP-specific features (after Space is loaded)
         self._setup_smcp_tools()
 
+        # Load persona store if enabled
+        if self.rich_personas:
+            self._load_persona_store()
+
         # Register custom MCP methods
         self._register_custom_mcp_methods()
+
+        # Register persona helper tools if personas are available
+        if self.rich_personas and self.persona_manager:
+            self._register_persona_tools()
 
     def _load_space_configs(self, space: Union[str, List[str]]):
         """
@@ -732,6 +759,13 @@ class SMCP(FastMCP):
         try:
             # Determine which tool to use based on method and availability
             tool_name = self._select_search_tool(search_method, use_advanced_search)
+            available_tool_names = [
+                tool.get("name", "")
+                for tool in self.tooluniverse.return_all_loaded_tools()
+            ]
+            if tool_name not in available_tool_names:
+                fallback = self._fallback_keyword_search(query, categories, limit)
+                return json.dumps(fallback, ensure_ascii=False)
 
             # Prepare unified function call - all search tools now use same interface
             function_call = {
@@ -817,6 +851,70 @@ class SMCP(FastMCP):
         else:
             # Invalid method or method not available, fallback to keyword
             return "Tool_Finder_Keyword"
+
+    def _fallback_keyword_search(
+        self, query: str, categories: Optional[List[str]], limit: int
+    ) -> Dict[str, Any]:
+        """
+        Simple keyword search over loaded tool metadata for environments without finder tools.
+        """
+        query_lower = query.lower()
+        tokens = [token for token in query_lower.split() if token]
+        max_results = limit or 10
+        category_filters = [c.lower() for c in categories] if categories else []
+
+        results: List[Dict[str, Any]] = []
+        for tool in self.tooluniverse.return_all_loaded_tools():
+            name = tool.get("name", "")
+            description = tool.get("description", "") or ""
+            detailed = tool.get("detailed_description", "") or ""
+            tags = tool.get("tags") or []
+            category = tool.get("category") or tool.get("type") or tool.get("toolType")
+            category_lower = (category or "").lower()
+
+            if category_filters:
+                tag_lowers = [t.lower() for t in tags]
+                if not any(
+                    cf == category_lower
+                    or cf in category_lower
+                    or cf in tag_lowers
+                    for cf in category_filters
+                ):
+                    continue
+
+            haystack = " ".join(
+                [
+                    name,
+                    description,
+                    detailed,
+                    " ".join(tags),
+                    category or "",
+                ]
+            ).lower()
+
+            if query_lower not in haystack and not any(
+                token in haystack for token in tokens
+            ):
+                continue
+
+            results.append(
+                {
+                    "name": name,
+                    "description": description,
+                    "parameters": tool.get("parameter", {}),
+                    "required": tool.get("required", []),
+                    "category": category,
+                    "tags": tags,
+                }
+            )
+            if len(results) >= max_results:
+                break
+
+        return {
+            "tools": results,
+            "search_method": "keyword",
+            "total_matches": len(results),
+        }
 
     def _setup_smcp_tools(self):
         """
@@ -1259,6 +1357,80 @@ class SMCP(FastMCP):
 
         exposed_count = len(self._exposed_tools)
         self.logger.info(f"Successfully exposed {exposed_count} tools to MCP interface")
+
+    def _load_persona_store(self) -> None:
+        """
+        Load persona metadata, embeddings, and graph if available.
+        """
+        manager = PersonaManager(
+            persona_dir=self.persona_dir,
+            embedding_dir=self.persona_embedding_dir,
+            graph_path=self.persona_graph_path,
+        )
+        manager.load()
+        if not manager.personas:
+            self.logger.warning(
+                f"rich_personas enabled but no personas found in {self.persona_dir}"
+            )
+        else:
+            self.logger.info(
+                f"Loaded {len(manager.personas)} personas from {self.persona_dir}"
+            )
+        self.persona_manager = manager
+
+    def _register_persona_tools(self) -> None:
+        """
+        Register helper tools that expose persona metadata and similarity search.
+        """
+        if not self.persona_manager:
+            return
+
+        @self.tool()
+        async def get_persona(tool_name: str) -> str:
+            """
+            Retrieve the rich persona for a ToolUniverse tool.
+            """
+            import json
+
+            persona = self.persona_manager.get_persona(tool_name)
+            if not persona:
+                return json.dumps({"error": f"persona not found for {tool_name}"})
+            return json.dumps(persona, ensure_ascii=False)
+
+        @self.tool()
+        async def list_personas(limit: Optional[int] = None) -> str:
+            """
+            List available tool personas (optionally limited).
+            """
+            import json
+
+            personas = self.persona_manager.list_personas()
+            if limit:
+                personas = personas[:limit]
+            return json.dumps(personas, ensure_ascii=False)
+
+        @self.tool()
+        async def get_persona_graph() -> str:
+            """
+            Return the persona relationship graph (nodes + links).
+            """
+            import json
+
+            return json.dumps(self.persona_manager.get_graph(), ensure_ascii=False)
+
+        @self.tool()
+        async def find_similar_tools(
+            tool_name: str, vector_type: str = "purpose", top_k: int = 5
+        ) -> str:
+            """
+            Find nearest neighbors for a tool using persona embeddings.
+            """
+            import json
+
+            results = self.persona_manager.find_similar(
+                tool_name, vector_type=vector_type, top_k=top_k
+            )
+            return json.dumps({"neighbors": results}, ensure_ascii=False)
 
     def _expose_core_discovery_tools(self):
         """
@@ -2169,6 +2341,30 @@ class SMCP(FastMCP):
                 "description", f"ToolUniverse tool: {tool_name}"
             )
             parameters = tool_config.get("parameter", {})
+
+            # If personas are loaded, append a concise machine-readable persona summary
+            if self.persona_manager:
+                persona = self.persona_manager.get_persona(tool_name)
+                if persona:
+                    persona_summary = {
+                        "identity": persona.get("identity", {}),
+                        "domain_validity": persona.get("domain_validity", {}),
+                        "safety": persona.get("safety", {}),
+                        "telemetry": persona.get("telemetry", {}),
+                        "provenance": persona.get("provenance", {}),
+                        "relationships": persona.get("relationships", {}),
+                        "embeddings": {
+                            k: {
+                                "model": v.get("model"),
+                                "dim": v.get("dim"),
+                            }
+                            for k, v in persona.get("embeddings", {}).items()
+                        },
+                    }
+                    description = (
+                        f"{description}\n\nPersona metadata: "
+                        f"{json.dumps(persona_summary, ensure_ascii=False)}"
+                    )
 
             # Extract parameter information from the schema
             # Handle case where properties might be None (like in Finish tool)

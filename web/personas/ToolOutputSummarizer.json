@@ -1,0 +1,144 @@
+{
+  "name": "ToolOutputSummarizer",
+  "identity": {
+    "canonical_name": "ToolOutputSummarizer",
+    "aliases": [],
+    "domain_tags": [
+      "Text Mining & NLP",
+      "content-management",
+      "contextual-processing",
+      "data-discovery",
+      "query-processing",
+      "tool-management",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "AI-powered tool that generates concise summaries of long tool outputs, emphasizing key information relevant to the original query.\n\nAI-powered tool for summarizing long tool outputs, focusing on key information relevant to the original query",
+    "capabilities": [
+      "Summarizes long tool outputs",
+      "Highlights key findings and results",
+      "Preserves critical technical details",
+      "Focuses on information relevant to original query"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_output": {
+        "type": "string",
+        "description": "The original tool output to be summarized"
+      },
+      "query_context": {
+        "type": "string",
+        "description": "Context about the original query that triggered the tool"
+      },
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool that generated the output"
+      },
+      "focus_areas": {
+        "type": "string",
+        "description": "Specific areas to focus on in the summary"
+      },
+      "max_length": {
+        "type": "integer",
+        "description": "Maximum length of the summary in characters"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolOutputSummarizer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolOutputSummarizer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolOutputSummarizer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "LiteratureSearchTool",
+        "score": 0.5913178324699402
+      },
+      {
+        "tool": "Tool_Finder_LLM",
+        "score": 0.544190526008606
+      },
+      {
+        "tool": "OutputSummarizationComposer",
+        "score": 0.5434959530830383
+      },
+      {
+        "tool": "Tool_Finder_Keyword",
+        "score": 0.537402331829071
+      },
+      {
+        "tool": "ScientificTextSummarizer",
+        "score": 0.5159286260604858
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ToolOutputSummarizer",
+    "argument_schema": {
+      "tool_output": {
+        "type": "string",
+        "description": "The original tool output to be summarized"
+      },
+      "query_context": {
+        "type": "string",
+        "description": "Context about the original query that triggered the tool"
+      },
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool that generated the output"
+      },
+      "focus_areas": {
+        "type": "string",
+        "description": "Specific areas to focus on in the summary"
+      },
+      "max_length": {
+        "type": "integer",
+        "description": "Maximum length of the summary in characters"
+      }
+    }
+  }
+}

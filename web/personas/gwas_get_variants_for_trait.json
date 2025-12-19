@@ -1,0 +1,126 @@
+{
+  "name": "gwas_get_variants_for_trait",
+  "identity": {
+    "canonical_name": "gwas_get_variants_for_trait",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Data Processing",
+      "Domain-Specific Analysis",
+      "Omics & Molecular Analysis",
+      "functional-genomics",
+      "ontology",
+      "GWASVariantsForTrait",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve paginated GWAS variants associated with a specific trait.\n\nGet all variants associated with a specific trait with pagination support.",
+    "capabilities": [
+      "Retrieve GWAS variants for a given trait",
+      "Support pagination of results"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return per page"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_variants_for_trait_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_variants_for_trait_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_variants_for_trait_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "gwas_search_associations",
+        "score": 0.714911937713623
+      },
+      {
+        "tool": "gwas_get_studies_for_trait",
+        "score": 0.68552565574646
+      },
+      {
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.6569231748580933
+      },
+      {
+        "tool": "gwas_get_snps_for_gene",
+        "score": 0.6410783529281616
+      },
+      {
+        "tool": "gwas_get_study_by_id",
+        "score": 0.5947568416595459
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "gwas_get_variants_for_trait",
+    "argument_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return per page"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    }
+  }
+}

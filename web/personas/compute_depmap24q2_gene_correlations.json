@@ -1,0 +1,128 @@
+{
+  "name": "compute_depmap24q2_gene_correlations",
+  "identity": {
+    "canonical_name": "compute_depmap24q2_gene_correlations",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Omics & Molecular Analysis",
+      "Statistical & Analytical Methods",
+      "bioinformatics-pipeline",
+      "functional-genomics",
+      "human-data",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "ML Model",
+    "description": "Computes gene-gene correlations of knockout effects across 1,320+ cancer cell lines using DepMap 24Q2 CRISPR data to uncover genetic dependencies and synthetic lethal relationships.\n\nAnalyzes gene-gene correlations from DepMap CRISPR knockout screening data. This tool validates genetic interactions using empirical cell viability data from 1,320+ cancer cell lines in the DepMap 24Q2 dataset. It determines if two genes have correlated knockout effects, providing insights into genetic dependencies and synthetic lethal relationships.",
+    "capabilities": [
+      "Analyze gene-gene correlations",
+      "Compute Pearson correlation coefficient",
+      "Evaluate statistical significance (p-value, adjusted p-value)",
+      "Interpret biological context of gene interactions"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_a": {
+        "type": "string",
+        "description": "First gene symbol for correlation analysis (e.g., 'BRAF', 'TP53'). Must use standard HUGO gene nomenclature."
+      },
+      "gene_b": {
+        "type": "string",
+        "description": "Second gene symbol for correlation analysis (e.g., 'MAPK1', 'MDM2'). Must use standard HUGO gene nomenclature."
+      },
+      "data_dir": {
+        "type": "string",
+        "description": "Path to directory containing DepMap correlation matrices. If None, uses DEPMAP_DATA_PATH/depmap_24q2."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/compute_depmap24q2_gene_correlations_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/compute_depmap24q2_gene_correlations_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/compute_depmap24q2_gene_correlations_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_mageck_info",
+        "score": 0.5093722343444824
+      },
+      {
+        "tool": "HPA_get_cancer_prognostics_by_gene",
+        "score": 0.4770035743713379
+      },
+      {
+        "tool": "cancer_gene_census_disease_target_score",
+        "score": 0.4062163829803467
+      },
+      {
+        "tool": "HPA_search_genes_by_query",
+        "score": 0.4053603708744049
+      },
+      {
+        "tool": "run_transcriptformer_embedding_retrieval",
+        "score": 0.40378355979919434
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "compute_depmap24q2_gene_correlations",
+    "argument_schema": {
+      "gene_a": {
+        "type": "string",
+        "description": "First gene symbol for correlation analysis (e.g., 'BRAF', 'TP53'). Must use standard HUGO gene nomenclature."
+      },
+      "gene_b": {
+        "type": "string",
+        "description": "Second gene symbol for correlation analysis (e.g., 'MAPK1', 'MDM2'). Must use standard HUGO gene nomenclature."
+      },
+      "data_dir": {
+        "type": "string",
+        "description": "Path to directory containing DepMap correlation matrices. If None, uses DEPMAP_DATA_PATH/depmap_24q2."
+      }
+    }
+  }
+}

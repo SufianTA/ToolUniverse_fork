@@ -1,0 +1,130 @@
+{
+  "name": "drugbank_filter_drugs_by_name",
+  "identity": {
+    "canonical_name": "drugbank_filter_drugs_by_name",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Cheminformatics & Chemical Analysis",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Search & Retrieval",
+      "exact-match",
+      "pharmaceutical",
+      "pharmacology",
+      "query-processing",
+      "XMLTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Filter DrugBank records by drug name conditions.\n\nFilter DrugBank records based on conditions applied to drug names. For example, find drugs whose names end with 'cillin' (penicillin antibiotics), contain 'mab', or are exactly 'Insulin'.",
+    "capabilities": [
+      "Filter DrugBank records based on drug name conditions",
+      "Supports various string matching conditions (contains, starts_with, ends_with, exact, not_empty, has_attribute)",
+      "Limits number of returned results"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "condition": {
+        "type": "string",
+        "description": "The condition to apply for filtering."
+      },
+      "value": {
+        "type": "string",
+        "description": "The value to use with the condition (e.g., 'Aspirin' for 'starts_with'). Required for 'contains', 'starts_with', 'ends_with', and 'exact' conditions."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_filter_drugs_by_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_filter_drugs_by_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_filter_drugs_by_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "drugbank_vocab_filter",
+        "score": 0.7717781066894531
+      },
+      {
+        "tool": "FDA_get_drug_names_by_clinical_studies",
+        "score": 0.7224707007408142
+      },
+      {
+        "tool": "drugbank_vocab_search",
+        "score": 0.6993026733398438
+      },
+      {
+        "tool": "FDA_get_drug_names_by_indication",
+        "score": 0.6939263343811035
+      },
+      {
+        "tool": "drugbank_get_drug_name_and_description_by_indication",
+        "score": 0.6830340623855591
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "drugbank_filter_drugs_by_name",
+    "argument_schema": {
+      "condition": {
+        "type": "string",
+        "description": "The condition to apply for filtering."
+      },
+      "value": {
+        "type": "string",
+        "description": "The value to use with the condition (e.g., 'Aspirin' for 'starts_with'). Required for 'contains', 'starts_with', 'ends_with', and 'exact' conditions."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return."
+      }
+    }
+  }
+}

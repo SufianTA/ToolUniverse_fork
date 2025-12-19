@@ -1,0 +1,124 @@
+{
+  "name": "OpenTargets_drug_pharmacogenomics_data",
+  "identity": {
+    "canonical_name": "OpenTargets_drug_pharmacogenomics_data",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Omics & Molecular Analysis",
+      "Pharmacology & Drug Services",
+      "Statistical & Analytical Methods",
+      "chembl-id-query",
+      "clinical-pharmacology",
+      "open-targets-integration",
+      "personalization",
+      "pharmacology",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetch pharmacogenomics data for a drug, including evidence levels and genotype annotations.\n\nRetrieve pharmacogenomics data for a specific drug, including evidence levels and genotype annotations.",
+    "capabilities": [
+      "Retrieve pharmacogenomics data for a drug",
+      "Include evidence levels",
+      "Provide genotype annotations",
+      "Support pagination"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      },
+      "page": {
+        "type": "object",
+        "description": "Pagination options."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_drug_pharmacogenomics_data_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_drug_pharmacogenomics_data_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_drug_pharmacogenomics_data_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_pharmacogenomics_info_by_drug_name",
+        "score": 0.8446673154830933
+      },
+      {
+        "tool": "FDA_get_drug_name_by_pharmacogenomics",
+        "score": 0.7505248188972473
+      },
+      {
+        "tool": "FDA_get_pharmacokinetics_by_drug_name",
+        "score": 0.7500509023666382
+      },
+      {
+        "tool": "FDA_get_clinical_pharmacology_by_drug_name",
+        "score": 0.7486866116523743
+      },
+      {
+        "tool": "FDA_get_drug_names_by_pharmacokinetics",
+        "score": 0.7367486953735352
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_drug_pharmacogenomics_data",
+    "argument_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      },
+      "page": {
+        "type": "object",
+        "description": "Pagination options."
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "name": "MedicalLiteratureReviewer",
+  "identity": {
+    "canonical_name": "MedicalLiteratureReviewer",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Statistical & Analytical Methods",
+      "Text Mining & NLP",
+      "medical-domain",
+      "quality-assessment",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Systematic medical literature review tool for evidence synthesis and quality assessment.\n\nConducts systematic reviews of medical literature on specific topics. Synthesizes findings from multiple studies and provides evidence-based conclusions with structured analysis and quality assessment.",
+    "capabilities": [
+      "Conduct systematic reviews of medical literature",
+      "Synthesize findings from multiple studies",
+      "Provide evidence-based conclusions",
+      "Perform structured analysis",
+      "Assess quality of evidence",
+      "Follow PRISMA guidelines"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "research_topic": {
+        "type": "string",
+        "description": "The specific medical/research topic for literature review (e.g., 'efficacy of drug X in treating condition Y')."
+      },
+      "literature_content": {
+        "type": "string",
+        "description": "The literature content, abstracts, full studies, or research papers to review and synthesize."
+      },
+      "focus_area": {
+        "type": "string",
+        "description": "Primary focus area for the review (e.g., 'therapeutic efficacy', 'safety profile', 'diagnostic accuracy', 'biomarker validation')."
+      },
+      "study_types": {
+        "type": "string",
+        "description": "Types of studies to prioritize in the analysis (e.g., 'randomized controlled trials', 'meta-analyses', 'cohort studies', 'case-control studies')."
+      },
+      "quality_level": {
+        "type": "string",
+        "description": "Minimum evidence quality level to include (e.g., 'high quality only', 'moderate and above', 'all available evidence')."
+      },
+      "review_scope": {
+        "type": "string",
+        "description": "Scope of the review (e.g., 'comprehensive systematic review', 'rapid review', 'scoping review', 'narrative review')."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedicalLiteratureReviewer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedicalLiteratureReviewer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedicalLiteratureReviewer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "BiomarkerDiscoveryWorkflow",
+        "score": 0.47476616501808167
+      },
+      {
+        "tool": "ScientificTextSummarizer",
+        "score": 0.4264258146286011
+      },
+      {
+        "tool": "LiteratureSearchTool",
+        "score": 0.4109058082103729
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "MedicalLiteratureReviewer",
+    "argument_schema": {
+      "research_topic": {
+        "type": "string",
+        "description": "The specific medical/research topic for literature review (e.g., 'efficacy of drug X in treating condition Y')."
+      },
+      "literature_content": {
+        "type": "string",
+        "description": "The literature content, abstracts, full studies, or research papers to review and synthesize."
+      },
+      "focus_area": {
+        "type": "string",
+        "description": "Primary focus area for the review (e.g., 'therapeutic efficacy', 'safety profile', 'diagnostic accuracy', 'biomarker validation')."
+      },
+      "study_types": {
+        "type": "string",
+        "description": "Types of studies to prioritize in the analysis (e.g., 'randomized controlled trials', 'meta-analyses', 'cohort studies', 'case-control studies')."
+      },
+      "quality_level": {
+        "type": "string",
+        "description": "Minimum evidence quality level to include (e.g., 'high quality only', 'moderate and above', 'all available evidence')."
+      },
+      "review_scope": {
+        "type": "string",
+        "description": "Scope of the review (e.g., 'comprehensive systematic review', 'rapid review', 'scoping review', 'narrative review')."
+      }
+    }
+  }
+}

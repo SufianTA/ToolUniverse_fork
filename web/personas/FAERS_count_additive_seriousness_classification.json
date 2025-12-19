@@ -1,0 +1,139 @@
+{
+  "name": "FAERS_count_additive_seriousness_classification",
+  "identity": {
+    "canonical_name": "FAERS_count_additive_seriousness_classification",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "age-stratification",
+      "analysis",
+      "medical-domain",
+      "multi-drug-analysis",
+      "pharmacology",
+      "FDACountAdditiveReactionsTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Quantifies serious vs non-serious adverse event counts across multiple medicinal products using FAERS data.\n\nAdditive multi-drug data: Quantify serious vs non-serious classifications across medicinal products, annotated per regulatory definitions. Data source: FDA Adverse Event Reporting System (FAERS).",
+    "capabilities": [
+      "Quantify serious vs non-serious adverse event classifications across medicinal products",
+      "Filter by patient sex",
+      "Filter by patient age group",
+      "Filter by occurrence country code",
+      "Map classification codes to 'Serious' and 'Non-serious' labels"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "medicinalproducts": {
+        "type": "array",
+        "description": "Array of medicinal product names."
+      },
+      "patientsex": {
+        "type": "string",
+        "description": "Filter by sex."
+      },
+      "patientagegroup": {
+        "type": "string",
+        "description": "Filter by age group."
+      },
+      "occurcountry": {
+        "type": "string",
+        "description": "ISO2 country code filter."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_seriousness_classification_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_seriousness_classification_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_seriousness_classification_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FAERS_count_additive_administration_routes",
+        "score": 0.8524209260940552
+      },
+      {
+        "tool": "FAERS_count_additive_reports_by_reporter_country",
+        "score": 0.835452675819397
+      },
+      {
+        "tool": "FAERS_count_additive_event_reports_by_country",
+        "score": 0.8343316912651062
+      },
+      {
+        "tool": "FAERS_count_additive_reaction_outcomes",
+        "score": 0.8307018280029297
+      },
+      {
+        "tool": "FAERS_count_additive_adverse_reactions",
+        "score": 0.8271563053131104
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FAERS_count_additive_seriousness_classification",
+    "argument_schema": {
+      "medicinalproducts": {
+        "type": "array",
+        "description": "Array of medicinal product names."
+      },
+      "patientsex": {
+        "type": "string",
+        "description": "Filter by sex."
+      },
+      "patientagegroup": {
+        "type": "string",
+        "description": "Filter by age group."
+      },
+      "occurcountry": {
+        "type": "string",
+        "description": "ISO2 country code filter."
+      }
+    }
+  }
+}

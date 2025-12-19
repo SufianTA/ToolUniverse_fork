@@ -1,0 +1,116 @@
+{
+  "name": "get_scikit_bio_info",
+  "identity": {
+    "canonical_name": "get_scikit_bio_info",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Domain-Specific Analysis",
+      "Omics & Molecular Analysis",
+      "Programming Languages & Tools",
+      "computational-biology",
+      "library",
+      "quick-start-guide",
+      "science",
+      "sequence-analysis",
+      "usage-examples",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Retrieve detailed info on scikit-bio, a Python bioinformatics library.\n\nGet comprehensive information about scikit-bio - bioinformatics library built on scientific Python stack",
+    "capabilities": [
+      "Provide information about scikit-bio library",
+      "Optionally include usage examples and quick start guide"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide",
+        "default": true
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_scikit_bio_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_scikit_bio_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_scikit_bio_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_scikit_learn_info",
+        "score": 0.7249112725257874
+      },
+      {
+        "tool": "get_scipy_info",
+        "score": 0.7177808284759521
+      },
+      {
+        "tool": "get_scikit_image_info",
+        "score": 0.6895213723182678
+      },
+      {
+        "tool": "get_biopython_info",
+        "score": 0.6690517663955688
+      },
+      {
+        "tool": "get_numpy_info",
+        "score": 0.6688884496688843
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_scikit_bio_info",
+    "argument_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide",
+        "default": true
+      }
+    }
+  }
+}

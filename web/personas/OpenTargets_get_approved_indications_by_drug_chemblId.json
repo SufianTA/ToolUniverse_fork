@@ -1,0 +1,113 @@
+{
+  "name": "OpenTargets_get_approved_indications_by_drug_chemblId",
+  "identity": {
+    "canonical_name": "OpenTargets_get_approved_indications_by_drug_chemblId",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Cheminformatics & Chemical Analysis",
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "chembl-id-lookup",
+      "open-targets-api",
+      "pharmacology",
+      "target-analysis",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve detailed drug information, including approved indications, via a ChEMBL ID.\n\nRetrieve detailed information about multiple drugs using a list of ChEMBL IDs.",
+    "capabilities": [
+      "Retrieve detailed information about drugs using a ChEMBL ID",
+      "Obtain approved indications for a drug"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_approved_indications_by_drug_chemblId_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_approved_indications_by_drug_chemblId_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_approved_indications_by_drug_chemblId_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_known_drugs_by_drug_chemblId",
+        "score": 0.8895363807678223
+      },
+      {
+        "tool": "OpenTargets_get_drug_description_by_chemblId",
+        "score": 0.8895106315612793
+      },
+      {
+        "tool": "OpenTargets_get_associated_diseases_by_drug_chemblId",
+        "score": 0.8355745077133179
+      },
+      {
+        "tool": "OpenTargets_get_drug_indications_by_chemblId",
+        "score": 0.8322563767433167
+      },
+      {
+        "tool": "OpenTargets_get_drug_adverse_events_by_chemblId",
+        "score": 0.8290679454803467
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_get_approved_indications_by_drug_chemblId",
+    "argument_schema": {
+      "chemblId": {
+        "type": "string",
+        "description": "The ChEMBL ID of the drug."
+      }
+    }
+  }
+}

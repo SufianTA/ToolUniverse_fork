@@ -1,0 +1,113 @@
+{
+  "name": "get_patent_application_metadata",
+  "identity": {
+    "canonical_name": "get_patent_application_metadata",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Access & Management",
+      "Data Processing",
+      "Regulatory & Compliance",
+      "application-number-query",
+      "discovery",
+      "identifier",
+      "ip-management",
+      "patent",
+      "uspto-open-data",
+      "USPTOOpenDataPortalTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve metadata for a specific patent application using its application number.\n\nRetrieves only the metadata for a specific patent application by its application number.",
+    "capabilities": [
+      "Retrieve metadata for a specific patent application by its application number"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "applicationNumberText": {
+        "type": "string",
+        "description": "The application number of the patent."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_application_metadata_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_application_metadata_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_application_metadata_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_full_text_from_patent_app_number",
+        "score": 0.756206750869751
+      },
+      {
+        "tool": "get_associated_documents_metadata",
+        "score": 0.7296428680419922
+      },
+      {
+        "tool": "get_patent_overview_by_text_query",
+        "score": 0.6622365713119507
+      },
+      {
+        "tool": "get_abstract_from_patent_app_number",
+        "score": 0.591913104057312
+      },
+      {
+        "tool": "get_patent_term_adjustment_data",
+        "score": 0.5858162641525269
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_patent_application_metadata",
+    "argument_schema": {
+      "applicationNumberText": {
+        "type": "string",
+        "description": "The application number of the patent."
+      }
+    }
+  }
+}

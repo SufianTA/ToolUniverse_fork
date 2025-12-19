@@ -1,0 +1,108 @@
+{
+  "name": "GO_search_terms",
+  "identity": {
+    "canonical_name": "GO_search_terms",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "GO-ontology",
+      "Search & Retrieval",
+      "functional-annotation",
+      "GeneOntologyTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search GO terms by keyword using GOlr and retrieve related biological entities.\n\nSearches for Gene Ontology (GO) terms by a keyword using the GOlr search engine. Returns GO terms and related biological entities.",
+    "capabilities": [
+      "Search GO terms by keyword",
+      "Retrieve related biological entities"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "The keyword to search for, e.g., 'apoptosis' or 'kinase activity'."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_search_terms_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_search_terms_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_search_terms_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "GO_get_annotations_for_gene",
+        "score": 0.7674459218978882
+      },
+      {
+        "tool": "OpenTargets_get_gene_ontology_terms_by_goID",
+        "score": 0.7555251121520996
+      },
+      {
+        "tool": "GO_get_term_by_id",
+        "score": 0.7138822078704834
+      },
+      {
+        "tool": "GO_get_term_details",
+        "score": 0.6909294128417969
+      },
+      {
+        "tool": "GO_get_genes_for_term",
+        "score": 0.687401533126831
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "GO_search_terms",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "The keyword to search for, e.g., 'apoptosis' or 'kinase activity'."
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "name": "FDA_get_microbiology_info_by_drug_name",
+  "identity": {
+    "canonical_name": "FDA_get_microbiology_info_by_drug_name",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Domain-Specific Analysis",
+      "Pharmacology & Drug Services",
+      "fda-drug-label",
+      "pharmacology",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve microbiology information based on drug name.\n\nRetrieve microbiology information based on the drug name.",
+    "capabilities": [
+      "Retrieve microbiology information by drug name",
+      "Searches on openfda.brand_name and openfda.generic_name",
+      "Supports pagination with limit and skip parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_microbiology_info_by_drug_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_microbiology_info_by_drug_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_microbiology_info_by_drug_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_name_by_microbiology",
+        "score": 0.9610511064529419
+      },
+      {
+        "tool": "FDA_get_drug_name_by_pharmacogenomics",
+        "score": 0.7991724014282227
+      },
+      {
+        "tool": "FDA_get_clinical_studies_info_by_drug_name",
+        "score": 0.7919769883155823
+      },
+      {
+        "tool": "FDA_get_indications_by_drug_name",
+        "score": 0.7855451107025146
+      },
+      {
+        "tool": "FDA_get_info_for_patients_by_drug_name",
+        "score": 0.7847394943237305
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_microbiology_info_by_drug_name",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

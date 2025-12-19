@@ -1,0 +1,108 @@
+{
+  "name": "get_phenotype_by_HPO_ID",
+  "identity": {
+    "canonical_name": "get_phenotype_by_HPO_ID",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "human-data",
+      "ontology-query",
+      "Monarch",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetch a phenotype or symptom by its HPO ID.\n\nRetrieve a phenotype or symptom by its HPO ID.",
+    "capabilities": [
+      "Retrieve a phenotype or symptom by HPO ID"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "id": {
+        "type": "string",
+        "description": "The HPO ID of the phenotype or symptom."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_phenotype_by_HPO_ID_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_phenotype_by_HPO_ID_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_phenotype_by_HPO_ID_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_HPO_ID_by_phenotype",
+        "score": 0.9539425373077393
+      },
+      {
+        "tool": "get_joint_associated_diseases_by_HPO_ID_list",
+        "score": 0.8182909488677979
+      },
+      {
+        "tool": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
+        "score": 0.7645169496536255
+      },
+      {
+        "tool": "OpenTargets_get_disease_id_description_by_name",
+        "score": 0.622979998588562
+      },
+      {
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.6031169295310974
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_phenotype_by_HPO_ID",
+    "argument_schema": {
+      "id": {
+        "type": "string",
+        "description": "The HPO ID of the phenotype or symptom."
+      }
+    }
+  }
+}

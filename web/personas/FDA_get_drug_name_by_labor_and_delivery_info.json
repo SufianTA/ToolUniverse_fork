@@ -1,0 +1,130 @@
+{
+  "name": "FDA_get_drug_name_by_labor_and_delivery_info",
+  "identity": {
+    "canonical_name": "FDA_get_drug_name_by_labor_and_delivery_info",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "clinical-decision-support",
+      "fda-drug-label-query",
+      "fda-label-database",
+      "maternal-health",
+      "medical-domain",
+      "string-input-parameter",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve drug names based on labor or delivery usage information.\n\nRetrieve the drug name based on information about the drug's use during labor or delivery.",
+    "capabilities": [
+      "Search drugs based on labor and delivery information",
+      "Return brand and generic drug names"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "labor_and_delivery_info": {
+        "type": "string",
+        "description": "Information about the drug's use during labor or delivery."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_by_labor_and_delivery_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_by_labor_and_delivery_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_by_labor_and_delivery_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_labor_and_delivery_info_by_drug_name",
+        "score": 0.9470528364181519
+      },
+      {
+        "tool": "FDA_get_indications_by_drug_name",
+        "score": 0.8447952270507812
+      },
+      {
+        "tool": "FDA_get_population_use_info_by_drug_name",
+        "score": 0.8413140773773193
+      },
+      {
+        "tool": "FDA_get_purpose_info_by_drug_name",
+        "score": 0.8267598748207092
+      },
+      {
+        "tool": "FDA_get_instructions_for_use_by_drug_name",
+        "score": 0.8240049481391907
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_drug_name_by_labor_and_delivery_info",
+    "argument_schema": {
+      "labor_and_delivery_info": {
+        "type": "string",
+        "description": "Information about the drug's use during labor or delivery."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "name": "ToolSpecificationGenerator",
+  "identity": {
+    "canonical_name": "ToolSpecificationGenerator",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Access & Management",
+      "configuration-management",
+      "llm-tool",
+      "tool-management",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Generates ToolUniverse-compliant tool specifications based on provided requirements and analysis of similar tools.\n\nGenerates complete ToolUniverse-compliant tool specifications based on a description and analysis of similar existing tools. Creates comprehensive tool configurations including parameters, prompts, and metadata.",
+    "capabilities": [
+      "Generates complete ToolUniverse-compliant tool specifications",
+      "Creates comprehensive tool configurations including parameters, prompts, and metadata",
+      "Analyzes similar existing tools to inform specification generation"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Brief description of the desired tool functionality and purpose."
+      },
+      "tool_category": {
+        "type": "string",
+        "description": "Target category for the tool (e.g., 'biomedical', 'data_analysis', 'text_processing')."
+      },
+      "tool_type": {
+        "type": "string",
+        "description": "Specific ToolUniverse tool type (e.g., 'AgenticTool', 'RESTTool', 'PythonTool')."
+      },
+      "similar_tools": {
+        "type": "string",
+        "description": "JSON string containing configurations of similar existing tools for analysis and differentiation."
+      },
+      "existing_tools_summary": {
+        "type": "string",
+        "description": "Summary of existing tools in the ecosystem to avoid duplication and identify gaps."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolSpecificationGenerator_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolSpecificationGenerator_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolSpecificationGenerator_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ToolDiscover",
+        "score": 0.8578805923461914
+      },
+      {
+        "tool": "ToolGraphComposer",
+        "score": 0.8152239322662354
+      },
+      {
+        "tool": "TestCaseGenerator",
+        "score": 0.7873984575271606
+      },
+      {
+        "tool": "ToolMetadataGenerationPipeline",
+        "score": 0.7291783690452576
+      },
+      {
+        "tool": "ToolMetadataGenerator",
+        "score": 0.7129479050636292
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ToolSpecificationGenerator",
+    "argument_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Brief description of the desired tool functionality and purpose."
+      },
+      "tool_category": {
+        "type": "string",
+        "description": "Target category for the tool (e.g., 'biomedical', 'data_analysis', 'text_processing')."
+      },
+      "tool_type": {
+        "type": "string",
+        "description": "Specific ToolUniverse tool type (e.g., 'AgenticTool', 'RESTTool', 'PythonTool')."
+      },
+      "similar_tools": {
+        "type": "string",
+        "description": "JSON string containing configurations of similar existing tools for analysis and differentiation."
+      },
+      "existing_tools_summary": {
+        "type": "string",
+        "description": "Summary of existing tools in the ecosystem to avoid duplication and identify gaps."
+      }
+    }
+  }
+}

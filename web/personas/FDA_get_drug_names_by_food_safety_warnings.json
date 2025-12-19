@@ -1,0 +1,139 @@
+{
+  "name": "FDA_get_drug_names_by_food_safety_warnings",
+  "identity": {
+    "canonical_name": "FDA_get_drug_names_by_food_safety_warnings",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "fda-drug-labels",
+      "indication",
+      "pharmacology",
+      "safety",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve drug names based on food safety warnings.\n\nRetrieve drug names based on specific food safety warnings.",
+    "capabilities": [
+      "Search drugs by food safety warnings",
+      "Filter results by drug indication",
+      "Return brand and generic drug names",
+      "Support pagination with limit and skip parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "field_info": {
+        "type": "string",
+        "description": "Information related to food safety warnings."
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_food_safety_warnings_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_food_safety_warnings_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_food_safety_warnings_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_user_safety_warning_by_drug_names",
+        "score": 0.9003846645355225
+      },
+      {
+        "tool": "FDA_get_drug_names_by_warnings_and_cautions",
+        "score": 0.8835762739181519
+      },
+      {
+        "tool": "FDA_get_drug_names_by_user_safety_warning",
+        "score": 0.8683717250823975
+      },
+      {
+        "tool": "FDA_get_drug_names_by_safe_handling_warning",
+        "score": 0.8631829023361206
+      },
+      {
+        "tool": "FDA_get_safe_handling_warnings_by_drug_name",
+        "score": 0.8427478671073914
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_drug_names_by_food_safety_warnings",
+    "argument_schema": {
+      "field_info": {
+        "type": "string",
+        "description": "Information related to food safety warnings."
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

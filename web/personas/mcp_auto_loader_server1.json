@@ -1,0 +1,120 @@
+{
+  "name": "mcp_auto_loader_server1",
+  "identity": {
+    "canonical_name": "mcp_auto_loader_server1",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Miscellaneous",
+      "configuration-management",
+      "dynamic-tool-registration",
+      "mcp-protocol",
+      "plugin-management",
+      "tool-management",
+      "MCPAutoLoaderTool",
+      "Zitnik Lab"
+    ],
+    "role": "MCP",
+    "description": "Discovers and loads tools from MCP Server 1, registering them or providing configurations.\n\nAutomatically discover and load all tools from MCP Server 1. Can register discovered tools as individual ToolUniverse tools or provide tool configurations.",
+    "capabilities": [
+      "Discover tools from MCP Server 1",
+      "Load and register discovered tools",
+      "Provide tool configurations"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "server_url": {
+        "type": "string",
+        "description": "URL of the MCP server to load tools from"
+      },
+      "tool_prefix": {
+        "type": "string",
+        "description": "Prefix to apply to loaded tool names"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_server1_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_server1_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_server1_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "mcp_auto_loader_txagent",
+        "score": 0.868893027305603
+      },
+      {
+        "tool": "mcp_auto_loader_human_expert",
+        "score": 0.7532113790512085
+      },
+      {
+        "tool": "mcp_auto_loader_expert_feedback",
+        "score": 0.564083456993103
+      },
+      {
+        "tool": "mcp_client_example",
+        "score": 0.5277307629585266
+      },
+      {
+        "tool": "ToolDiscover",
+        "score": 0.5080310106277466
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mcp_auto_loader_server1",
+    "argument_schema": {
+      "server_url": {
+        "type": "string",
+        "description": "URL of the MCP server to load tools from"
+      },
+      "tool_prefix": {
+        "type": "string",
+        "description": "Prefix to apply to loaded tool names"
+      }
+    }
+  }
+}

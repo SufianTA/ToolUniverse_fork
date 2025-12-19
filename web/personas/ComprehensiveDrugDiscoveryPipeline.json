@@ -1,0 +1,118 @@
+{
+  "name": "ComprehensiveDrugDiscoveryPipeline",
+  "identity": {
+    "canonical_name": "ComprehensiveDrugDiscoveryPipeline",
+    "aliases": [],
+    "domain_tags": [
+      "Cheminformatics & Chemical Analysis",
+      "Pharmacology & Drug Services",
+      "Text Mining & NLP",
+      "adme-profiling",
+      "lead-optimization",
+      "ontology",
+      "pharmacology",
+      "safety",
+      "target-analysis",
+      "ComposeTool",
+      "Zitnik Lab"
+    ],
+    "role": "Compositional Tool",
+    "description": "An end-to-end pipeline for drug discovery, covering target identification, lead discovery, ADMET screening, safety assessment, and literature validation.\n\nComplete end-to-end drug discovery workflow from disease to optimized candidates. Identifies targets, discovers lead compounds, screens for ADMET properties, assesses safety, and validates with literature.",
+    "capabilities": [
+      "Identifies disease-associated targets",
+      "Discovers lead compounds",
+      "Screens for BBB penetrance",
+      "Predicts bioavailability",
+      "Predicts toxicity",
+      "Retrieves compound properties",
+      "Validates findings with literature"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "disease_efo_id": {
+        "type": "string",
+        "description": "The EFO ID of the disease for drug discovery (e.g., 'EFO_0001074' for Alzheimer's disease)"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ComprehensiveDrugDiscoveryPipeline_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ComprehensiveDrugDiscoveryPipeline_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ComprehensiveDrugDiscoveryPipeline_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_openchem_info",
+        "score": 0.5548088550567627
+      },
+      {
+        "tool": "get_deeppurpose_info",
+        "score": 0.5524512529373169
+      },
+      {
+        "tool": "DrugSafetyAnalyzer",
+        "score": 0.5340718030929565
+      },
+      {
+        "tool": "BiomarkerDiscoveryWorkflow",
+        "score": 0.5280591249465942
+      },
+      {
+        "tool": "FDA_get_drug_names_by_overdosage_info",
+        "score": 0.5154109001159668
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ComprehensiveDrugDiscoveryPipeline",
+    "argument_schema": {
+      "disease_efo_id": {
+        "type": "string",
+        "description": "The EFO ID of the disease for drug discovery (e.g., 'EFO_0001074' for Alzheimer's disease)"
+      }
+    }
+  }
+}

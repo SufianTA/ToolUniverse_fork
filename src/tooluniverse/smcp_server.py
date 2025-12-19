@@ -105,6 +105,28 @@ Examples:
         help="Enable compact mode: only expose core tools (4 tools) to prevent context window overflow. All tools are still loaded in background for execute_tool to work.",
     )
 
+    # Rich persona exposure options
+    parser.add_argument(
+        "--rich-personas",
+        action="store_true",
+        help="Expose rich tool personas (metadata + embeddings) via MCP.",
+    )
+    parser.add_argument(
+        "--persona-dir",
+        default=os.path.join("web", "personas"),
+        help="Directory containing persona JSON files.",
+    )
+    parser.add_argument(
+        "--persona-embeddings-dir",
+        default=os.path.join("web", "embeddings"),
+        help="Directory containing persona embedding tensors.",
+    )
+    parser.add_argument(
+        "--persona-graph-path",
+        default=os.path.join("web", "persona_graph.json"),
+        help="Path to persona graph JSON.",
+    )
+
     args = parser.parse_args()
 
     try:
@@ -153,6 +175,10 @@ Examples:
             hook_config=hook_config,
             hook_type=args.hook_type,
             compact_mode=args.compact_mode,
+            rich_personas=args.rich_personas,
+            persona_dir=args.persona_dir,
+            persona_embedding_dir=args.persona_embeddings_dir,
+            persona_graph_path=args.persona_graph_path,
         )
 
         # Run server with streamable-http transport
@@ -604,6 +630,10 @@ Examples:
             hook_config=hook_config,
             hook_type=hook_type,
             compact_mode=args.compact_mode,
+            rich_personas=args.rich_personas,
+            persona_dir=args.persona_dir,
+            persona_embedding_dir=args.persona_embeddings_dir,
+            persona_graph_path=args.persona_graph_path,
         )
 
         # Run server with stdio transport (forced)
@@ -1009,6 +1039,10 @@ Examples:
             hook_config=hook_config,
             hook_type=args.hook_type,
             compact_mode=args.compact_mode,
+            rich_personas=args.rich_personas,
+            persona_dir=args.persona_dir,
+            persona_embedding_dir=args.persona_embeddings_dir,
+            persona_graph_path=args.persona_graph_path,
         )
 
         # Run server

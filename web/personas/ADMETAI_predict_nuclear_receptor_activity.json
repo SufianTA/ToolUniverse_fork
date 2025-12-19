@@ -1,0 +1,111 @@
+{
+  "name": "ADMETAI_predict_nuclear_receptor_activity",
+  "identity": {
+    "canonical_name": "ADMETAI_predict_nuclear_receptor_activity",
+    "aliases": [],
+    "domain_tags": [
+      "Cheminformatics & Chemical Analysis",
+      "Machine Learning",
+      "Pharmacology & Drug Services",
+      "adme-profiling",
+      "in-silico",
+      "virtual-screening",
+      "ADMETAITool",
+      "Zitnik Lab"
+    ],
+    "role": "ML Model",
+    "description": "Predict nuclear receptor activity for molecules in SMILES format.\n\nPredicts nuclear receptor activity endpoints (NR-AR-LBD, NR-AR, NR-AhR, NR-Aromatase, NR-ER-LBD, NR-ER, NR-PPAR-gamma) for a given list of molecules in SMILES format.",
+    "capabilities": [
+      "Predict activity for multiple nuclear receptors",
+      "Accepts SMILES format input",
+      "Outputs endpoints: NR-AR-LBD, NR-AR, NR-AhR, NR-Aromatase, NR-ER-LBD, NR-ER, NR-PPAR-gamma"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "smiles": {
+        "type": "array",
+        "description": "The list of SMILES strings."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ADMETAI_predict_nuclear_receptor_activity_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ADMETAI_predict_nuclear_receptor_activity_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ADMETAI_predict_nuclear_receptor_activity_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ADMETAI_predict_stress_response",
+        "score": 0.7494670152664185
+      },
+      {
+        "tool": "ADMETAI_predict_bioavailability",
+        "score": 0.686596155166626
+      },
+      {
+        "tool": "ADMETAI_predict_toxicity",
+        "score": 0.6847440004348755
+      },
+      {
+        "tool": "ADMETAI_predict_CYP_interactions",
+        "score": 0.6539311408996582
+      },
+      {
+        "tool": "ADMETAI_predict_clearance_distribution",
+        "score": 0.6503559350967407
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ADMETAI_predict_nuclear_receptor_activity",
+    "argument_schema": {
+      "smiles": {
+        "type": "array",
+        "description": "The list of SMILES strings."
+      }
+    }
+  }
+}

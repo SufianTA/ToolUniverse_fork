@@ -1,0 +1,98 @@
+{
+  "name": "get_pyrosetta_info",
+  "identity": {
+    "canonical_name": "get_pyrosetta_info",
+    "aliases": [],
+    "domain_tags": [
+      "bioinformatics-package",
+      "dependency-inspection",
+      "developer-tools",
+      "simulation-and-modeling",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Provides information about the pyrosetta package, a Python interface to the Rosetta macromolecular modeling suite.\n\nGet information about the pyrosetta package. Python interface to Rosetta macromolecular modeling suite",
+    "capabilities": [
+      "Retrieve information about the pyrosetta package",
+      "Describe the Python interface to Rosetta modeling suite"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {},
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyrosetta_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyrosetta_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyrosetta_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_openmm_info",
+        "score": 0.5578568577766418
+      },
+      {
+        "tool": "get_cobrapy_info",
+        "score": 0.5571041107177734
+      },
+      {
+        "tool": "get_cobra_info",
+        "score": 0.5314109325408936
+      },
+      {
+        "tool": "get_mdtraj_info",
+        "score": 0.5166827440261841
+      },
+      {
+        "tool": "get_biopython_info",
+        "score": 0.49827542901039124
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_pyrosetta_info",
+    "argument_schema": {}
+  }
+}

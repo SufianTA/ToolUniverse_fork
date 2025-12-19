@@ -1,0 +1,108 @@
+{
+  "name": "get_release_deposit_dates_by_pdb_id",
+  "identity": {
+    "canonical_name": "get_release_deposit_dates_by_pdb_id",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Data Access & Management",
+      "Structural Biology & Simulation",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve release and deposition dates for a given PDB entry.\n\nGet the release and deposition dates for a PDB entry.",
+    "capabilities": [
+      "Retrieve release date for a PDB entry",
+      "Retrieve deposition date for a PDB entry"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character RCSB PDB ID"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_release_deposit_dates_by_pdb_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_release_deposit_dates_by_pdb_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_release_deposit_dates_by_pdb_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_structure_title_by_pdb_id",
+        "score": 0.5725892782211304
+      },
+      {
+        "tool": "get_citation_info_by_pdb_id",
+        "score": 0.562207818031311
+      },
+      {
+        "tool": "get_structure_validation_metrics_by_pdb_id",
+        "score": 0.546678364276886
+      },
+      {
+        "tool": "get_clinical_trial_status_and_dates",
+        "score": 0.5192530751228333
+      },
+      {
+        "tool": "get_sequence_lengths_by_pdb_id",
+        "score": 0.513047456741333
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_release_deposit_dates_by_pdb_id",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character RCSB PDB ID"
+      }
+    }
+  }
+}

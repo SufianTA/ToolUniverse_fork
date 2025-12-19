@@ -1,0 +1,101 @@
+{
+  "name": "get_velocyto_info",
+  "identity": {
+    "canonical_name": "get_velocyto_info",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Data Access & Management",
+      "Machine Learning",
+      "Omics & Molecular Analysis",
+      "bioinformatics-pipeline",
+      "computational-genomics",
+      "rna",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Get information about the velocyto package for RNA velocity analysis of single cell RNA-seq data.\n\nGet information about the velocyto package. RNA velocity analysis for single cell RNA-seq data",
+    "capabilities": [
+      "Retrieves information about the velocyto package",
+      "Details RNA velocity analysis for single cell RNA-seq data"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {},
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_velocyto_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_velocyto_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_velocyto_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_scvelo_info",
+        "score": 0.7827643156051636
+      },
+      {
+        "tool": "get_souporcell_info",
+        "score": 0.5551052093505859
+      },
+      {
+        "tool": "get_cellrank_info",
+        "score": 0.5524824857711792
+      },
+      {
+        "tool": "get_pydeseq2_info",
+        "score": 0.5397739410400391
+      },
+      {
+        "tool": "get_scvi_tools_info",
+        "score": 0.5178859233856201
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_velocyto_info",
+    "argument_schema": {}
+  }
+}

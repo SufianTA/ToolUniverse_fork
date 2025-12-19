@@ -1,0 +1,138 @@
+{
+  "name": "run_transcriptformer_embedding_retrieval",
+  "identity": {
+    "canonical_name": "run_transcriptformer_embedding_retrieval",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Machine Learning",
+      "Omics & Molecular Analysis",
+      "biomedical-informatics",
+      "computational-genomics",
+      "contextual-processing",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "ML Model",
+    "description": "Retrieve gene embeddings contextualized by disease state and cell type using pre-computed Transcriptformer models.\n\nRetrieves contextualized gene embeddings from Transcriptformer models. This tool provides access to pre-computed Transcriptformer embeddings that capture gene expression patterns learned from single-cell RNA sequencing data. The embeddings are contextualized for specific combinations of disease states and cell types, enabling precise analysis of gene behavior in relevant biological contexts.",
+    "capabilities": [
+      "Retrieve gene embeddings",
+      "Contextualize embeddings by disease state",
+      "Contextualize embeddings by cell type",
+      "Support retrieval by gene symbols or Ensembl IDs",
+      "Access pre-computed single-cell RNA-seq embeddings"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "state": {
+        "type": "string",
+        "description": "Disease state context for embedding retrieval. Examples: 'control': Healthy/normal condition; 'disease': Disease-affected state; 'treated': Post-treatment condition; 'untreated': Pre-treatment condition. Must match available states in the disease-specific store."
+      },
+      "cell_type": {
+        "type": "string",
+        "description": "Cell type context for embeddings. Examples: 'b_cell': B lymphocytes; 't_cell': T lymphocytes; 'macrophage': Tissue macrophages; 'epithelial_cell': Epithelial cells; 'fibroblast': Connective tissue fibroblasts. Must match available cell types in the disease store."
+      },
+      "gene_names": {
+        "type": "array",
+        "description": "Gene identifiers for embedding retrieval: Gene symbols: ['TP53', 'BRCA1', 'EGFR', 'MYC']; Ensembl IDs: ['ENSG00000141510', 'ENSG00000139618']; Mixed formats supported; Empty list retrieves all available genes."
+      },
+      "disease": {
+        "type": "string",
+        "description": "Disease/dataset identifier. Examples: 'breast_cancer': Breast cancer scRNA-seq data; 'lung_cancer': Lung cancer contexts; 'diabetes': Diabetes-related datasets; 'alzheimer': Alzheimer's disease contexts. Must match available disease stores."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_transcriptformer_embedding_retrieval_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_transcriptformer_embedding_retrieval_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_transcriptformer_embedding_retrieval_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "run_pinnacle_ppi_retrieval",
+        "score": 0.6030060052871704
+      },
+      {
+        "tool": "expression_atlas_disease_target_score",
+        "score": 0.5181249380111694
+      },
+      {
+        "tool": "HPA_get_cancer_prognostics_by_gene",
+        "score": 0.515012800693512
+      },
+      {
+        "tool": "cancer_gene_census_disease_target_score",
+        "score": 0.5030245780944824
+      },
+      {
+        "tool": "reactome_disease_target_score",
+        "score": 0.5023113489151001
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "run_transcriptformer_embedding_retrieval",
+    "argument_schema": {
+      "state": {
+        "type": "string",
+        "description": "Disease state context for embedding retrieval. Examples: 'control': Healthy/normal condition; 'disease': Disease-affected state; 'treated': Post-treatment condition; 'untreated': Pre-treatment condition. Must match available states in the disease-specific store."
+      },
+      "cell_type": {
+        "type": "string",
+        "description": "Cell type context for embeddings. Examples: 'b_cell': B lymphocytes; 't_cell': T lymphocytes; 'macrophage': Tissue macrophages; 'epithelial_cell': Epithelial cells; 'fibroblast': Connective tissue fibroblasts. Must match available cell types in the disease store."
+      },
+      "gene_names": {
+        "type": "array",
+        "description": "Gene identifiers for embedding retrieval: Gene symbols: ['TP53', 'BRCA1', 'EGFR', 'MYC']; Ensembl IDs: ['ENSG00000141510', 'ENSG00000139618']; Mixed formats supported; Empty list retrieves all available genes."
+      },
+      "disease": {
+        "type": "string",
+        "description": "Disease/dataset identifier. Examples: 'breast_cancer': Breast cancer scRNA-seq data; 'lung_cancer': Lung cancer contexts; 'diabetes': Diabetes-related datasets; 'alzheimer': Alzheimer's disease contexts. Must match available disease stores."
+      }
+    }
+  }
+}

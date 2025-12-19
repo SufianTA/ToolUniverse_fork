@@ -1,0 +1,97 @@
+{
+  "name": "CallAgent",
+  "identity": {
+    "canonical_name": "CallAgent",
+    "aliases": [],
+    "domain_tags": [
+      "Miscellaneous",
+      "iteration",
+      "llm-tool",
+      "methodology",
+      "SpecialTool",
+      "Zitnik Lab"
+    ],
+    "role": "Special Tool",
+    "description": "Generates concise solution plans from varied perspectives for agents to address questions.\n\nGive a solution plan to the agent and let it solve the problem. Solution plan should reflect a distinct method, approach, or viewpoint to solve the given question. Call these function multiple times, and each solution plan should start with different aspects of the question, for example, genes, phenotypes, diseases, or drugs, etc. The CallAgent will achieve the task based on the plan, so only give the plan instead of unverified information.",
+    "capabilities": [
+      "Produce concise solution plans",
+      "Offer distinct methods or viewpoints to solve questions",
+      "Enable iterative calls with varied starting aspects"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "solution": {
+        "type": "string",
+        "description": "A feasible and concise solution plan that address the question."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CallAgent_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CallAgent_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CallAgent_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "HypothesisGenerator",
+        "score": 0.43005746603012085
+      },
+      {
+        "tool": "Finish",
+        "score": 0.4114108681678772
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "CallAgent",
+    "argument_schema": {
+      "solution": {
+        "type": "string",
+        "description": "A feasible and concise solution plan that address the question."
+      }
+    }
+  }
+}

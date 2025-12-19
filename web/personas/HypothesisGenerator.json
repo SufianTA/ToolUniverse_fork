@@ -1,0 +1,135 @@
+{
+  "name": "HypothesisGenerator",
+  "identity": {
+    "canonical_name": "HypothesisGenerator",
+    "aliases": [],
+    "domain_tags": [
+      "contextual-processing",
+      "experimental-design",
+      "hypotheses",
+      "research",
+      "science",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Generates novel, testable research hypotheses from given context, domain, and format.\n\nGenerates research hypotheses based on provided background context, domain, and desired format. Uses AI to propose novel, testable hypotheses for scientific exploration.",
+    "capabilities": [
+      "Generate research hypotheses",
+      "Customize number of hypotheses",
+      "Support various hypothesis formats",
+      "Use domain-specific context"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "context": {
+        "type": "string",
+        "description": "Background information, observations, or data description from which to derive hypotheses."
+      },
+      "domain": {
+        "type": "string",
+        "description": "Field of study or research area (e.g., 'neuroscience', 'ecology', 'materials science')."
+      },
+      "number_of_hypotheses": {
+        "type": "string",
+        "description": "Number of hypotheses to generate (e.g., '3', '5')."
+      },
+      "hypothesis_format": {
+        "type": "string",
+        "description": "Optional directive on how to structure each hypothesis. Choose from one of the specified formats or use concise declarative sentences."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HypothesisGenerator_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HypothesisGenerator_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HypothesisGenerator_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "LiteratureSearchTool",
+        "score": 0.6036937236785889
+      },
+      {
+        "tool": "ScientificTextSummarizer",
+        "score": 0.5540701150894165
+      },
+      {
+        "tool": "call_agentic_human",
+        "score": 0.4616638123989105
+      },
+      {
+        "tool": "ToolOutputSummarizer",
+        "score": 0.45175009965896606
+      },
+      {
+        "tool": "DomainExpertValidator",
+        "score": 0.4305095374584198
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "HypothesisGenerator",
+    "argument_schema": {
+      "context": {
+        "type": "string",
+        "description": "Background information, observations, or data description from which to derive hypotheses."
+      },
+      "domain": {
+        "type": "string",
+        "description": "Field of study or research area (e.g., 'neuroscience', 'ecology', 'materials science')."
+      },
+      "number_of_hypotheses": {
+        "type": "string",
+        "description": "Number of hypotheses to generate (e.g., '3', '5')."
+      },
+      "hypothesis_format": {
+        "type": "string",
+        "description": "Optional directive on how to structure each hypothesis. Choose from one of the specified formats or use concise declarative sentences."
+      }
+    }
+  }
+}

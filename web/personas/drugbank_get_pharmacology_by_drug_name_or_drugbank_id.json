@@ -1,0 +1,141 @@
+{
+  "name": "drugbank_get_pharmacology_by_drug_name_or_drugbank_id",
+  "identity": {
+    "canonical_name": "drugbank_get_pharmacology_by_drug_name_or_drugbank_id",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "biomedical-informatics",
+      "case-sensitive-search",
+      "clinical-pharmacology",
+      "in-silico",
+      "mechanism-of-action",
+      "pharmaceutical",
+      "pharmacology",
+      "XMLTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Retrieve pharmacodynamics, mechanism of action, and pharmacokinetics of drugs by name or DrugBank ID.\n\nGet drug pharmacodynamics, mechanism of action, and pharmacokinetics by drug name or Drugbank ID.",
+    "capabilities": [
+      "Search drug information by name or DrugBank ID",
+      "Retrieve pharmacodynamics information",
+      "Retrieve mechanism of action details",
+      "Retrieve pharmacokinetics data (absorption, metabolism, half-life, protein binding, route of elimination, volume of distribution, clearance)",
+      "Support case-sensitive and exact match searches",
+      "Limit the number of results returned"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Drug name or Drugbank ID to search for"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_pharmacology_by_drug_name_or_drugbank_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_pharmacology_by_drug_name_or_drugbank_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_pharmacology_by_drug_name_or_drugbank_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "drugbank_get_drug_name_description_pharmacology_by_mechanism_of_action",
+        "score": 0.9083445072174072
+      },
+      {
+        "tool": "FDA_get_pharmacokinetics_by_drug_name",
+        "score": 0.8494126796722412
+      },
+      {
+        "tool": "drugbank_get_drug_pathways_and_reactions_by_drug_name_or_drugbank_id",
+        "score": 0.8468402624130249
+      },
+      {
+        "tool": "FDA_get_pharmacodynamics_by_drug_name",
+        "score": 0.8423905968666077
+      },
+      {
+        "tool": "drugbank_get_drug_name_and_description_by_indication",
+        "score": 0.8301562070846558
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "drugbank_get_pharmacology_by_drug_name_or_drugbank_id",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Drug name or Drugbank ID to search for"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    }
+  }
+}

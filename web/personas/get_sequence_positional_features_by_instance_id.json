@@ -1,0 +1,113 @@
+{
+  "name": "get_sequence_positional_features_by_instance_id",
+  "identity": {
+    "canonical_name": "get_sequence_positional_features_by_instance_id",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Machine Learning",
+      "computational-biology",
+      "feature",
+      "polymer",
+      "sequence-analysis",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve sequence positional features such as binding sites and motifs for a polymer entity instance.\n\nRetrieve sequence positional features (e.g., binding sites, motifs) for a polymer entity instance.",
+    "capabilities": [
+      "Retrieve sequence positional features for a polymer entity instance",
+      "Obtain binding site and motif position data"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "instance_id": {
+        "type": "string",
+        "description": "Polymer entity instance ID like '1NDO.A'",
+        "required": true
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_sequence_positional_features_by_instance_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_sequence_positional_features_by_instance_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_sequence_positional_features_by_instance_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_sequence_lengths_by_pdb_id",
+        "score": 0.7122762799263
+      },
+      {
+        "tool": "get_sequence_by_pdb_id",
+        "score": 0.694185733795166
+      },
+      {
+        "tool": "get_gene_name_by_entity_id",
+        "score": 0.6724903583526611
+      },
+      {
+        "tool": "get_polymer_entity_type_by_entity_id",
+        "score": 0.6550573706626892
+      },
+      {
+        "tool": "get_polymer_entity_ids_by_pdb_id",
+        "score": 0.6503203511238098
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_sequence_positional_features_by_instance_id",
+    "argument_schema": {
+      "instance_id": {
+        "type": "string",
+        "description": "Polymer entity instance ID like '1NDO.A'",
+        "required": true
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "name": "mesh_get_subjects_by_pharmacological_action",
+  "identity": {
+    "canonical_name": "mesh_get_subjects_by_pharmacological_action",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Text Mining & NLP",
+      "biomedical-informatics",
+      "case-sensitive-filter",
+      "controlled-vocabulary",
+      "medical-domain",
+      "pharmacology",
+      "XMLTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Search MeSH subjects by pharmacological actions.\n\nFind MeSH (Medical Subject Heading) subjects with matching pharmacological actions.",
+    "capabilities": [
+      "Search MeSH subjects by pharmacological action",
+      "Support case-sensitive searches",
+      "Support exact match searches",
+      "Limit number of results returned",
+      "Return structured subject metadata"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Pharmacological action to search for in MeSH subjects"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search for the pharmacological action query"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match for the pharmacological action query"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_pharmacological_action_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_pharmacological_action_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_pharmacological_action_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "mesh_get_subjects_by_subject_scope_or_definition",
+        "score": 0.70316481590271
+      },
+      {
+        "tool": "mesh_get_subjects_by_subject_name",
+        "score": 0.6840790510177612
+      },
+      {
+        "tool": "mesh_get_subjects_by_subject_id",
+        "score": 0.6803117990493774
+      },
+      {
+        "tool": "drugbank_get_drug_name_description_pharmacology_by_mechanism_of_action",
+        "score": 0.6529327630996704
+      },
+      {
+        "tool": "FDA_get_mechanism_of_action_by_drug_name",
+        "score": 0.6473947763442993
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mesh_get_subjects_by_pharmacological_action",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Pharmacological action to search for in MeSH subjects"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search for the pharmacological action query"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match for the pharmacological action query"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    }
+  }
+}

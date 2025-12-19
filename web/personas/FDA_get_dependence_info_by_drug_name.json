@@ -1,0 +1,127 @@
+{
+  "name": "FDA_get_dependence_info_by_drug_name",
+  "identity": {
+    "canonical_name": "FDA_get_dependence_info_by_drug_name",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "clinical-pharmacology",
+      "pharmacology",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Get dependence characteristics of a drug by its name.\n\nRetrieve information about dependence characteristics based on the drug name.",
+    "capabilities": [
+      "Retrieve dependence information for a given drug",
+      "Search by brand or generic drug name",
+      "Support pagination with limit and skip parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_dependence_info_by_drug_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_dependence_info_by_drug_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_dependence_info_by_drug_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_name_by_dependence_info",
+        "score": 0.9493868947029114
+      },
+      {
+        "tool": "FDA_get_drug_names_by_abuse_dependence_info",
+        "score": 0.8362149000167847
+      },
+      {
+        "tool": "FDA_get_abuse_info_by_drug_name",
+        "score": 0.790816068649292
+      },
+      {
+        "tool": "FDA_get_population_use_info_by_drug_name",
+        "score": 0.777153730392456
+      },
+      {
+        "tool": "FDA_get_drug_names_by_indication",
+        "score": 0.7753428816795349
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_dependence_info_by_drug_name",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

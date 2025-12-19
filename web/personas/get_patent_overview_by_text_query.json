@@ -1,0 +1,154 @@
+{
+  "name": "get_patent_overview_by_text_query",
+  "identity": {
+    "canonical_name": "get_patent_overview_by_text_query",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Text Mining & NLP",
+      "discovery",
+      "ip-management",
+      "patent",
+      "uspto-open-data",
+      "USPTOOpenDataPortalTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search USPTO patent applications by title keyword or phrase with options for exact match, sorting, pagination, and date range filters, returning key metadata like application number, filing/grant dates, title, and CPC classifications.\n\nSearch for patent application overviews using a query string of the format 'applicationMetaData.inventionTitle:your_search_term', where your_search_term is the case-insensitive keyword or keyphrase you are searching for. If your_search_term is a multi-word phrase, it must be encased in escaped double quotation marks for exact matching. This tool allows for sorting, offsetting, and filtering of results. Returns a list of important metadata fields for each application, including application number, filing date, grant date, invention title, and CPC classifications.",
+    "capabilities": [
+      "Search patent applications by title keyword or keyphrase",
+      "Support for exact match searches",
+      "Sort results by filing or grant date",
+      "Paginate results with offset and limit",
+      "Filter results by date ranges",
+      "Return key metadata including application number, dates, title, and CPC classifications"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Keyword or keyphrase to search for in the patent application title. This field is required."
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "If true, the search will only return results that exactly match the provided query. Default is false."
+      },
+      "sort": {
+        "type": "string",
+        "description": "Sorts results by one of the following fields: filingDate or grantDate. Follow the field name with a space and 'asc' or 'desc' for ascending or descending by date, respectively. For example: 'filingDate desc'"
+      },
+      "offset": {
+        "type": "integer",
+        "description": "The starting position (zero-indexed) of the result set. Default is 0."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The maximum number of results to return. Default is 25."
+      },
+      "rangeFilters": {
+        "type": "string",
+        "description": "Limits results to the date range specified for one of the following fields: filingDate or grantDate. Provide the field name, a space, and a colon-separated start and end value in YYYY-MM-DD format. For example: 'grantDate 2010-01-01:2011-01-01'"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_overview_by_text_query_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_overview_by_text_query_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_overview_by_text_query_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_patent_application_metadata",
+        "score": 0.6622365713119507
+      },
+      {
+        "tool": "get_full_text_from_patent_app_number",
+        "score": 0.6337385177612305
+      },
+      {
+        "tool": "get_abstract_from_patent_app_number",
+        "score": 0.6133759021759033
+      },
+      {
+        "tool": "get_associated_documents_metadata",
+        "score": 0.6059749126434326
+      },
+      {
+        "tool": "PubChem_get_associated_patents_by_CID",
+        "score": 0.5722248554229736
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_patent_overview_by_text_query",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Keyword or keyphrase to search for in the patent application title. This field is required."
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "If true, the search will only return results that exactly match the provided query. Default is false."
+      },
+      "sort": {
+        "type": "string",
+        "description": "Sorts results by one of the following fields: filingDate or grantDate. Follow the field name with a space and 'asc' or 'desc' for ascending or descending by date, respectively. For example: 'filingDate desc'"
+      },
+      "offset": {
+        "type": "integer",
+        "description": "The starting position (zero-indexed) of the result set. Default is 0."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The maximum number of results to return. Default is 25."
+      },
+      "rangeFilters": {
+        "type": "string",
+        "description": "Limits results to the date range specified for one of the following fields: filingDate or grantDate. Provide the field name, a space, and a colon-separated start and end value in YYYY-MM-DD format. For example: 'grantDate 2010-01-01:2011-01-01'"
+      }
+    }
+  }
+}

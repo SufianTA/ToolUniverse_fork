@@ -1,0 +1,168 @@
+{
+  "name": "DailyMed_search_spls",
+  "identity": {
+    "canonical_name": "DailyMed_search_spls",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "SPL",
+      "Search & Retrieval",
+      "pharmacology",
+      "structured-data",
+      "SearchSPLTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search SPL entries using various filters and retrieve metadata with results.\n\nSearch SPL list using multiple filter conditions (drug_name/ndc/rxcui/setid) and return metadata + data array.",
+    "capabilities": [
+      "Search SPL list with multiple filter conditions",
+      "Return metadata and data array"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "Generic or brand name of the drug, e.g., 'TAMSULOSIN HYDROCHLORIDE'."
+      },
+      "ndc": {
+        "type": "string",
+        "description": "National Drug Code (NDC)."
+      },
+      "rxcui": {
+        "type": "string",
+        "description": "RxNorm Code (RXCUI)."
+      },
+      "setid": {
+        "type": "string",
+        "description": "Set ID corresponding to the SPL."
+      },
+      "published_date_gte": {
+        "type": "string",
+        "description": "Published date >= specified date, format 'YYYY-MM-DD'."
+      },
+      "published_date_eq": {
+        "type": "string",
+        "description": "Published date == specified date, format 'YYYY-MM-DD'."
+      },
+      "pagesize": {
+        "type": "integer",
+        "description": "Number of items per page, maximum 100, default 100."
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number, starts from 1, default 1."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_search_spls_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_search_spls_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_search_spls_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_spl_indexing_data_elements_by_drug_name",
+        "score": 0.7387144565582275
+      },
+      {
+        "tool": "FDA_get_drug_names_by_spl_indexing_data_elements",
+        "score": 0.7188960313796997
+      },
+      {
+        "tool": "FDA_get_drug_name_by_SPL_ID",
+        "score": 0.6980170011520386
+      },
+      {
+        "tool": "FDA_get_spl_unclassified_section_by_drug_name",
+        "score": 0.6709998250007629
+      },
+      {
+        "tool": "FDA_get_drug_name_by_storage_and_handling_info",
+        "score": 0.6235966682434082
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "DailyMed_search_spls",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "Generic or brand name of the drug, e.g., 'TAMSULOSIN HYDROCHLORIDE'."
+      },
+      "ndc": {
+        "type": "string",
+        "description": "National Drug Code (NDC)."
+      },
+      "rxcui": {
+        "type": "string",
+        "description": "RxNorm Code (RXCUI)."
+      },
+      "setid": {
+        "type": "string",
+        "description": "Set ID corresponding to the SPL."
+      },
+      "published_date_gte": {
+        "type": "string",
+        "description": "Published date >= specified date, format 'YYYY-MM-DD'."
+      },
+      "published_date_eq": {
+        "type": "string",
+        "description": "Published date == specified date, format 'YYYY-MM-DD'."
+      },
+      "pagesize": {
+        "type": "integer",
+        "description": "Number of items per page, maximum 100, default 100."
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number, starts from 1, default 1."
+      }
+    }
+  }
+}

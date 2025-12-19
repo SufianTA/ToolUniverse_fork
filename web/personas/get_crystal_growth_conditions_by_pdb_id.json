@@ -1,0 +1,110 @@
+{
+  "name": "get_crystal_growth_conditions_by_pdb_id",
+  "identity": {
+    "canonical_name": "get_crystal_growth_conditions_by_pdb_id",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Structural Biology & Simulation",
+      "experimental-design",
+      "macromolecular-analysis",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieves crystallization methods and growth conditions for a given PDB entry.\n\nGet information about the crystallization method and conditions for a structure.",
+    "capabilities": [
+      "Search crystallization data by PDB ID",
+      "Retrieve crystallization method and detailed conditions",
+      "Obtain pH, temperature, and additional pdbx_details"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "PDB ID of the structure"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_crystal_growth_conditions_by_pdb_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_crystal_growth_conditions_by_pdb_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_crystal_growth_conditions_by_pdb_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_crystallization_ph_by_pdb_id",
+        "score": 0.7172861099243164
+      },
+      {
+        "tool": "get_crystallographic_properties_by_pdb_id",
+        "score": 0.6787608861923218
+      },
+      {
+        "tool": "get_space_group_by_pdb_id",
+        "score": 0.6348146796226501
+      },
+      {
+        "tool": "get_structure_determination_software_by_pdb_id",
+        "score": 0.5854377746582031
+      },
+      {
+        "tool": "get_core_refinement_statistics",
+        "score": 0.5835350751876831
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_crystal_growth_conditions_by_pdb_id",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "PDB ID of the structure"
+      }
+    }
+  }
+}

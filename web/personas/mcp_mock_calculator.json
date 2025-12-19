@@ -1,0 +1,124 @@
+{
+  "name": "mcp_mock_calculator",
+  "identity": {
+    "canonical_name": "mcp_mock_calculator",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "mcp-protocol",
+      "MCPProxyTool",
+      "Zitnik Lab"
+    ],
+    "role": "MCP",
+    "description": "A simple testing calculator tool\n\nA simple calculator tool for testing",
+    "capabilities": [
+      "Perform addition",
+      "Perform subtraction",
+      "Perform multiplication",
+      "Perform division"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "operation": {
+        "type": "string",
+        "description": "The mathematical operation to perform"
+      },
+      "a": {
+        "type": "number",
+        "description": "First number"
+      },
+      "b": {
+        "type": "number",
+        "description": "Second number"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_mock_calculator_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_mock_calculator_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_mock_calculator_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ArgumentDescriptionOptimizer",
+        "score": 0.45695170760154724
+      },
+      {
+        "tool": "TestCaseGenerator",
+        "score": 0.43976378440856934
+      },
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.42556673288345337
+      },
+      {
+        "tool": "ToolCompatibilityAnalyzer",
+        "score": 0.4217336177825928
+      },
+      {
+        "tool": "ToolDescriptionOptimizer",
+        "score": 0.41591712832450867
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mcp_mock_calculator",
+    "argument_schema": {
+      "operation": {
+        "type": "string",
+        "description": "The mathematical operation to perform"
+      },
+      "a": {
+        "type": "number",
+        "description": "First number"
+      },
+      "b": {
+        "type": "number",
+        "description": "Second number"
+      }
+    }
+  }
+}

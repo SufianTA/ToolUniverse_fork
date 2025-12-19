@@ -1,0 +1,147 @@
+{
+  "name": "FDA_get_drug_names_by_risk",
+  "identity": {
+    "canonical_name": "FDA_get_drug_names_by_risk",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "fda-drug-labels",
+      "lactation-safety",
+      "maternal-health",
+      "pharmacology",
+      "risk",
+      "structured-data",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve drug names based on risk information, especially for pregnancy or breastfeeding.\n\nRetrieve drug names based on specific risk information, especially regarding pregnancy or breastfeeding.",
+    "capabilities": [
+      "Retrieve drug names based on risk information",
+      "Filter results by indication",
+      "Limit number of returned records",
+      "Skip a number of records for pagination"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "risk_info": {
+        "type": "string",
+        "description": "Specific risk information to search for.",
+        "required": true
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug.",
+        "required": false
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return.",
+        "required": false
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip.",
+        "required": false
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_risk_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_risk_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_risk_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_risk_info_by_drug_name",
+        "score": 0.9657831192016602
+      },
+      {
+        "tool": "FDA_get_drug_name_by_pregnancy_or_breastfeeding_info",
+        "score": 0.9480454921722412
+      },
+      {
+        "tool": "FDA_get_drug_names_by_pregnancy_effects_info",
+        "score": 0.8721602559089661
+      },
+      {
+        "tool": "FDA_get_pregnancy_or_breastfeeding_info_by_drug_name",
+        "score": 0.8704352378845215
+      },
+      {
+        "tool": "FDA_get_drug_names_by_population_use",
+        "score": 0.8580919504165649
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_drug_names_by_risk",
+    "argument_schema": {
+      "risk_info": {
+        "type": "string",
+        "description": "Specific risk information to search for.",
+        "required": true
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug.",
+        "required": false
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return.",
+        "required": false
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip.",
+        "required": false
+      }
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "name": "Tool_Finder",
+  "identity": {
+    "canonical_name": "Tool_Finder",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Machine Learning",
+      "Miscellaneous",
+      "Text Mining & NLP",
+      "developer-tools",
+      "semantic",
+      "tool-management",
+      "ToolFinderEmbedding",
+      "Zitnik Lab"
+    ],
+    "role": "Tool Finder Tool",
+    "description": "Retrieve related tools based on a description with advanced functionality.\n\nRetrieve related tools from the toolbox based on the provided description, advanced version with more functionality.",
+    "capabilities": [
+      "Retrieve related tools based on description",
+      "Limit the number of tools returned",
+      "Exclude pre-selected tool names",
+      "Optionally return prompts and tool names",
+      "Filter tools by categories"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "description": {
+        "type": "string",
+        "description": "The description of the tool capability required."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of tools to retrieve"
+      },
+      "picked_tool_names": {
+        "type": "array",
+        "description": "Pre-selected tool names to process. If provided, tool selection will skip these tools."
+      },
+      "return_call_result": {
+        "type": "boolean",
+        "description": "Whether to return both prompts and tool names. If false, returns only tool prompts."
+      },
+      "categories": {
+        "type": "array",
+        "description": "Optional list of tool categories to filter by"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/Tool_Finder_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/Tool_Finder_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/Tool_Finder_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "Tool_RAG",
+        "score": 0.8892331123352051
+      },
+      {
+        "tool": "Tool_Finder_Keyword",
+        "score": 0.6052365303039551
+      },
+      {
+        "tool": "ToolGraphComposer",
+        "score": 0.528638482093811
+      },
+      {
+        "tool": "ToolSpecificationGenerator",
+        "score": 0.5152988433837891
+      },
+      {
+        "tool": "ToolDiscover",
+        "score": 0.510582447052002
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "Tool_Finder",
+    "argument_schema": {
+      "description": {
+        "type": "string",
+        "description": "The description of the tool capability required."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of tools to retrieve"
+      },
+      "picked_tool_names": {
+        "type": "array",
+        "description": "Pre-selected tool names to process. If provided, tool selection will skip these tools."
+      },
+      "return_call_result": {
+        "type": "boolean",
+        "description": "Whether to return both prompts and tool names. If false, returns only tool prompts."
+      },
+      "categories": {
+        "type": "array",
+        "description": "Optional list of tool categories to filter by"
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "OpenTargets_get_target_classes_by_ensemblID",
+  "identity": {
+    "canonical_name": "OpenTargets_get_target_classes_by_ensemblID",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Omics & Molecular Analysis",
+      "Pharmacology & Drug Services",
+      "computational-biology",
+      "computational-genomics",
+      "ensmb",
+      "open-targets-api",
+      "pharmacology",
+      "target-analysis",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve the target classes associated with a specific Ensembl ID.\n\nRetrieve the target classes associated with a specific target ensemblID.",
+    "capabilities": [
+      "Fetch target classes for a given Ensembl ID"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "ensemblId": {
+        "type": "string",
+        "description": "The Ensembl ID of the target."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_target_classes_by_ensemblID_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_target_classes_by_ensemblID_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_target_classes_by_ensemblID_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_target_id_description_by_name",
+        "score": 0.8098483085632324
+      },
+      {
+        "tool": "OpenTargets_get_target_enabling_packages_by_ensemblID",
+        "score": 0.7743475437164307
+      },
+      {
+        "tool": "OpenTargets_get_target_synonyms_by_ensemblID",
+        "score": 0.7326169610023499
+      },
+      {
+        "tool": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
+        "score": 0.7224104404449463
+      },
+      {
+        "tool": "OpenTargets_get_chemical_probes_by_target_ensemblID",
+        "score": 0.7139707803726196
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_get_target_classes_by_ensemblID",
+    "argument_schema": {
+      "ensemblId": {
+        "type": "string",
+        "description": "The Ensembl ID of the target."
+      }
+    }
+  }
+}

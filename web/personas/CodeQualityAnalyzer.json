@@ -1,0 +1,155 @@
+{
+  "name": "CodeQualityAnalyzer",
+  "identity": {
+    "canonical_name": "CodeQualityAnalyzer",
+    "aliases": [],
+    "domain_tags": [
+      "feedback",
+      "functionalities",
+      "performance-analysis",
+      "software",
+      "software-development",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Analyzes code quality across correctness, performance, best practices, and robustness, providing detailed feedback and improvement suggestions.\n\nAnalyzes code quality from multiple dimensions including algorithmic correctness, functional implementation capability, performance characteristics, and best practices. Provides detailed feedback and improvement suggestions.",
+    "capabilities": [
+      "Analyze algorithmic correctness",
+      "Assess functional implementation capability",
+      "Evaluate performance characteristics",
+      "Review code structure and best practices",
+      "Check error handling and robustness",
+      "Validate testing and test execution",
+      "Identify security and safety issues",
+      "Advise on maintainability and extensibility"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool being analyzed"
+      },
+      "tool_description": {
+        "type": "string",
+        "description": "Description of what the tool is supposed to do"
+      },
+      "tool_parameters": {
+        "type": "string",
+        "description": "JSON string of tool parameters and their types"
+      },
+      "implementation_code": {
+        "type": "string",
+        "description": "The actual implementation code to analyze"
+      },
+      "test_cases": {
+        "type": "string",
+        "description": "JSON string of test cases for the tool"
+      },
+      "test_execution_results": {
+        "type": "string",
+        "description": "JSON string of test execution results including pass/fail status and actual outputs"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CodeQualityAnalyzer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CodeQualityAnalyzer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/CodeQualityAnalyzer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "CodeOptimizer",
+        "score": 0.6822904348373413
+      },
+      {
+        "tool": "AdvancedCodeQualityAnalyzer",
+        "score": 0.6482775807380676
+      },
+      {
+        "tool": "ToolQualityEvaluator",
+        "score": 0.5945489406585693
+      },
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.533957839012146
+      },
+      {
+        "tool": "ToolSpecificationOptimizer",
+        "score": 0.5209116339683533
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "CodeQualityAnalyzer",
+    "argument_schema": {
+      "tool_name": {
+        "type": "string",
+        "description": "Name of the tool being analyzed"
+      },
+      "tool_description": {
+        "type": "string",
+        "description": "Description of what the tool is supposed to do"
+      },
+      "tool_parameters": {
+        "type": "string",
+        "description": "JSON string of tool parameters and their types"
+      },
+      "implementation_code": {
+        "type": "string",
+        "description": "The actual implementation code to analyze"
+      },
+      "test_cases": {
+        "type": "string",
+        "description": "JSON string of test cases for the tool"
+      },
+      "test_execution_results": {
+        "type": "string",
+        "description": "JSON string of test execution results including pass/fail status and actual outputs"
+      }
+    }
+  }
+}

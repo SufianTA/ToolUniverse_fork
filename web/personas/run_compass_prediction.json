@@ -1,0 +1,124 @@
+{
+  "name": "run_compass_prediction",
+  "identity": {
+    "canonical_name": "run_compass_prediction",
+    "aliases": [],
+    "domain_tags": [
+      "Domain-Specific Analysis",
+      "Machine Learning",
+      "bioinformatics-pipeline",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "ML Model",
+    "description": "Predicts immune checkpoint inhibitor response from tumor gene expression using the COMPASS model, delivering binary responder predictions and interpretable immune cell concept insights.\n\nPredicts immune checkpoint inhibitor (ICI) response using COMPASS model. This tool analyzes single-sample tumor gene expression data to predict patient responsiveness to immune checkpoint inhibitor therapy. The COMPASS model leverages immune cell concept analysis to provide both a binary prediction and interpretable insights into the immune microenvironment factors driving the prediction.",
+    "capabilities": [
+      "Predict immune checkpoint inhibitor response from single-sample tumor gene expression data",
+      "Classify samples as responders or non-responders based on a configurable probability threshold",
+      "Provide top immune cell concept importance scores for interpretability"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_expression_data_path": {
+        "type": "string",
+        "description": "Path to the TPM expression data file. Keys should be standard gene symbols (e.g., 'CD274', 'PDCD1', 'CTLA4'). Values should be normalized expression in TPM (Transcripts Per Million). Minimum ~100 genes recommended for reliable predictions."
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Probability threshold for responder classification (0.0-1.0). Values ≥ threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
+      },
+      "root_path": {
+        "type": "string",
+        "description": "Path to the directory containing model checkpoints. If None, uses COMPASS_MODEL_PATH/immune-compass/checkpoint."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_compass_prediction_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_compass_prediction_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/run_compass_prediction_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "HPA_get_cancer_prognostics_by_gene",
+        "score": 0.4785630702972412
+      },
+      {
+        "tool": "cancer_biomarkers_disease_target_score",
+        "score": 0.46465003490448
+      },
+      {
+        "tool": "cancer_gene_census_disease_target_score",
+        "score": 0.4619411826133728
+      },
+      {
+        "tool": "expression_atlas_disease_target_score",
+        "score": 0.44294142723083496
+      },
+      {
+        "tool": "run_transcriptformer_embedding_retrieval",
+        "score": 0.43328964710235596
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "run_compass_prediction",
+    "argument_schema": {
+      "gene_expression_data_path": {
+        "type": "string",
+        "description": "Path to the TPM expression data file. Keys should be standard gene symbols (e.g., 'CD274', 'PDCD1', 'CTLA4'). Values should be normalized expression in TPM (Transcripts Per Million). Minimum ~100 genes recommended for reliable predictions."
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Probability threshold for responder classification (0.0-1.0). Values ≥ threshold classify sample as likely responder. Default 0.5 provides balanced sensitivity/specificity. Consider lower thresholds (~0.3) for higher sensitivity."
+      },
+      "root_path": {
+        "type": "string",
+        "description": "Path to the directory containing model checkpoints. If None, uses COMPASS_MODEL_PATH/immune-compass/checkpoint."
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "name": "extract_clinical_trial_outcomes",
+  "identity": {
+    "canonical_name": "extract_clinical_trial_outcomes",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Statistical & Analytical Methods",
+      "biomedical-text-mining",
+      "clinical-research-data",
+      "ClinicalTrialsDetailsTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Extracts detailed trial outcome results such as survival rates and p-values from ClinicalTrials.gov using NCT IDs.\n\nExtracts detailed trial outcome results (e.g., overall survival months, p-values, etc.) from clinicaltrials.gov, using their NCT IDs.",
+    "capabilities": [
+      "Extract detailed outcome results from clinical trials",
+      "Retrieve primary, secondary, or custom outcome measures",
+      "Supports partial matching of outcome measure names"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "nct_ids": {
+        "type": "array",
+        "description": "List of NCT IDs of the clinical trials (e.g., ['NCT04852770', 'NCT01728545'])."
+      },
+      "outcome_measure": {
+        "type": "string",
+        "description": "Outcome measure to extract. Example values include 'primary' (primary outcomes only), 'secondary' (secondary outcomes only), 'all' (all outcomes), or specific measure names such as 'survival', 'overall survival'. For specific measure names, outcome measures will be matched as long as the input partially matches their titles or descriptions (case agnostic). Querying for specific measure names is recommended after getting an overview of outcome measures ('primary'). If querying for specific measure names does not return any results, this parameter should be set to 'primary' for sanity check. By default, the value is set to 'primary', i.e. the tool will extract all primary outcome results."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/extract_clinical_trial_outcomes_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/extract_clinical_trial_outcomes_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/extract_clinical_trial_outcomes_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_clinical_trial_outcome_measures",
+        "score": 0.8077341318130493
+      },
+      {
+        "tool": "extract_clinical_trial_adverse_events",
+        "score": 0.8055920600891113
+      },
+      {
+        "tool": "get_clinical_trial_descriptions",
+        "score": 0.7919752597808838
+      },
+      {
+        "tool": "get_clinical_trial_eligibility_criteria",
+        "score": 0.7661700248718262
+      },
+      {
+        "tool": "get_clinical_trial_status_and_dates",
+        "score": 0.7628621459007263
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "extract_clinical_trial_outcomes",
+    "argument_schema": {
+      "nct_ids": {
+        "type": "array",
+        "description": "List of NCT IDs of the clinical trials (e.g., ['NCT04852770', 'NCT01728545'])."
+      },
+      "outcome_measure": {
+        "type": "string",
+        "description": "Outcome measure to extract. Example values include 'primary' (primary outcomes only), 'secondary' (secondary outcomes only), 'all' (all outcomes), or specific measure names such as 'survival', 'overall survival'. For specific measure names, outcome measures will be matched as long as the input partially matches their titles or descriptions (case agnostic). Querying for specific measure names is recommended after getting an overview of outcome measures ('primary'). If querying for specific measure names does not return any results, this parameter should be set to 'primary' for sanity check. By default, the value is set to 'primary', i.e. the tool will extract all primary outcome results."
+      }
+    }
+  }
+}

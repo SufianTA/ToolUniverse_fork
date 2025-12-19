@@ -1,0 +1,128 @@
+{
+  "name": "FDA_get_lab_test_interference_info_by_drug_name",
+  "identity": {
+    "canonical_name": "FDA_get_lab_test_interference_info_by_drug_name",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Clinical & Translational Research",
+      "Pharmacology & Drug Services",
+      "clinical-decision-support",
+      "clinical-pharmacology",
+      "fda-drug-label",
+      "lab",
+      "laboratory",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Get laboratory test interference information for a specified drug.\n\nRetrieve information about laboratory test interferences for a specific drug.",
+    "capabilities": [
+      "Retrieve laboratory test interferences by drug name",
+      "Support pagination via limit and skip"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_lab_test_interference_info_by_drug_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_lab_test_interference_info_by_drug_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_lab_test_interference_info_by_drug_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_names_by_lab_test_interference",
+        "score": 0.853240966796875
+      },
+      {
+        "tool": "FDA_get_lab_tests_by_drug_name",
+        "score": 0.75523442029953
+      },
+      {
+        "tool": "FDA_get_drug_names_by_lab_tests",
+        "score": 0.72812819480896
+      },
+      {
+        "tool": "FDA_get_other_safety_info_by_drug_name",
+        "score": 0.6732710599899292
+      },
+      {
+        "tool": "FDA_get_general_precautions_by_drug_name",
+        "score": 0.6728007793426514
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_lab_test_interference_info_by_drug_name",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

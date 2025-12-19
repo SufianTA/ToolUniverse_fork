@@ -1,0 +1,111 @@
+{
+  "name": "get_ec_number_by_entity_id",
+  "identity": {
+    "canonical_name": "get_ec_number_by_entity_id",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Data Access & Management",
+      "Domain-Specific Analysis",
+      "database-integration",
+      "entity-processing",
+      "polymer",
+      "protein-annotation",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve EC number(s) for a polymer entity\n\nRetrieve the Enzyme Commission (EC) number(s) for an entity.",
+    "capabilities": [
+      "Retrieve the Enzyme Commission (EC) number(s) for a polymer entity by its ID."
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "entity_id": {
+        "type": "string",
+        "description": "Polymer entity ID (e.g., '1A8M_1')"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_ec_number_by_entity_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_ec_number_by_entity_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_ec_number_by_entity_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_uniprot_accession_by_entity_id",
+        "score": 0.6490130424499512
+      },
+      {
+        "tool": "get_polymer_entity_type_by_entity_id",
+        "score": 0.6408648490905762
+      },
+      {
+        "tool": "get_gene_name_by_entity_id",
+        "score": 0.6184651255607605
+      },
+      {
+        "tool": "get_polymer_molecular_weight_by_entity_id",
+        "score": 0.586108922958374
+      },
+      {
+        "tool": "get_sequence_positional_features_by_instance_id",
+        "score": 0.5573590993881226
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_ec_number_by_entity_id",
+    "argument_schema": {
+      "entity_id": {
+        "type": "string",
+        "description": "Polymer entity ID (e.g., '1A8M_1')"
+      }
+    }
+  }
+}

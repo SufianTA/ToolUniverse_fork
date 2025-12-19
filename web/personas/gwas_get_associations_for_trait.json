@@ -1,0 +1,129 @@
+{
+  "name": "gwas_get_associations_for_trait",
+  "identity": {
+    "canonical_name": "gwas_get_associations_for_trait",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Data Access & Management",
+      "Data Processing",
+      "Omics & Molecular Analysis",
+      "Statistical & Analytical Methods",
+      "bioinformatics-tool",
+      "computational-genomics",
+      "ontology",
+      "GWASAssociationsForTrait",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetch GWAS associations for a specified trait, sorted by p-value.\n\nGet all associations for a specific trait, sorted by p-value (most significant first).",
+    "capabilities": [
+      "Retrieve GWAS associations for a specified trait",
+      "Sort associations by statistical significance (p-value)",
+      "Support pagination with size and page parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return per page"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_associations_for_trait_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_associations_for_trait_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_associations_for_trait_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "gwas_search_associations",
+        "score": 0.7702142000198364
+      },
+      {
+        "tool": "gwas_get_associations_for_study",
+        "score": 0.6883354187011719
+      },
+      {
+        "tool": "gwas_get_association_by_id",
+        "score": 0.662574052810669
+      },
+      {
+        "tool": "gwas_get_variants_for_trait",
+        "score": 0.6569231748580933
+      },
+      {
+        "tool": "gwas_get_studies_for_trait",
+        "score": 0.6446837782859802
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "gwas_get_associations_for_trait",
+    "argument_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return per page"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    }
+  }
+}

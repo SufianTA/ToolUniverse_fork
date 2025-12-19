@@ -1,0 +1,120 @@
+{
+  "name": "DailyMed_get_spl_by_setid",
+  "identity": {
+    "canonical_name": "DailyMed_get_spl_by_setid",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "SPL",
+      "fda-label-retrieval",
+      "label-management",
+      "medical-domain",
+      "pharmaceutical",
+      "structured-data",
+      "GetSPLBySetIDTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve the complete label for a given SPL Set ID in XML format.\n\nGet complete label corresponding to SPL Set ID, returns content in XML or JSON format.",
+    "capabilities": [
+      "Retrieve SPL label by set ID",
+      "Return data in XML format"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "setid": {
+        "type": "string",
+        "description": "SPL Set ID to query."
+      },
+      "format": {
+        "type": "string",
+        "description": "Return format, only supports 'xml'."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_get_spl_by_setid_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_get_spl_by_setid_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DailyMed_get_spl_by_setid_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_name_by_SPL_ID",
+        "score": 0.5371917486190796
+      },
+      {
+        "tool": "DailyMed_search_spls",
+        "score": 0.5194769501686096
+      },
+      {
+        "tool": "FDA_get_spl_unclassified_section_by_drug_name",
+        "score": 0.5110147595405579
+      },
+      {
+        "tool": "FDA_get_spl_indexing_data_elements_by_drug_name",
+        "score": 0.5040877461433411
+      },
+      {
+        "tool": "FDA_get_drug_names_by_spl_indexing_data_elements",
+        "score": 0.4886872172355652
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "DailyMed_get_spl_by_setid",
+    "argument_schema": {
+      "setid": {
+        "type": "string",
+        "description": "SPL Set ID to query."
+      },
+      "format": {
+        "type": "string",
+        "description": "Return format, only supports 'xml'."
+      }
+    }
+  }
+}

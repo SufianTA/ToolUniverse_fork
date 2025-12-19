@@ -1,0 +1,116 @@
+{
+  "name": "ProtocolOptimizer",
+  "identity": {
+    "canonical_name": "ProtocolOptimizer",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Statistical & Analytical Methods",
+      "experimental-design",
+      "methodology",
+      "protocol",
+      "research",
+      "risk",
+      "science",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Optimizes protocols by improving clarity, feasibility, risk management, and evaluation rigor.\n\nReviews an initial protocol and delivers targeted revisions that improve clarity, feasibility, risk-management, and evaluation rigor.",
+    "capabilities": [
+      "Protocol review and optimization",
+      "Provides clarity and completeness ratings",
+      "Assesses feasibility and resource efficiency",
+      "Evaluates risk mitigation and contingency plans",
+      "Analyzes measurement and evaluation metrics",
+      "Generates prioritized action-item checklists"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "initial_protocol": {
+        "type": "string",
+        "description": "The protocol text to be reviewed and optimized."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ProtocolOptimizer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ProtocolOptimizer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ProtocolOptimizer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ReproducibilityTransparencyReviewer",
+        "score": 0.4945746660232544
+      },
+      {
+        "tool": "ToolQualityEvaluator",
+        "score": 0.4838062822818756
+      },
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.4822726249694824
+      },
+      {
+        "tool": "DataAnalysisValidityReviewer",
+        "score": 0.4627586007118225
+      },
+      {
+        "tool": "MethodologyRigorReviewer",
+        "score": 0.44774436950683594
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ProtocolOptimizer",
+    "argument_schema": {
+      "initial_protocol": {
+        "type": "string",
+        "description": "The protocol text to be reviewed and optimized."
+      }
+    }
+  }
+}

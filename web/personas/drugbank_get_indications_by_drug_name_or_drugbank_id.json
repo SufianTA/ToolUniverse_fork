@@ -1,0 +1,141 @@
+{
+  "name": "drugbank_get_indications_by_drug_name_or_drugbank_id",
+  "identity": {
+    "canonical_name": "drugbank_get_indications_by_drug_name_or_drugbank_id",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "case-sensitive-search",
+      "clinical-research-tool",
+      "exact-match",
+      "indication",
+      "pharmaceutical",
+      "pharmacology",
+      "XMLTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Retrieve drug indications and therapeutic uses by drug name or DrugBank ID.\n\nGet drug indications and therapeutic uses by drug name or DrugBank ID.",
+    "capabilities": [
+      "Search drug indications and therapeutic uses by name or DrugBank ID",
+      "Perform case-sensitive or case-insensitive searches",
+      "Support exact or partial matches",
+      "Limit number of results returned",
+      "Extract drug categories",
+      "Retrieve ATC codes and hierarchy",
+      "Retrieve drug synonyms"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Drug name or ID to search for"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_indications_by_drug_name_or_drugbank_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_indications_by_drug_name_or_drugbank_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/drugbank_get_indications_by_drug_name_or_drugbank_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "drugbank_get_drug_name_and_description_by_indication",
+        "score": 0.9084632396697998
+      },
+      {
+        "tool": "drugbank_get_drug_interactions_by_drug_name_or_drugbank_id",
+        "score": 0.8329670429229736
+      },
+      {
+        "tool": "drugbank_get_drug_basic_info_by_drug_name_or_drugbank_id",
+        "score": 0.8305017352104187
+      },
+      {
+        "tool": "FDA_get_purpose_info_by_drug_name",
+        "score": 0.8290615081787109
+      },
+      {
+        "tool": "drugbank_get_drug_products_by_name_or_drugbank_id",
+        "score": 0.8255587816238403
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "drugbank_get_indications_by_drug_name_or_drugbank_id",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Drug name or ID to search for"
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "name": "dict_search",
+  "identity": {
+    "canonical_name": "dict_search",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "active-ingredient",
+      "case-sensitive-search",
+      "clinical-pharmacology",
+      "generic-name-lookup",
+      "medical-domain",
+      "pharma",
+      "pharmacology",
+      "DatasetTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Search the DICTrank dataset for drug-induced cardiotoxicity risk by trade name, generic name, or active ingredient.\n\nSearch the DICTrank dataset for drug-induced cardiotoxicity (DICT) risk information by trade name, generic name, or active ingredient. Searching with exact match is not recommeded.",
+    "capabilities": [
+      "Search DICTrank dataset by drug name or ingredient",
+      "Specify search fields (Trade Name, Generic/Proper Name(s), Active Ingredient(s))",
+      "Control case sensitivity",
+      "Toggle exact or substring matching",
+      "Limit the number of returned results"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Free-text query (e.g. 'ZYPREXA', 'Olanzapine')."
+      },
+      "search_fields": {
+        "type": "array",
+        "description": "Columns to search. Choose from: 'Trade Name', 'Generic/Proper Name(s)', 'Active Ingredient(s)'."
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Match text with exact case if true."
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Field value must equal query exactly if true; otherwise substring match."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of rows to return."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/dict_search_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/dict_search_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/dict_search_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "dili_search",
+        "score": 0.6334367394447327
+      },
+      {
+        "tool": "diqt_search",
+        "score": 0.6290087699890137
+      },
+      {
+        "tool": "drugbank_vocab_search",
+        "score": 0.5543578267097473
+      },
+      {
+        "tool": "FDA_get_drug_names_by_abuse_info",
+        "score": 0.553925096988678
+      },
+      {
+        "tool": "FDA_get_drug_names_by_overdosage_info",
+        "score": 0.5464065670967102
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "dict_search",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Free-text query (e.g. 'ZYPREXA', 'Olanzapine')."
+      },
+      "search_fields": {
+        "type": "array",
+        "description": "Columns to search. Choose from: 'Trade Name', 'Generic/Proper Name(s)', 'Active Ingredient(s)'."
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Match text with exact case if true."
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Field value must equal query exactly if true; otherwise substring match."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of rows to return."
+      }
+    }
+  }
+}

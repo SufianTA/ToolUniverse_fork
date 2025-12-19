@@ -1,0 +1,110 @@
+{
+  "name": "get_polymer_entity_count_by_pdb_id",
+  "identity": {
+    "canonical_name": "get_polymer_entity_count_by_pdb_id",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Structural Biology & Simulation",
+      "entity-processing",
+      "macromolecular-analysis",
+      "polymer",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve the number of polymer entities in a PDB entry.\n\nGet the number of distinct polymer entities (chains) in a structure.",
+    "capabilities": [
+      "Provides polymer entity count for a given PDB entry",
+      "Accepts 4-character PDB ID as input"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character PDB ID"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_polymer_entity_count_by_pdb_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_polymer_entity_count_by_pdb_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_polymer_entity_count_by_pdb_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_sequence_lengths_by_pdb_id",
+        "score": 0.7876734733581543
+      },
+      {
+        "tool": "get_sequence_by_pdb_id",
+        "score": 0.7483716011047363
+      },
+      {
+        "tool": "get_polymer_entity_ids_by_pdb_id",
+        "score": 0.693483829498291
+      },
+      {
+        "tool": "get_ligand_bond_count_by_pdb_id",
+        "score": 0.6257634162902832
+      },
+      {
+        "tool": "get_gene_name_by_entity_id",
+        "score": 0.6207263469696045
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_polymer_entity_count_by_pdb_id",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character PDB ID"
+      }
+    }
+  }
+}

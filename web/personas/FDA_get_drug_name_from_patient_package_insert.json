@@ -1,0 +1,131 @@
+{
+  "name": "FDA_get_drug_name_from_patient_package_insert",
+  "identity": {
+    "canonical_name": "FDA_get_drug_name_from_patient_package_insert",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Access & Management",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Statistical & Analytical Methods",
+      "Text Mining & NLP",
+      "fda-drug-label",
+      "medical-domain",
+      "pharmacology",
+      "prescription",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Get drug brand and generic names from a patient package insert.\n\nRetrieve the drug name based on the information provided in the patient package insert.",
+    "capabilities": [
+      "Search drug labels using patient package insert text.",
+      "Retrieve brand and generic drug names.",
+      "Support pagination through limit and skip parameters."
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "patient_package_insert": {
+        "type": "string",
+        "description": "Information necessary for patients to use the drug safely and effectively."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_from_patient_package_insert_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_from_patient_package_insert_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_name_from_patient_package_insert_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_patient_package_insert_from_drug_name",
+        "score": 0.8837122917175293
+      },
+      {
+        "tool": "FDA_get_brand_name_generic_name",
+        "score": 0.8370753526687622
+      },
+      {
+        "tool": "FDA_get_drug_names_by_general_precautions",
+        "score": 0.8222527503967285
+      },
+      {
+        "tool": "FDA_get_drug_name_by_document_id",
+        "score": 0.8104608058929443
+      },
+      {
+        "tool": "FDA_get_drug_name_by_storage_and_handling_info",
+        "score": 0.7875106334686279
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_drug_name_from_patient_package_insert",
+    "argument_schema": {
+      "patient_package_insert": {
+        "type": "string",
+        "description": "Information necessary for patients to use the drug safely and effectively."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

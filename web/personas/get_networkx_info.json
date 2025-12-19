@@ -1,0 +1,114 @@
+{
+  "name": "get_networkx_info",
+  "identity": {
+    "canonical_name": "get_networkx_info",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Access & Management",
+      "Data Processing",
+      "Network & Graph Analysis",
+      "Programming Languages & Tools",
+      "dependency-inspection",
+      "network-visualization",
+      "software",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Retrieve information about the NetworkX network analysis library.\n\nGet comprehensive information about NetworkX - network analysis library",
+    "capabilities": [
+      "Provide package overview",
+      "Provide installation instructions",
+      "Provide usage examples",
+      "Provide documentation links"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about NetworkX"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_networkx_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_networkx_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_networkx_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_pyvis_info",
+        "score": 0.6728834509849548
+      },
+      {
+        "tool": "get_igraph_info",
+        "score": 0.6720761060714722
+      },
+      {
+        "tool": "get_pyscenic_info",
+        "score": 0.5424985289573669
+      },
+      {
+        "tool": "get_arboreto_info",
+        "score": 0.5280562043190002
+      },
+      {
+        "tool": "humanbase_ppi_analysis",
+        "score": 0.49663951992988586
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_networkx_info",
+    "argument_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about NetworkX"
+      }
+    }
+  }
+}

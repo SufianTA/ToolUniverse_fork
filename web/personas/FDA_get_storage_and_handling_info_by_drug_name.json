@@ -1,0 +1,128 @@
+{
+  "name": "FDA_get_storage_and_handling_info_by_drug_name",
+  "identity": {
+    "canonical_name": "FDA_get_storage_and_handling_info_by_drug_name",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "fda-drug-label",
+      "pharmaceutical",
+      "pharmacy",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Get storage and handling information for a drug by its name.\n\nRetrieve storage and handling information based on the drug name.",
+    "capabilities": [
+      "Retrieve storage and handling information",
+      "Search by drug name using brand or generic name",
+      "Support pagination via limit and skip parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_storage_and_handling_info_by_drug_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_storage_and_handling_info_by_drug_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_storage_and_handling_info_by_drug_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_name_by_storage_and_handling_info",
+        "score": 0.9294261336326599
+      },
+      {
+        "tool": "FDA_get_indications_by_drug_name",
+        "score": 0.8661942481994629
+      },
+      {
+        "tool": "FDA_get_dosage_and_storage_information_by_drug_name",
+        "score": 0.8599607348442078
+      },
+      {
+        "tool": "FDA_get_drug_names_by_information_for_owners_or_caregivers",
+        "score": 0.8289967775344849
+      },
+      {
+        "tool": "FDA_get_instructions_for_use_by_drug_name",
+        "score": 0.8282966613769531
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_storage_and_handling_info_by_drug_name",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

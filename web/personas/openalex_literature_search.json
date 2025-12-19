@@ -1,0 +1,151 @@
+{
+  "name": "openalex_literature_search",
+  "identity": {
+    "canonical_name": "openalex_literature_search",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Access & Management",
+      "Search & Retrieval",
+      "Text Mining & NLP",
+      "academic-literature",
+      "publication",
+      "research",
+      "scholarly",
+      "science",
+      "OpenAlexTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search academic literature via the OpenAlex API, retrieving key paper metadata by keywords.\n\nSearch for academic literature using OpenAlex API. Retrieves papers with title, abstract, authors, publication year, and organizational affiliations based on search keywords.",
+    "capabilities": [
+      "Search for papers using keywords",
+      "Retrieve paper titles",
+      "Retrieve abstracts",
+      "Retrieve authors",
+      "Retrieve publication year",
+      "Retrieve organizational affiliations",
+      "Filter results by publication year range",
+      "Filter results by open access status"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "search_keywords": {
+        "type": "string",
+        "description": "Keywords to search for in paper titles, abstracts, and content. Use relevant scientific terms or phrases."
+      },
+      "max_results": {
+        "type": "integer",
+        "description": "Maximum number of papers to retrieve (default: 10, maximum: 200)."
+      },
+      "year_from": {
+        "type": "integer",
+        "description": "Start year for publication date filter (e.g., 2020). Optional parameter to limit search to papers published from this year onwards."
+      },
+      "year_to": {
+        "type": "integer",
+        "description": "End year for publication date filter (e.g., 2023). Optional parameter to limit search to papers published up to this year."
+      },
+      "open_access": {
+        "type": "boolean",
+        "description": "Filter for open access papers only. Set to true for open access papers, false for non-open access, or omit for all papers."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/openalex_literature_search_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/openalex_literature_search_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/openalex_literature_search_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "SemanticScholar_search_papers",
+        "score": 0.6522282958030701
+      },
+      {
+        "tool": "get_scholarly_info",
+        "score": 0.6003923416137695
+      },
+      {
+        "tool": "LiteratureSearchTool",
+        "score": 0.5552513599395752
+      },
+      {
+        "tool": "get_associated_documents_metadata",
+        "score": 0.49264055490493774
+      },
+      {
+        "tool": "OpenTargets_get_publications_by_target_ensemblID",
+        "score": 0.4847669005393982
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "openalex_literature_search",
+    "argument_schema": {
+      "search_keywords": {
+        "type": "string",
+        "description": "Keywords to search for in paper titles, abstracts, and content. Use relevant scientific terms or phrases."
+      },
+      "max_results": {
+        "type": "integer",
+        "description": "Maximum number of papers to retrieve (default: 10, maximum: 200)."
+      },
+      "year_from": {
+        "type": "integer",
+        "description": "Start year for publication date filter (e.g., 2020). Optional parameter to limit search to papers published from this year onwards."
+      },
+      "year_to": {
+        "type": "integer",
+        "description": "End year for publication date filter (e.g., 2023). Optional parameter to limit search to papers published up to this year."
+      },
+      "open_access": {
+        "type": "boolean",
+        "description": "Filter for open access papers only. Set to true for open access papers, false for non-open access, or omit for all papers."
+      }
+    }
+  }
+}

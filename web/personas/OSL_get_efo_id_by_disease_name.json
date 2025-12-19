@@ -1,0 +1,110 @@
+{
+  "name": "OSL_get_efo_id_by_disease_name",
+  "identity": {
+    "canonical_name": "OSL_get_efo_id_by_disease_name",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Processing",
+      "bioinformatics-integration",
+      "biomedical-ontology",
+      "experimental-design",
+      "ontology",
+      "semantic-annotation",
+      "EFOTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Lookup Experimental Factor Ontology (EFO) IDs for diseases via EMBL-EBI OLS API.\n\nTool to lookup Experimental Factor Ontology (EFO) IDs for diseases via the EMBL-EBI OLS API.",
+    "capabilities": [
+      "Lookup Experimental Factor Ontology (EFO) IDs for diseases"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "disease": {
+        "type": "string",
+        "description": "Search query for diseases. Provide the disease name to lookup the corresponding EFO ID."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OSL_get_efo_id_by_disease_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OSL_get_efo_id_by_disease_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OSL_get_efo_id_by_disease_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_disease_descendants_children_by_efoId",
+        "score": 0.7152935266494751
+      },
+      {
+        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+        "score": 0.7023887634277344
+      },
+      {
+        "tool": "OpenTargets_get_similar_entities_by_disease_efoId",
+        "score": 0.6896539926528931
+      },
+      {
+        "tool": "OpenTargets_get_disease_ancestors_parents_by_efoId",
+        "score": 0.688510537147522
+      },
+      {
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.6738404631614685
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OSL_get_efo_id_by_disease_name",
+    "argument_schema": {
+      "disease": {
+        "type": "string",
+        "description": "Search query for diseases. Provide the disease name to lookup the corresponding EFO ID."
+      }
+    }
+  }
+}

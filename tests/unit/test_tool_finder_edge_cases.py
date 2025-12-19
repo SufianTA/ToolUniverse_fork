@@ -299,6 +299,12 @@ class TestToolFinderEdgeCases(unittest.TestCase):
     def test_tool_finder_embedding_edge_cases_real(self):
         """Test Tool_Finder (embedding) edge cases using real ToolUniverse."""
         try:
+            import torch
+        except ImportError:
+            pytest.skip("torch not available for embedding edge case tests")
+        if not torch.cuda.is_available():
+            pytest.skip("GPU required for Tool_Finder embedding edge cases")
+        try:
             # Test with various edge cases
             edge_cases = [
                 {"description": "", "limit": 0, "return_call_result": False},

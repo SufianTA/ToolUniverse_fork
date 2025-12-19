@@ -1,0 +1,113 @@
+{
+  "name": "get_protein_metadata_by_pdb_id",
+  "identity": {
+    "canonical_name": "get_protein_metadata_by_pdb_id",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Data Access & Management",
+      "Structural Biology & Simulation",
+      "computational-biology",
+      "experimental-design",
+      "macromolecular-analysis",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve basic protein structure metadata from the RCSB PDB given a PDB ID.\n\nRetrieve basic protein structure metadata, including structure title, experimental method, resolution, and initial release date.",
+    "capabilities": [
+      "Retrieve structure title",
+      "Retrieve experimental method",
+      "Retrieve resolution",
+      "Retrieve initial release date"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character RCSB PDB ID of the protein"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_protein_metadata_by_pdb_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_protein_metadata_by_pdb_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_protein_metadata_by_pdb_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_assembly_info_by_pdb_id",
+        "score": 0.7755963802337646
+      },
+      {
+        "tool": "get_protein_classification_by_pdb_id",
+        "score": 0.7580431699752808
+      },
+      {
+        "tool": "get_source_organism_by_pdb_id",
+        "score": 0.7094944715499878
+      },
+      {
+        "tool": "get_structure_determination_software_by_pdb_id",
+        "score": 0.6882164478302002
+      },
+      {
+        "tool": "get_structure_validation_metrics_by_pdb_id",
+        "score": 0.6742153167724609
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_protein_metadata_by_pdb_id",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "4-character RCSB PDB ID of the protein"
+      }
+    }
+  }
+}

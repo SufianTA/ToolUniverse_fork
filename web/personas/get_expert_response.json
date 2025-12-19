@@ -1,0 +1,111 @@
+{
+  "name": "get_expert_response",
+  "identity": {
+    "canonical_name": "get_expert_response",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Miscellaneous",
+      "knowledge-management",
+      "request",
+      "string-parameter-input",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "Human Expert Feedback",
+    "description": "Retrieve status and content of an expert consultation response.\n\nCheck if an expert response is available for a previous consultation request. Use this to retrieve responses when the initial consultation is complete.",
+    "capabilities": [
+      "Check if an expert response is available for a given request_id",
+      "Retrieve status of a consultation request",
+      "Fetch expert response content",
+      "Obtain responding expert's name and response timestamp"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "request_id": {
+        "type": "string",
+        "description": "The ID of the expert consultation request to check"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_response_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_response_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_response_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "submit_expert_response",
+        "score": 0.7550371885299683
+      },
+      {
+        "tool": "get_expert_status",
+        "score": 0.6834768056869507
+      },
+      {
+        "tool": "list_pending_expert_requests",
+        "score": 0.6349303722381592
+      },
+      {
+        "tool": "FDA_get_info_on_conditions_for_doctor_consultation_by_drug_name",
+        "score": 0.5371816158294678
+      },
+      {
+        "tool": "FDA_get_contact_for_questions_info_by_drug_name",
+        "score": 0.4942165017127991
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_expert_response",
+    "argument_schema": {
+      "request_id": {
+        "type": "string",
+        "description": "The ID of the expert consultation request to check"
+      }
+    }
+  }
+}

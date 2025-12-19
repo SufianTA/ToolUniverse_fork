@@ -1,0 +1,129 @@
+{
+  "name": "get_HPO_ID_by_phenotype",
+  "identity": {
+    "canonical_name": "get_HPO_ID_by_phenotype",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Text Mining & NLP",
+      "biomedical-ontology",
+      "identifier",
+      "medical-domain",
+      "ontology-query",
+      "Monarch",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve the HPO ID for a given phenotype or symptom.\n\nRetrieve the HPO ID of a phenotype or symptom.",
+    "capabilities": [
+      "Retrieve HPO IDs by phenotype or symptom",
+      "Supports pagination through limit and offset parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "One query phenotype or symptom."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Number of entries to fetch."
+      },
+      "offset": {
+        "type": "integer",
+        "description": "Number of initial entries to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_HPO_ID_by_phenotype_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_HPO_ID_by_phenotype_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_HPO_ID_by_phenotype_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_phenotype_by_HPO_ID",
+        "score": 0.9539425373077393
+      },
+      {
+        "tool": "get_joint_associated_diseases_by_HPO_ID_list",
+        "score": 0.8387917876243591
+      },
+      {
+        "tool": "OpenTargets_get_associated_phenotypes_by_disease_efoId",
+        "score": 0.801966667175293
+      },
+      {
+        "tool": "OpenTargets_get_disease_id_description_by_name",
+        "score": 0.632365345954895
+      },
+      {
+        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+        "score": 0.6250405311584473
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_HPO_ID_by_phenotype",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "One query phenotype or symptom."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Number of entries to fetch."
+      },
+      "offset": {
+        "type": "integer",
+        "description": "Number of initial entries to skip."
+      }
+    }
+  }
+}

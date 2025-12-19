@@ -1,0 +1,128 @@
+{
+  "name": "ScientificTextSummarizer",
+  "identity": {
+    "canonical_name": "ScientificTextSummarizer",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "Text Mining & NLP",
+      "methodology",
+      "research",
+      "results",
+      "science",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Summarizes biomedical research texts by extracting key findings, methodology, and conclusions with customizable length and focus.\n\nSummarizes biomedical research texts, abstracts, or papers with specified length and focus areas. Uses AI to extract key findings, methodology, and conclusions from complex biomedical literature.",
+    "capabilities": [
+      "Summarize biomedical research texts, abstracts, or papers",
+      "Customize summary length",
+      "Focus summary on specific areas",
+      "Extract key findings, methodology, and conclusions"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "text": {
+        "type": "string",
+        "description": "The biomedical text, abstract, or paper content to be summarized."
+      },
+      "summary_length": {
+        "type": "string",
+        "description": "Desired length of summary (e.g., '50', '100', '200 words')."
+      },
+      "focus_area": {
+        "type": "string",
+        "description": "What to focus on in the summary (e.g., 'methodology', 'results', 'clinical implications', 'drug interactions')."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ScientificTextSummarizer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ScientificTextSummarizer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ScientificTextSummarizer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "LiteratureSearchTool",
+        "score": 0.6571364402770996
+      },
+      {
+        "tool": "HypothesisGenerator",
+        "score": 0.5540701150894165
+      },
+      {
+        "tool": "BiomarkerDiscoveryWorkflow",
+        "score": 0.5193882584571838
+      },
+      {
+        "tool": "HPA_get_contextual_biological_process_analysis",
+        "score": 0.5164974331855774
+      },
+      {
+        "tool": "ToolOutputSummarizer",
+        "score": 0.5159286260604858
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ScientificTextSummarizer",
+    "argument_schema": {
+      "text": {
+        "type": "string",
+        "description": "The biomedical text, abstract, or paper content to be summarized."
+      },
+      "summary_length": {
+        "type": "string",
+        "description": "Desired length of summary (e.g., '50', '100', '200 words')."
+      },
+      "focus_area": {
+        "type": "string",
+        "description": "What to focus on in the summary (e.g., 'methodology', 'results', 'clinical implications', 'drug interactions')."
+      }
+    }
+  }
+}

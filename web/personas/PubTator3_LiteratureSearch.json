@@ -1,0 +1,129 @@
+{
+  "name": "PubTator3_LiteratureSearch",
+  "identity": {
+    "canonical_name": "PubTator3_LiteratureSearch",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Pharmacology & Drug Services",
+      "Text Mining & NLP",
+      "biomedical-text-mining",
+      "computational-biology",
+      "entity-processing",
+      "semantic",
+      "PubTatorTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search PubMed articles via keywords, PubTator IDs, or entity relation queries.\n\nFind PubMed articles that match a keyword, a PubTator entity ID (e.g. \"@GENE_BRAF\"), or an entity-to-entity relation expression (e.g. \"relations:treat|@CHEMICAL_Doxorubicin|@DISEASE_Neoplasms\").",
+    "capabilities": [
+      "Search PubMed articles using keywords, PubTator IDs, or relation queries",
+      "Support pagination with page and page_size parameters",
+      "Retrieve PMIDs matching the search criteria"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "What you want to search for. This can be plain keywords, a single PubTator ID, or the special relation syntax shown above."
+      },
+      "page": {
+        "type": "integer",
+        "description": "Zero-based results page (optional; default = 0)."
+      },
+      "page_size": {
+        "type": "integer",
+        "description": "How many PMIDs to return per page (optional; default = 20, maximum = 200)."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/PubTator3_LiteratureSearch_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/PubTator3_LiteratureSearch_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/PubTator3_LiteratureSearch_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_similar_entities_by_disease_efoId",
+        "score": 0.6240298748016357
+      },
+      {
+        "tool": "OpenTargets_get_similar_entities_by_drug_chemblId",
+        "score": 0.6093546152114868
+      },
+      {
+        "tool": "PubTator3_EntityAutocomplete",
+        "score": 0.6068434715270996
+      },
+      {
+        "tool": "OpenTargets_get_similar_entities_by_target_ensemblID",
+        "score": 0.6003928184509277
+      },
+      {
+        "tool": "OpenTargets_get_publications_by_disease_efoId",
+        "score": 0.5986752510070801
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "PubTator3_LiteratureSearch",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "What you want to search for. This can be plain keywords, a single PubTator ID, or the special relation syntax shown above."
+      },
+      "page": {
+        "type": "integer",
+        "description": "Zero-based results page (optional; default = 0)."
+      },
+      "page_size": {
+        "type": "integer",
+        "description": "How many PMIDs to return per page (optional; default = 20, maximum = 200)."
+      }
+    }
+  }
+}

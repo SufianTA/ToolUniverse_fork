@@ -1,0 +1,123 @@
+{
+  "name": "expression_atlas_disease_target_score",
+  "identity": {
+    "canonical_name": "expression_atlas_disease_target_score",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Omics & Molecular Analysis",
+      "computational-biology",
+      "experimental-design",
+      "expression",
+      "ontology",
+      "target-analysis",
+      "DiseaseTargetScoreTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Provides disease-target association scores from Expression Atlas gene expression data.\n\nExtract disease-target association scores from Expression Atlas. This provides gene expression data.",
+    "capabilities": [
+      "Retrieve disease-target association scores",
+      "Query by EFO disease ID",
+      "Support pagination via pageSize parameter"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The EFO (Experimental Factor Ontology) ID of the disease, e.g., 'EFO_0000339' for chronic myelogenous leukemia"
+      },
+      "pageSize": {
+        "type": "integer",
+        "description": "Number of results per page (default: 100, max: 100)"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/expression_atlas_disease_target_score_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/expression_atlas_disease_target_score_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/expression_atlas_disease_target_score_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "reactome_disease_target_score",
+        "score": 0.7980883121490479
+      },
+      {
+        "tool": "cancer_gene_census_disease_target_score",
+        "score": 0.7786098718643188
+      },
+      {
+        "tool": "genomics_england_disease_target_score",
+        "score": 0.7497113943099976
+      },
+      {
+        "tool": "cancer_biomarkers_disease_target_score",
+        "score": 0.7403476238250732
+      },
+      {
+        "tool": "disease_target_score",
+        "score": 0.7182658910751343
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "expression_atlas_disease_target_score",
+    "argument_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The EFO (Experimental Factor Ontology) ID of the disease, e.g., 'EFO_0000339' for chronic myelogenous leukemia"
+      },
+      "pageSize": {
+        "type": "integer",
+        "description": "Number of results per page (default: 100, max: 100)"
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "name": "ToolImplementationGenerator",
+  "identity": {
+    "canonical_name": "ToolImplementationGenerator",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "developer-tools",
+      "functionalities",
+      "performance-analysis",
+      "software",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Generates domain-specific functional code implementations with intelligent algorithm and package selection based on tool requirements.\n\nGenerates domain-specific, functional code implementations based on tool descriptions and requirements with intelligent algorithm selection",
+    "capabilities": [
+      "Generate domain-specific functional code implementations",
+      "Intelligently select and prioritize existing well-maintained packages",
+      "Analyze requirements and design implementations based on performance constraints",
+      "Produce structured JSON output with implementation details"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Detailed description of what the tool should accomplish"
+      },
+      "tool_parameters": {
+        "type": "string",
+        "description": "JSON string of parameter schema for the tool"
+      },
+      "domain": {
+        "type": "string",
+        "description": "Domain area for specialized implementation"
+      },
+      "complexity_level": {
+        "type": "string",
+        "description": "Desired complexity level of implementation"
+      },
+      "performance_requirements": {
+        "type": "string",
+        "description": "Performance requirements or constraints"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolImplementationGenerator_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolImplementationGenerator_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolImplementationGenerator_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "CodeOptimizer",
+        "score": 0.618719220161438
+      },
+      {
+        "tool": "ToolSpecificationGenerator",
+        "score": 0.5736453533172607
+      },
+      {
+        "tool": "ToolDiscover",
+        "score": 0.5731281042098999
+      },
+      {
+        "tool": "ToolOptimizer",
+        "score": 0.5247582793235779
+      },
+      {
+        "tool": "ToolGraphComposer",
+        "score": 0.518036961555481
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ToolImplementationGenerator",
+    "argument_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Detailed description of what the tool should accomplish"
+      },
+      "tool_parameters": {
+        "type": "string",
+        "description": "JSON string of parameter schema for the tool"
+      },
+      "domain": {
+        "type": "string",
+        "description": "Domain area for specialized implementation"
+      },
+      "complexity_level": {
+        "type": "string",
+        "description": "Desired complexity level of implementation"
+      },
+      "performance_requirements": {
+        "type": "string",
+        "description": "Performance requirements or constraints"
+      }
+    }
+  }
+}

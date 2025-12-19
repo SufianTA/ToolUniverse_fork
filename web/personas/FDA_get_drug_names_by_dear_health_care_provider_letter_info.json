@@ -1,0 +1,138 @@
+{
+  "name": "FDA_get_drug_names_by_dear_health_care_provider_letter_info",
+  "identity": {
+    "canonical_name": "FDA_get_drug_names_by_dear_health_care_provider_letter_info",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "fda-drug-label-api",
+      "indication",
+      "label-management",
+      "pharmacology",
+      "safety",
+      "structured-data",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetches drug names using information from Dear Health Care Provider letters.\n\nFetch drug names based on information about dear health care provider letters. The letters are sent by drug manufacturers to provide new or updated information about the drug.",
+    "capabilities": [
+      "Fetch drug names using Dear Health Care Provider letter information",
+      "Supports filtering by drug indication",
+      "Provides pagination using limit and skip parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "letter_info": {
+        "type": "string",
+        "description": "Information about the specific dear health care provider letters."
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_dear_health_care_provider_letter_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_dear_health_care_provider_letter_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_drug_names_by_dear_health_care_provider_letter_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_dear_health_care_provider_letter_info_by_drug_name",
+        "score": 0.930248498916626
+      },
+      {
+        "tool": "FDA_get_info_for_patients_by_drug_name",
+        "score": 0.7888304591178894
+      },
+      {
+        "tool": "FDA_retrieve_drug_names_by_patient_medication_info",
+        "score": 0.7373567819595337
+      },
+      {
+        "tool": "FDA_retrieve_patient_medication_info_by_drug_name",
+        "score": 0.7316136360168457
+      },
+      {
+        "tool": "FDA_get_drug_names_by_information_for_owners_or_caregivers",
+        "score": 0.7221603989601135
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_drug_names_by_dear_health_care_provider_letter_info",
+    "argument_schema": {
+      "letter_info": {
+        "type": "string",
+        "description": "Information about the specific dear health care provider letters."
+      },
+      "indication": {
+        "type": "string",
+        "description": "The indication or usage of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

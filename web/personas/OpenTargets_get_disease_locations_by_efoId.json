@@ -1,0 +1,111 @@
+{
+  "name": "OpenTargets_get_disease_locations_by_efoId",
+  "identity": {
+    "canonical_name": "OpenTargets_get_disease_locations_by_efoId",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Clinical & Translational Research",
+      "computational-biology",
+      "integration",
+      "ontology",
+      "open-targets-api",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetches direct and indirect location terms and IDs for a disease using its EFO ID.\n\nRetrieve the disease's direct location and indirect location disease terms and IDs using the disease EFO ID.",
+    "capabilities": [
+      "Retrieves direct and indirect disease location IDs",
+      "Provides location terms (id and name)",
+      "Supports disease lookup by EFO ID"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The EFO ID of the disease."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_disease_locations_by_efoId_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_disease_locations_by_efoId_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_get_disease_locations_by_efoId_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_disease_id_description_by_name",
+        "score": 0.8012819290161133
+      },
+      {
+        "tool": "OpenTargets_get_disease_descendants_children_by_efoId",
+        "score": 0.7353770136833191
+      },
+      {
+        "tool": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
+        "score": 0.733616828918457
+      },
+      {
+        "tool": "OpenTargets_get_disease_ancestors_parents_by_efoId",
+        "score": 0.7311584949493408
+      },
+      {
+        "tool": "OpenTargets_get_disease_description_by_efoId",
+        "score": 0.7271762490272522
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_get_disease_locations_by_efoId",
+    "argument_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The EFO ID of the disease."
+      }
+    }
+  }
+}

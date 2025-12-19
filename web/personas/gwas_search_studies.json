@@ -1,0 +1,164 @@
+{
+  "name": "gwas_search_studies",
+  "identity": {
+    "canonical_name": "gwas_search_studies",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Access & Management",
+      "Data Processing",
+      "Network & Graph Analysis",
+      "Omics & Molecular Analysis",
+      "Statistical & Analytical Methods",
+      "ontology",
+      "GWASStudySearch",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search GWAS studies by criteria like EFO trait, disease trait, cohort, GxE interactions, or summary statistics availability.\n\nSearch for GWAS studies by various criteria including EFO trait, disease trait, cohort, GxE interactions, and summary statistics availability.",
+    "capabilities": [
+      "Search GWAS studies",
+      "Filter by EFO trait",
+      "Filter by disease trait",
+      "Filter by cohort",
+      "Filter by gene-environment interaction studies",
+      "Filter by availability of full summary statistics",
+      "Paginate results using size and page parameters"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "disease_trait": {
+        "type": "string",
+        "description": "Disease trait name"
+      },
+      "cohort": {
+        "type": "string",
+        "description": "Cohort name (e.g., 'UKB' for UK Biobank)"
+      },
+      "gxe": {
+        "type": "boolean",
+        "description": "Filter for Gene-by-Environment interaction studies"
+      },
+      "full_pvalue_set": {
+        "type": "boolean",
+        "description": "Filter for studies with full summary statistics"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_search_studies_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_search_studies_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_search_studies_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "gwas_get_studies_for_trait",
+        "score": 0.7663606405258179
+      },
+      {
+        "tool": "gwas_search_associations",
+        "score": 0.7385069131851196
+      },
+      {
+        "tool": "gwas_get_study_by_id",
+        "score": 0.5804471969604492
+      },
+      {
+        "tool": "gwas_search_snps",
+        "score": 0.5707347393035889
+      },
+      {
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.569283127784729
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "gwas_search_studies",
+    "argument_schema": {
+      "efo_trait": {
+        "type": "string",
+        "description": "EFO trait identifier or name"
+      },
+      "disease_trait": {
+        "type": "string",
+        "description": "Disease trait name"
+      },
+      "cohort": {
+        "type": "string",
+        "description": "Cohort name (e.g., 'UKB' for UK Biobank)"
+      },
+      "gxe": {
+        "type": "boolean",
+        "description": "Filter for Gene-by-Environment interaction studies"
+      },
+      "full_pvalue_set": {
+        "type": "boolean",
+        "description": "Filter for studies with full summary statistics"
+      },
+      "size": {
+        "type": "integer",
+        "description": "Number of results to return"
+      },
+      "page": {
+        "type": "integer",
+        "description": "Page number for pagination"
+      }
+    }
+  }
+}

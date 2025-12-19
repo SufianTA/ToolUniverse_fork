@@ -1,0 +1,116 @@
+{
+  "name": "DescriptionAnalyzer",
+  "identity": {
+    "canonical_name": "DescriptionAnalyzer",
+    "aliases": [],
+    "domain_tags": [
+      "Content & Documentation",
+      "Text Mining & NLP",
+      "content-management",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Analyzes tool descriptions and test results to suggest more accurate, comprehensive, and user-friendly descriptions, optionally providing a rationale.\n\nAnalyzes a tool's original description and the results of multiple test cases, then suggests an improved description that is more accurate, comprehensive, and user-friendly. Optionally provides a rationale for the changes.",
+    "capabilities": [
+      "Analyze tool descriptions and test results",
+      "Suggest improved descriptions",
+      "Provide rationale for changes"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "original_description": {
+        "type": "string",
+        "description": "The original description of the tool."
+      },
+      "test_results": {
+        "type": "string",
+        "description": "A JSON string containing a list of test case input/output pairs."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DescriptionAnalyzer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DescriptionAnalyzer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/DescriptionAnalyzer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.7076004147529602
+      },
+      {
+        "tool": "ToolCompatibilityAnalyzer",
+        "score": 0.6901345252990723
+      },
+      {
+        "tool": "ToolDescriptionOptimizer",
+        "score": 0.6780948638916016
+      },
+      {
+        "tool": "ArgumentDescriptionOptimizer",
+        "score": 0.6272894144058228
+      },
+      {
+        "tool": "ToolQualityEvaluator",
+        "score": 0.5832860469818115
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "DescriptionAnalyzer",
+    "argument_schema": {
+      "original_description": {
+        "type": "string",
+        "description": "The original description of the tool."
+      },
+      "test_results": {
+        "type": "string",
+        "description": "A JSON string containing a list of test case input/output pairs."
+      }
+    }
+  }
+}

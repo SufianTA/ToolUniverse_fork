@@ -1,0 +1,123 @@
+{
+  "name": "AdverseEventPredictionQuestionGenerator",
+  "identity": {
+    "canonical_name": "AdverseEventPredictionQuestionGenerator",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Pharmacology & Drug Services",
+      "Safety & Toxicology",
+      "Text Mining & NLP",
+      "clinical-decision-support",
+      "modeling",
+      "personalization",
+      "pharmacology",
+      "risk",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Generates personalized adverse-event prediction questions for a disease and drug across multiple patient subgroups.\n\nGenerates a set of personalized adverse-event prediction questions for a given disease and drug, across multiple patient subgroups.",
+    "capabilities": [
+      "Generates personalized adverse-event prediction questions",
+      "Creates a general safety question hierarchy",
+      "Generates population-specific question extensions based on subgroups",
+      "Accepts disease and drug names as inputs"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "disease_name": {
+        "type": "string",
+        "description": "The name of the disease or condition"
+      },
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/AdverseEventPredictionQuestionGenerator_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/AdverseEventPredictionQuestionGenerator_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/AdverseEventPredictionQuestionGenerator_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "AdverseEventPredictionQuestionGeneratorWithContext",
+        "score": 0.9293663501739502
+      },
+      {
+        "tool": "FDA_get_drug_names_by_alarm",
+        "score": 0.5723855495452881
+      },
+      {
+        "tool": "FDA_get_adverse_reactions_by_drug_name",
+        "score": 0.5681445598602295
+      },
+      {
+        "tool": "extract_clinical_trial_adverse_events",
+        "score": 0.5326515436172485
+      },
+      {
+        "tool": "FAERS_count_patient_age_distribution",
+        "score": 0.5308791995048523
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "AdverseEventPredictionQuestionGenerator",
+    "argument_schema": {
+      "disease_name": {
+        "type": "string",
+        "description": "The name of the disease or condition"
+      },
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug"
+      }
+    }
+  }
+}

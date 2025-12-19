@@ -1,0 +1,125 @@
+{
+  "name": "GO_get_genes_for_term",
+  "identity": {
+    "canonical_name": "GO_get_genes_for_term",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "GO-ontology",
+      "computational-biology",
+      "functional-genomics",
+      "GeneOntologyTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieves genes/proteins associated with a given Gene Ontology term via the Biolink API.\n\nFinds all genes/proteins associated with a specific Gene Ontology term using the Biolink API.",
+    "capabilities": [
+      "Fetch genes/proteins linked to a specified GO term",
+      "Filter results by taxon using NCBI taxon ID",
+      "Limit number of returned genes via rows parameter"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "id": {
+        "type": "string",
+        "description": "The standard GO term ID, e.g., 'GO:0006915'."
+      },
+      "taxon": {
+        "type": "string",
+        "description": "Optional species filter using a NCBI taxon ID. For example, Human is 'NCBITaxon:9606', and Mouse is 'NCBITaxon:10090'."
+      },
+      "rows": {
+        "type": "integer",
+        "description": "The number of genes to return. Default is 100."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_genes_for_term_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_genes_for_term_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_genes_for_term_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "GO_search_terms",
+        "score": 0.687401533126831
+      },
+      {
+        "tool": "humanbase_ppi_analysis",
+        "score": 0.6794564723968506
+      },
+      {
+        "tool": "GO_get_term_details",
+        "score": 0.6767691969871521
+      },
+      {
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.6531521081924438
+      },
+      {
+        "tool": "OpenTargets_get_gene_ontology_terms_by_goID",
+        "score": 0.6508350372314453
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "GO_get_genes_for_term",
+    "argument_schema": {
+      "id": {
+        "type": "string",
+        "description": "The standard GO term ID, e.g., 'GO:0006915'."
+      },
+      "taxon": {
+        "type": "string",
+        "description": "Optional species filter using a NCBI taxon ID. For example, Human is 'NCBITaxon:9606', and Mouse is 'NCBITaxon:10090'."
+      },
+      "rows": {
+        "type": "integer",
+        "description": "The number of genes to return. Default is 100."
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "name": "OpenTargets_target_disease_evidence",
+  "identity": {
+    "canonical_name": "OpenTargets_target_disease_evidence",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Omics & Molecular Analysis",
+      "Pharmacology & Drug Services",
+      "Statistical & Analytical Methods",
+      "biomedical-data-integration",
+      "ensmb",
+      "ontology",
+      "open-targets-api",
+      "target-analysis",
+      "OpenTarget",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Provides evidence for target-disease associations given an EFO disease ID and an Ensembl target ID.\n\nExplore evidence that supports a specific target-disease association. Input is disease efoId and target ensemblID.",
+    "capabilities": [
+      "Query disease details given an EFO ID",
+      "Fetch evidence for a specific target-disease association",
+      "Retrieve mutation sample statistics and cohort information",
+      "Obtain approved target symbols and source disease names"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The efoId of a disease or phenotype."
+      },
+      "ensemblId": {
+        "type": "string",
+        "description": "The ensemblId of a target."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_target_disease_evidence_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_target_disease_evidence_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/OpenTargets_target_disease_evidence_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "OpenTargets_get_diseases_phenotypes_by_target_ensembl",
+        "score": 0.7865049839019775
+      },
+      {
+        "tool": "OpenTargets_get_associated_targets_by_disease_efoId",
+        "score": 0.7859188318252563
+      },
+      {
+        "tool": "OpenTargets_get_target_interactions_by_ensemblID",
+        "score": 0.7165267467498779
+      },
+      {
+        "tool": "OSL_get_efo_id_by_disease_name",
+        "score": 0.6685749292373657
+      },
+      {
+        "tool": "OpenTargets_get_disease_therapeutic_areas_by_efoId",
+        "score": 0.6540061235427856
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "OpenTargets_target_disease_evidence",
+    "argument_schema": {
+      "efoId": {
+        "type": "string",
+        "description": "The efoId of a disease or phenotype."
+      },
+      "ensemblId": {
+        "type": "string",
+        "description": "The ensemblId of a target."
+      }
+    }
+  }
+}

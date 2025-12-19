@@ -1,0 +1,143 @@
+{
+  "name": "mesh_get_subjects_by_subject_name",
+  "identity": {
+    "canonical_name": "mesh_get_subjects_by_subject_name",
+    "aliases": [],
+    "domain_tags": [
+      "Data Processing",
+      "Omics & Molecular Analysis",
+      "Text Mining & NLP",
+      "biomedical-ontology",
+      "biomedical-text-mining",
+      "case-sensitive-search",
+      "concept-processing",
+      "controlled-vocabulary",
+      "exact-match",
+      "medical-domain",
+      "mesh-subject-search",
+      "ontology-query",
+      "XMLTool",
+      "Zitnik Lab"
+    ],
+    "role": "Database",
+    "description": "Search MeSH subjects by name with options for case-sensitive and exact matching, returning detailed metadata.\n\nFind MeSH (Medical Subject Heading) subjects with matching names.",
+    "capabilities": [
+      "Search MeSH subjects by name",
+      "Support case-sensitive and exact match queries",
+      "Limit the number of returned results",
+      "Extract subject metadata using XML XPath mappings",
+      "Return structured fields like ID, hierarchy, scope, and synonyms"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "query": {
+        "type": "string",
+        "description": "Query string to search for in the name of each MeSH subject and the names of the subject's key concepts and concept synonyms."
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search for the query"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match for the query"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_subject_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_subject_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mesh_get_subjects_by_subject_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "mesh_get_subjects_by_subject_id",
+        "score": 0.8041561841964722
+      },
+      {
+        "tool": "mesh_get_subjects_by_subject_scope_or_definition",
+        "score": 0.7220814228057861
+      },
+      {
+        "tool": "mesh_get_subjects_by_pharmacological_action",
+        "score": 0.6840790510177612
+      },
+      {
+        "tool": "FDA_get_drug_names_by_clinical_studies",
+        "score": 0.5923378467559814
+      },
+      {
+        "tool": "FDA_get_clinical_studies_info_by_drug_name",
+        "score": 0.5691438913345337
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mesh_get_subjects_by_subject_name",
+    "argument_schema": {
+      "query": {
+        "type": "string",
+        "description": "Query string to search for in the name of each MeSH subject and the names of the subject's key concepts and concept synonyms."
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "Select True to perform a case-sensitive search for the query"
+      },
+      "exact_match": {
+        "type": "boolean",
+        "description": "Select True to require an exact match for the query"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of results to return"
+      }
+    }
+  }
+}

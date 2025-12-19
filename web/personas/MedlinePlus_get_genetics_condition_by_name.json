@@ -1,0 +1,119 @@
+{
+  "name": "MedlinePlus_get_genetics_condition_by_name",
+  "identity": {
+    "canonical_name": "MedlinePlus_get_genetics_condition_by_name",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Biological Entities & Annotations",
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Omics & Molecular Analysis",
+      "medlineplus",
+      "MedlinePlusRESTTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve detailed genetic condition data from MedlinePlus Genetics in JSON or XML format.\n\nGet detailed information from MedlinePlus Genetics corresponding to genetic condition name, supports JSON or XML format return.",
+    "capabilities": [
+      "Fetch detailed data on a genetic condition from MedlinePlus Genetics",
+      "Support JSON or XML response formats",
+      "Allow querying by condition URL slug"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "condition": {
+        "type": "string",
+        "description": "URL slug of genetic condition, e.g., \"alzheimer-disease\", must match MedlinePlus page path."
+      },
+      "format": {
+        "type": "string",
+        "description": "Return format, options \"json\" or \"xml\", default \"json\"."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedlinePlus_get_genetics_condition_by_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedlinePlus_get_genetics_condition_by_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/MedlinePlus_get_genetics_condition_by_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "MedlinePlus_get_genetics_gene_by_name",
+        "score": 0.9603211879730225
+      },
+      {
+        "tool": "MedlinePlus_get_genetics_index",
+        "score": 0.8295469284057617
+      },
+      {
+        "tool": "MedlinePlus_connect_lookup_by_code",
+        "score": 0.7166836261749268
+      },
+      {
+        "tool": "MedlinePlus_search_topics_by_keyword",
+        "score": 0.6215947866439819
+      },
+      {
+        "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
+        "score": 0.575258195400238
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "MedlinePlus_get_genetics_condition_by_name",
+    "argument_schema": {
+      "condition": {
+        "type": "string",
+        "description": "URL slug of genetic condition, e.g., \"alzheimer-disease\", must match MedlinePlus page path."
+      },
+      "format": {
+        "type": "string",
+        "description": "Return format, options \"json\" or \"xml\", default \"json\"."
+      }
+    }
+  }
+}

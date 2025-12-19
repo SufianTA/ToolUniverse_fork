@@ -1,0 +1,141 @@
+{
+  "name": "search_clinical_trials",
+  "identity": {
+    "canonical_name": "search_clinical_trials",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Statistical & Analytical Methods",
+      "protocol",
+      "ClinicalTrialsSearchTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Search and retrieve paginated lists of clinical trials from ClinicalTrials.gov by condition, intervention, or other terms.\n\nSearch for clinical trials registered on clinicaltrials.gov based on title, conditions, interventions, outcome measures, and status. Returns a paginated list of studies, containing the NCT ID and description of each trial. You can then take the NCT IDs and use 'get_clinical_trials_*' tools to get detailed information about specific protocol fields for specific studies, or 'extract_clinical_trials_efficacy/safety' tools to get efficacy or adverse events results from specific studies. If you wish to see the next page of results, you can use the 'nextPageToken' value from the previous output of this tool and input it as the 'pageToken' parameter in the next query. Note that currently the search is limited to trials beyond phase 1.",
+    "capabilities": [
+      "Search clinical trials by condition, intervention, or custom query terms",
+      "Return NCT ID and description for each trial",
+      "Support paginated results with pageSize and pageToken"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "condition": {
+        "type": "string",
+        "description": "Query for condition or disease using Essie expression syntax (e.g., 'lung cancer', '(head OR neck) AND pain AND NOT \"back pain\"')."
+      },
+      "intervention": {
+        "type": "string",
+        "description": "Query for intervention/treatment using Essie expression syntax (e.g., 'chemotherapy', 'immunotherapy', 'olaparib', 'combination therapy')."
+      },
+      "query_term": {
+        "type": "string",
+        "description": "Query for 'other terms' with Essie expression syntax (e.g., 'combination', 'AREA[LastUpdatePostDate]RANGE[2023-01-15,MAX]', 'Phase II'). Can be used to search for all other protocol fields, including but not limited to title, outcome measures, status, phase, location, etc."
+      },
+      "pageSize": {
+        "type": "integer",
+        "description": "Maximum number of studies to return per page (default 10, max 1000)."
+      },
+      "pageToken": {
+        "type": "string",
+        "description": "Token to retrieve the next page of results, obtained from the 'nextPageToken' field of the previous response. Do not specify it for first page."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/search_clinical_trials_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/search_clinical_trials_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/search_clinical_trials_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_clinical_trial_descriptions",
+        "score": 0.741560697555542
+      },
+      {
+        "tool": "extract_clinical_trial_adverse_events",
+        "score": 0.7253320217132568
+      },
+      {
+        "tool": "get_clinical_trial_locations",
+        "score": 0.7150863409042358
+      },
+      {
+        "tool": "get_clinical_trial_status_and_dates",
+        "score": 0.7102665901184082
+      },
+      {
+        "tool": "get_clinical_trial_conditions_and_interventions",
+        "score": 0.6929008364677429
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "search_clinical_trials",
+    "argument_schema": {
+      "condition": {
+        "type": "string",
+        "description": "Query for condition or disease using Essie expression syntax (e.g., 'lung cancer', '(head OR neck) AND pain AND NOT \"back pain\"')."
+      },
+      "intervention": {
+        "type": "string",
+        "description": "Query for intervention/treatment using Essie expression syntax (e.g., 'chemotherapy', 'immunotherapy', 'olaparib', 'combination therapy')."
+      },
+      "query_term": {
+        "type": "string",
+        "description": "Query for 'other terms' with Essie expression syntax (e.g., 'combination', 'AREA[LastUpdatePostDate]RANGE[2023-01-15,MAX]', 'Phase II'). Can be used to search for all other protocol fields, including but not limited to title, outcome measures, status, phase, location, etc."
+      },
+      "pageSize": {
+        "type": "integer",
+        "description": "Maximum number of studies to return per page (default 10, max 1000)."
+      },
+      "pageToken": {
+        "type": "string",
+        "description": "Token to retrieve the next page of results, obtained from the 'nextPageToken' field of the previous response. Do not specify it for first page."
+      }
+    }
+  }
+}

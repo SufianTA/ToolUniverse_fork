@@ -1,0 +1,119 @@
+{
+  "name": "get_pyscreener_info",
+  "identity": {
+    "canonical_name": "get_pyscreener_info",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Bioinformatics Tools",
+      "Cheminformatics & Chemical Analysis",
+      "Data Access & Management",
+      "Pharmacology & Drug Services",
+      "Programming Languages & Tools",
+      "computational-chemistry",
+      "feature",
+      "high-throughput-screening",
+      "in-silico",
+      "molecular-docking",
+      "usage-examples",
+      "virtual-screening",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Retrieve information about PyScreener, a Python toolkit for high-throughput virtual screening.\n\nGet comprehensive information about PyScreener - high-throughput virtual screening in Python",
+    "capabilities": [
+      "Retrieve overview of PyScreener",
+      "Provide installation instructions for PyScreener",
+      "Show usage examples for PyScreener",
+      "Link to PyScreener documentation"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about PyScreener"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyscreener_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyscreener_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_pyscreener_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_tqdm_info",
+        "score": 0.5000166893005371
+      },
+      {
+        "tool": "get_pyfaidx_info",
+        "score": 0.4971485733985901
+      },
+      {
+        "tool": "get_pyvcf_info",
+        "score": 0.48497825860977173
+      },
+      {
+        "tool": "get_pytdc_info",
+        "score": 0.4684082865715027
+      },
+      {
+        "tool": "get_scikit_image_info",
+        "score": 0.4673019051551819
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_pyscreener_info",
+    "argument_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about PyScreener"
+      }
+    }
+  }
+}

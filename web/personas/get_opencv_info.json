@@ -1,0 +1,115 @@
+{
+  "name": "get_opencv_info",
+  "identity": {
+    "canonical_name": "get_opencv_info",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Content & Documentation",
+      "Data Access & Management",
+      "Programming Languages & Tools",
+      "Visualization",
+      "computer-vision",
+      "library",
+      "quickstart-guide",
+      "usage-examples",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Get comprehensive information about the OpenCV-Python computer vision library.\n\nGet comprehensive information about OpenCV-Python - computer vision library",
+    "capabilities": [
+      "Retrieve package description and metadata",
+      "Provide installation instructions (pip, conda)",
+      "Offer documentation and repository links",
+      "Include usage examples and quick start guide"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_opencv_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_opencv_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_opencv_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_scikit_image_info",
+        "score": 0.6102476119995117
+      },
+      {
+        "tool": "get_matplotlib_info",
+        "score": 0.5510807037353516
+      },
+      {
+        "tool": "get_pyvcf_info",
+        "score": 0.5426692366600037
+      },
+      {
+        "tool": "get_plantcv_info",
+        "score": 0.5055843591690063
+      },
+      {
+        "tool": "get_imageio_info",
+        "score": 0.4979683756828308
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_opencv_info",
+    "argument_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide"
+      }
+    }
+  }
+}

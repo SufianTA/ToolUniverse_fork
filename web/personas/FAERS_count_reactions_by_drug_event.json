@@ -1,0 +1,154 @@
+{
+  "name": "FAERS_count_reactions_by_drug_event",
+  "identity": {
+    "canonical_name": "FAERS_count_reactions_by_drug_event",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Data Processing",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "age-stratification",
+      "analysis",
+      "pharmacology",
+      "reaction",
+      "FDADrugAdverseEventTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Counts adverse reactions reported for a specified drug with optional filters on patient details and event seriousness.\n\nCount the number of adverse reactions reported for a given drug, filtered by patient details, event seriousness, and reaction outcomes. Data source: FDA Adverse Event Reporting System (FAERS).",
+    "capabilities": [
+      "Count number of adverse reactions for a given drug",
+      "Filter results by patient sex, age group, occurrence country, seriousness, and death outcome",
+      "Retrieve exact reaction MedDRA Preferred Terms"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      },
+      "patientsex": {
+        "type": "string",
+        "description": "Patient sex, leave it blank if you don't want to apply a filter."
+      },
+      "patientagegroup": {
+        "type": "string",
+        "description": "Patient age group."
+      },
+      "occurcountry": {
+        "type": "string",
+        "description": "Country where event occurred."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Whether the event was serious."
+      },
+      "seriousnessdeath": {
+        "type": "string",
+        "description": "Was death reported?"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_reactions_by_drug_event_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_reactions_by_drug_event_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_reactions_by_drug_event_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FAERS_count_drugs_by_drug_event",
+        "score": 0.921195924282074
+      },
+      {
+        "tool": "FAERS_count_country_by_drug_event",
+        "score": 0.8967882394790649
+      },
+      {
+        "tool": "FAERS_count_outcomes_by_drug_event",
+        "score": 0.8884760141372681
+      },
+      {
+        "tool": "FAERS_count_additive_adverse_reactions",
+        "score": 0.8565350770950317
+      },
+      {
+        "tool": "FAERS_count_death_related_by_drug",
+        "score": 0.848953127861023
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FAERS_count_reactions_by_drug_event",
+    "argument_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      },
+      "patientsex": {
+        "type": "string",
+        "description": "Patient sex, leave it blank if you don't want to apply a filter."
+      },
+      "patientagegroup": {
+        "type": "string",
+        "description": "Patient age group."
+      },
+      "occurcountry": {
+        "type": "string",
+        "description": "Country where event occurred."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Whether the event was serious."
+      },
+      "seriousnessdeath": {
+        "type": "string",
+        "description": "Was death reported?"
+      }
+    }
+  }
+}

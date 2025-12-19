@@ -1,0 +1,120 @@
+{
+  "name": "FAERS_count_additive_administration_routes",
+  "identity": {
+    "canonical_name": "FAERS_count_additive_administration_routes",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "medical-domain",
+      "multi-drug-analysis",
+      "pharmacology",
+      "FDACountAdditiveReactionsTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Enumerates and counts administration routes for adverse events across specified medicinal products using FAERS data.\n\nAdditive multi-drug data: Enumerate and count administration routes for adverse events across specified medicinal products, using standardized route codes. Data source: FDA Adverse Event Reporting System (FAERS).",
+    "capabilities": [
+      "Enumerate and count administration routes for adverse events",
+      "Support filtering by seriousness",
+      "Accept array of medicinal product names as input",
+      "Map standardized route codes to descriptions"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "medicinalproducts": {
+        "type": "array",
+        "description": "Array of medicinal product names."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Filter by seriousness."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_administration_routes_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_administration_routes_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_additive_administration_routes_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FAERS_count_additive_seriousness_classification",
+        "score": 0.8524209260940552
+      },
+      {
+        "tool": "FAERS_count_drug_routes_by_event",
+        "score": 0.8471537828445435
+      },
+      {
+        "tool": "FAERS_count_additive_event_reports_by_country",
+        "score": 0.8307228088378906
+      },
+      {
+        "tool": "FAERS_count_additive_reaction_outcomes",
+        "score": 0.8225919604301453
+      },
+      {
+        "tool": "FAERS_count_additive_reports_by_reporter_country",
+        "score": 0.816577672958374
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FAERS_count_additive_administration_routes",
+    "argument_schema": {
+      "medicinalproducts": {
+        "type": "array",
+        "description": "Array of medicinal product names."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Filter by seriousness."
+      }
+    }
+  }
+}

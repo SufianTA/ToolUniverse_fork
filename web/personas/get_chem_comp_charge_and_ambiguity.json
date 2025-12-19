@@ -1,0 +1,102 @@
+{
+  "name": "get_chem_comp_charge_and_ambiguity",
+  "identity": {
+    "canonical_name": "get_chem_comp_charge_and_ambiguity",
+    "aliases": [],
+    "domain_tags": [
+      "Cheminformatics & Chemical Analysis",
+      "Data Access & Management",
+      "Structural Biology & Simulation",
+      "chemoinformatics",
+      "structural-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Gets a chemical component's formal charge and ambiguity flag.\n\nRetrieve the formal charge and ambiguity flag of a chemical component.",
+    "capabilities": [
+      "Query chemical component by PDB ID",
+      "Retrieve formal charge of the component",
+      "Retrieve ambiguity flag of the component"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "Chemical component ID to query charge and ambiguity"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_chem_comp_charge_and_ambiguity_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_chem_comp_charge_and_ambiguity_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_chem_comp_charge_and_ambiguity_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_ligand_smiles_by_chem_comp_id",
+        "score": 0.4363858997821808
+      },
+      {
+        "tool": "FDA_get_mechanism_of_action_by_drug_name",
+        "score": 0.42211973667144775
+      },
+      {
+        "tool": "PubChem_get_CID_by_compound_name",
+        "score": 0.4103333652019501
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_chem_comp_charge_and_ambiguity",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "Chemical component ID to query charge and ambiguity"
+      }
+    }
+  }
+}

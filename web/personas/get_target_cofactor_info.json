@@ -1,0 +1,117 @@
+{
+  "name": "get_target_cofactor_info",
+  "identity": {
+    "canonical_name": "get_target_cofactor_info",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Data Access & Management",
+      "Domain-Specific Analysis",
+      "Pharmacology & Drug Services",
+      "Structural Biology & Simulation",
+      "Text Mining & NLP",
+      "mechanism-of-action",
+      "protein-annotation",
+      "resource",
+      "structural-analysis",
+      "target-analysis",
+      "RCSBTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve cofactor IDs, mechanisms of action, literature references, and resource metadata for a specified target\n\nRetrieve essential cofactor information for a given target including cofactor IDs, mechanism of action, literature references, and resource metadata.",
+    "capabilities": [
+      "Retrieve cofactor identifiers for a given target",
+      "Provide mechanism of action details",
+      "Fetch literature references (PubMed IDs and patent numbers)",
+      "Return resource metadata (resource name and version)"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "Target ID or entity identifier (e.g., UniProt ID or internal target id)"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_target_cofactor_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_target_cofactor_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_target_cofactor_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_associated_documents_metadata",
+        "score": 0.5066173076629639
+      },
+      {
+        "tool": "GO_get_term_details",
+        "score": 0.48609834909439087
+      },
+      {
+        "tool": "GO_get_genes_for_term",
+        "score": 0.4694918394088745
+      },
+      {
+        "tool": "Tool_Finder",
+        "score": 0.4679067134857178
+      },
+      {
+        "tool": "get_taxonomy_by_pdb_id",
+        "score": 0.4666428565979004
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_target_cofactor_info",
+    "argument_schema": {
+      "pdb_id": {
+        "type": "string",
+        "description": "Target ID or entity identifier (e.g., UniProt ID or internal target id)"
+      }
+    }
+  }
+}

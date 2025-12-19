@@ -1,0 +1,110 @@
+{
+  "name": "gwas_get_association_by_id",
+  "identity": {
+    "canonical_name": "gwas_get_association_by_id",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Data Access & Management",
+      "Omics & Molecular Analysis",
+      "Statistical & Analytical Methods",
+      "bioinformatics-api",
+      "computational-genetics",
+      "research",
+      "GWASAssociationByID",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve a GWAS association using its unique identifier.\n\nGet a specific GWAS association by its unique identifier.",
+    "capabilities": [
+      "Fetch a GWAS association by its unique ID"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "association_id": {
+        "type": "string",
+        "description": "GWAS association identifier"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_association_by_id_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_association_by_id_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/gwas_get_association_by_id_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "gwas_get_study_by_id",
+        "score": 0.9120161533355713
+      },
+      {
+        "tool": "gwas_get_snp_by_id",
+        "score": 0.767286479473114
+      },
+      {
+        "tool": "gwas_get_associations_for_trait",
+        "score": 0.662574052810669
+      },
+      {
+        "tool": "gwas_get_studies_for_trait",
+        "score": 0.5950321555137634
+      },
+      {
+        "tool": "gwas_search_associations",
+        "score": 0.5874665975570679
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "gwas_get_association_by_id",
+    "argument_schema": {
+      "association_id": {
+        "type": "string",
+        "description": "GWAS association identifier"
+      }
+    }
+  }
+}

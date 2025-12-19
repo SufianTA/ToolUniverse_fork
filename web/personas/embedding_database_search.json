@@ -1,0 +1,146 @@
+{
+  "name": "embedding_database_search",
+  "identity": {
+    "canonical_name": "embedding_database_search",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "Data Processing",
+      "FAISS",
+      "Text Mining & NLP",
+      "data-discovery",
+      "knowledge-management",
+      "semantic",
+      "vector-similarity-search",
+      "EmbeddingDatabase",
+      "Zitnik Lab"
+    ],
+    "role": "Embedding Store",
+    "description": "Search semantically similar documents using OpenAI embeddings and FAISS with optional metadata filters.\n\nSearch for semantically similar documents in an embedding database. Uses OpenAI embeddings to convert query text to vectors and performs similarity search using FAISS with optional metadata filtering.",
+    "capabilities": [
+      "Convert text queries into embeddings using OpenAI",
+      "Perform similarity search with FAISS",
+      "Apply metadata filters to search results",
+      "Return top_k most similar documents"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "action": {
+        "type": "string",
+        "description": "Action to search the database"
+      },
+      "database_name": {
+        "type": "string",
+        "description": "Name of the database to search in"
+      },
+      "query": {
+        "type": "string",
+        "description": "Query text to find similar documents for"
+      },
+      "top_k": {
+        "type": "integer",
+        "description": "Number of most similar documents to return"
+      },
+      "filters": {
+        "type": "object",
+        "description": "Optional metadata filters to apply to search results"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/embedding_database_search_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/embedding_database_search_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/embedding_database_search_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "embedding_database_create",
+        "score": 0.6373456716537476
+      },
+      {
+        "tool": "get_faiss_info",
+        "score": 0.5536356568336487
+      },
+      {
+        "tool": "embedding_database_add",
+        "score": 0.5341019630432129
+      },
+      {
+        "tool": "openalex_literature_search",
+        "score": 0.4794520139694214
+      },
+      {
+        "tool": "SemanticScholar_search_papers",
+        "score": 0.45200681686401367
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "embedding_database_search",
+    "argument_schema": {
+      "action": {
+        "type": "string",
+        "description": "Action to search the database"
+      },
+      "database_name": {
+        "type": "string",
+        "description": "Name of the database to search in"
+      },
+      "query": {
+        "type": "string",
+        "description": "Query text to find similar documents for"
+      },
+      "top_k": {
+        "type": "integer",
+        "description": "Number of most similar documents to return"
+      },
+      "filters": {
+        "type": "object",
+        "description": "Optional metadata filters to apply to search results"
+      }
+    }
+  }
+}

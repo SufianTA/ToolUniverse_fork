@@ -1,0 +1,102 @@
+{
+  "name": "mcp_auto_loader_human_expert",
+  "identity": {
+    "canonical_name": "mcp_auto_loader_human_expert",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Miscellaneous",
+      "dynamic-tool-registration",
+      "human-data",
+      "mcp-protocol",
+      "plugin-management",
+      "science",
+      "tool-management",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "Human Expert Feedback",
+    "description": "Automatically discover and load tools from Human Expert MCP Server and register them for expert consultation.\n\nAutomatically discover and load all tools from Human Expert MCP Server. Can register discovered tools as individual ToolUniverse tools for expert consultation in complex scientific decisions requiring human judgment.",
+    "capabilities": [
+      "Discover and load tools from Human Expert MCP Server",
+      "Register discovered tools for expert consultation"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {},
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_human_expert_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_human_expert_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/mcp_auto_loader_human_expert_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "mcp_auto_loader_expert_feedback",
+        "score": 0.8540304899215698
+      },
+      {
+        "tool": "mcp_auto_loader_server1",
+        "score": 0.7532113790512085
+      },
+      {
+        "tool": "mcp_auto_loader_txagent",
+        "score": 0.7421610355377197
+      },
+      {
+        "tool": "DomainExpertValidator",
+        "score": 0.6149924993515015
+      },
+      {
+        "tool": "ToolDiscover",
+        "score": 0.513050377368927
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "mcp_auto_loader_human_expert",
+    "argument_schema": {}
+  }
+}

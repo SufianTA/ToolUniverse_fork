@@ -1,0 +1,116 @@
+{
+  "name": "get_igraph_info",
+  "identity": {
+    "canonical_name": "get_igraph_info",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Content & Documentation",
+      "Data Access & Management",
+      "Network & Graph Analysis",
+      "Programming Languages & Tools",
+      "Visualization",
+      "network-visualization",
+      "quickstart-guide",
+      "usage-examples",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Provides detailed information on the igraph package for network analysis and visualization\n\nGet comprehensive information about igraph \u0013 network analysis and visualization",
+    "capabilities": [
+      "Provide package description and metadata",
+      "Offer installation instructions for pip and conda",
+      "Show usage examples and quick start guide",
+      "List keywords and categories",
+      "Return documentation and source repository URLs"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_igraph_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_igraph_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_igraph_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_networkx_info",
+        "score": 0.6720761060714722
+      },
+      {
+        "tool": "get_pyvis_info",
+        "score": 0.6299374103546143
+      },
+      {
+        "tool": "get_pyscenic_info",
+        "score": 0.5241285562515259
+      },
+      {
+        "tool": "get_arboreto_info",
+        "score": 0.47785136103630066
+      },
+      {
+        "tool": "get_matplotlib_info",
+        "score": 0.4347735643386841
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_igraph_info",
+    "argument_schema": {
+      "include_examples": {
+        "type": "boolean",
+        "description": "Whether to include usage examples and quick start guide"
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "ArgumentDescriptionOptimizer",
+  "identity": {
+    "canonical_name": "ArgumentDescriptionOptimizer",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Content & Documentation",
+      "Data Access & Management",
+      "Data Processing",
+      "Text Mining & NLP",
+      "developer-tools",
+      "schema",
+      "software",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Optimizes parameter descriptions using test results and usage patterns for clarity and accuracy.\n\nOptimizes the descriptions of tool arguments/parameters based on test case results and actual usage patterns. Provides improved descriptions that are more accurate and user-friendly.",
+    "capabilities": [
+      "Analyzes parameter schemas",
+      "Integrates test case results",
+      "Produces concise, accurate descriptions"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "parameter_schema": {
+        "type": "string",
+        "description": "JSON string of the original parameter schema with properties and descriptions."
+      },
+      "test_results": {
+        "type": "string",
+        "description": "JSON string of test case input/output pairs showing parameter usage."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ArgumentDescriptionOptimizer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ArgumentDescriptionOptimizer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ArgumentDescriptionOptimizer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ToolDescriptionOptimizer",
+        "score": 0.8529404401779175
+      },
+      {
+        "tool": "ToolSpecificationOptimizer",
+        "score": 0.6665980815887451
+      },
+      {
+        "tool": "TestCaseGenerator",
+        "score": 0.6463842391967773
+      },
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.6436225175857544
+      },
+      {
+        "tool": "DescriptionAnalyzer",
+        "score": 0.6272894144058228
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ArgumentDescriptionOptimizer",
+    "argument_schema": {
+      "parameter_schema": {
+        "type": "string",
+        "description": "JSON string of the original parameter schema with properties and descriptions."
+      },
+      "test_results": {
+        "type": "string",
+        "description": "JSON string of test case input/output pairs showing parameter usage."
+      }
+    }
+  }
+}

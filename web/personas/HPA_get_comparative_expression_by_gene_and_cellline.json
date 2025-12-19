@@ -1,0 +1,115 @@
+{
+  "name": "HPA_get_comparative_expression_by_gene_and_cellline",
+  "identity": {
+    "canonical_name": "HPA_get_comparative_expression_by_gene_and_cellline",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Omics & Molecular Analysis",
+      "HPAGetComparativeExpressionTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Compare gene expression differences between a cell line and healthy tissues.\n\nCompare the expression level differences of a gene between a specific cell line and healthy tissues using gene name and cell line name.",
+    "capabilities": [
+      "Query RNA expression levels for a specified gene in a given cell line",
+      "Compare cell line expression to healthy tissue expression",
+      "Provide expression values in nTPM units"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_name": {
+        "type": "string",
+        "description": "Gene name or gene symbol, e.g., 'TP53', 'BRCA1', 'EGFR', etc."
+      },
+      "cell_line": {
+        "type": "string",
+        "description": "Cell line name, supported cell lines include: ishikawa, hela, mcf7, a549, hepg2, jurkat, pc3, rh30, siha, u251."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_comparative_expression_by_gene_and_cellline_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_comparative_expression_by_gene_and_cellline_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_comparative_expression_by_gene_and_cellline_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "HPA_get_disease_expression_by_gene_tissue_disease",
+        "score": 0.8306065797805786
+      },
+      {
+        "tool": "HPA_get_contextual_biological_process_analysis",
+        "score": 0.5742461681365967
+      },
+      {
+        "tool": "HPA_get_cancer_prognostics_by_gene",
+        "score": 0.4743327498435974
+      },
+      {
+        "tool": "HPA_search_genes_by_query",
+        "score": 0.461786687374115
+      },
+      {
+        "tool": "HPA_get_biological_processes_by_gene",
+        "score": 0.45893943309783936
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "HPA_get_comparative_expression_by_gene_and_cellline",
+    "argument_schema": {
+      "gene_name": {
+        "type": "string",
+        "description": "Gene name or gene symbol, e.g., 'TP53', 'BRCA1', 'EGFR', etc."
+      },
+      "cell_line": {
+        "type": "string",
+        "description": "Cell line name, supported cell lines include: ishikawa, hela, mcf7, a549, hepg2, jurkat, pc3, rh30, siha, u251."
+      }
+    }
+  }
+}

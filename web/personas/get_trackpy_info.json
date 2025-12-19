@@ -1,0 +1,116 @@
+{
+  "name": "get_trackpy_info",
+  "identity": {
+    "canonical_name": "get_trackpy_info",
+    "aliases": [],
+    "domain_tags": [
+      "Content & Documentation",
+      "Data Access & Management",
+      "Data Processing",
+      "Programming Languages & Tools",
+      "Search & Retrieval",
+      "Visualization",
+      "computer-vision",
+      "feature",
+      "research",
+      "science",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Provides comprehensive information about the trackpy particle tracking toolkit for Python.\n\nGet comprehensive information about trackpy - particle tracking toolkit for Python",
+    "capabilities": [
+      "Retrieve overview of trackpy",
+      "Provide installation instructions for trackpy",
+      "Show usage examples for trackpy",
+      "Access documentation for trackpy"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about trackpy"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_trackpy_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_trackpy_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_trackpy_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_numpy_info",
+        "score": 0.5446962118148804
+      },
+      {
+        "tool": "get_scipy_info",
+        "score": 0.5101898908615112
+      },
+      {
+        "tool": "get_scikit_image_info",
+        "score": 0.4998767673969269
+      },
+      {
+        "tool": "get_matplotlib_info",
+        "score": 0.4961867928504944
+      },
+      {
+        "tool": "get_opencv_info",
+        "score": 0.4807986617088318
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_trackpy_info",
+    "argument_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about trackpy"
+      }
+    }
+  }
+}

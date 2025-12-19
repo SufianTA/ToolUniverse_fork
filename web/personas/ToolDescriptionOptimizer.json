@@ -1,0 +1,147 @@
+{
+  "name": "ToolDescriptionOptimizer",
+  "identity": {
+    "canonical_name": "ToolDescriptionOptimizer",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Content & Documentation",
+      "Text Mining & NLP",
+      "developer-tools",
+      "iteration",
+      "quality-assessment",
+      "reporting",
+      "results",
+      "ComposeTool",
+      "Zitnik Lab"
+    ],
+    "role": "Compositional Tool",
+    "description": "Optimizes tool and parameter descriptions by generating test cases, executing and analyzing them, and suggesting improvements, with optional report saving.\n\nOptimizes a tool's description and parameter descriptions by generating test cases, executing them, analyzing the results, and suggesting improved descriptions for both the tool and its arguments. Optionally saves a comprehensive optimization report to a file without overwriting the original.",
+    "capabilities": [
+      "Optimize tool descriptions",
+      "Generate test cases",
+      "Execute and analyze test case results",
+      "Suggest improved descriptions for tool and arguments",
+      "Save optimization report without overwriting original"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_config": {
+        "type": "object",
+        "description": "The full configuration of the tool to optimize."
+      },
+      "save_to_file": {
+        "type": "boolean",
+        "description": "If true, save the optimized description to a file (do not overwrite the original)."
+      },
+      "output_file": {
+        "type": "string",
+        "description": "Optional file path to save the optimized description. If not provided, use '<tool_name>_optimized_description.txt'."
+      },
+      "max_iterations": {
+        "type": "integer",
+        "description": "Maximum number of optimization rounds to perform."
+      },
+      "satisfaction_threshold": {
+        "type": "number",
+        "description": "Quality score threshold (1-10) to consider optimization satisfactory."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDescriptionOptimizer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDescriptionOptimizer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDescriptionOptimizer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ArgumentDescriptionOptimizer",
+        "score": 0.8529404401779175
+      },
+      {
+        "tool": "DescriptionAnalyzer",
+        "score": 0.6780948638916016
+      },
+      {
+        "tool": "TestCaseGenerator",
+        "score": 0.6581182479858398
+      },
+      {
+        "tool": "ToolSpecificationOptimizer",
+        "score": 0.6400953531265259
+      },
+      {
+        "tool": "DescriptionQualityEvaluator",
+        "score": 0.6208181977272034
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ToolDescriptionOptimizer",
+    "argument_schema": {
+      "tool_config": {
+        "type": "object",
+        "description": "The full configuration of the tool to optimize."
+      },
+      "save_to_file": {
+        "type": "boolean",
+        "description": "If true, save the optimized description to a file (do not overwrite the original)."
+      },
+      "output_file": {
+        "type": "string",
+        "description": "Optional file path to save the optimized description. If not provided, use '<tool_name>_optimized_description.txt'."
+      },
+      "max_iterations": {
+        "type": "integer",
+        "description": "Maximum number of optimization rounds to perform."
+      },
+      "satisfaction_threshold": {
+        "type": "number",
+        "description": "Quality score threshold (1-10) to consider optimization satisfactory."
+      }
+    }
+  }
+}

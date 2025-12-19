@@ -1,0 +1,120 @@
+{
+  "name": "enrichr_gene_enrichment_analysis",
+  "identity": {
+    "canonical_name": "enrichr_gene_enrichment_analysis",
+    "aliases": [],
+    "domain_tags": [
+      "Biological Entities & Annotations",
+      "Domain-Specific Analysis",
+      "Network & Graph Analysis",
+      "Omics & Molecular Analysis",
+      "functional-enrichment",
+      "network-biology",
+      "systems-biology",
+      "EnrichrTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Gene enrichment analysis using Enrichr to identify pathways, processes, and molecular functions for a list of genes.\n\nPerform gene enrichment analysis using Enrichr to find biological pathways, processes, and molecular functions associated with a list of genes. Returns connectivity paths between genes and enrichment terms.",
+    "capabilities": [
+      "Perform gene enrichment analysis",
+      "Identify biological pathways, processes, and molecular functions",
+      "Return connectivity paths between genes and enrichment terms"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_list": {
+        "type": "array",
+        "description": "List of gene names or symbols to analyze. At least 2 genes are required for path ranking analysis."
+      },
+      "libs": {
+        "type": "array",
+        "description": "List of enrichment libraries to use for analysis."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/enrichr_gene_enrichment_analysis_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/enrichr_gene_enrichment_analysis_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/enrichr_gene_enrichment_analysis_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_gseapy_info",
+        "score": 0.588426947593689
+      },
+      {
+        "tool": "HPA_get_contextual_biological_process_analysis",
+        "score": 0.5482046604156494
+      },
+      {
+        "tool": "OpenTargets_get_target_gene_ontology_by_ensemblID",
+        "score": 0.54725182056427
+      },
+      {
+        "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
+        "score": 0.5383685827255249
+      },
+      {
+        "tool": "HPA_search_genes_by_query",
+        "score": 0.5347132682800293
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "enrichr_gene_enrichment_analysis",
+    "argument_schema": {
+      "gene_list": {
+        "type": "array",
+        "description": "List of gene names or symbols to analyze. At least 2 genes are required for path ranking analysis."
+      },
+      "libs": {
+        "type": "array",
+        "description": "List of enrichment libraries to use for analysis."
+      }
+    }
+  }
+}

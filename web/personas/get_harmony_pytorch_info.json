@@ -1,0 +1,113 @@
+{
+  "name": "get_harmony_pytorch_info",
+  "identity": {
+    "canonical_name": "get_harmony_pytorch_info",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Data Processing",
+      "Machine Learning",
+      "Omics & Molecular Analysis",
+      "Programming Languages & Tools",
+      "bioinformatics-package",
+      "computational-biology",
+      "PackageTool",
+      "Zitnik Lab"
+    ],
+    "role": "Scientific Software Package",
+    "description": "Retrieve information about the harmony-pytorch single-cell data integration package.\n\nGet comprehensive information about harmony-pytorch - single-cell data integration",
+    "capabilities": [
+      "Retrieve overview of harmony-pytorch",
+      "Retrieve installation instructions for harmony-pytorch",
+      "Retrieve usage examples for harmony-pytorch",
+      "Retrieve documentation link for harmony-pytorch"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about harmony-pytorch"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_harmony_pytorch_info_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_harmony_pytorch_info_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_harmony_pytorch_info_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_cellxgene_census_info",
+        "score": 0.5516705513000488
+      },
+      {
+        "tool": "get_pytdc_info",
+        "score": 0.5416167974472046
+      },
+      {
+        "tool": "get_scvi_tools_info",
+        "score": 0.5275006890296936
+      },
+      {
+        "tool": "get_pytorch_info",
+        "score": 0.5155148506164551
+      },
+      {
+        "tool": "get_nglview_info",
+        "score": 0.49472975730895996
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_harmony_pytorch_info",
+    "argument_schema": {
+      "info_type": {
+        "type": "string",
+        "description": "Type of information to retrieve about harmony-pytorch"
+      }
+    }
+  }
+}

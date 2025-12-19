@@ -1,0 +1,127 @@
+{
+  "name": "FDA_get_controlled_substance_DEA_schedule_info_by_drug_name",
+  "identity": {
+    "canonical_name": "FDA_get_controlled_substance_DEA_schedule_info_by_drug_name",
+    "aliases": [],
+    "domain_tags": [
+      "Pharmacology & Drug Services",
+      "Safety & Toxicology",
+      "pharmaceutical",
+      "pharmacology",
+      "prescription",
+      "FDADrugLabel",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve DEA schedule information for a specified controlled substance\n\nRetrieve information about the controlled substance Drug Enforcement Administratino (DEA) schedule for a specific drug.",
+    "capabilities": [
+      "Retrieve DEA schedule information for a specified drug",
+      "Pagination support with limit and skip parameters",
+      "Searches by brand and generic drug names",
+      "Returns controlled substance schedule information"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_controlled_substance_DEA_schedule_info_by_drug_name_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_controlled_substance_DEA_schedule_info_by_drug_name_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FDA_get_controlled_substance_DEA_schedule_info_by_drug_name_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FDA_get_drug_names_by_controlled_substance_DEA_schedule",
+        "score": 0.8553279638290405
+      },
+      {
+        "tool": "FDA_get_indications_by_drug_name",
+        "score": 0.701728105545044
+      },
+      {
+        "tool": "FDA_get_drug_names_by_abuse_dependence_info",
+        "score": 0.6796813011169434
+      },
+      {
+        "tool": "FDA_get_drug_name_by_dosage_info",
+        "score": 0.6630997061729431
+      },
+      {
+        "tool": "FDA_get_abuse_info_by_drug_name",
+        "score": 0.6589964628219604
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FDA_get_controlled_substance_DEA_schedule_info_by_drug_name",
+    "argument_schema": {
+      "drug_name": {
+        "type": "string",
+        "description": "The name of the drug."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "The number of records to return."
+      },
+      "skip": {
+        "type": "integer",
+        "description": "The number of records to skip."
+      }
+    }
+  }
+}

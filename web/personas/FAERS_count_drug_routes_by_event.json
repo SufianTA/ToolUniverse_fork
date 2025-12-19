@@ -1,0 +1,120 @@
+{
+  "name": "FAERS_count_drug_routes_by_event",
+  "identity": {
+    "canonical_name": "FAERS_count_drug_routes_by_event",
+    "aliases": [],
+    "domain_tags": [
+      "Domain-Specific Analysis",
+      "Pharmacology & Drug Services",
+      "Regulatory & Compliance",
+      "Safety & Toxicology",
+      "analysis",
+      "medical-domain",
+      "pharmacology",
+      "FDADrugAdverseEventTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Counts common drug administration routes in FAERS adverse event reports.\n\nCount the most common routes of administration for drugs involved in adverse event reports. Data source: FDA Adverse Event Reporting System (FAERS).",
+    "capabilities": [
+      "Counts common drug administration routes",
+      "Filters events by drug name and seriousness",
+      "Maps administration route codes to human-readable descriptions"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Seriousness of event."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_drug_routes_by_event_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_drug_routes_by_event_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_drug_routes_by_event_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FAERS_count_drugs_by_drug_event",
+        "score": 0.8670877814292908
+      },
+      {
+        "tool": "FAERS_count_additive_administration_routes",
+        "score": 0.8471537828445435
+      },
+      {
+        "tool": "FAERS_count_death_related_by_drug",
+        "score": 0.8426603078842163
+      },
+      {
+        "tool": "FAERS_count_outcomes_by_drug_event",
+        "score": 0.8225587010383606
+      },
+      {
+        "tool": "FAERS_count_reactions_by_drug_event",
+        "score": 0.8086761236190796
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FAERS_count_drug_routes_by_event",
+    "argument_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      },
+      "serious": {
+        "type": "string",
+        "description": "Seriousness of event."
+      }
+    }
+  }
+}

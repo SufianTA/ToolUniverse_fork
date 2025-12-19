@@ -1,0 +1,112 @@
+{
+  "name": "GO_get_annotations_for_gene",
+  "identity": {
+    "canonical_name": "GO_get_annotations_for_gene",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "GO-ontology",
+      "Search & Retrieval",
+      "computational-biology",
+      "functional-annotation",
+      "functional-genomics",
+      "GeneOntologyTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieve GO annotations for a gene via GOlr search.\n\nFinds all GO annotations for a specific gene/protein using GOlr search.",
+    "capabilities": [
+      "Search GO annotations",
+      "Query GOlr endpoint with gene identifier",
+      "Extract and return GO annotation data"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_id": {
+        "type": "string",
+        "description": "A gene identifier such as gene symbol (e.g., 'TP53') or database ID."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_annotations_for_gene_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_annotations_for_gene_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/GO_get_annotations_for_gene_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "GO_search_terms",
+        "score": 0.7674459218978882
+      },
+      {
+        "tool": "OpenTargets_get_gene_ontology_terms_by_goID",
+        "score": 0.6806714534759521
+      },
+      {
+        "tool": "GO_get_term_by_id",
+        "score": 0.6747356653213501
+      },
+      {
+        "tool": "GO_get_term_details",
+        "score": 0.6197803020477295
+      },
+      {
+        "tool": "GO_get_genes_for_term",
+        "score": 0.5973017811775208
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "GO_get_annotations_for_gene",
+    "argument_schema": {
+      "gene_id": {
+        "type": "string",
+        "description": "A gene identifier such as gene symbol (e.g., 'TP53') or database ID."
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "name": "ResultsInterpretationReviewer",
+  "identity": {
+    "canonical_name": "ResultsInterpretationReviewer",
+    "aliases": [],
+    "domain_tags": [
+      "Statistical & Analytical Methods",
+      "Text Mining & NLP",
+      "academic-literature",
+      "research",
+      "results",
+      "science",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Assesses if conclusions match data and if limitations are discussed.\n\nJudges whether conclusions are data-justified and limitations addressed.",
+    "capabilities": [
+      "Assess alignment of research claims with presented data",
+      "Evaluate consideration of alternative explanations",
+      "Review discussion of limitations and future work",
+      "Provide recommendations for improving interpretive balance and acknowledging uncertainties"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "results_section": {
+        "type": "string",
+        "description": "Text of the results section to review"
+      },
+      "discussion_section": {
+        "type": "string",
+        "description": "Text of the discussion section to review"
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ResultsInterpretationReviewer_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ResultsInterpretationReviewer_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ResultsInterpretationReviewer_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "DataAnalysisValidityReviewer",
+        "score": 0.5347678661346436
+      },
+      {
+        "tool": "MethodologyRigorReviewer",
+        "score": 0.44052422046661377
+      },
+      {
+        "tool": "ProtocolOptimizer",
+        "score": 0.41773560643196106
+      },
+      {
+        "tool": "EthicalComplianceReviewer",
+        "score": 0.4161674380302429
+      },
+      {
+        "tool": "consult_human_expert",
+        "score": 0.40773653984069824
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ResultsInterpretationReviewer",
+    "argument_schema": {
+      "results_section": {
+        "type": "string",
+        "description": "Text of the results section to review"
+      },
+      "discussion_section": {
+        "type": "string",
+        "description": "Text of the discussion section to review"
+      }
+    }
+  }
+}

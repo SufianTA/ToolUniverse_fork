@@ -1,0 +1,112 @@
+{
+  "name": "get_patent_foreign_priority_data",
+  "identity": {
+    "canonical_name": "get_patent_foreign_priority_data",
+    "aliases": [],
+    "domain_tags": [
+      "Regulatory & Compliance",
+      "application-number-lookup",
+      "application-number-query",
+      "cross-referencing",
+      "ip-management",
+      "patent",
+      "uspto-open-data",
+      "USPTOOpenDataPortalTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Retrieves foreign priority claims for a patent application.\n\nAccesses information about any foreign priority claims associated with an application.",
+    "capabilities": [
+      "Retrieve foreign priority claims associated with a patent application",
+      "Provide count of matching patent applications",
+      "Return detailed foreign priority data including office names and filing dates"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "applicationNumberText": {
+        "type": "string",
+        "description": "The application number of the patent."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_foreign_priority_data_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_foreign_priority_data_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_patent_foreign_priority_data_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_claims_from_patent_app_number",
+        "score": 0.6103306412696838
+      },
+      {
+        "tool": "get_associated_documents_metadata",
+        "score": 0.6087430119514465
+      },
+      {
+        "tool": "get_patent_continuity_data",
+        "score": 0.596741259098053
+      },
+      {
+        "tool": "get_patent_application_metadata",
+        "score": 0.5696873664855957
+      },
+      {
+        "tool": "get_patent_term_adjustment_data",
+        "score": 0.5691055655479431
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_patent_foreign_priority_data",
+    "argument_schema": {
+      "applicationNumberText": {
+        "type": "string",
+        "description": "The application number of the patent."
+      }
+    }
+  }
+}

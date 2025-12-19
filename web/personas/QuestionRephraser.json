@@ -1,0 +1,111 @@
+{
+  "name": "QuestionRephraser",
+  "identity": {
+    "canonical_name": "QuestionRephraser",
+    "aliases": [],
+    "domain_tags": [
+      "Text Mining & NLP",
+      "contextual-processing",
+      "processing",
+      "query-processing",
+      "semantic",
+      "AgenticTool",
+      "Zitnik Lab"
+    ],
+    "role": "AI Agent",
+    "description": "Creates three rephrasings of a question, preserving answer option validity.\n\nGenerates three distinct paraphrases of a given question while ensuring answer options remain valid and applicable.",
+    "capabilities": [
+      "Rephrases questions maintaining original meaning and difficulty",
+      "Generates three distinct paraphrases",
+      "Ensures validity of provided answer options for rephrased questions",
+      "Returns output as a JSON array"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "question": {
+        "type": "string",
+        "description": "The original question text to be rephrased"
+      },
+      "options": {
+        "type": "string",
+        "description": "Answer options (e.g., multiple choice options) that should remain valid for the rephrased questions. Leave empty if no options are provided."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/QuestionRephraser_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/QuestionRephraser_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/QuestionRephraser_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "call_agentic_human",
+        "score": 0.5034161806106567
+      },
+      {
+        "tool": "ToolDescriptionOptimizer",
+        "score": 0.4296702444553375
+      },
+      {
+        "tool": "ArgumentDescriptionOptimizer",
+        "score": 0.4279096722602844
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "QuestionRephraser",
+    "argument_schema": {
+      "question": {
+        "type": "string",
+        "description": "The original question text to be rephrased"
+      },
+      "options": {
+        "type": "string",
+        "description": "Answer options (e.g., multiple choice options) that should remain valid for the rephrased questions. Leave empty if no options are provided."
+      }
+    }
+  }
+}

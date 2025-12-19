@@ -1,0 +1,114 @@
+{
+  "name": "HPA_get_protein_interactions_by_gene",
+  "identity": {
+    "canonical_name": "HPA_get_protein_interactions_by_gene",
+    "aliases": [],
+    "domain_tags": [
+      "Bioinformatics Tools",
+      "Biological Entities & Annotations",
+      "Data Processing",
+      "Domain-Specific Analysis",
+      "Network & Graph Analysis",
+      "Omics & Molecular Analysis",
+      "human-data",
+      "network-biology",
+      "systems-biology",
+      "HPAGetProteinInteractionsTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Fetch protein interaction partners from Human Protein Atlas for a given gene.\n\nFetch known protein-protein interaction partners for a given gene from Human Protein Atlas database.",
+    "capabilities": [
+      "Fetch protein-protein interactions for a given gene",
+      "Retrieve interaction partner counts and summaries",
+      "Query HPA API endpoint"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "gene_name": {
+        "type": "string",
+        "description": "Official gene symbol, e.g., 'EGFR', 'TP53', 'BRCA1', etc."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_protein_interactions_by_gene_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_protein_interactions_by_gene_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/HPA_get_protein_interactions_by_gene_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "humanbase_ppi_analysis",
+        "score": 0.7035528421401978
+      },
+      {
+        "tool": "HPA_get_gene_basic_info_by_ensembl_id",
+        "score": 0.6623005867004395
+      },
+      {
+        "tool": "expression_atlas_disease_target_score",
+        "score": 0.6449885964393616
+      },
+      {
+        "tool": "HPA_get_gene_tsv_data_by_ensembl_id",
+        "score": 0.6205713152885437
+      },
+      {
+        "tool": "GO_get_genes_for_term",
+        "score": 0.6031856536865234
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "HPA_get_protein_interactions_by_gene",
+    "argument_schema": {
+      "gene_name": {
+        "type": "string",
+        "description": "Official gene symbol, e.g., 'EGFR', 'TP53', 'BRCA1', etc."
+      }
+    }
+  }
+}

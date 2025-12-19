@@ -1,0 +1,102 @@
+{
+  "name": "get_expert_status",
+  "identity": {
+    "canonical_name": "get_expert_status",
+    "aliases": [],
+    "domain_tags": [
+      "API",
+      "Miscellaneous",
+      "monitoring",
+      "performance-analysis",
+      "request",
+      "RemoteTool",
+      "Zitnik Lab"
+    ],
+    "role": "Human Expert Feedback",
+    "description": "Retrieves the current status of the human expert system, including expert availability, pending requests, and system statistics.\n\nGet current status of the human expert system including availability, pending requests, and system statistics.",
+    "capabilities": [
+      "Retrieve overall system status",
+      "Fetch expert information (name, specialties, availability)",
+      "Retrieve system usage statistics (pending requests, total requests, completed responses, response rate)",
+      "Provide current system timestamp",
+      "Provide MCP server port"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {},
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_status_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_status_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/get_expert_status_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "get_expert_response",
+        "score": 0.6834768056869507
+      },
+      {
+        "tool": "submit_expert_response",
+        "score": 0.5697207450866699
+      },
+      {
+        "tool": "list_pending_expert_requests",
+        "score": 0.539725661277771
+      },
+      {
+        "tool": "mcp_auto_loader_expert_feedback",
+        "score": 0.5143894553184509
+      },
+      {
+        "tool": "mcp_auto_loader_human_expert",
+        "score": 0.5020037889480591
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "get_expert_status",
+    "argument_schema": {}
+  }
+}

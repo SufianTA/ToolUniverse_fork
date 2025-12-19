@@ -1,0 +1,135 @@
+{
+  "name": "ToolDiscover",
+  "identity": {
+    "canonical_name": "ToolDiscover",
+    "aliases": [],
+    "domain_tags": [
+      "Data Access & Management",
+      "configuration-management",
+      "iteration",
+      "tool-management",
+      "ComposeTool",
+      "Zitnik Lab"
+    ],
+    "role": "Compositional Tool",
+    "description": "Automatically generates and refines new ToolUniverse-compliant tools from a short description.\n\nGenerates new ToolUniverse-compliant tools based on short descriptions through an intelligent discovery and refinement process. Automatically determines the optimal tool type and category, discovers similar existing tools, generates initial specifications, and iteratively refines the tool configuration using agentic optimization tools until it meets quality standards.",
+    "capabilities": [
+      "Determines optimal tool type and category",
+      "Discovers similar existing tools",
+      "Generates initial tool specifications",
+      "Iteratively refines tool configurations using agentic optimization",
+      "Optionally saves generated configurations to file"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Short description of the desired tool functionality and purpose. Tool Discover will automatically analyze this to determine the optimal tool type (PackageTool, RESTTool, XMLTool, or AgenticTool) and appropriate category."
+      },
+      "max_iterations": {
+        "type": "integer",
+        "description": "Maximum number of refinement iterations to perform."
+      },
+      "save_to_file": {
+        "type": "boolean",
+        "description": "Whether to save the generated tool configuration and report to a file."
+      },
+      "output_file": {
+        "type": "string",
+        "description": "Optional file path to save the generated tool. If not provided, uses auto-generated filename."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDiscover_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDiscover_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/ToolDiscover_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "ToolSpecificationGenerator",
+        "score": 0.8578805923461914
+      },
+      {
+        "tool": "ToolGraphComposer",
+        "score": 0.7195689678192139
+      },
+      {
+        "tool": "TestCaseGenerator",
+        "score": 0.7193495631217957
+      },
+      {
+        "tool": "ToolMetadataGenerationPipeline",
+        "score": 0.6960246562957764
+      },
+      {
+        "tool": "ToolOptimizer",
+        "score": 0.6870731115341187
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "ToolDiscover",
+    "argument_schema": {
+      "tool_description": {
+        "type": "string",
+        "description": "Short description of the desired tool functionality and purpose. Tool Discover will automatically analyze this to determine the optimal tool type (PackageTool, RESTTool, XMLTool, or AgenticTool) and appropriate category."
+      },
+      "max_iterations": {
+        "type": "integer",
+        "description": "Maximum number of refinement iterations to perform."
+      },
+      "save_to_file": {
+        "type": "boolean",
+        "description": "Whether to save the generated tool configuration and report to a file."
+      },
+      "output_file": {
+        "type": "string",
+        "description": "Optional file path to save the generated tool. If not provided, uses auto-generated filename."
+      }
+    }
+  }
+}

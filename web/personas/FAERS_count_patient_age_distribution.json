@@ -1,0 +1,111 @@
+{
+  "name": "FAERS_count_patient_age_distribution",
+  "identity": {
+    "canonical_name": "FAERS_count_patient_age_distribution",
+    "aliases": [],
+    "domain_tags": [
+      "Clinical & Translational Research",
+      "Pharmacology & Drug Services",
+      "Safety & Toxicology",
+      "age-stratification",
+      "pharmacology",
+      "risk",
+      "FDADrugAdverseEventTool",
+      "Zitnik Lab"
+    ],
+    "role": "API",
+    "description": "Provide age distribution analysis of adverse event reports for a specified drug using FAERS data.\n\nAnalyze the age distribution of patients experiencing adverse events for a specific drug. The age groups are: Neonate (0-28 days), Infant (29 days - 23 months), Child (2-11 years), Adolescent (12-17 years), Adult (18-64 years), Elderly (65+ years). Data source: FDA Adverse Event Reporting System (FAERS).",
+    "capabilities": [
+      "Search FAERS adverse event reports by drug name",
+      "Compute patient age distribution across defined age groups",
+      "Map age group codes to descriptive labels"
+    ]
+  },
+  "contract": {
+    "parameter_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      }
+    },
+    "return_schema": {},
+    "preconditions": [],
+    "postconditions": [],
+    "failure_modes": []
+  },
+  "telemetry": {
+    "success_rate": null,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "empty_rate": null
+  },
+  "domain_validity": {
+    "strong": [],
+    "weak": []
+  },
+  "safety": {
+    "hard_constraints": [],
+    "misuse_cases": "None for now"
+  },
+  "provenance": {
+    "tool_version": "v1.0.0",
+    "data_source_version": "unknown",
+    "last_updated": "2025-12-18T19:17:22Z"
+  },
+  "embeddings": {
+    "purpose": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_patient_age_distribution_purpose.pt"
+    },
+    "domain": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_patient_age_distribution_domain.pt"
+    },
+    "io_structure": {
+      "model": "SentenceTransformer(\n  (0): Transformer({'max_seq_length': 4096, 'do_lower_case': False, 'architecture': 'BertModel'})\n  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})\n  (2): Normalize()\n)",
+      "dim": 384,
+      "path": "web/embeddings/FAERS_count_patient_age_distribution_io_structure.pt"
+    }
+  },
+  "relationships": {
+    "used_with": [],
+    "commonly_follows": [],
+    "validates_output_of": [],
+    "similar_tools": [
+      {
+        "tool": "FAERS_count_death_related_by_drug",
+        "score": 0.7760926485061646
+      },
+      {
+        "tool": "FAERS_count_drugs_by_drug_event",
+        "score": 0.7658677101135254
+      },
+      {
+        "tool": "FAERS_count_outcomes_by_drug_event",
+        "score": 0.7516834735870361
+      },
+      {
+        "tool": "FAERS_count_country_by_drug_event",
+        "score": 0.7175471782684326
+      },
+      {
+        "tool": "FAERS_count_reactions_by_drug_event",
+        "score": 0.7113429307937622
+      }
+    ]
+  },
+  "workflows": {
+    "observed": []
+  },
+  "mcp_call": {
+    "name": "FAERS_count_patient_age_distribution",
+    "argument_schema": {
+      "medicinalproduct": {
+        "type": "string",
+        "description": "Drug name."
+      }
+    }
+  }
+}
